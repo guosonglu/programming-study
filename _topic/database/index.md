@@ -377,6 +377,121 @@ FROM employees e JOIN departments d USING(department_id);
 
 ![](https://cdn.jsdelivr.net/gh/luguosong/images@master/blog-img/202401171704567.png)
 
+# 单行函数
+
+## 数值函数
+
+```sql
+-- 绝对值
+SELECT ABS(-10),ABS(10) FROM DUAL;
+
+-- 返回符号，正数返回1，负数返回-1，0返回0
+SELECT SIGN(-18),SIGN(18),SIGN(0) FROM DUAL;
+
+-- 返回圆周率的值
+SELECT PI() FROM DUAL;
+
+-- 返回大于等于指定参数的最小整数
+SELECT CEIL(3.14),CEIL(-3.14) FROM DUAL;
+
+-- 返回小于等于指定参数的最大整数
+SELECT FLOOR(3.14),FLOOR(-3.14) FROM DUAL;
+
+-- 四舍五入
+SELECT ROUND(3.14),ROUND(3.54),ROUND(3.54,1),ROUND(3.54,2) FROM DUAL;
+
+-- 返回指定小数位数的数字(不进行四舍五入)
+SELECT TRUNCATE(3.14,1),TRUNCATE(3.59,1),TRUNCATE(123.54,-1) FROM DUAL;
+
+-- 返回列表中最小值
+SELECT LEAST(1,2,3,4,5) FROM DUAL;
+
+-- 返回列表中最大值
+SELECT GREATEST(1,2,3,4,5) FROM DUAL;
+
+-- 返回余数
+SELECT MOD(10,3) FROM DUAL;
+
+-- 返回随机数，种子相同则结果相同
+SELECT RAND(),RAND(),RAND(10),RAND(10) FROM DUAL;
+```
+
+## 字符串函数
+
+```sql
+-- 返回字符的Ascii码
+SELECT ASCII('a'),ASCII('A') FROM DUAL;
+
+-- 返回字符串字符数
+SELECT CHAR_LENGTH('abc'),CHAR_LENGTH('中文') FROM DUAL;
+
+-- 返回字符串字节数
+SELECT LENGTH('abc'),LENGTH('中文') FROM DUAL;
+
+-- 字符串连接
+SELECT CONCAT('hello',' ','mysql') FROM DUAL;
+
+-- 使用指定字符连接字符串
+SELECT CONCAT_WS('-','hello','mysql','world') FROM DUAL;
+
+-- 插入和替换字符串，mysql中字符串索引从1开始
+SELECT INSERT('hello',2,2,'xx') FROM DUAL;
+
+-- 字符串替换
+SELECT REPLACE('hello','l','xx') FROM DUAL;
+
+-- 大小写转换
+SELECT UPPER('hello'),LOWER('HELLO') FROM DUAL;
+
+-- 左右截取
+SELECT LEFT('hello',2),RIGHT('hello',2) FROM DUAL;
+
+-- 左右补位:xxxxxhello,helloxxxxx
+SELECT LPAD('hello',10,'x'),RPAD('hello',10,'x') FROM DUAL;
+
+-- 去除空格（中间的空格不会去除）:he llo,he llo , he llo,ohell
+SELECT TRIM(' he llo '),LTRIM(' he llo '),RTRIM(' he llo '),TRIM('oo' FROM 'ohelloo') FROM DUAL;
+
+-- 重复打印: hellohellohello
+SELECT REPEAT('hello',3) FROM DUAL;
+
+-- 打印指定数量的空格
+SELECT SPACE(10) FROM DUAL;
+
+-- 比较字符串大小: -1,1,0
+SELECT STRCMP('aa','ab'),STRCMP('b','a'),STRCMP('a','a') FROM DUAL;
+
+-- 获取子字符串: el
+SELECT SUBSTR('hello',2,2) FROM DUAL;
+
+-- 子字符串首次出现的位置
+SELECT INSTR('hello','l'),LOCATE('l','hello') FROM DUAL;
+
+-- 返回指定位置的字符串
+SELECT ELT(2,'a','b','c','d') FROM DUAL;
+
+-- 返回字符串在字符串列表中第一次出现的位置
+SELECT FIELD('b','a','b','c','d') FROM DUAL;
+
+-- 返回字符串在列表字符串中的位置
+SELECT FIND_IN_SET('b','a,b,c,d') FROM DUAL;
+
+-- 反转字符串
+SELECT REVERSE('abc') FROM DUAL;
+
+-- 如果相等返回NULL,如果不等返回第一个不等的字符串
+SELECT NULLIF('a','a'),NULLIF('b','a') FROM DUAL;
+```
+
+## 日期和时间函数
+
+```sql
+
+```
+
+# 聚合函数
+
+
 # 🏷️DDL
 
 DDL(Data Definition Language)数据定义语言，用于对数据库中的对象进行`增删改查`操作。比如：`create`、`alter`、`drop`、`truncate`
