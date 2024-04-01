@@ -29,14 +29,15 @@ JDBC API由两个包组成：
 {% include_relative jdbc-demo/src/main/java/com/luguosong/GetConnectionDemo.java %}
 {% endhighlight %}
 
+# ORM思想
+
+`对象关系映射`（英语：Object Relational Mapping，简称ORM，或O/RM，或O/R mapping）是一种技术，用于在面向对象编程语言和关系型数据库之间建立映射关系，让开发者可以用面向对象的方式操作数据库，简化了数据处理过程。
+
+![](https://cdn.jsdelivr.net/gh/luguosong/images@master/blog-img/202402201549843.png)
+
 # Statement
 
 `Statement`存在SQL注入问题，不推荐使用。一般使用`PreparedStatement`。
-
-{: .note-title}
-> ORM思想
-> 
-> `对象关系映射`（英语：Object Relational Mapping，简称ORM，或O/RM，或O/R mapping）是一种技术，用于在面向对象编程语言和关系型数据库之间建立映射关系，让开发者可以用面向对象的方式操作数据库，简化了数据处理过程。
 
 {: .note-title}
 > PreparedStatement为什么可以解决Sql注入

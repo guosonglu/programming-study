@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-config.dtd">
+
+<configuration>
+    <!--属性-->
+    <properties>
+        <property name="driver" value="com.mysql.jdbc.Driver"/>
+        <property name="url" value="jdbc:mysql://localhost:3306/learn_mybatis"/>
+        <property name="username" value="root"/>
+        <property name="password" value="12345678"/>
+    </properties>
+
+
+    <!--设置：改变 MyBatis 的运行时行为-->
+    <settings>
+        <setting name="logImpl" value="SLF4J"/>
+    </settings>
+
+    <!--环境配置-->
+    <environments default="development">
+        <environment id="development">
+            <transactionManager type="JDBC"/>
+            <dataSource type="POOLED">
+                <property name="driver" value="${driver}"/>
+                <property name="url" value="${url}"/>
+                <property name="username" value="${username}"/>
+                <property name="password" value="${password}"/>
+
+                <!--dataSource不同的type拥有不同的属性配置，具体看官方文档-->
+                <property name="poolMaximumActiveConnections" value="20"/>
+            </dataSource>
+        </environment>
+    </environments>
+
+
+    <mappers>
+        <mapper resource="mapper/HelloMapper.xml"/>
+    </mappers>
+</configuration>

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="hello">
+    <!--🍪sql语句结尾可以加分号也可以不加分号-->
+    <insert id="insertCar">
+        insert into t_car(id,car_num,brand,guide_price,produce_time,car_type)
+        values(null,'1003','丰田', 200000, '2021-01-01', '燃油车')
+    </insert>
+</mapper>
