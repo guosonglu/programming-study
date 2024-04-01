@@ -15,17 +15,11 @@
     </properties>
 
     <dependencies>
-        <!--一般情况下，logback都是搭配slf4j日志门面使用-->
-        <dependency>
-            <groupId>org.slf4j</groupId>
-            <artifactId>slf4j-api</artifactId>
-            <version>2.0.7</version>
-        </dependency>
         <!--logback-classic核心模块，其中已经包含了logback-core-->
         <dependency>
             <groupId>ch.qos.logback</groupId>
             <artifactId>logback-classic</artifactId>
-            <version>1.4.7</version>
+            <version>1.4.14</version>
         </dependency>
     </dependencies>
 </project>

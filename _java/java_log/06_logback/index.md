@@ -30,7 +30,7 @@ Logback分为三个模块:
 {% include_relative logback_basic/pom.xml %}
 {% endhighlight %}
 
-- 配置文件
+- 配置文件`logback.xml`
 
 {% highlight xml %}
 {% include_relative logback_basic/src/main/resources/logback.xml %}
