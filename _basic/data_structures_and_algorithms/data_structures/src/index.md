@@ -6,13 +6,39 @@ parent: 数据结构与算法
 create_time: 2023/5/18
 ---
 
+# JDK集合体系
+
+- `java.util.Collection`
+    - `java.util.List`:存储有序的可重复的数据
+        - `java.util.ArrayList`
+        - `java.util.LinkedList`
+        - `java.util.Vector`
+    - `java.util.Set`:存储无序的不可重复的数据
+        - `java.util.HashSet`
+            - `java.util.LinkedHashSet`
+        - `java.util.TreeSet`
+- `java.util.Map`:存储键值对
+    - `java.util.HashMap`
+        - `java.util.LinkedHashMap`
+    - `java.util.TreeMap`
+    - `java.util.Hashtable`
+        - `java.util.Properties`
+
+![](https://cdn.jsdelivr.net/gh/luguosong/images@master/blog-img/202401232140858.png)
+
+# Collection接口
+
+## 抽象方法
+
+
+
 # 耗时观察工具
 
 {% highlight java %}
 {% include_relative main/java/com/luguosong/util/TimeTool.java %}
 {% endhighlight %}
 
-# 🍪线性结构(List)
+# 🏷️线性结构(List)
 
 `线性结构（线性表）`是具有n个`相同类型元素`的有限`序列`
 
@@ -28,6 +54,16 @@ create_time: 2023/5/18
 > 数组存在的问题
 >
 > 无法修改容量
+
+## 特征
+
+- 优点
+    - 支持随机访问，通过下标访问元素，速度快
+    - 内存地址连续，可以通过公式计算内存地址，速度快
+- 缺点
+    - 无法修改容量
+    - 插入和删除元素效率低，需要移动元素
+    - 可以使用的方法和属性很少
 
 ## 调用
 
@@ -55,6 +91,6 @@ create_time: 2023/5/18
 
 # 链表
 
-# 树形结构(Tree)✨
+# 树形结构(Tree)
 
-# 图形结构(Graph)✨
+# 图形结构(Graph)
