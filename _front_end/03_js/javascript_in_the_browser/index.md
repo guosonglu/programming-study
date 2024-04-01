@@ -1,7 +1,7 @@
 ---
 layout: note
 title: 浏览器中的js
-nav_order: 20
+nav_order: 2000
 parent: JavaScript
 create_time: 2023/8/3
 ---

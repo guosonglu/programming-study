@@ -1,7 +1,7 @@
 ---
 layout: note
 title: js基础
-nav_order: 10
+nav_order: 1000
 parent: JavaScript
 create_time: 2023/8/2
 ---

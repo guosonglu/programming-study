@@ -33,8 +33,6 @@ function Child({num1}) {
             // 卸载函数
         }
     }, [num2]);
-
-
     return (
         <Card title={"子组件"}>
             <div>num1:{num1}</div>

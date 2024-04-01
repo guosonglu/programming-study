@@ -1,7 +1,7 @@
 ---
 layout: note
 title: 模块化和工程化
-nav_order: 60
+nav_order: 6000
 parent: JavaScript
 create_time: 2023/8/3
 ---
