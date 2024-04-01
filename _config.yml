@@ -219,6 +219,8 @@ collections:
     output: true
   javaweb:
     output: true
+  microservices:
+    output: true
   topic:
     output: true
 
@@ -232,6 +234,8 @@ just_the_docs:
       name: JAVA
     javaweb:
       name: 服务端开发
+    microservices:
+      name: 分布式/微服务
     topic:
       name: 专项研究
 
