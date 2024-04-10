@@ -8,6 +8,10 @@ public class MappedStatement {
 
     private String resultType;
 
+    public MappedStatement(String sql, String resultType) {
+        this.sql = sql;
+        this.resultType = resultType;
+    }
 
     public String getSql() {
         return sql;
@@ -23,5 +27,13 @@ public class MappedStatement {
 
     public void setResultType(String resultType) {
         this.resultType = resultType;
+    }
+
+    @Override
+    public String toString() {
+        return "MappedStatement{" +
+                "sql='" + sql + '\'' +
+                ", resultType='" + resultType + '\'' +
+                '}';
     }
 }

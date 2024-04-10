@@ -1,4 +1,4 @@
-package com.luguosong.mybatis;
+package com.luguosong.mybatis.dataSource;
 
 import javax.sql.DataSource;
 import java.io.PrintWriter;
@@ -8,11 +8,29 @@ import java.sql.SQLFeatureNotSupportedException;
 import java.util.logging.Logger;
 
 /**
- * 使用第三方连接池的数据源
+ * 不使用连接池的数据源
  *
  * @author luguosong
  */
-public class JNDIDataSource implements DataSource {
+public class UnPooledDataSource implements DataSource {
+
+    private String url;
+
+    private String username;
+
+    private String password;
+
+    public UnPooledDataSource(String driver, String url, String username, String password) {
+        try {
+            Class.forName(driver);
+        } catch (ClassNotFoundException e) {
+            throw new RuntimeException(e);
+        }
+        this.url = url;
+        this.username = username;
+        this.password = password;
+    }
+
     @Override
     public Connection getConnection() throws SQLException {
         return null;

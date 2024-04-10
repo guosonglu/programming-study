@@ -1,4 +1,4 @@
-package com.luguosong.mybatis;
+package com.luguosong.mybatis.dataSource;
 
 import javax.sql.DataSource;
 import java.io.PrintWriter;

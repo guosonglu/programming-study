@@ -62,4 +62,18 @@ create_time: 2024/2/20
 
 # 手写Mybatis
 
+数据源
+事务管理器 <- 事务管理器实现
+MappedStatement封装sql语句
+
+
+# Web应用中使用Mybatis
+
+- 引入依赖
+
+{% highlight xml %}
+{% include_relative mybatis-web/pom.xml %}
+{% endhighlight %}
+
+
 

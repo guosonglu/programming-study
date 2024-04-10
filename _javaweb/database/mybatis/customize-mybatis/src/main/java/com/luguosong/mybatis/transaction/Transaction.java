@@ -1,4 +1,6 @@
-package com.luguosong.mybatis;
+package com.luguosong.mybatis.transaction;
+
+import java.sql.Connection;
 
 /**
  * 事务管理器接口
@@ -20,4 +22,14 @@ public interface Transaction {
      * 关闭连接
      */
     void close();
+
+    /**
+     * 打开连接
+     */
+    void openConnection();
+
+    /**
+     * 获取连接
+     */
+    Connection getConnection();
 }
