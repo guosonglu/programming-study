@@ -1,0 +1,7 @@
+site_name: 陆国松的编程笔记
+
+theme:
+  name: material
+  features:
+    - navigation.tabs
+
