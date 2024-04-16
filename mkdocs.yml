@@ -1,7 +1,102 @@
 site_name: 陆国松的编程笔记
+site_url: https://www.luguosong.com
+repo_url: https://github.com/luguosong/programming-notes # 右上角仓库链接地址
+repo_name: programming-notes # 右上角仓库名称
+edit_uri: edit/main/docs/
 
 theme:
   name: material
+  language: zh
+  custom_dir: overrides # 自定义主题目录
+  font:
+    code: Source Code Pro
+  logo: assert/logo.gif
+  favicon: assert/logo.gif
+  icon:
+    repo: fontawesome/brands/github
   features:
-    - navigation.tabs
+    - navigation.tabs #导航选项卡
+    - navigation.path #导航路径
+    - navigation.top #返回顶部功能
+    #- header.autohide #自动隐藏标题栏
+    - navigation.footer #底部导航
+    - search.suggest #搜索建议
+    - search.highlight #搜索结果高亮
+    - search.share #搜索结果页面分享
+    - content.action.edit # 代码查看按钮
+    - content.action.view # 代码修改按钮
+    - content.code.copy # 代码块复制按钮
+    - content.code.annotate
+  palette:
+    - scheme: slate
+      primary: black
+      accent: light blue
+      toggle:
+        icon: material/brightness-4
+        name: 切换到浅色模式
+    - scheme: default
+      primary: white
+      accent: deep purple
+      toggle:
+        icon: material/brightness-7
+        name: 切换到黑暗模式
+
+markdown_extensions:
+  - attr_list
+  - md_in_html
+  - pymdownx.emoji:
+      emoji_index: !!python/name:material.extensions.emoji.twemoji
+      emoji_generator: !!python/name:material.extensions.emoji.to_svg
+  - pymdownx.highlight:
+      use_pygments: true #控制是在构建时使用Pygments进行高亮还是在浏览器中使用JavaScript语法高亮器进行高亮。
+      anchor_linenums: true
+      auto_title: true #自动为所有代码块添加一个标题
+      line_spans: __span
+      pygments_lang_class: true #指示Pygments添加一个CSS类来标识代码块的语言
+      linenums: true #为所有代码块添加行号
+  - pymdownx.inlinehilite
+  - pymdownx.snippets
+  - pymdownx.superfences
+  - toc:
+      permalink: "#" #在标题末尾生成永久链接
+      separator: "_" #将标题id中的空格替换成'_'
+
+extra:
+  generator: true # 显示使用Material for MkDocs制作
+  social: #底部社交媒体链接
+    - icon: fontawesome/brands/github
+      link: https://github.com/luguosong
+      name: Github
+
+plugins:
+  - search
+  - glightbox: # 图片查看插件
+      touchNavigation: true
+      loop: false
+      effect: zoom
+      slide_effect: none
+      width: 100%
+      height: auto
+      zoomable: true
+      draggable: false
+      auto_caption: false
+      caption_position: bottom
+  - git-revision-date-localized:
+      enable_creation_date: true
+
+extra_css:
+  - custom/css/font.css
+  - custom/css/custom.css
+
+extra_javascript:
+  - custom/js/custom.js
+
+copyright: Copyright &copy; 2024 Lu Guosong #版权信息
+
+nav:
+  - 主页: index.md
+  - 其它:
+      - 网站搭建:
+          - 网站配置: other/website_building/website_building.md
+          - markdown示例: other/website_building/demo.md
 
