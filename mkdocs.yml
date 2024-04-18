@@ -16,10 +16,16 @@ theme:
     repo: fontawesome/brands/github
   features:
     - navigation.tabs #导航选项卡
+    - navigation.instant
+    - navigation.instant.progress #导航进度
+    - navigation.tracking #URL会自动更新为目录中突出显示的活动锚点
     - navigation.path #导航路径
     - navigation.top #返回顶部功能
+    - navigation.indexes #索引页面
+    - navigation.prune #只有可见的导航项包含在渲染的HTML中
     #- header.autohide #自动隐藏标题栏
     - navigation.footer #底部导航
+    - toc.follow #目录跟随
     - search.suggest #搜索建议
     - search.highlight #搜索结果高亮
     - search.share #搜索结果页面分享
@@ -81,8 +87,6 @@ plugins:
       draggable: false
       auto_caption: false
       caption_position: bottom
-  - git-revision-date-localized:
-      enable_creation_date: true
 
 extra_css:
   - custom/css/font.css
@@ -97,6 +101,8 @@ nav:
   - 主页: index.md
   - 其它:
       - 网站搭建:
+          # [icon: material/timer-sand]
+          - other/website_building/index.md
           - 网站配置: other/website_building/website_building.md
           - markdown示例: other/website_building/demo.md
 
