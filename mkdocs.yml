@@ -87,6 +87,8 @@ plugins:
       draggable: false
       auto_caption: false
       caption_position: bottom
+  - git-revision-date-localized:
+      enable_creation_date: true
 
 extra_css:
   - custom/css/font.css
