@@ -48,8 +48,19 @@ theme:
         name: 切换到黑暗模式
 
 markdown_extensions:
+  - tables # 表格支持
+  - def_list
+  - pymdownx.tasklist:
+      custom_checkbox: true
   - attr_list
+  - admonition
   - md_in_html
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format
+  - pymdownx.details
   - pymdownx.emoji:
       emoji_index: !!python/name:material.extensions.emoji.twemoji
       emoji_generator: !!python/name:material.extensions.emoji.to_svg
@@ -62,10 +73,11 @@ markdown_extensions:
       linenums: true #为所有代码块添加行号
   - pymdownx.inlinehilite
   - pymdownx.snippets
-  - pymdownx.superfences
   - toc:
       permalink: "#" #在标题末尾生成永久链接
       separator: "_" #将标题id中的空格替换成'_'
+  - pymdownx.tabbed:
+      alternate_style: true
 
 extra:
   generator: true # 显示使用Material for MkDocs制作
@@ -102,10 +114,10 @@ copyright: Copyright &copy; 2024 Lu Guosong #版权信息
 nav:
   - 主页: index.md
   - 前端开发:
-    - front-end/index.md
-    - HTML: front-end/html/index.md
-    - JavaScript:
-        - front-end/js/index.md
+      - front-end/index.md
+      - HTML: front-end/html/index.md
+      - JavaScript:
+          - front-end/js/index.md
   - 专项研究:
       - topics/index.md
       - sql:
