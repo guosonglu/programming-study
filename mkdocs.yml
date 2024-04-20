@@ -22,7 +22,7 @@ theme:
     - navigation.path #导航路径
     - navigation.top #返回顶部功能
     - navigation.indexes #索引页面
-    - navigation.prune #只有可见的导航项包含在渲染的HTML中
+    #- navigation.prune #只有可见的导航项包含在渲染的HTML中
     #- header.autohide #自动隐藏标题栏
     - navigation.footer #底部导航
     - toc.follow #目录跟随
@@ -101,9 +101,20 @@ copyright: Copyright &copy; 2024 Lu Guosong #版权信息
 
 nav:
   - 主页: index.md
+  - 前端开发:
+    - front-end/index.md
+    - HTML: front-end/html/index.md
+    - JavaScript:
+        - front-end/js/index.md
+  - 专项研究:
+      - topics/index.md
+      - sql:
+          - topics/sql/index.md
+      - Git:
+          - topics/git/index.md
   - 其它:
+      - other/index.md
       - 网站搭建:
-          # [icon: material/timer-sand]
           - other/website_building/index.md
           - 网站配置: other/website_building/website_building.md
           - markdown示例: other/website_building/demo.md
