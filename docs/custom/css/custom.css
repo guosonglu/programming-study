@@ -2,3 +2,11 @@ h1,h2,h3,h4,h5,h6 {
     color: #5e8bde;
     font-weight: 1000 !important;
 }
+
+.md-content iframe{
+    width: 100%;
+}
+
+.md-typeset code {
+    color: #73a0c5;
+}
