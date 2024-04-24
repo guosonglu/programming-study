@@ -113,7 +113,7 @@ copyright: Copyright &copy; 2024 Lu Guosong #版权信息
 
 nav:
   - 主页: index.md
-  - 前端开发:
+  - 前端:
       - front-end/index.md
       - HTML: front-end/html/index.md
       - JavaScript:
