@@ -113,6 +113,14 @@ copyright: Copyright &copy; 2024 Lu Guosong #版权信息
 
 nav:
   - 主页: index.md
+  - 基础知识:
+      - basic/index.md
+      - 计算机组成原理: basic/computer_architecture_principles/index.md
+      - 数据结构与算法分析:
+          - basic/data_structures_and_algorithm_analysis/index.md
+          - 数据结构: basic/data_structures_and_algorithm_analysis/data_structures/index.md
+          - 算法: basic/data_structures_and_algorithm_analysis/algorithm/index.md
+
   - 前端:
       - front-end/index.md
       - HTML: front-end/html/index.md
