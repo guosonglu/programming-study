@@ -124,12 +124,14 @@ nav:
   - 前端:
       - front-end/index.md
       - HTML: front-end/html/index.md
+      - CSS: front-end/css/index.md
       - JavaScript:
           - front-end/js/index.md
           - JavaScript简介: front-end/js/01_Introduction_to_JavaScript/index.md
           - 词法结构: front-end/js/02_Lexical_Structure/index.md
           - 类型、值和变量: front-end/js/03_Types_Values_and_Variables/index.md
           - 表达式与操作符: front-end/js/04_Expressions_and_Operators/index.md
+      - TypeScript: front-end/typescript/index.md
   - 专项研究:
       - topics/index.md
       - sql:
