@@ -7,7 +7,7 @@ icon: simple/html5
 ## 注释
 
 ``` html title="注释"
---8<-- "docs/front-end/html/comment.html"
+--8<-- "docs/front_end/html/comment.html"
 ```
 
 <iframe src="comment.html"></iframe>
@@ -15,7 +15,7 @@ icon: simple/html5
 ## 排版相关标签
 
 ``` html title="排版相关标签"
---8<-- "docs/front-end/html/typography.html"
+--8<-- "docs/front_end/html/typography.html"
 ```
 
 <iframe src="typography.html"></iframe>
@@ -23,7 +23,7 @@ icon: simple/html5
 ## 文本标签
 
 ``` html title="文本标签"
---8<-- "docs/front-end/html/text.html"
+--8<-- "docs/front_end/html/text.html"
 ```
 
 <iframe src="text.html"></iframe>
@@ -31,7 +31,7 @@ icon: simple/html5
 ## 图片标签
 
 ``` html title="图片标签"
---8<-- "docs/front-end/html/image.html"
+--8<-- "docs/front_end/html/image.html"
 ```
 
 <iframe src="image.html"></iframe>
@@ -39,7 +39,7 @@ icon: simple/html5
 ## 超链接标签
 
 ``` html title="超链接标签"
---8<-- "docs/front-end/html/hyperlinks.html"
+--8<-- "docs/front_end/html/hyperlinks.html"
 ```
 
 <iframe src="hyperlinks.html"></iframe>
@@ -47,7 +47,7 @@ icon: simple/html5
 ## 列表标签
 
 ``` html title="列表标签"
---8<-- "docs/front-end/html/list.html"
+--8<-- "docs/front_end/html/list.html"
 ```
 
 <iframe src="list.html"></iframe>
@@ -55,7 +55,7 @@ icon: simple/html5
 ## 表格标签
 
 ``` html title="表格标签"
---8<-- "docs/front-end/html/table.html"
+--8<-- "docs/front_end/html/table.html"
 ```
 
 <iframe src="table.html"></iframe>
@@ -63,7 +63,7 @@ icon: simple/html5
 ## 辅助标签
 
 ``` html title="辅助标签"
---8<-- "docs/front-end/html/auxiliary.html"
+--8<-- "docs/front_end/html/auxiliary.html"
 ```
 
 <iframe src="auxiliary.html"></iframe>
@@ -71,7 +71,7 @@ icon: simple/html5
 ## 表单
 
 ``` html title="表单"
---8<-- "docs/front-end/html/form.html"
+--8<-- "docs/front_end/html/form.html"
 ```
 
 <iframe src="form.html"></iframe>
@@ -79,7 +79,7 @@ icon: simple/html5
 ## 框架标签
 
 ``` html title="框架标签"
---8<-- "docs/front-end/html/frame.html"
+--8<-- "docs/front_end/html/frame.html"
 ```
 
 <iframe src="frame.html"></iframe>
@@ -87,7 +87,7 @@ icon: simple/html5
 ## 字符实体
 
 ``` html title="字符实体"
---8<-- "docs/front-end/html/entity.html"
+--8<-- "docs/front_end/html/entity.html"
 ```
 
 <iframe src="entity.html"></iframe>
@@ -95,7 +95,7 @@ icon: simple/html5
 ## meta原信息
 
 ``` html title="meta原信息"
---8<-- "docs/front-end/html/meta.html"
+--8<-- "docs/front_end/html/meta.html"
 ```
 
 <iframe src="meta.html"></iframe>
@@ -112,7 +112,7 @@ icon: simple/html5
 - `hgroup`: 标题组,W3G将其删除
 
 ``` html title="H5-布局标签"
---8<-- "docs/front-end/html/h5_layout.html"
+--8<-- "docs/front_end/html/h5_layout.html"
 ```
 
 <iframe src="h5_layout.html"></iframe>
@@ -120,7 +120,7 @@ icon: simple/html5
 ## H5-状态标签
 
 ``` html title="H5-状态标签"
---8<-- "docs/front-end/html/h5_meter.html"
+--8<-- "docs/front_end/html/h5_meter.html"
 ```
 
 <iframe src="h5_meter.html"></iframe>
@@ -128,7 +128,7 @@ icon: simple/html5
 ## H5-搜索框关键字提示
 
 ``` html title="H5-搜索框关键字提示"
---8<-- "docs/front-end/html/h5_datalist.html"
+--8<-- "docs/front_end/html/h5_datalist.html"
 ```
 
 <iframe src="h5_datalist.html"></iframe>
@@ -136,7 +136,7 @@ icon: simple/html5
 ## H5-详细信息展现元素
 
 ``` html title="H5-详细信息展现元素"
---8<-- "docs/front-end/html/h5_details.html"
+--8<-- "docs/front_end/html/h5_details.html"
 ```
 
 <iframe src="h5_details.html"></iframe>
@@ -144,7 +144,7 @@ icon: simple/html5
 ## H5-文本标签
 
 ``` html title="H5-文本标签"
---8<-- "docs/front-end/html/h5_text.html"
+--8<-- "docs/front_end/html/h5_text.html"
 ```
 
 <iframe src="h5_text.html"></iframe>
@@ -158,7 +158,7 @@ icon: simple/html5
 - `pattern`: 正则表达式
 
 ``` html title="H5-表单相关"
---8<-- "docs/front-end/html/h5_form.html"
+--8<-- "docs/front_end/html/h5_form.html"
 ```
 
 <iframe src="h5_form.html"></iframe>
@@ -166,7 +166,7 @@ icon: simple/html5
 ## H5-视频标签
 
 ``` html title="H5-视频标签"
---8<-- "docs/front-end/html/h5_video.html"
+--8<-- "docs/front_end/html/h5_video.html"
 ```
 
 <iframe src="h5_video.html"></iframe>
@@ -174,7 +174,7 @@ icon: simple/html5
 ## H5-音频标签
 
 ``` html title="H5-音频标签"
---8<-- "docs/front-end/html/h5_audio.html"
+--8<-- "docs/front_end/html/h5_audio.html"
 ```
 
 <iframe src="h5_audio.html"></iframe>

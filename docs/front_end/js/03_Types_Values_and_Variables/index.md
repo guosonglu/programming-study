@@ -362,6 +362,6 @@ ES6实现的一种复合声明与赋值语法。
 等号左边是模拟数组或对象字面量语法指定一个或多个变量。
 
 ```  javascript title="解构赋值"
---8<-- "docs/front-end/js/03_Types_Values_and_Variables/destructuring_assignment.js"
+--8<-- "docs/front_end/js/03_Types_Values_and_Variables/destructuring_assignment.js"
 ```
 

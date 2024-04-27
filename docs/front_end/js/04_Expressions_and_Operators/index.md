@@ -213,7 +213,7 @@ let m2 = a || b //a不为falsy返回a(❗0,空字符串都是假值)，否则返
 ## delete操作符
 
 ``` javascript title=""
---8<-- "docs/front-end/js/04_Expressions_and_Operators/delete.js"
+--8<-- "docs/front_end/js/04_Expressions_and_Operators/delete.js"
 ```
 
 ## await操作符
