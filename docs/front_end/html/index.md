@@ -10,7 +10,7 @@ icon: simple/html5
 --8<-- "docs/front_end/html/comment.html"
 ```
 
-<iframe src="comment.html"></iframe>
+<iframe class="note-demo-iframe" src="comment.html"></iframe>
 
 ## 排版相关标签
 
@@ -18,7 +18,7 @@ icon: simple/html5
 --8<-- "docs/front_end/html/typography.html"
 ```
 
-<iframe src="typography.html"></iframe>
+<iframe class="note-demo-iframe" src="typography.html"></iframe>
 
 ## 文本标签
 
@@ -26,7 +26,7 @@ icon: simple/html5
 --8<-- "docs/front_end/html/text.html"
 ```
 
-<iframe src="text.html"></iframe>
+<iframe class="note-demo-iframe" src="text.html"></iframe>
 
 ## 图片标签
 
@@ -34,7 +34,7 @@ icon: simple/html5
 --8<-- "docs/front_end/html/image.html"
 ```
 
-<iframe src="image.html"></iframe>
+<iframe class="note-demo-iframe" src="image.html"></iframe>
 
 ## 超链接标签
 
@@ -42,7 +42,7 @@ icon: simple/html5
 --8<-- "docs/front_end/html/hyperlinks.html"
 ```
 
-<iframe src="hyperlinks.html"></iframe>
+<iframe class="note-demo-iframe" src="hyperlinks.html"></iframe>
 
 ## 列表标签
 
@@ -50,7 +50,7 @@ icon: simple/html5
 --8<-- "docs/front_end/html/list.html"
 ```
 
-<iframe src="list.html"></iframe>
+<iframe class="note-demo-iframe" src="list.html"></iframe>
 
 ## 表格标签
 
@@ -58,7 +58,7 @@ icon: simple/html5
 --8<-- "docs/front_end/html/table.html"
 ```
 
-<iframe src="table.html"></iframe>
+<iframe class="note-demo-iframe" src="table.html"></iframe>
 
 ## 辅助标签
 
@@ -66,7 +66,7 @@ icon: simple/html5
 --8<-- "docs/front_end/html/auxiliary.html"
 ```
 
-<iframe src="auxiliary.html"></iframe>
+<iframe class="note-demo-iframe" src="auxiliary.html"></iframe>
 
 ## 表单
 
@@ -74,7 +74,7 @@ icon: simple/html5
 --8<-- "docs/front_end/html/form.html"
 ```
 
-<iframe src="form.html"></iframe>
+<iframe class="note-demo-iframe" src="form.html"></iframe>
 
 ## 框架标签
 
@@ -82,7 +82,7 @@ icon: simple/html5
 --8<-- "docs/front_end/html/frame.html"
 ```
 
-<iframe src="frame.html"></iframe>
+<iframe class="note-demo-iframe" src="frame.html"></iframe>
 
 ## 字符实体
 
@@ -90,7 +90,7 @@ icon: simple/html5
 --8<-- "docs/front_end/html/entity.html"
 ```
 
-<iframe src="entity.html"></iframe>
+<iframe class="note-demo-iframe" src="entity.html"></iframe>
 
 ## meta原信息
 
@@ -98,7 +98,7 @@ icon: simple/html5
 --8<-- "docs/front_end/html/meta.html"
 ```
 
-<iframe src="meta.html"></iframe>
+<iframe class="note-demo-iframe" src="meta.html"></iframe>
 
 ## H5-布局标签
 
@@ -115,7 +115,7 @@ icon: simple/html5
 --8<-- "docs/front_end/html/h5_layout.html"
 ```
 
-<iframe src="h5_layout.html"></iframe>
+<iframe class="note-demo-iframe" src="h5_layout.html"></iframe>
 
 ## H5-状态标签
 
@@ -123,7 +123,7 @@ icon: simple/html5
 --8<-- "docs/front_end/html/h5_meter.html"
 ```
 
-<iframe src="h5_meter.html"></iframe>
+<iframe class="note-demo-iframe" src="h5_meter.html"></iframe>
 
 ## H5-搜索框关键字提示
 
@@ -131,7 +131,7 @@ icon: simple/html5
 --8<-- "docs/front_end/html/h5_datalist.html"
 ```
 
-<iframe src="h5_datalist.html"></iframe>
+<iframe class="note-demo-iframe" src="h5_datalist.html"></iframe>
 
 ## H5-详细信息展现元素
 
@@ -139,7 +139,7 @@ icon: simple/html5
 --8<-- "docs/front_end/html/h5_details.html"
 ```
 
-<iframe src="h5_details.html"></iframe>
+<iframe class="note-demo-iframe" src="h5_details.html"></iframe>
 
 ## H5-文本标签
 
@@ -147,7 +147,7 @@ icon: simple/html5
 --8<-- "docs/front_end/html/h5_text.html"
 ```
 
-<iframe src="h5_text.html"></iframe>
+<iframe class="note-demo-iframe" src="h5_text.html"></iframe>
 
 ## H5-表单相关
 
@@ -161,7 +161,7 @@ icon: simple/html5
 --8<-- "docs/front_end/html/h5_form.html"
 ```
 
-<iframe src="h5_form.html"></iframe>
+<iframe class="note-demo-iframe" src="h5_form.html"></iframe>
 
 ## H5-视频标签
 
@@ -169,7 +169,7 @@ icon: simple/html5
 --8<-- "docs/front_end/html/h5_video.html"
 ```
 
-<iframe src="h5_video.html"></iframe>
+<iframe class="note-demo-iframe" src="h5_video.html"></iframe>
 
 ## H5-音频标签
 
@@ -177,7 +177,7 @@ icon: simple/html5
 --8<-- "docs/front_end/html/h5_audio.html"
 ```
 
-<iframe src="h5_audio.html"></iframe>
+<iframe class="note-demo-iframe" src="h5_audio.html"></iframe>
 
 ## H5兼容性问题
 
