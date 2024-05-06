@@ -1,4 +1,4 @@
-@import url("https://cdn.jsdelivr.net/npm/lxgw-wenkai-webfont@1.1.0/style.css");
+@import "./lxgw-wenkai-webfont/style.css";
 
 :root {
     --md-text-font: "LXGW WenKai Mono";

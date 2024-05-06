@@ -100,7 +100,7 @@ plugins:
       height: auto
       zoomable: true
       draggable: false
-      auto_caption: false
+      auto_caption: true
       caption_position: bottom
   - git-revision-date-localized:
       enable_creation_date: true
@@ -147,10 +147,23 @@ nav:
       - topics/index.md
       - 设计模式:
           - topics/design_pattern/src/main/java/com/luguosong/index.md
+          - 概述: topics/design_pattern/src/main/java/com/luguosong/overview/index.md
       - sql:
           - topics/sql/index.md
+          - 环境搭建: topics/sql/environment_building.md
+          - 数据库定义语言: topics/sql/ddl.md
+          - 数据库操作语言: topics/sql/dml.md
+          - 数据库控制语言: topics/sql/dcl.md
       - Git:
           - topics/git/index.md
+  - 英语:
+      - english/index.md
+      - 音标: english/phonetic_symbol.md
+      - 新概念英语:
+          - english/new_concept_english/index.md
+          - 单词合集: english/new_concept_english/words.md
+          - 1-1 Excuse me!: english/new_concept_english/1_1_lesson.md
+
   - 其它:
       - other/index.md
       - 网站搭建:

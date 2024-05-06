@@ -10,3 +10,9 @@ h1,h2,h3,h4,h5,h6 {
 .md-typeset code {
     color: #73a0c5;
 }
+
+.md-typeset figcaption{
+    font-size: 0.6rem;
+    font-weight: 900;
+    color: rgba(226, 228, 233, 0.6);
+}

@@ -2,4 +2,4 @@
 icon: simple/mysql
 ---
 
-# SQL
+# 数据库
