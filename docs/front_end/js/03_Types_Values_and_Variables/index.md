@@ -231,7 +231,7 @@ typeof undefined // "undefined"
 null == undefined // true,它们都是假性值，都表示false
 ```
 
-## 符号
+## 符号⛏️
 
 ES6引入了一种新的原始数据类型`Symbol`，表示独一无二的值。
 
@@ -258,7 +258,7 @@ console.log("symbol3 === symbol4 =" + (symbol3 === symbol4)) // true
 console.log("Symbol.keyFor(symbol3) =" + Symbol.keyFor(symbol3)) // propname
 ```
 
-## 全局对象
+## 全局对象⭐
 
 全局对象的属性是`全局性定义的标识符`，可以在程序的任何地方使用。
 
@@ -353,7 +353,7 @@ var v = 10
 x = 10 // x是全局变量
 ```
 
-## 解构赋值
+## 解构赋值⭐
 
 ES6实现的一种复合声明与赋值语法。
 

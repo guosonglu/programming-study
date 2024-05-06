@@ -14,5 +14,10 @@ h1,h2,h3,h4,h5,h6 {
 .md-typeset figcaption{
     font-size: 0.6rem;
     font-weight: 900;
-    color: rgba(226, 228, 233, 0.6);
+}
+
+.highlight span.filename{
+    text-align: right;
+    font-size: 0.65em;
+    color: rgba(128, 128, 128, 0.8);
 }

@@ -130,15 +130,22 @@ nav:
 
   - 前端:
       - front_end/index.md
-      - HTML: front_end/html/index.md
-      - CSS: front_end/css/index.md
+      - HTML:
+          - front_end/html/index.md
+          - 基础: front_end/html/basic/index.md
+      - CSS:
+          - front_end/css/index.md
       - JavaScript:
           - front_end/js/index.md
           - JavaScript简介: front_end/js/01_Introduction_to_JavaScript/index.md
           - 词法结构: front_end/js/02_Lexical_Structure/index.md
           - 类型、值和变量: front_end/js/03_Types_Values_and_Variables/index.md
           - 表达式与操作符: front_end/js/04_Expressions_and_Operators/index.md
-      - TypeScript: front_end/typescript/index.md
+          - 语句: front_end/js/05_Statements/index.md
+      - TypeScript:
+          - front_end/typescript/index.md
+          - 基本语法: front_end/typescript/basic/index.md
+          - 工程化: front_end/typescript/engineering/index.md
   - Java基础:
       - java/index.md
   - 服务端开发:
