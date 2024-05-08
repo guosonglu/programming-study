@@ -133,6 +133,7 @@ nav:
       - HTML:
           - front_end/html/index.md
           - 基础: front_end/html/basic/index.md
+          - HTML5: front_end/html/html5/index.md
       - CSS:
           - front_end/css/index.md
       - JavaScript:
