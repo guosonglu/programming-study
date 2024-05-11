@@ -6,6 +6,15 @@
 
 简而言之就是数据的`增删改查`操作。
 
+## 显示表结构
+
+```mysql
+describe employees;
+
+# 或者
+desc employees;
+```
+
 ## 查询
 
 ### 基本查询
@@ -63,3 +72,53 @@ select salary * (1 + ifnull(commission_pct, 0)) * 12 "年工资"
 from employees;
 ```
 
+### 着重号
+
+解决与关键字重名的情况。
+
+```mysql
+# order是mysql中的关键字
+# 但现在被用作表名，使用着重号标记
+select * from `order`;
+```
+
+### 条件查询
+
+```mysql
+# 条件查询
+select *
+from employees
+where department_id = 90;
+```
+
+## 运算符
+
+### 算数运算符
+
+```mysql
+# 加减乘除、取模运算
+select 10 + 5, 10 / 5, 10 % 5
+from dual;
+
+# 数字与字符串相加，并不会进行拼接。而是直接计算
+select 10 + "5" from dual; # 15
+```
+
+### 比较运算符
+
+比较结果为真返回`1`，结果为假返回`0`。
+
+```mysql
+# 比较运算符
+# 结果为：1 0
+select 1 = 1, "a" = "b"
+from dual;
+
+
+# 数字与字符串比较
+# 如果字符串是纯数字，则会隐式转换为数值类型
+# 如果字符串内容不是纯数字，则看作0
+# 结果为：0 1
+select 0 = "1", 0 = "a"
+from dual; 
+```

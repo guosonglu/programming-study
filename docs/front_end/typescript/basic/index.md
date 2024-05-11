@@ -276,4 +276,29 @@ function reverse(x: number | string): number | string | void {
 
 用来手动指定一个值的类型。
 
+### 将一个联合类型断言为其中一个类型
+
+```typescript
+interface Cat {
+    name: string;
+    run(): void;
+}
+interface Fish {
+    name: string;
+    swim(): void;
+}
+
+function isFish(animal: Cat | Fish) {
+    // 不使用断言❌报错：属性'swim'在类型'Cat'上不存在。
+    // if (typeof animal.swim === 'function') {
+    //     return true;
+    // }
+    
+    // 使用断言将
+    if (typeof (animal as Fish).swim === 'function') {
+        return true;
+    }
+    return false;
+}
+```
 

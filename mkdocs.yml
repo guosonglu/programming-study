@@ -143,19 +143,30 @@ nav:
           - 类型、值和变量: front_end/js/03_Types_Values_and_Variables/index.md
           - 表达式与操作符: front_end/js/04_Expressions_and_Operators/index.md
           - 语句: front_end/js/05_Statements/index.md
+          - 对象: front_end/js/06_Objects/index.md
       - TypeScript:
           - front_end/typescript/index.md
           - 基本语法: front_end/typescript/basic/index.md
           - 工程化: front_end/typescript/engineering/index.md
+      - 代码打包:
+          - front_end/code_bundler/index.md
+          - webpack: front_end/code_bundler/webpack/index.md
   - Java基础:
       - java/index.md
   - 服务端开发:
       - java_serve/index.md
+      - Tomcat服务器: java_serve/tomcat/index.md
+      - Web应用:
+          - java_serve/web_application/index.md
+          - Servlet: java_serve/web_application/servlet/index.md
   - 专项研究:
       - topics/index.md
       - 设计模式:
           - topics/design_pattern/src/main/java/com/luguosong/index.md
           - 概述: topics/design_pattern/src/main/java/com/luguosong/overview/index.md
+      - Maven:
+          - topics/maven/index.md
+          - Maven基本教程: topics/maven/base/index.md
       - sql:
           - topics/sql/index.md
           - 环境搭建: topics/sql/environment_building.md
@@ -178,4 +189,6 @@ nav:
           - other/website_building/index.md
           - 网站配置: other/website_building/website_building.md
           - markdown示例: other/website_building/demo.md
+      - 文章:
+          - other/articles/index.md
 

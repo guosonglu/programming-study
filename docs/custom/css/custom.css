@@ -21,3 +21,8 @@ h1,h2,h3,h4,h5,h6 {
     font-size: 0.65em;
     color: rgba(128, 128, 128, 0.8);
 }
+
+/*文章图片最大高度限制*/
+.md-typeset img{
+    max-height: 50vh;
+}

@@ -23,3 +23,8 @@ icon: simple/javascript
   ![](https://cdn.jsdelivr.net/gh/luguosong/images@master/blog-img/202405061829970.png){ loading=lazy }
   <figcaption><a href="https://es6.ruanyifeng.com/">ES6 入门教程-阮一峰</a></figcaption>
 </figure>
+
+<figure markdown="span">
+  ![](https://cdn.jsdelivr.net/gh/luguosong/images@master/blog-img/202405081749913.png){ loading=lazy }
+  <figcaption><a href="https://book.douban.com/subject/35175321/">JavaScript高级程序设计（第4版）</a></figcaption>
+</figure>
