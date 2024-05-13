@@ -6,7 +6,7 @@
 --8<-- "docs/front_end/html/basic/comment.html"
 ```
 
-<iframe class="note-demo-iframe" src="comment.html"></iframe>
+[示例 :material-cursor-default-click-outline:](comment.html){ .md-button .md-button--primary }
 
 ## 排版相关标签
 
@@ -14,7 +14,7 @@
 --8<-- "docs/front_end/html/basic/typography.html"
 ```
 
-<iframe class="note-demo-iframe" src="typography.html"></iframe>
+[示例 :material-cursor-default-click-outline:](typography.html){ .md-button .md-button--primary }
 
 ## 文本标签
 
@@ -22,7 +22,7 @@
 --8<-- "docs/front_end/html/basic/text.html"
 ```
 
-<iframe class="note-demo-iframe" src="text.html"></iframe>
+[示例 :material-cursor-default-click-outline:](text.html){ .md-button .md-button--primary }
 
 ## 图片标签
 
@@ -30,7 +30,7 @@
 --8<-- "docs/front_end/html/basic/image.html"
 ```
 
-<iframe class="note-demo-iframe" src="image.html"></iframe>
+[示例 :material-cursor-default-click-outline:](image.html){ .md-button .md-button--primary }
 
 ## 超链接标签
 
@@ -38,7 +38,7 @@
 --8<-- "docs/front_end/html/basic/hyperlinks.html"
 ```
 
-<iframe class="note-demo-iframe" src="hyperlinks.html"></iframe>
+[示例 :material-cursor-default-click-outline:](hyperlinks.html){ .md-button .md-button--primary }
 
 ## 列表标签
 
@@ -46,7 +46,7 @@
 --8<-- "docs/front_end/html/basic/list.html"
 ```
 
-<iframe class="note-demo-iframe" src="list.html"></iframe>
+[示例 :material-cursor-default-click-outline:](list.html){ .md-button .md-button--primary }
 
 ## 表格标签
 
@@ -54,7 +54,7 @@
 --8<-- "docs/front_end/html/basic/table.html"
 ```
 
-<iframe class="note-demo-iframe" src="table.html"></iframe>
+[示例 :material-cursor-default-click-outline:](table.html){ .md-button .md-button--primary }
 
 ## 辅助标签
 
@@ -62,7 +62,7 @@
 --8<-- "docs/front_end/html/basic/auxiliary.html"
 ```
 
-<iframe class="note-demo-iframe" src="auxiliary.html"></iframe>
+[示例 :material-cursor-default-click-outline:](auxiliary.html){ .md-button .md-button--primary }
 
 ## 表单
 
@@ -70,7 +70,7 @@
 --8<-- "docs/front_end/html/basic/form.html"
 ```
 
-<iframe class="note-demo-iframe" src="form.html"></iframe>
+[示例 :material-cursor-default-click-outline:](form.html){ .md-button .md-button--primary }
 
 ## 框架标签
 
@@ -78,7 +78,7 @@
 --8<-- "docs/front_end/html/basic/frame.html"
 ```
 
-<iframe class="note-demo-iframe" src="frame.html"></iframe>
+[示例 :material-cursor-default-click-outline:](frame.html){ .md-button .md-button--primary }
 
 ## 字符实体
 
@@ -86,7 +86,7 @@
 --8<-- "docs/front_end/html/basic/entity.html"
 ```
 
-<iframe class="note-demo-iframe" src="entity.html"></iframe>
+[示例 :material-cursor-default-click-outline:](entity.html){ .md-button .md-button--primary }
 
 ## meta原信息
 
@@ -94,5 +94,5 @@
 --8<-- "docs/front_end/html/basic/meta.html"
 ```
 
-<iframe class="note-demo-iframe" src="meta.html"></iframe>
+[示例 :material-cursor-default-click-outline:](meta.html){ .md-button .md-button--primary }
 

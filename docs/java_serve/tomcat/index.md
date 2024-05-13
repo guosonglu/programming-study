@@ -10,7 +10,7 @@ icon: simple/apachetomcat
     - [Apache Tomcat](https://tomcat.apache.org/)
     - [jetty](https://eclipse.dev/jetty/):Jetty提供了一个Web服务器和Servlet容器，此外还提供了对HTTP/2、WebSocket、OSGi、JMX、JNDI、JAAS等许多集成的支持。这些组件是开源的，可供商业用途和分发免费使用。
 - `应用服务器`:实现了JavaEE所有规范
-    - JBOSS:内嵌Apache Tomcat
+    - JBOSS:内嵌Apache Tomcat，2014年11月20日，JBoss更名为WildFly。
     - WebLogic
     - WebSphere
 
@@ -20,10 +20,47 @@ icon: simple/apachetomcat
 
     需要先安装java环境，并配有`JAVA_HOME`环境变量。
 
-- 下载压缩包，并解压。
+- [下载](https://tomcat.apache.org/download-80.cgi)压缩包，并解压。
 
 <figure markdown="span">
   ![](https://cdn.jsdelivr.net/gh/luguosong/images@master/blog-img/202405102214744.png){ loading=lazy }
   <figcaption>下载Tomcat压缩包</figcaption>
 </figure>
+
+- 通过bin目录下的`startup.bat`，`startup.bat`内部会调用同目录下的`catalina.bat`启动Tomcat。
+
+!!! warning
+
+    `catalina.bat`内部会使用到`JAVA_HOME`环境变量。
+
+```shell
+# 启动服务
+startup.bat
+
+# 关闭服务
+shutdown.bat
+```
+
+- 打开浏览器，输入`localhost:8080`,测试服务是否启动成功
+
+## Hello World
+
+- 在Tomcat主目录`webapp`目录下新建文件夹`test`。
+- 在其中创建test.html文件，并添加如下内容：
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Tomcat入门案例</title>
+</head>
+<body>
+Hello Tomcat
+</body>
+</html>
+```
+
+- 启动Tomcat
+- 访问`http://127.0.0.1:8080/test/hello.html` 访问应用
 

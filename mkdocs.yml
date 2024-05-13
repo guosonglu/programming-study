@@ -112,6 +112,9 @@ extra_css:
 extra_javascript:
   - custom/js/custom.js
 
+exclude_docs: |
+  **/node_modules
+
 copyright: Copyright &copy; 2024 Lu Guosong #版权信息
 
 nav:
@@ -151,6 +154,11 @@ nav:
       - 代码打包:
           - front_end/code_bundler/index.md
           - webpack: front_end/code_bundler/webpack/index.md
+      - Vue:
+          - front_end/vue/index.md
+      - React:
+          - front_end/react/index.md
+          - 基本语法: front_end/react/basic/index.md
   - Java基础:
       - java/index.md
   - 服务端开发:
@@ -166,7 +174,7 @@ nav:
           - 概述: topics/design_pattern/src/main/java/com/luguosong/overview/index.md
       - Maven:
           - topics/maven/index.md
-          - Maven基本教程: topics/maven/base/index.md
+          - Maven基础教程: topics/maven/base/index.md
       - sql:
           - topics/sql/index.md
           - 环境搭建: topics/sql/environment_building.md
@@ -182,7 +190,6 @@ nav:
           - english/new_concept_english/index.md
           - 单词合集: english/new_concept_english/words.md
           - 1-1 Excuse me!: english/new_concept_english/1_1_lesson.md
-
   - 其它:
       - other/index.md
       - 网站搭建:

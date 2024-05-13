@@ -15,7 +15,7 @@
 --8<-- "docs/front_end/html/html5/h5_layout.html"
 ```
 
-<iframe class="note-demo-iframe" src="h5_layout.html"></iframe>
+[示例 :material-cursor-default-click-outline:](h5_layout.html){ .md-button .md-button--primary }
 
 ## H5-状态标签
 
@@ -23,7 +23,7 @@
 --8<-- "docs/front_end/html/html5/h5_meter.html"
 ```
 
-<iframe class="note-demo-iframe" src="h5_meter.html"></iframe>
+[示例 :material-cursor-default-click-outline:](h5_meter.html){ .md-button .md-button--primary }
 
 ## H5-搜索框关键字提示
 
@@ -31,7 +31,7 @@
 --8<-- "docs/front_end/html/html5/h5_datalist.html"
 ```
 
-<iframe class="note-demo-iframe" src="h5_datalist.html"></iframe>
+[示例 :material-cursor-default-click-outline:](h5_datalist.html){ .md-button .md-button--primary }
 
 ## H5-详细信息展现元素
 
@@ -39,7 +39,7 @@
 --8<-- "docs/front_end/html/html5/h5_details.html"
 ```
 
-<iframe class="note-demo-iframe" src="h5_details.html"></iframe>
+[示例 :material-cursor-default-click-outline:](h5_details.html){ .md-button .md-button--primary }
 
 ## H5-文本标签
 
@@ -47,7 +47,7 @@
 --8<-- "docs/front_end/html/html5/h5_text.html"
 ```
 
-<iframe class="note-demo-iframe" src="h5_text.html"></iframe>
+[示例 :material-cursor-default-click-outline:](h5_text.html){ .md-button .md-button--primary }
 
 ## H5-表单相关
 
@@ -61,7 +61,7 @@
 --8<-- "docs/front_end/html/html5/h5_form.html"
 ```
 
-<iframe class="note-demo-iframe" src="h5_form.html"></iframe>
+[示例 :material-cursor-default-click-outline:](h5_form.html){ .md-button .md-button--primary }
 
 ## H5-视频标签
 
@@ -69,7 +69,7 @@
 --8<-- "docs/front_end/html/html5/h5_video.html"
 ```
 
-<iframe class="note-demo-iframe" src="h5_video.html"></iframe>
+[示例 :material-cursor-default-click-outline:](h5_video.html){ .md-button .md-button--primary }
 
 ## H5-音频标签
 
@@ -77,7 +77,7 @@
 --8<-- "docs/front_end/html/html5/h5_audio.html"
 ```
 
-<iframe class="note-demo-iframe" src="h5_audio.html"></iframe>
+[示例 :material-cursor-default-click-outline:](h5_audio.html){ .md-button .md-button--primary }
 
 ## H5兼容性问题
 

@@ -1,29 +1,3 @@
-function resizeAllIframes() {
-    const iframes = document.getElementsByTagName("iframe");
-    const iframesLength = iframes.length;
-
-    for (let i = 0; i < iframesLength-1; i++) {
-        resizeIframe(iframes[i]);
-    }
-}
-
-function resizeIframe(iframe) {
-    if (iframe&&iframe.classList.contains('note-demo-iframe')) {
-        const iframeDoc = iframe.contentWindow.document;
-        iframe.style.height = calcPageHeight(iframeDoc) + "px";
-    }
-}
-
-function calcPageHeight(doc) {
-    const cHeight = Math.max(doc.body.clientHeight, doc.documentElement.clientHeight);
-    const sHeight = Math.max(doc.body.scrollHeight, doc.documentElement.scrollHeight);
-    return Math.max(cHeight, sHeight);
-}
-
-window.addEventListener("load", function () {
-    resizeAllIframes();
-});
-
 /*
 * 当cdn.jsdelivr.net无效时，自动切换为其它域名
 * */

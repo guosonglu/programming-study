@@ -302,3 +302,4 @@ function isFish(animal: Cat | Fish) {
 }
 ```
 
+

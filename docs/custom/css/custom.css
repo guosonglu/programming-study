@@ -1,9 +1,9 @@
-h1,h2,h3,h4,h5,h6 {
+h1, h2, h3, h4, h5, h6 {
     color: #5e8bde;
     font-weight: 1000 !important;
 }
 
-.md-content iframe{
+.md-content iframe {
     width: 100%;
 }
 
@@ -11,18 +11,16 @@ h1,h2,h3,h4,h5,h6 {
     color: #73a0c5;
 }
 
-.md-typeset figcaption{
+.md-typeset figcaption {
     font-size: 0.6rem;
     font-weight: 900;
 }
 
-.highlight span.filename{
-    text-align: right;
+.highlight span.filename {
     font-size: 0.65em;
-    color: rgba(128, 128, 128, 0.8);
 }
 
 /*文章图片最大高度限制*/
-.md-typeset img{
+.md-typeset img {
     max-height: 50vh;
 }

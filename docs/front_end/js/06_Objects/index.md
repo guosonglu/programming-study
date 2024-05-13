@@ -84,7 +84,7 @@ book["main title"] = "JavaScript: The Definitive Guide";
 
 ## 属性继承
 
-对象的属性可以通过原型链实现继承效果。
+对象的属性可以通过`原型链`实现继承效果。
 
 ```javascript
 let o = {};
@@ -109,7 +109,9 @@ console.log(o.x) // 1
 
 ## 属性访问错误
 
-```javascript
+### 访问属性错误
+
+```javascript title="属性访问错误问题"
 let book = {
     title: "JavaScript: The Definitive Guide"
 }
@@ -117,6 +119,33 @@ let book = {
 // ✅访问不存在的属性并不会报错
 let subtitle = book.subtitle; // undefined
 
-// ❌ 查询
-let len = book.subtitle.length;
+// ❌ 查询不存在属性的属性会报错
+let len = book.subtitle.length; //❌报错
 ```
+
+```javascript title="解决方案"
+let len = undefined;
+
+// 方式一
+if (book) {
+    if (book.subtitle) {
+        len = book.subtitle.length;
+    }
+}
+
+// 方式二
+let len = book && book.subtitle && book.subtitle.length;
+
+//方式三：条件式属性访问
+let len = book?.subtitle?.length;
+```
+
+### 设置属性错误
+
+同上，尝试在null或undefined对象上设置属性会报错。
+
+其它情况，在对象o上设置属性p会失败：
+
+- o有一个只读自有属性p:不可能设置`只读属性`。
+- o有一个只读继承属性p:不可能用`同名自有属性`隐藏`只读继承属性`。
+- 
