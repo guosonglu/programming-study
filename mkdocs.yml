@@ -159,6 +159,7 @@ nav:
       - React:
           - front_end/react/index.md
           - 基本语法: front_end/react/basic/index.md
+          - React Router: front_end/react/react_router/index.md
   - Java基础:
       - java/index.md
   - 服务端开发:
@@ -172,6 +173,9 @@ nav:
       - 设计模式:
           - topics/design_pattern/src/main/java/com/luguosong/index.md
           - 概述: topics/design_pattern/src/main/java/com/luguosong/overview/index.md
+          - 创建型模式: topics/design_pattern/src/main/java/com/luguosong/creational/index.md
+          - 结构型模式: topics/design_pattern/src/main/java/com/luguosong/structural/index.md
+          - 行为型模式: topics/design_pattern/src/main/java/com/luguosong/behavioral/index.md
       - Maven:
           - topics/maven/index.md
           - Maven基础教程: topics/maven/base/index.md

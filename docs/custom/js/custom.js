@@ -1,7 +1,7 @@
 /*
 * 当cdn.jsdelivr.net无效时，自动切换为其它域名
 * */
-((document) => {
+const setImageDomain = (document) => {
     "use strict"
     let fastNode
     let failed
@@ -169,4 +169,36 @@
     } else {
         main()
     }
-})(document)
+}
+
+/*
+* 自适应iframe高度
+* */
+const adaptiveHeight = () => {
+    // 获取所有的 iframe 元素
+    var iframes = document.querySelectorAll('iframe');
+
+// 遍历所有的 iframe 元素并添加加载事件监听器
+    iframes.forEach(function (iframe) {
+        iframe.addEventListener('load', function () {
+            console.log("iframe加载")
+            // 当 iframe 加载完成时执行的代码
+            const bHeight = iframe.contentWindow.document.body.scrollHeight;
+            const dHeight = iframe.contentWindow.document.documentElement.scrollHeight;
+            iframe.height = Math.max(bHeight, dHeight)+10+"px";
+        });
+    });
+}
+
+// 页面切换时执行
+document$.subscribe(function () {
+    setImageDomain(document);
+    adaptiveHeight();
+})
+
+
+
+
+
+
+
