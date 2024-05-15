@@ -20,6 +20,18 @@ h1, h2, h3, h4, h5, h6 {
     font-size: 0.65em;
 }
 
+.highlight .kc, .highlight .n {
+    color: #e0b25e;
+}
+
+.highlight .k, .highlight .kd, .highlight .kn, .highlight .kp, .highlight .kr, .highlight .kt {
+    color: #a88ffc;
+}
+
+.highlight .na, .highlight .nv, .highlight .vc, .highlight .vg, .highlight .vi {
+    color: #61afef;
+}
+
 /*文章图片最大高度限制*/
 .md-typeset img {
     max-height: 50vh;
