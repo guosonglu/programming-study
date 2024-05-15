@@ -162,6 +162,9 @@ nav:
           - React Router: front_end/react/react_router/index.md
   - Java基础:
       - java/index.md
+      - JavaSE:
+          - java/javase/src/main/java/com/luguosong/index.md
+          - 面向对象: java/javase/src/main/java/com/luguosong/object_oriented/index.md
   - 服务端开发:
       - java_serve/index.md
       - Tomcat服务器: java_serve/tomcat/index.md

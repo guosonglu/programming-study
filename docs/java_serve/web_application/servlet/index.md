@@ -46,8 +46,80 @@ EE(`Jakarta EE 9开始`)，所有已实现API的主要包都从`javax.*`变更�
 ## Servlet目录规范
 
 - `Web应用目录`
+    - html、css、js、image等公共资源。
     - `WEB-INF目录`:存放Java类和配置文件
         - `classes目录`:存放Java类,比如`Servlet类`
         - `lib目录`:存放类库（第三方jar包），比如`JDBC驱动`等等
         - `web.xml`:配置文件。配置`请求路径`与`Servlet类`的映射关系。
 
+## Hello World
+
+- 使用IDEA创建项目：
+
+<figure markdown="span">
+  ![](https://cdn.jsdelivr.net/gh/luguosong/images@master/blog-img/202405141449467.png){ loading=lazy }
+  <figcaption>创建项目</figcaption>
+</figure>
+
+<figure markdown="span">
+  ![](https://cdn.jsdelivr.net/gh/luguosong/images@master/blog-img/202405141509004.png){ loading=lazy }
+  <figcaption>编译时，会在webapp/WEB-INF目录下生成classes目录，并将编译后的class文件放入其中</figcaption>
+</figure>
+
+- 编写Servlet
+
+``` java
+--8<-- "docs/java_serve/web_application/servlet/hello-servlet/src/main/java/com/luguosong/HelloServlet.java"
+```
+
+- 编写web.xml映射：
+
+``` xml
+--8<-- "docs/java_serve/web_application/servlet/hello-servlet/src/main/webapp/WEB-INF/web.xml"
+```
+
+- IDEA中配置Tomcat
+
+<figure markdown="span">
+  ![](https://cdn.jsdelivr.net/gh/luguosong/images@master/blog-img/202405141548170.png){ loading=lazy }
+  <figcaption>配置Tomcat</figcaption>
+</figure>
+
+<figure markdown="span">
+  ![](https://cdn.jsdelivr.net/gh/luguosong/images@master/blog-img/202405141548100.png){ loading=lazy }
+  <figcaption>配置工件</figcaption>
+</figure>
+
+- 启动项目，成功访问Servlet
+
+<figure markdown="span">
+  ![](https://cdn.jsdelivr.net/gh/luguosong/images@master/blog-img/202405141532109.png){ loading=lazy }
+  <figcaption>访问Servlet</figcaption>
+</figure>
+
+## Servlet生命周期
+
+Servlet的生命周期完全由Tomcat服务器控制。
+
+- 默认情况下，Tomcat服务启动不会创建Servlet对象。
+
+??? 通过配置让Tomcat在启动时创建对象
+
+    ```xml
+    <web-app>
+        <servlet>
+            <servlet-name>hello</servlet-name>
+            <servlet-class>com.luguosong.HelloServlet</servlet-class>
+            <!--设置Servlet在启动时创建对象-->
+            <load-on-startup>0</load-on-startup>
+        </servlet>
+        <servlet-mapping>
+            <servlet-name>hello</servlet-name>
+            <url-pattern>/hello</url-pattern>
+        </servlet-mapping>
+    </web-app>
+    ```
+
+- 第一次访问Servlet时，Tomcat会创建Servlet对象，依次调用Servlet`无参构造方法`、`init()初始化方法`、`service()业务方法`。
+- 之后再访问Servlet时，Tomcat只会调用对应Servlet`service()业务方法`。
+- Tomcat服务器关闭时，会调用Servlet`destroy()销毁方法`（此时对象还并未销毁）。
