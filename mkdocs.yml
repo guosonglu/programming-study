@@ -205,4 +205,5 @@ nav:
           - markdown示例: other/website_building/demo.md
       - 文章:
           - other/articles/index.md
+      - Window命令笔记: other/windows_cmd/index.md
 

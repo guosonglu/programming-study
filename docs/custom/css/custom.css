@@ -9,6 +9,11 @@ h1, h2, h3, h4, h5, h6 {
 
 .md-typeset code {
     color: #73a0c5;
+    font-size: 0.64rem;
+}
+
+.highlighttable .linenos{
+    font-size: 0.64rem;
 }
 
 .md-typeset figcaption {

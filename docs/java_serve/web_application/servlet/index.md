@@ -52,6 +52,60 @@ EE(`Jakarta EE 9开始`)，所有已实现API的主要包都从`javax.*`变更�
         - `lib目录`:存放类库（第三方jar包），比如`JDBC驱动`等等
         - `web.xml`:配置文件。配置`请求路径`与`Servlet类`的映射关系。
 
+## Servlet接口
+
+```java
+package jakarta.servlet;
+import java.io.IOException;
+
+/*
+ * 定义所有 servlet 必须实现的方法。
+ * Servlet 是在 Web 服务器中运行的小型 Java 程序。
+ * Servlet 通常通过 HTTP（超文本传输协议）接收和响应网络客户端的请求。
+ * */
+public interface Servlet {
+    /*
+     * 由servlet容器(比如Tomcat)调用，用于向 servlet 指示该 servlet 正在投入服务。
+     * 在实例化 servlet 后，servlet 容器会调用一次init方法。
+     * */
+    public void init(ServletConfig config) throws ServletException;
+
+    /*
+     * 返回ServletConfig对象，其中包含此 servlet 的初始化和启动参数。
+     * 返回的ServletConfig对象就是传递给init方法的对象。
+     * */
+    public ServletConfig getServletConfig();
+
+    /*
+     * 由 servlet 容器调用，允许 servlet 响应请求。
+     * 该方法只有在 servlet 的init()方法成功完成后才会被调用。
+     * 
+     * Servlet 通常在多线程 Servlet 容器中运行，可以同时处理多个请求。
+     * 开发人员必须注意同步访问任何共享资源，如文件、网络连接以及 servlet 的类和实例变量。
+     * 
+     * req- 包含客户端请求的ServletRequest对象
+     * res- 包含 Servlet 响应的ServletResponse对象
+     * */
+    public void service(ServletRequest req, ServletResponse res) throws ServletException, IOException;
+
+    /*
+     * 返回有关 servlet 的信息，如作者、版本和版权。
+     * 此方法返回的字符串应为纯文本，而非任何类型的标记（如 HTML、XML 等）
+     * */
+    public String getServletInfo();
+
+    /*
+     * 由 servlet 容器(如Tomcat)调用，用于向 servlet 指示该 servlet 即将退出服务。
+     * 只有当 servlet服务方法中的所有线程都退出或超时后，才会调用此方法。
+     * 在 servlet 容器调用此方法后，它不会再调用此 servlet 的service方法。
+     *
+     * 该方法让 servlet 有机会清理任何被占用的资源（如内存、文件句柄、线程），
+     * 并确保任何持久化状态与 servlet 在内存中的当前状态同步。
+     * */
+    public void destroy();
+}
+```
+
 ## Hello World
 
 - 使用IDEA创建项目：
@@ -123,3 +177,155 @@ Servlet的生命周期完全由Tomcat服务器控制。
 - 第一次访问Servlet时，Tomcat会创建Servlet对象，依次调用Servlet`无参构造方法`、`init()初始化方法`、`service()业务方法`。
 - 之后再访问Servlet时，Tomcat只会调用对应Servlet`service()业务方法`。
 - Tomcat服务器关闭时，会调用Servlet`destroy()销毁方法`（此时对象还并未销毁）。
+
+## GenericServlet抽象类
+
+### 概述
+
+`GenericServlet抽象类`实现了`Servlet接口`除`service方法`外的其它方法。
+
+`service方法`则设置为抽象方法，需要子类实现。
+
+### 基于GenericServlet开发
+
+- 编写Servlet类：
+
+``` java
+--8<-- "docs/java_serve/web_application/servlet/generic-servlet/src/main/java/org/example/genericservlet/HelloServlet.java"
+```
+
+- 编写web.xml映射：
+
+``` xml
+--8<-- "docs/java_serve/web_application/servlet/generic-servlet/src/main/webapp/WEB-INF/web.xml"
+```
+
+### 处理ServletConfig对象
+
+Tomcat初始化时，会调用`init方法`，并传递`ServletConfig对象`给`init方法`。默认情况下`ServletConfig对象`只能在`init方法内部`调用。
+
+```java
+public class GenericServlet implements Servlet {
+    @Override
+    public void init(ServletConfig config) throws ServletException {
+
+    }
+
+    /*
+     * ... 其它代码
+     * */
+}
+```
+
+如果想在`service方法`中访问`ServletConfig对象`，可以将ServletConfig这个`局部对象`传递给一个新建的ServletConfig`字段`。达到可以在Servlet对象任意位置访问ServletConfig对象的目的。
+
+```java
+public class GenericServlet implements Servlet {
+
+    /*
+     * 将Tomcat传递给init方法的ServletConfig对象升级为字段
+     * 方便其它方法调用
+     * */
+    private ServletConfig config;
+
+    @Override
+    public void init(ServletConfig config) throws ServletException {
+        this.config = config;
+        this.init();
+    }
+
+    /*
+     * 👍🏻该方法的作用是，防止子类重写init方法时，忘记执行 this.config = config;
+     * 导致config为空
+     * */
+    public void init() throws ServletException {
+
+    }
+
+    @Override
+    public ServletConfig getServletConfig() {
+        return config;
+    }
+
+    @Override
+    public void service(ServletRequest request, ServletResponse response) {
+        // ⭐service方法中可以访问到Tomcat传递给init方法的ServletConfig对象
+        System.out.println(config.getServletName());
+    }
+
+    /*
+    * ... 其它方法
+    * */
+}
+```
+
+## ServletConfig对象
+
+`ServletConfig对象`中包含了web.xml中配置的`<servlet>`标签信息。
+
+`ServletConfig对象`有四个方法：
+
+- `getServletName()`
+- `getInitParameterNames()`
+- `getInitParameter(String name)`
+- `getServletContext()`
+
+!!! note
+
+    每个Servlet对应一个ServletConfig对象
+
+```xml
+<web-app>
+    <servlet>
+        <servlet-name>servletConfigDemo</servlet-name>
+        <servlet-class>com.luguosong.ServletConfigDemo</servlet-class>
+        <!--配置初始化信息-->
+        <init-param>
+            <param-name>user</param-name>
+            <param-value>root</param-value>
+        </init-param>
+        <init-param>
+            <param-name>password</param-name>
+            <param-value>12345678</param-value>
+        </init-param>
+    </servlet>
+</web-app>
+```
+
+``` java
+--8<-- "docs/java_serve/web_application/servlet/servlet-config/src/main/java/com/luguosong/ServletConfigDemo.java"
+```
+
+`GenericServlet`已经封装了调用ServletConfig中`getServletName()`、`getServletName()`和`getServletName()`方法。因此可以直接调用，无需通过config进行调用：
+
+``` java
+--8<-- "docs/java_serve/web_application/servlet/servlet-config/src/main/java/com/luguosong/ServletConfigDemo2.java"
+```
+
+## ServletContext对象
+
+`ServletContext对象`是一个`Servlet`与其`Servlet容器(Tomcat)`通信的一组方法，例如获取文件的MIME类型、分派请求或写入日志文件。
+
+!!! note
+
+    所有Servlet共享同一个`ServletContext对象`,一个web应用只有一个`ServletContext对象`
+
+    `ServletContext对象`在服务器启动时创建。
+
+!!! note "ServletContext对象常用方法有："
+
+    - `getInitParameterNames()`,`getInitParameter()`:获取web.xml中的上下文初始化参数`<context-param>`
+    - `getContextPath()`:获取应用根路径
+    - `getRealPath()`:获取文件的绝对路径
+    - `log()`：写入日志到log目录下的日志文件
+    - `setAttribute()`、`getAttribute()`、`removeAttribute()`:操作`应用域`,应用域中的数据所有Servlet共享。
+
+``` java
+--8<-- "docs/java_serve/web_application/servlet/servlet-context/src/main/java/com/luguosong/ServletContextDemo.java"
+```
+
+## HttpServlet类
+
+### 概述
+
+### 模板方法设计模式
