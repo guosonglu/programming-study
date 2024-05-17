@@ -126,6 +126,7 @@ nav:
           - basic/operating_system/index.md
       - 计算机网络:
           - basic/computer_network/index.md
+          - 应用层-HTTP: basic/computer_network/application_http/index.md
       - 数据结构与算法分析:
           - basic/data_structures_and_algorithm_analysis/index.md
           - 数据结构: basic/data_structures_and_algorithm_analysis/data_structures/index.md
@@ -166,7 +167,7 @@ nav:
           - java/javase/src/main/java/com/luguosong/index.md
           - 概述: java/javase/src/main/java/com/luguosong/overview/index.md
           - 语言基础: java/javase/src/main/java/com/luguosong/basic/index.md
-          - 面向对象: java/javase/src/main/java/com/luguosong/object_oriented/index.md
+          - 面向对象基础: java/javase/src/main/java/com/luguosong/object_oriented/index.md
   - 服务端开发:
       - java_serve/index.md
       - Tomcat服务器: java_serve/tomcat/index.md

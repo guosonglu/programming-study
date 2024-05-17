@@ -326,6 +326,59 @@ public class GenericServlet implements Servlet {
 
 ## HttpServlet类
 
-### 概述
-
 ### 模板方法设计模式
+
+```java
+/*
+ * 模板类
+ * 简化的HttpServlet代码，只为展示模板方法设计模式
+ * */
+public abstract class HttpServlet extends GenericServlet {
+    /*
+     * 默认实现
+     * HttpServlet默认实现的doGet是直接响应405错误状态码
+     * */
+    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        String protocol = req.getProtocol();
+        String msg = lStrings.getString("http.method_get_not_supported");
+        resp.sendError(getMethodNotSupportedCode(protocol), msg);
+    }
+
+    /*
+     * 默认实现
+     * HttpServlet默认实现的doPost是直接响应405错误状态码
+     * */
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        String protocol = req.getProtocol();
+        String msg = lStrings.getString("http.method_post_not_supported");
+        resp.sendError(getMethodNotSupportedCode(protocol), msg);
+    }
+
+    /*
+     * ⭐模板方法
+     * */
+    protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        String method = req.getMethod();
+
+        /*
+         * 判断请求的类型
+         * */
+        if (method.equals(METHOD_GET)) {
+            doGet(req, resp);
+        } else if (method.equals(METHOD_POST)) {
+            doPost(req, resp);
+        } else {
+            /*其它方法判断*/
+        }
+    }
+
+    /*其它代码*/
+}
+```
+
+可以看到，`HttpServlet类`已经实现`GenericServlet类`剩下的最后一个抽象方法`service()`。
+
+并在`service()`方法中定义了一个处理各种类型请求的`骨架`。并默认实现了处理各种请求的具体方法（doGet()、doPost()...），但处理方式是直接响应405错误状态码。这样如果我们需要处理具体类型请求的代码，就需要自己在子类中重写这个方法。覆盖调父类的报错代码。
+
+> 举例说明：前端发送一个Get请求，我们子类中没有重写doGet方法，则直接通过HttpServlet类的doGet方法响应405错误状态码。如果我们的子类实现了doGet方法，那么就调用我们自己写的doGet方法。
+
