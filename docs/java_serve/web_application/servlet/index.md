@@ -51,6 +51,12 @@ EE(`Jakarta EE 9开始`)，所有已实现API的主要包都从`javax.*`变更�
         - `classes目录`:存放Java类,比如`Servlet类`
         - `lib目录`:存放类库（第三方jar包），比如`JDBC驱动`等等
         - `web.xml`:配置文件。配置`请求路径`与`Servlet类`的映射关系。
+ 
+!!! warning "WEB-INF目录"
+
+    放在WEB-INF目录下的资源是受保护的，不能通过路径直接访问。
+
+    所以像css、js、图片等静态资源要放到WEB-INF目录之外。
 
 ## Servlet接口
 
@@ -326,6 +332,21 @@ public class GenericServlet implements Servlet {
 
 ## HttpServlet类
 
+### 案例
+
+``` java 
+--8<-- "docs/java_serve/web_application/servlet/http-servlet/src/main/java/com/luguosong/GetServletDemo.java"
+```
+
+``` java 
+--8<-- "docs/java_serve/web_application/servlet/http-servlet/src/main/java/com/luguosong/PostServletDemo.java"
+```
+
+<figure markdown="span">
+  ![](https://cdn.jsdelivr.net/gh/luguosong/images@master/blog-img/202405182148096.png){ loading=lazy }
+  <figcaption>当没有重写对应类型的方法处理函数，会调用默认的</figcaption>
+</figure>
+
 ### 模板方法设计模式
 
 ```java
@@ -381,4 +402,17 @@ public abstract class HttpServlet extends GenericServlet {
 并在`service()`方法中定义了一个处理各种类型请求的`骨架`。并默认实现了处理各种请求的具体方法（doGet()、doPost()...），但处理方式是直接响应405错误状态码。这样如果我们需要处理具体类型请求的代码，就需要自己在子类中重写这个方法。覆盖调父类的报错代码。
 
 > 举例说明：前端发送一个Get请求，我们子类中没有重写doGet方法，则直接通过HttpServlet类的doGet方法响应405错误状态码。如果我们的子类实现了doGet方法，那么就调用我们自己写的doGet方法。
+
+
+## HttpServletRequest接口
+
+### 实现类
+
+`HttpServletRequest接口`由Tomcat负责实现
+
+``` java
+--8<-- "docs/java_serve/web_application/servlet/http-servlet-request-demo/src/main/java/com/luguosong/HelloHttpServletRequest.java"
+```
+
+### 获取Http请求信息
 

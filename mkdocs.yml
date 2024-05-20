@@ -161,6 +161,7 @@ nav:
           - front_end/react/index.md
           - 基本语法: front_end/react/basic/index.md
           - React Router: front_end/react/react_router/index.md
+          - Next.js: front_end/react/nextjs/index.md
   - Java基础:
       - java/index.md
       - JavaSE:
@@ -174,6 +175,7 @@ nav:
       - Web应用:
           - java_serve/web_application/index.md
           - Servlet: java_serve/web_application/servlet/index.md
+          - JSP: java_serve/web_application/jsp/index.md
   - 专项研究:
       - topics/index.md
       - 设计模式:
