@@ -148,6 +148,7 @@ nav:
           - 表达式与操作符: front_end/js/04_Expressions_and_Operators/index.md
           - 语句: front_end/js/05_Statements/index.md
           - 对象: front_end/js/06_Objects/index.md
+          - 数组: front_end/js/07_Arrays/index.md
       - TypeScript:
           - front_end/typescript/index.md
           - 基本语法: front_end/typescript/basic/index.md

@@ -490,5 +490,8 @@ public abstract class HttpServlet extends GenericServlet {
 
 ## 注解开发
 
-Servlet 3.0后推出了注解开发
+Servlet 3.0后推出了注解开发,使用注解开发不再需要配置`web.xml`，直接在类上使用注解即可。
 
+``` java
+--8<-- "docs/java_serve/web_application/servlet/annotation_servlet/src/main/java/com/luguosong/HelloServlet.java"
+```

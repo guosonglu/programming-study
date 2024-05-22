@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ExternalStorageConfigurationManager" enabled="true" />
+  <component name="MavenProjectsManager">
+    <option name="originalFiles">
+      <list>
+        <option value="$PROJECT_DIR$/_topic/itext/pom.xml" />
+        <option value="$PROJECT_DIR$/_java/java_log/02_jul/_01_jul_hello/pom.xml" />
+        <option value="$PROJECT_DIR$/_java/java_log/02_jul/log_jul_01_hello/pom.xml" />
+        <option value="$PROJECT_DIR$/_java/java_log/02_jul/log_jul_01_basic/pom.xml" />
+        <option value="$PROJECT_DIR$/_java/java_open_api/springdoc_01_hello/pom.xml" />
+        <option value="$PROJECT_DIR$/_java/java_log/02_jul/log_jul_02_custom_configuration_file/pom.xml" />
+        <option value="$PROJECT_DIR$/_java/java_log/03_log4j/log_log4j_01_hello/pom.xml" />
+        <option value="$PROJECT_DIR$/_java/java_log/03_log4j/log_log4j_01_basic/pom.xml" />
+        <option value="$PROJECT_DIR$/_topic/cryptography/pom.xml" />
+        <option value="$PROJECT_DIR$/_java/java_log/04_jcl/log_jcl_01_basic/pom.xml" />
+        <option value="$PROJECT_DIR$/_java/java_log/04_jcl/log_jcl_02_jcl_with_log4j/pom.xml" />
+        <option value="$PROJECT_DIR$/_java/java_log/05_slf4j/log_slf4j_01_basic/pom.xml" />
+        <option value="$PROJECT_DIR$/_java/java_log/05_slf4j/log_slf4j_02_nop/pom.xml" />
+        <option value="$PROJECT_DIR$/_java/java_log/05_slf4j/log_slf4j_03_logback/pom.xml" />
+        <option value="$PROJECT_DIR$/_java/java_log/05_slf4j/log_slf4j_04_log4j/pom.xml" />
+        <option value="$PROJECT_DIR$/_java/java_log/05_slf4j/log_slf4j_05_jul/pom.xml" />
+        <option value="$PROJECT_DIR$/_java/java_log/05_slf4j/log_log4j_to_logback_by_slf4j/pom.xml" />
+        <option value="$PROJECT_DIR$/_java/java_log/06_logback/logback_basic/pom.xml" />
+        <option value="$PROJECT_DIR$/_java/java_log/06_logback/logback_async/pom.xml" />
+        <option value="$PROJECT_DIR$/_java/java_log/07_log4j2/log4j2_basic/pom.xml" />
+        <option value="$PROJECT_DIR$/_java/java_log/07_log4j2/log4j2_async/pom.xml" />
+        <option value="$PROJECT_DIR$/_java/java_log/08_log_with_springboot/log_with_springboot/pom.xml" />
+        <option value="$PROJECT_DIR$/_basic/data_structures_and_algorithms/data_structures/pom.xml" />
+        <option value="$PROJECT_DIR$/_basic/data_structures_and_algorithms/algorithms/pom.xml" />
+        <option value="$PROJECT_DIR$/_basic/data_structures_and_algorithms/leetcode/pom.xml" />
+        <option value="$PROJECT_DIR$/_java/java_se/pom.xml" />
+        <option value="$PROJECT_DIR$/_topic/design_patterns/pom.xml" />
+        <option value="$PROJECT_DIR$/_front_end/03_js/ajax/ajax_server/pom.xml" />
+        <option value="$PROJECT_DIR$/_javaweb/authentication_and_authorization/spring_security/spring_security_hello/pom.xml" />
+        <option value="$PROJECT_DIR$/_javaweb/authentication_and_authorization/cookie_session/cookie-hello/pom.xml" />
+        <option value="$PROJECT_DIR$/_javaweb/authentication_and_authorization/cookie_session/session-hello/pom.xml" />
+        <option value="$PROJECT_DIR$/_javaweb/basic/servlet_hello/pom.xml" />
+        <option value="$PROJECT_DIR$/_javaweb/basic/demo/pom.xml" />
+        <option value="$PROJECT_DIR$/_javaweb/basic/servlet_demo/pom.xml" />
+        <option value="$PROJECT_DIR$/_java/jvm/jvm_demo/pom.xml" />
+        <option value="$PROJECT_DIR$/_javaweb/spring/ioc-example/pom.xml" />
+        <option value="$PROJECT_DIR$/_javaweb/database/jdbc/jdbc-demo/pom.xml" />
+        <option value="$PROJECT_DIR$/_javaweb/database/mybatis/mybatis-demo/pom.xml" />
+        <option value="$PROJECT_DIR$/_microservices/spring-cloud-parent/pom.xml" />
+        <option value="$PROJECT_DIR$/_javaweb/database/mybatis/customize-mybatis/pom.xml" />
+        <option value="$PROJECT_DIR$/_javaweb/database/mybatis/mybatis-web/pom.xml" />
+        <option value="$PROJECT_DIR$/docs/basic/data_structures_and_algorithm_analysis/data_structures/pom.xml" />
+        <option value="$PROJECT_DIR$/docs/basic/data_structures_and_algorithm_analysis/algorithm/pom.xml" />
+        <option value="$PROJECT_DIR$/docs/topics/design_pattern/pom.xml" />
+        <option value="$PROJECT_DIR$/docs/topics/maven/base/maven-hello/pom.xml" />
+        <option value="$PROJECT_DIR$/docs/java_serve/web_application/servlet/hello_servlet/pom.xml" />
+        <option value="$PROJECT_DIR$/docs/java_serve/web_application/servlet/hello-servlet/pom.xml" />
+        <option value="$PROJECT_DIR$/docs/java/javase/pom.xml" />
+        <option value="$PROJECT_DIR$/docs/java_serve/web_application/servlet/generic-servlet/pom.xml" />
+        <option value="$PROJECT_DIR$/docs/java_serve/web_application/servlet/servlet-context/pom.xml" />
+        <option value="$PROJECT_DIR$/docs/java_serve/web_application/servlet/servlet-config/pom.xml" />
+        <option value="$PROJECT_DIR$/docs/java_serve/web_application/servlet/http-servlet/pom.xml" />
+        <option value="$PROJECT_DIR$/docs/java_serve/web_application/servlet/http-servlet-request-demo/pom.xml" />
+        <option value="$PROJECT_DIR$/docs/java_serve/web_application/servlet/http-servlet-response-demo/pom.xml" />
+        <option value="$PROJECT_DIR$/docs/java_serve/web_application/servlet/annotation_servlet/pom.xml" />
+        <option value="$PROJECT_DIR$/pom.xml" />
+        <option value="$PROJECT_DIR$/docs/java_serve/web_application/jsp/hello_jsp/pom.xml" />
+      </list>
+    </option>
+  </component>
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_17" default="true" project-jdk-name="17" project-jdk-type="JavaSDK">
+    <output url="file://$PROJECT_DIR$/out" />
+  </component>
+</project>

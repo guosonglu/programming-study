@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="data_structures" />
+        <module name="hello_jsp" />
+        <module name="design_pattern" />
+        <module name="maven-hello" />
+        <module name="hello-servlet" />
+        <module name="http-servlet-request-demo" />
+        <module name="servlet-context" />
+        <module name="programming-study" />
+        <module name="annotation_servlet" />
+        <module name="http-servlet-response-demo" />
+        <module name="javase" />
+        <module name="http-servlet" />
+        <module name="generic-servlet" />
+        <module name="servlet-config" />
+        <module name="algorithm" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="hello_servlet" target="17" />
+    </bytecodeTargetLevel>
+  </component>
+</project>

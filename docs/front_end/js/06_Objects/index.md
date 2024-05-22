@@ -148,4 +148,289 @@ let len = book?.subtitle?.length;
 
 - o有一个只读自有属性p:不可能设置`只读属性`。
 - o有一个只读继承属性p:不可能用`同名自有属性`隐藏`只读继承属性`。
-- 
+- o的`extensible`属性为false,且o中不存在属性p，此时无法创建新属性p。
+
+## 删除属性
+
+使用`delete`操作符移除属性。
+
+!!! note
+
+    delete操作符不会删除configurable特性为false的属性。
+
+```javascript
+delete book.author; // book对象现在没有author属性了
+delete book["main title"]; // book对象现在没有main title属性了
+
+/*
+* 删除全局属性
+* */
+delete globalThis.x;
+delete x; // 非严格模式下可以直接删除全局属性
+```
+
+!!! warning
+
+    `delete`操作符只能删除对象自身的属性，不能删除原型链上的继承属性。
+
+
+## 测试属性
+
+```javascript
+let o = {x: 1};
+
+/*
+* 使用in操作符
+* */
+"x" in o; // true
+"y" in o; // false
+"toString" in o; // true,o继承了toString属性
+
+/*
+* hasOwnProperty方法
+* 判断是否存在自有属性
+* */
+o.hasOwnProperty("x"); // true
+o.hasOwnProperty("y"); // false
+o.hasOwnProperty("toString"); // false
+
+/*
+* propertyIsEnumerable方法
+* 判断是否存在自有且可枚举属性
+* */
+o.propertyIsEnumerable("x"); // true
+o.propertyIsEnumerable("toString"); // false,o继承了toString属性,且toString不可枚举
+Object.prototype.propertyIsEnumerable("toString"); // false,toString不可枚举
+```
+
+## 枚举属性
+
+### for...in
+
+```javascript
+for (let p in o) {
+    // 跳过继承属性
+    if (!o.hasOwnProperty(p)) continue;
+    
+    // 跳过方法
+    if (typeof o[p] === "function") continue;
+    
+    console.log(p, o[p]);
+}
+```
+
+### 先获取属性名数组
+
+```javascript
+/*
+* 获取可枚举自有属性名数组
+* */
+const keys = Object.keys(o);
+for (key of keys){
+    console.log(key, o[key]);
+}
+```
+
+还有一些方法，功能也是类似的：
+
+- `Object.getOwnPropertyNames()`:获取可枚举自有属性名数组
+- `Object.getOwnPropertySymbols()`:获取可枚举继承属性名数组
+- `Reflect.ownKeys()`:获取可枚举属性名数组
+
+## 扩展对象
+
+### 手动扩展
+
+```javascript
+let target = {x: 1}, source = {y: 2, z: 3};
+for (let key in source) {
+    target[key] = source[key];
+}
+console.log(target);
+```
+
+### Object.assign()
+
+```javascript
+let target = {x: 1}, source = {y: 2, z: 3};
+
+Object.assign(target, source);
+console.log(target);
+```
+
+### ...操作符
+
+```javascript
+let target = {x: 1}, source = {y: 2, z: 3};
+let result = {...target, ...source};
+console.log(result);
+```
+
+## 序列化对象
+
+```javascript
+let o= {x: 1, y: null};
+
+/*
+* 序列化对象
+* */
+let s = JSON.stringify(o);
+console.log(s)
+
+/*
+* 反序列化字符串为对象
+* */
+let p = JSON.parse(s);
+console.log(p)
+```
+
+## 对象方法
+
+### toString()
+
+返回调用它的对象的值的字符串。
+
+```javascript
+let o = {x: 1, y: 2};
+console.log(o.toString()); //[object Object]
+
+/*
+* 重写toString方法
+* */
+let point = {
+    x:1,
+    y:2,
+    toString: function () {
+        return `(${this.x}, ${this.y})`;
+    }
+}
+console.log(point.toString());
+```
+
+### toLocaleString()
+
+返回对象的本地化字符串表示。
+
+Object定义的默认toLocaleString()方法本身没有实现任何本地化，而是简单的调用toString()并返回该值。
+
+```javascript
+console.log(new Date().toLocaleString())
+```
+
+### valueOf()
+
+将对象转为某些非字符串原始值。
+
+```javascript
+new Date().valueOf() //1716320593562
+```
+
+### toJSON()
+
+`Object.prototype`并没有定义`toJSON()`方法。
+
+但`JSON.stringify()`方法会从序列化对象上寻找`toJSON()`方法。存在就会调用它。
+
+```javascript
+console.log(new Date().toJSON())
+// 因为Date对象自己实现了toJSON()，因此JSON.stringify的结果为toJSON方法的返回值
+console.log(JSON.stringify(new Date()))
+```
+
+## 对象字面量新语法
+
+### 简写属性
+
+```javascript
+let x = 1, y = 2;
+let o = {x: x, y: y}
+
+/*
+* ES6之后，可以简写为:
+* */
+o = {x, y}
+```
+
+### 计算的属性名
+
+当属性名保存在一个变量中，或是调用的某个函数的返回值。可以直接在对象声明时用方括号表示这些属性名：
+
+同理，`计算属性语法`也可以将`符号`作为`属性名`。
+
+```javascript
+const PROPERTY_NAME = "p1";
+
+function computePropertyName() {
+    return "p" + 2;
+}
+
+const extension = Symbol("my extension symbol");
+
+let o ={}
+o[PROPERTY_NAME] = 1;
+o[computePropertyName()] = 2;
+o[extension] = 3;
+
+/*
+* ES6之后，可以简写为:
+* */
+let p ={
+    [PROPERTY_NAME]: 1,
+    [computePropertyName()]: 2,
+    [extension]: 3
+}
+console.log(p) // { p1: 1, p2: 2 }
+```
+
+### ...扩展操作符
+
+ES2018及之后，可以使用扩展操作符`...`把已有对象复制到新对象中。
+
+```javascript
+let target = {x: 1}, source = {y: 2, z: 3};
+let result = {...target, ...source};
+console.log(result);
+```
+
+### 简写方法
+
+```javascript
+/*
+* ES6之前方法的定义
+* */
+let square ={
+    area: function () {
+        return this.side * this.side
+    },
+    side:10
+}
+
+/*
+* ES6及之后方法的简写定义
+* */
+let square = {
+    area() {
+        return this.side * this.side
+    },
+    side:10
+}
+```
+
+### 属性的获取方法与设置方法
+
+ES5中引入`获取方法`与`设置方法`。
+
+```javascript
+let o ={
+    // 通过一对函数定义的一个访问器属性
+    get x() {
+        return this._x;
+    },
+    set x(value) {
+        this._x = value;
+    }
+}
+
+o.x="hello"
+console.log(o.x)
+```
