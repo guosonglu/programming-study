@@ -51,7 +51,7 @@ EE(`Jakarta EE 9开始`)，所有已实现API的主要包都从`javax.*`变更�
         - `classes目录`:存放Java类,比如`Servlet类`
         - `lib目录`:存放类库（第三方jar包），比如`JDBC驱动`等等
         - `web.xml`:配置文件。配置`请求路径`与`Servlet类`的映射关系。
- 
+
 !!! warning "WEB-INF目录"
 
     放在WEB-INF目录下的资源是受保护的，不能通过路径直接访问。
@@ -62,6 +62,7 @@ EE(`Jakarta EE 9开始`)，所有已实现API的主要包都从`javax.*`变更�
 
 ```java
 package jakarta.servlet;
+
 import java.io.IOException;
 
 /*
@@ -85,10 +86,10 @@ public interface Servlet {
     /*
      * 由 servlet 容器调用，允许 servlet 响应请求。
      * 该方法只有在 servlet 的init()方法成功完成后才会被调用。
-     * 
+     *
      * Servlet 通常在多线程 Servlet 容器中运行，可以同时处理多个请求。
      * 开发人员必须注意同步访问任何共享资源，如文件、网络连接以及 servlet 的类和实例变量。
-     * 
+     *
      * req- 包含客户端请求的ServletRequest对象
      * res- 包含 Servlet 响应的ServletResponse对象
      * */
@@ -208,7 +209,8 @@ Servlet的生命周期完全由Tomcat服务器控制。
 
 ### 处理ServletConfig对象
 
-Tomcat初始化时，会调用`init方法`，并传递`ServletConfig对象`给`init方法`。默认情况下`ServletConfig对象`只能在`init方法内部`调用。
+Tomcat初始化时，会调用`init方法`，并传递`ServletConfig对象`给`init方法`。默认情况下`ServletConfig对象`只能在`init方法内部`
+调用。
 
 ```java
 public class GenericServlet implements Servlet {
@@ -223,7 +225,8 @@ public class GenericServlet implements Servlet {
 }
 ```
 
-如果想在`service方法`中访问`ServletConfig对象`，可以将ServletConfig这个`局部对象`传递给一个新建的ServletConfig`字段`。达到可以在Servlet对象任意位置访问ServletConfig对象的目的。
+如果想在`service方法`中访问`ServletConfig对象`，可以将ServletConfig这个`局部对象`传递给一个新建的ServletConfig`字段`
+。达到可以在Servlet对象任意位置访问ServletConfig对象的目的。
 
 ```java
 public class GenericServlet implements Servlet {
@@ -260,8 +263,8 @@ public class GenericServlet implements Servlet {
     }
 
     /*
-    * ... 其它方法
-    * */
+     * ... 其它方法
+     * */
 }
 ```
 
@@ -281,6 +284,7 @@ public class GenericServlet implements Servlet {
     每个Servlet对应一个ServletConfig对象
 
 ```xml
+
 <web-app>
     <servlet>
         <servlet-name>servletConfigDemo</servlet-name>
@@ -302,7 +306,8 @@ public class GenericServlet implements Servlet {
 --8<-- "docs/java_serve/web_application/servlet/servlet-config/src/main/java/com/luguosong/ServletConfigDemo.java"
 ```
 
-`GenericServlet`已经封装了调用ServletConfig中`getServletName()`、`getServletName()`和`getServletName()`方法。因此可以直接调用，无需通过config进行调用：
+`GenericServlet`已经封装了调用ServletConfig中`getServletName()`、`getServletName()`和`getServletName()`
+方法。因此可以直接调用，无需通过config进行调用：
 
 ``` java
 --8<-- "docs/java_serve/web_application/servlet/servlet-config/src/main/java/com/luguosong/ServletConfigDemo2.java"
@@ -330,7 +335,7 @@ public class GenericServlet implements Servlet {
 --8<-- "docs/java_serve/web_application/servlet/servlet-context/src/main/java/com/luguosong/ServletContextDemo.java"
 ```
 
-## HttpServlet类
+## HttpServlet类⭐
 
 ### 案例
 
@@ -399,12 +404,12 @@ public abstract class HttpServlet extends GenericServlet {
 
 可以看到，`HttpServlet类`已经实现`GenericServlet类`剩下的最后一个抽象方法`service()`。
 
-并在`service()`方法中定义了一个处理各种类型请求的`骨架`。并默认实现了处理各种请求的具体方法（doGet()、doPost()...），但处理方式是直接响应405错误状态码。这样如果我们需要处理具体类型请求的代码，就需要自己在子类中重写这个方法。覆盖调父类的报错代码。
+并在`service()`方法中定义了一个处理各种类型请求的`骨架`。并默认实现了处理各种请求的具体方法（doGet()、doPost()
+...），但处理方式是直接响应405错误状态码。这样如果我们需要处理具体类型请求的代码，就需要自己在子类中重写这个方法。覆盖调父类的报错代码。
 
 > 举例说明：前端发送一个Get请求，我们子类中没有重写doGet方法，则直接通过HttpServlet类的doGet方法响应405错误状态码。如果我们的子类实现了doGet方法，那么就调用我们自己写的doGet方法。
 
-
-## HttpServletRequest接口
+## HttpServletRequest接口⭐
 
 ### 实现类
 
@@ -415,4 +420,75 @@ public abstract class HttpServlet extends GenericServlet {
 ```
 
 ### 获取Http请求信息
+
+``` java
+--8<-- "docs/java_serve/web_application/servlet/http-servlet-request-demo/src/main/java/com/luguosong/GetRequestInfo.java"
+```
+
+### 转发（Forward）
+
+会保留`请求域`对象,达到两个Servlet共享数据的目的。
+
+``` java title="转发发起Servlet"
+--8<-- "docs/java_serve/web_application/servlet/http-servlet-request-demo/src/main/java/com/luguosong/DispatcherServletA.java"
+```
+
+``` java title="被转发的Servlet"
+--8<-- "docs/java_serve/web_application/servlet/http-servlet-request-demo/src/main/java/com/luguosong/DispatcherServletB.java"
+```
+
+!!! note
+
+    转发整个过程是`一次请求`。
+
+## HttpServletResponse接口⭐
+
+### 响应字符
+
+``` java
+--8<-- "docs/java_serve/web_application/servlet/http-servlet-response-demo/src/main/java/com/luguosong/WriteDemo.java"
+```
+
+### 响应字节流
+
+``` java
+--8<-- "docs/java_serve/web_application/servlet/http-servlet-response-demo/src/main/java/com/luguosong/OutputStreamDemo.java"
+```
+
+### 重定向
+
+``` java
+--8<-- "docs/java_serve/web_application/servlet/http-servlet-response-demo/src/main/java/com/luguosong/RedirectA.java"
+```
+
+``` java
+--8<-- "docs/java_serve/web_application/servlet/http-servlet-response-demo/src/main/java/com/luguosong/RedirectB.java"
+```
+
+<figure markdown="span">
+  ![](https://cdn.jsdelivr.net/gh/luguosong/images@master/blog-img/202405211738536.png){ loading=lazy }
+  <figcaption>响应码为302发起重定向</figcaption>
+</figure>
+
+<figure markdown="span">
+  ![](https://cdn.jsdelivr.net/gh/luguosong/images@master/blog-img/202405211739021.png){ loading=lazy }
+  <figcaption>重定向到指定Servlet</figcaption>
+</figure>
+
+## 转发和重定向对比
+
+|          | 转发                   | 重定向                   |
+|----------|----------------------|-----------------------|
+| 几次请求     | 一次                   | 两次                    |
+| 请求域      | 共享请求域                | 不同请求域                 |
+| 发起类      | HttpServletRequest发起 | HttpServletResponse发起 |
+| 路径       | 相对于Servlet路径         | 从项目名开始的路径             |
+| 完成方式     | Tomcat服务器内部完成        | 响应给浏览器，由浏览器完成         |
+| 浏览器地址栏显示 | 依旧显示发起转发的Servlet     | 显示重定向后的Servlet或资源     |
+
+
+
+## 注解开发
+
+Servlet 3.0后推出了注解开发
 

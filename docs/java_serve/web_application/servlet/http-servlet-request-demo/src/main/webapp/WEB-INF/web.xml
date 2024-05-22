@@ -11,4 +11,31 @@
         <servlet-name>Hello</servlet-name>
         <url-pattern>/hello</url-pattern>
     </servlet-mapping>
+
+    <servlet>
+        <servlet-name>request</servlet-name>
+        <servlet-class>com.luguosong.GetRequestInfo</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>request</servlet-name>
+        <url-pattern>/request</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>dispatcherA</servlet-name>
+        <servlet-class>com.luguosong.DispatcherServletA</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>dispatcherA</servlet-name>
+        <url-pattern>/dispatcherA</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>dispatcherB</servlet-name>
+        <servlet-class>com.luguosong.DispatcherServletB</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>dispatcherB</servlet-name>
+        <url-pattern>/dispatcherB</url-pattern>
+    </servlet-mapping>
 </web-app>
