@@ -158,7 +158,7 @@ public interface Servlet {
   <figcaption>访问Servlet</figcaption>
 </figure>
 
-## Servlet生命周期
+## Servlet生命周期⭐
 
 Servlet的生命周期完全由Tomcat服务器控制。
 
@@ -181,7 +181,7 @@ Servlet的生命周期完全由Tomcat服务器控制。
     </web-app>
     ```
 
-- 第一次访问Servlet时，Tomcat会创建Servlet对象，依次调用Servlet`无参构造方法`、`init()初始化方法`、`service()业务方法`。
+- 第一次访问Servlet时，Tomcat会`创建Servlet对象`，依次调用Servlet`无参构造方法`、`init()初始化方法`、`service()业务方法`。
 - 之后再访问Servlet时，Tomcat只会调用对应Servlet`service()业务方法`。
 - Tomcat服务器关闭时，会调用Servlet`destroy()销毁方法`（此时对象还并未销毁）。
 

@@ -25,7 +25,7 @@
 
 通过使用`JavaScript`和`DOM`方法向您的项目添加一个`h1标签`来开始构建我们的项目。
 
-``` html
+``` html title="updating_ui_with_javascript.html"
 --8<-- "docs/front_end/react/basic/example/updating_ui_with_javascript.html"
 ```
 
@@ -56,3 +56,92 @@ React 是一个流行的`声明式库`，您可以使用它来构建用户界面
   ![](https://cdn.jsdelivr.net/gh/luguosong/images@master/blog-img/202405211657199.png){ loading=lazy }
   <figcaption>声明式编程</figcaption>
 </figure>
+
+## React概述
+
+React 是一个流行的`声明式`库，您可以使用它来构建用户界面。
+
+## JSX简介
+
+`JSX`（JavaScript XML，正式称为JavaScript语法扩展）是JavaScript语言语法的类似XML的扩展。最初由Facebook创建以用于React，JSX已被多个Web框架采用。作为一种`语法糖`，JSX通常被转译成类似于原始JSX的嵌套JavaScript函数调用。
+
+JSX代码示例:
+
+```jsx
+const App = () => {
+   return (
+     <div>
+       <p>Header</p>
+       <p>Content</p>
+       <p>Footer</p>
+     </div>
+   ); 
+}
+```
+
+在JSX中编写的代码需要使用诸如`Babel`之类的工具进行转换，以便能够被`Web浏览器`理解。这种处理通常是在软件`构建`过程中进行的，在应用程序部署之前。
+
+## React入门案例
+
+### 纯Html
+
+``` html title="hello_react.html"
+--8<-- "docs/front_end/react/basic/example/hello_react.html"
+```
+
+<iframe loading="lazy" src="example/hello_react.html"></iframe>
+
+### Create React App
+
+Create React App 是官方支持的创建单页 React 应用程序的方式。它提供了一个现代的构建设置，无需配置。
+
+```shell
+# 创建React项目
+npx create-react-app hello-react
+
+#不建议使用 create-react-app 创建 React 应用程序。在没有框架的情况下使用 React 时，首选方式是使用带Vite Bundler 的模板。
+npm create vite@latest hello-react -- --template react
+```
+
+``` html title="index.html"
+--8<-- "source/front_end/react/basic/hello-react/public/index.html"
+```
+
+``` javascript title="index.js"
+--8<-- "source/front_end/react/basic/hello-react/src/index.js"
+```
+
+## 组件(component)
+
+用户界面可以分解为称为`组件`的较小构建块。
+
+> 组件允许您构建独立的、可重复使用的代码片段。如果您将组件视为乐高积木，您可以将这些单独的积木组合在一起，形成更大的结构。如果您需要更新UI的某个部分，您可以更新特定的组件或积木。
+
+<figure markdown="span">
+  ![](https://cdn.jsdelivr.net/gh/luguosong/images@master/blog-img/202405231353523.png){ loading=lazy }
+  <figcaption>组件</figcaption>
+</figure>
+
+这种`模块化`使得您的代码在不断增长时更易于维护，因为您可以添加、更新和删除组件而不影响我们应用程序的其他部分。
+
+组件是一个返回UI元素的`函数`。在函数的返回语句中，你可以编写`JSX`。
+
+React组件应该`大写`以区分它们与普通的 HTML 和 JavaScript。
+
+您可以像使用常规HTML标签一样使用React组件，使用尖括号。
+
+``` html title="hello_components.html"
+--8<-- "docs/front_end/react/basic/example/hello_components.html"
+```
+
+<iframe loading="lazy" src="example/hello_components.html"></iframe>
+
+## Props
+
+常规的HTML元素具有`属性`，您可以使用这些属性传递信息片段，从而`改变这些元素的行为`。
+
+> 例如，更改元素的`src属性`会更改显示的图像。更改标签的href属性会更改链接的目的地。
+
+同样地，您可以将信息片段作为属性传递给React组件。这些被称为`props`。
+
+
