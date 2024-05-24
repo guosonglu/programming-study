@@ -1,7 +1,3 @@
----
-icon: simple/apachetomcat
----
-
 # Tomcat服务器
 
 ## Java服务器软件种类

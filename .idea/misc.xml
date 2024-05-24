@@ -61,6 +61,7 @@
         <option value="$PROJECT_DIR$/docs/java_serve/web_application/servlet/annotation_servlet/pom.xml" />
         <option value="$PROJECT_DIR$/pom.xml" />
         <option value="$PROJECT_DIR$/docs/java_serve/web_application/jsp/hello_jsp/pom.xml" />
+        <option value="$PROJECT_DIR$/docs/java_serve/web_application/session_cookie/session_and_cookie/pom.xml" />
       </list>
     </option>
   </component>

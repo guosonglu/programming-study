@@ -13,13 +13,14 @@
         <module name="hello-servlet" />
         <module name="http-servlet-request-demo" />
         <module name="servlet-context" />
-        <module name="programming-study" />
         <module name="annotation_servlet" />
         <module name="http-servlet-response-demo" />
+        <module name="session_and_cookie" />
         <module name="javase" />
         <module name="http-servlet" />
         <module name="generic-servlet" />
         <module name="servlet-config" />
+        <module name="programming-notes" />
         <module name="algorithm" />
       </profile>
     </annotationProcessing>
