@@ -1,7 +1,36 @@
-h1, h2, h3, h4, h5, h6 {
+.md-typeset h1, h2, h3, h4, h5, h6 {
     color: #5e8bde;
     font-weight: 1000 !important;
 }
+
+.md-typeset {
+    counter-reset: section-1, section-2, section-3, section-4;
+}
+
+.md-typeset h2{
+    counter-increment: section-1;
+    counter-reset: section-2 section-3 section-4;
+}
+
+.md-typeset h3{
+    counter-increment: section-2;
+    counter-reset: section-3 section-4;
+}
+
+.md-typeset h4{
+    counter-increment: section-3;
+    counter-reset: section-4;
+}
+
+.md-typeset h5{
+    counter-increment: section-4;
+}
+
+.md-typeset h2:before { content: counter(section-1) ". "; }
+.md-typeset h3:before { content: counter(section-1) "." counter(section-2) " "; }
+.md-typeset h4:before { content: counter(section-1) "." counter(section-2) "." counter(section-3) " "; }
+.md-typeset h5:before { content: counter(section-1) "." counter(section-2) "." counter(section-3) "." counter(section-4) " "; }
+
 
 .md-content iframe {
     width: 100%;
@@ -12,7 +41,7 @@ h1, h2, h3, h4, h5, h6 {
     font-size: 0.64rem;
 }
 
-.highlighttable .linenos{
+.highlighttable .linenos {
     font-size: 0.64rem;
 }
 
@@ -35,6 +64,10 @@ h1, h2, h3, h4, h5, h6 {
 
 .highlight .na, .highlight .nv, .highlight .vc, .highlight .vg, .highlight .vi {
     color: #61afef;
+}
+
+.highlight .nc, .highlight .ne, .highlight .nf, .highlight .nn {
+    color: #ffa500;
 }
 
 /*文章图片最大高度限制*/
