@@ -71,6 +71,7 @@ markdown_extensions:
       line_spans: __span
       pygments_lang_class: true #指示Pygments添加一个CSS类来标识代码块的语言
       linenums: true #为所有代码块添加行号
+      linenums_style: pymdownx-inline # 行号样式
   - pymdownx.inlinehilite
   - pymdownx.snippets
   - toc:

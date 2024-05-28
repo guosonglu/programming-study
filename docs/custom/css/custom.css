@@ -7,38 +7,49 @@
     counter-reset: section-1, section-2, section-3, section-4;
 }
 
-.md-typeset h2{
+.md-typeset h2 {
+    border-bottom: 1px inset rgba(53, 86, 129, 0.3);
     counter-increment: section-1;
     counter-reset: section-2 section-3 section-4;
 }
 
-.md-typeset h3{
+.md-typeset h3 {
     counter-increment: section-2;
     counter-reset: section-3 section-4;
 }
 
-.md-typeset h4{
+.md-typeset h4 {
     counter-increment: section-3;
     counter-reset: section-4;
 }
 
-.md-typeset h5{
+.md-typeset h5 {
     counter-increment: section-4;
 }
 
-.md-typeset h2:before { content: counter(section-1) ". "; }
-.md-typeset h3:before { content: counter(section-1) "." counter(section-2) " "; }
-.md-typeset h4:before { content: counter(section-1) "." counter(section-2) "." counter(section-3) " "; }
-.md-typeset h5:before { content: counter(section-1) "." counter(section-2) "." counter(section-3) "." counter(section-4) " "; }
+.md-typeset h2:before {
+    content: counter(section-1) ". ";
+}
 
+.md-typeset h3:before {
+    content: counter(section-1) "." counter(section-2) " ";
+}
+
+.md-typeset h4:before {
+    content: counter(section-1) "." counter(section-2) "." counter(section-3) " ";
+}
+
+.md-typeset h5:before {
+    content: counter(section-1) "." counter(section-2) "." counter(section-3) "." counter(section-4) " ";
+}
+
+/*评论不需要前缀*/
+.md-typeset #__comments:before {
+    content: none
+}
 
 .md-content iframe {
     width: 100%;
-}
-
-.md-typeset code {
-    color: #73a0c5;
-    font-size: 0.64rem;
 }
 
 .highlighttable .linenos {
@@ -54,23 +65,22 @@
     font-size: 0.65em;
 }
 
-.highlight .kc, .highlight .n {
-    color: #e0b25e;
-}
-
-.highlight .k, .highlight .kd, .highlight .kn, .highlight .kp, .highlight .kr, .highlight .kt {
-    color: #a88ffc;
-}
-
-.highlight .na, .highlight .nv, .highlight .vc, .highlight .vg, .highlight .vi {
-    color: #61afef;
-}
-
-.highlight .nc, .highlight .ne, .highlight .nf, .highlight .nn {
-    color: #ffa500;
-}
-
 /*文章图片最大高度限制*/
 .md-typeset img {
     max-height: 50vh;
+}
+
+:root > * {
+    --md-code-hl-number-color:#BBBBBB;
+    --md-code-hl-special-color:#BBBBBB;
+    --md-code-hl-function-color:#61AFEF;
+    --md-code-hl-constant-color: #0779f8;
+    --md-code-hl-keyword-color:#CDBEFD;
+    --md-code-hl-string-color:#89CA78;
+    --md-code-hl-name-color:#D19A66;
+    --md-code-hl-operator-color:#BBBBBB;
+    --md-code-hl-punctuation-color:#BBBBBB;
+    --md-code-hl-comment-color:#5C6370;
+    /*--md-code-hl-generic-color:red;*/
+    --md-code-hl-variable-color:#FF8998;
 }
