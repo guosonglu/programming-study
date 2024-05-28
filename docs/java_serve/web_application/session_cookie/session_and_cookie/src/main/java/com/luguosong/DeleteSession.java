@@ -18,7 +18,9 @@ public class DeleteSession extends HttpServlet {
         /*
         * 删除session
         * */
-        req.getSession().removeAttribute("s");
+        //req.getSession().removeAttribute("s");
+        //或者
+        req.getSession().invalidate();
 
         //重定向回JSP页面
         resp.sendRedirect(req.getContextPath() + "/hello_session.jsp");
