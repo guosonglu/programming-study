@@ -70,17 +70,25 @@
     max-height: 50vh;
 }
 
+p > code, li > code {
+    color: #73a0c5 !important;
+    background-color: transparent !important;
+    font-size: .85rem !important;
+    font-weight: 900;
+    padding: 0 !important;
+}
+
 :root > * {
-    --md-code-hl-number-color:#BBBBBB;
-    --md-code-hl-special-color:#BBBBBB;
-    --md-code-hl-function-color:#61AFEF;
+    --md-code-hl-number-color: #BBBBBB;
+    --md-code-hl-special-color: #BBBBBB;
+    --md-code-hl-function-color: #61AFEF;
     --md-code-hl-constant-color: #0779f8;
-    --md-code-hl-keyword-color:#CDBEFD;
-    --md-code-hl-string-color:#89CA78;
-    --md-code-hl-name-color:#D19A66;
-    --md-code-hl-operator-color:#BBBBBB;
-    --md-code-hl-punctuation-color:#BBBBBB;
-    --md-code-hl-comment-color:#5C6370;
+    --md-code-hl-keyword-color: #CDBEFD;
+    --md-code-hl-string-color: #89CA78;
+    --md-code-hl-name-color: #D19A66;
+    --md-code-hl-operator-color: #BBBBBB;
+    --md-code-hl-punctuation-color: #BBBBBB;
+    --md-code-hl-comment-color: #5C6370;
     /*--md-code-hl-generic-color:red;*/
-    --md-code-hl-variable-color:#FF8998;
+    --md-code-hl-variable-color: #FF8998;
 }
