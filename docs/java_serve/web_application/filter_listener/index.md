@@ -92,3 +92,9 @@ Servlet执行
 ``` java
 --8<-- "docs/java_serve/web_application/filter_listener/listener-hello/src/main/java/com/luguosong/User.java"
 ```
+
+- web.xml中配置监听器：
+
+``` xml
+--8<-- "docs/java_serve/web_application/filter_listener/listener-hello/src/main/webapp/WEB-INF/web.xml"
+```
