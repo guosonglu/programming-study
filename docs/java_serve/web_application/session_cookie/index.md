@@ -64,4 +64,19 @@ Cookie使Web服务器能`在用户的设备存储状态信息`（如添加到在
 
 只有url在Cookie路径之下，request请求中才会包含对应的Cookie信息。
 
+## Cookie入门案例
+
+``` jsp
+--8<-- "docs/java_serve/web_application/session_cookie/session_and_cookie/src/main/webapp/hello_cookie.jsp"
+```
+
+``` java
+--8<-- "docs/java_serve/web_application/session_cookie/session_and_cookie/src/main/java/com/luguosong/AddCookie.java"
+```
+
+``` java
+--8<-- "docs/java_serve/web_application/session_cookie/session_and_cookie/src/main/java/com/luguosong/DeleteCookie.java"
+```
+
+
 

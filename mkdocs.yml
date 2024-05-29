@@ -173,6 +173,9 @@ nav:
           - 面向对象基础: java/javase/src/main/java/com/luguosong/object_oriented/index.md
   - 服务端开发:
       - java_serve/index.md
+      - Spring框架:
+          - java_serve/spring/index.md
+          - Spring基础教程: java_serve/spring/basic/index.md
       - Web应用:
           - java_serve/web_application/index.md
           - Tomcat服务器: java_serve/web_application/tomcat/index.md
@@ -180,6 +183,7 @@ nav:
           - JSP: java_serve/web_application/jsp/index.md
           - Session和Cookie: java_serve/web_application/session_cookie/index.md
           - 过滤器和监听器: java_serve/web_application/filter_listener/index.md
+          - MVC架构模式: java_serve/web_application/mvc/index.md
   - 专项研究:
       - topics/index.md
       - 设计模式:

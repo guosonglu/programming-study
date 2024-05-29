@@ -14,13 +14,17 @@
         <module name="http-servlet-request-demo" />
         <module name="servlet-context" />
         <module name="annotation_servlet" />
+        <module name="jsp_jstl" />
         <module name="http-servlet-response-demo" />
         <module name="session_and_cookie" />
+        <module name="jsp_el" />
+        <module name="listener-hello" />
         <module name="javase" />
         <module name="http-servlet" />
         <module name="generic-servlet" />
         <module name="servlet-config" />
         <module name="programming-notes" />
+        <module name="filter-hello" />
         <module name="algorithm" />
       </profile>
     </annotationProcessing>
