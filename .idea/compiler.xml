@@ -9,6 +9,7 @@
         <module name="data_structures" />
         <module name="hello_jsp" />
         <module name="design_pattern" />
+        <module name="spring-hello" />
         <module name="maven-hello" />
         <module name="hello-servlet" />
         <module name="http-servlet-request-demo" />
@@ -16,6 +17,7 @@
         <module name="annotation_servlet" />
         <module name="jsp_jstl" />
         <module name="http-servlet-response-demo" />
+        <module name="jdbc-hello" />
         <module name="session_and_cookie" />
         <module name="jsp_el" />
         <module name="listener-hello" />

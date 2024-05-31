@@ -72,10 +72,10 @@
 
 p > code, li > code {
     color: #73a0c5 !important;
-    background-color: transparent !important;
-    font-size: .85rem !important;
+    background-color: rgba(115, 160, 179, 0.1) !important;
+    font-size: .8rem !important;
     font-weight: 900;
-    padding: 0 !important;
+    padding: 0 5px !important;
 }
 
 :root > * {

@@ -184,6 +184,9 @@ nav:
           - Session和Cookie: java_serve/web_application/session_cookie/index.md
           - 过滤器和监听器: java_serve/web_application/filter_listener/index.md
           - MVC架构模式: java_serve/web_application/mvc/index.md
+      - 数据库开发:
+          - java_serve/database/index.md
+          - JDBC: java_serve/database/jdbc/index.md
   - 专项研究:
       - topics/index.md
       - 设计模式:

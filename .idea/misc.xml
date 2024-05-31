@@ -66,7 +66,15 @@
         <option value="$PROJECT_DIR$/docs/java_serve/web_application/jsp/jsp_jstl/pom.xml" />
         <option value="$PROJECT_DIR$/docs/java_serve/web_application/filter_listener/filter-hello/pom.xml" />
         <option value="$PROJECT_DIR$/docs/java_serve/web_application/filter_listener/listener-hello/pom.xml" />
+        <option value="$PROJECT_DIR$/docs/java_serve/spring/basic/demo/spring-hello/pom.xml" />
+        <option value="$PROJECT_DIR$/docs/java_serve/spring/basic/spring-hello/pom.xml" />
+        <option value="$PROJECT_DIR$/docs/java_serve/database/jdbc/jdbc-hello/pom.xml" />
       </list>
+    </option>
+    <option name="ignoredFiles">
+      <set>
+        <option value="$PROJECT_DIR$/docs/java_serve/spring/basic/demo/spring-hello/pom.xml" />
+      </set>
     </option>
   </component>
   <component name="ProjectRootManager" version="2" languageLevel="JDK_17" default="true" project-jdk-name="17" project-jdk-type="JavaSDK">
