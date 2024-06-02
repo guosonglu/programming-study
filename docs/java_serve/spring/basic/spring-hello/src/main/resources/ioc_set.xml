@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean id="user" class="com.luguosong.ioc.hello.User">
+        <!--注入基本数据类型-->
+        <property name="name" value="张三"/>
+        <property name="age" value="18"/>
+    </bean>
+
+    <bean id="userService" class="com.luguosong.ioc.hello.UserService">
+        <!--注入对象-->
+        <property name="user" ref="user"/>
+    </bean>
+</beans>

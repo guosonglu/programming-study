@@ -63,23 +63,26 @@ React 是一个流行的`声明式`库，您可以使用它来构建用户界面
 
 ## JSX简介
 
-`JSX`（JavaScript XML，正式称为JavaScript语法扩展）是JavaScript语言语法的类似XML的扩展。最初由Facebook创建以用于React，JSX已被多个Web框架采用。作为一种`语法糖`，JSX通常被转译成类似于原始JSX的嵌套JavaScript函数调用。
+`JSX`（JavaScript
+XML，正式称为JavaScript语法扩展）是JavaScript语言语法的类似XML的扩展。最初由Facebook创建以用于React，JSX已被多个Web框架采用。作为一种`语法糖`
+，JSX通常被转译成类似于原始JSX的嵌套JavaScript函数调用。
 
 JSX代码示例:
 
 ```jsx
 const App = () => {
-   return (
-     <div>
-       <p>Header</p>
-       <p>Content</p>
-       <p>Footer</p>
-     </div>
-   ); 
+    return (
+        <div>
+            <p>Header</p>
+            <p>Content</p>
+            <p>Footer</p>
+        </div>
+    );
 }
 ```
 
-在JSX中编写的代码需要使用诸如`Babel`之类的工具进行转换，以便能够被`Web浏览器`理解。这种处理通常是在软件`构建`过程中进行的，在应用程序部署之前。
+在JSX中编写的代码需要使用诸如`Babel`之类的工具进行转换，以便能够被`Web浏览器`理解。这种处理通常是在软件`构建`
+过程中进行的，在应用程序部署之前。
 
 ## React入门案例
 

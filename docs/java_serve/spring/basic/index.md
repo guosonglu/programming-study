@@ -78,6 +78,12 @@ Spring框架以 Apache License 2.0 开源许可协议的形式发布，该框架
 --8<-- "docs/java_serve/spring/basic/spring-hello/src/main/java/com/luguosong/ioc/hello/SpringHello.java"
 ```
 
+## 读取配置文件方式
+
+- `ClassPathXmlApplicationContext`：从类路径加载配置文件
+- `FileSystemXmlApplicationContext`：从文件系统加载配置文件
+- `AnnotationConfigApplicationContext`：从注解加载配置文件
+
 ## IOC原理分析
 
 `初始化阶段`：Spring读取配置文件中的bean标签，根据其中的`class属性`(类的全限定类名)，默认通过`反射`
@@ -90,3 +96,61 @@ Spring框架以 Apache License 2.0 开源许可协议的形式发布，该框架
   <figcaption>IOC原理图</figcaption>
 </figure>
 
+## 配置日志
+
+``` xml title="引入依赖"
+<dependencies>
+    <dependency>
+        <groupId>org.apache.logging.log4j</groupId>
+        <artifactId>log4j-core</artifactId>
+        <version>2.20.0</version>
+    </dependency>
+    <dependency>
+        <groupId>org.apache.logging.log4j</groupId>
+        <artifactId>log4j-slf4j2-impl</artifactId>
+        <version>2.20.0</version>
+    </dependency>
+</dependencies>
+```
+
+``` xml title="log4j2.xml:日志配置文件"
+--8<-- "docs/java_serve/spring/basic/spring-hello/src/main/resources/log4j2.xml"
+```
+
+## 依赖注入
+
+### set注入
+
+通过`set方法`进行依赖注入。
+
+设置配置文件：
+
+``` xml title="ioc_set.xml"
+--8<-- "docs/java_serve/spring/basic/spring-hello/src/main/resources/ioc_set.xml"
+```
+
+``` java
+--8<-- "docs/java_serve/spring/basic/spring-hello/src/main/java/com/luguosong/ioc/hello/IocSetterTest.java"
+```
+
+!!! property标签的name属性
+
+    `name属性`对应set方法方法名去除set，并且首字母小写。
+
+### 构造方法注入
+
+- 默认通过参数的类型推断指定参数(❗这种方式构造函数中的参数类型不能重复)
+- 通过`index属性`指定构造函数参数位置设置参数
+- 通过`name属性`指定构造函数参数名称设置参数
+
+设置配置文件：
+
+``` xml title="ioc_constructor.xml"
+--8<-- "docs/java_serve/spring/basic/spring-hello/src/main/resources/ioc_constructor.xml"
+```
+
+测试：
+
+``` java
+--8<-- "docs/java_serve/spring/basic/spring-hello/src/main/java/com/luguosong/ioc/hello/IocConstructorTest.java"
+```

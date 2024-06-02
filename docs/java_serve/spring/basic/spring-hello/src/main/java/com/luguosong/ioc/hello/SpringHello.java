@@ -18,7 +18,7 @@ public class SpringHello {
         /*
          * 根据bean的id获取对应bean的实例
          * */
-        Object userBean = context.getBean("userBean");
+        User userBean = context.getBean("userBean", User.class);
 
         System.out.println(userBean); //User{age=null, name='null'}
     }
