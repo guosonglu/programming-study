@@ -1,11 +1,16 @@
 package com.luguosong.ioc.hello;
 
+import java.util.Arrays;
+import java.util.Map;
+
 /**
  * @author luguosong
  */
 public class User {
     private String name;
     private Integer age;
+    private String[] hobby;
+    private Map<String, String> additionalInfo;
 
     public User() {
 
@@ -24,11 +29,21 @@ public class User {
         this.name = name;
     }
 
+    public void setHobby(String[] hobby) {
+        this.hobby = hobby;
+    }
+
+    public void setAdditionalInfo(Map<String, String> additionalInfo) {
+        this.additionalInfo = additionalInfo;
+    }
+
     @Override
     public String toString() {
         return "User{" +
-                "age=" + age +
+                "additionalInfo=" + additionalInfo +
                 ", name='" + name + '\'' +
+                ", age=" + age +
+                ", hobby=" + Arrays.toString(hobby) +
                 '}';
     }
 }

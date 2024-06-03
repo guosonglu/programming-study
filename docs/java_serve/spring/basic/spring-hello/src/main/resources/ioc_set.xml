@@ -7,6 +7,18 @@
         <!--注入基本数据类型-->
         <property name="name" value="张三"/>
         <property name="age" value="18"/>
+        <property name="hobby">
+            <array>
+                <value>篮球</value>
+                <value>足球</value>
+            </array>
+        </property>
+        <property name="additionalInfo">
+            <map>
+                <entry key="性别" value="男"/>
+                <entry key="职业" value="IT"/>
+            </map>
+        </property>
     </bean>
 
     <bean id="userService" class="com.luguosong.ioc.hello.UserService">
