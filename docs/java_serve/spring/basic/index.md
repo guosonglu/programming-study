@@ -121,7 +121,9 @@ Spring框架以 Apache License 2.0 开源许可协议的形式发布，该框架
 
 ### set注入
 
-通过`set方法`进行依赖注入。
+`<property>标签`通过`set方法`进行依赖注入。
+
+> 可以使用`p命名空间`简化set注入
 
 设置配置文件：
 
@@ -139,9 +141,13 @@ Spring框架以 Apache License 2.0 开源许可协议的形式发布，该框架
 
 ### 构造方法注入
 
+`<constructor-arg>标签`通过`构造方法`进行依赖注入。
+
 - 默认通过参数的类型推断指定参数(❗这种方式构造函数中的参数类型不能重复)
 - 通过`index属性`指定构造函数参数位置设置参数
 - 通过`name属性`指定构造函数参数名称设置参数
+
+> 可以使用`c命名空间`简化构造方法注入
 
 设置配置文件：
 
@@ -154,3 +160,38 @@ Spring框架以 Apache License 2.0 开源许可协议的形式发布，该框架
 ``` java
 --8<-- "docs/java_serve/spring/basic/spring-hello/src/main/java/com/luguosong/ioc/hello/IocConstructorTest.java"
 ```
+
+### util命名空间
+
+util命名空间针对与集合的复用场景。
+
+``` xml
+--8<-- "docs/java_serve/spring/basic/spring-hello/src/main/resources/ioc_util.xml"
+```
+
+### 自动注入
+
+依赖可以根据`名字`或`类型`自动注入。
+
+基于的还是`set方法`。
+
+``` xml
+--8<-- "docs/java_serve/spring/basic/spring-hello/src/main/resources/ioc_auto.xml"
+```
+
+### 加载外部配置文件
+
+``` properties title="jdbc.properties"
+--8<-- "docs/java_serve/spring/basic/spring-hello/src/main/resources/jdbc.properties"
+```
+
+``` xml
+--8<-- "docs/java_serve/spring/basic/spring-hello/src/main/resources/ioc_jdbc.xml"
+```
+
+## bean作用域
+
+``` xml
+--8<-- "docs/java_serve/spring/basic/spring-hello/src/main/resources/ioc_scope.xml"
+```
+

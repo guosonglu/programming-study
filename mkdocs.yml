@@ -119,7 +119,6 @@ exclude_docs: |
 copyright: Copyright &copy; 2024 Lu Guosong #版权信息
 
 nav:
-  - baidu_verify_codeva-UKMrFoFJ8P.html
   - 主页: index.md
   - 基础知识:
       - basic/index.md
@@ -223,4 +222,5 @@ nav:
       - 文章:
           - other/articles/index.md
       - Window命令笔记: other/windows_cmd/index.md
+
 
