@@ -1,4 +1,4 @@
-package com.luguosong.ioc.hello;
+package com.luguosong.ioc.dependency_injection;
 
 /**
  * @author luguosong

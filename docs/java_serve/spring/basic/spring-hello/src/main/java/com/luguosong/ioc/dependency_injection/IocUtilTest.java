@@ -1,5 +1,6 @@
-package com.luguosong.ioc.hello;
+package com.luguosong.ioc.dependency_injection;
 
+import com.luguosong.ioc.User;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 /**

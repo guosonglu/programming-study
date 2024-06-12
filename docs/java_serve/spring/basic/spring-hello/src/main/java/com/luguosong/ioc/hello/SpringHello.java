@@ -1,5 +1,6 @@
 package com.luguosong.ioc.hello;
 
+import com.luguosong.ioc.User;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 

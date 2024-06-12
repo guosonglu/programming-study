@@ -173,9 +173,6 @@ nav:
           - 面向对象基础: java/javase/src/main/java/com/luguosong/object_oriented/index.md
   - 服务端开发:
       - java_serve/index.md
-      - Spring框架:
-          - java_serve/spring/index.md
-          - Spring基础教程: java_serve/spring/basic/index.md
       - Web应用:
           - java_serve/web_application/index.md
           - Tomcat服务器: java_serve/web_application/tomcat/index.md
@@ -187,6 +184,9 @@ nav:
       - 数据库开发:
           - java_serve/database/index.md
           - JDBC: java_serve/database/jdbc/index.md
+      - Spring框架:
+          - java_serve/spring/index.md
+          - Spring基础教程: java_serve/spring/basic/index.md
   - 专项研究:
       - topics/index.md
       - 设计模式:
@@ -206,6 +206,13 @@ nav:
           - 数据库控制语言: topics/sql/dcl.md
       - Git:
           - topics/git/index.md
+      - Linux:
+          - topics/linux/index.md
+          - Linux概述: topics/linux/basic/index.md
+          - 文件系统: topics/linux/file_directory/index.md
+          - shell脚本: topics/linux/shell/index.md
+          - 使用者管理: topics/linux/user_management/index.md
+          - 系统管理员: topics/linux/system_administrator/index.md
   - 英语:
       - english/index.md
       - 音标: english/phonetic_symbol.md

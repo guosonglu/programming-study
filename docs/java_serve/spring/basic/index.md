@@ -14,29 +14,11 @@ Spring。该框架的一些核心功能理论上可用于任何 Java 应用，�
 
 Spring框架以 Apache License 2.0 开源许可协议的形式发布，该框架最初由 `Rod Johnson` 以及 Juergen Hoeller 等人开发。
 
-## Spring模块
-
-- `Spring Core`：Spring Core是Spring框架的核心模块，提供了`IoC（Inversion of Control、控制反转）容器`
-  的实现和支持。它负责创建、配置和管理应用程序中的对象，并通过依赖注入的方式解耦组件之间的依赖关系。
-- `Spring AOP`：Spring AOP模块实现了面向切面编程（AOP）的支持。它允许开发者通过定义切点和切面，将横切关注点（如日志记录、性能监控等）与业务逻辑分离，从而提高代码的模块化和可维护性。
-- `Spring Web MVC`：Spring Web
-  MVC是Spring框架的Web应用程序开发模块。它提供了一种基于MVC（Model-View-Controller）的架构，用于构建灵活、可扩展的Web应用程序。开发者可以使用注解或配置文件定义控制器、视图和模型，并实现Web请求的处理和响应。
-- `Spring WebFlux`：Spring5新增模块，Spring
-  WebFlux是Spring框架的响应式Web开发模块。它基于反应式编程模型，提供了一种异步、非阻塞的方式处理Web请求。开发者可以使用注解或函数式编程风格定义处理器函数，并利用响应式流处理请求和响应。
-- `Spring Web`：Spring Web模块是Spring框架的Web应用程序支持模块，提供了与Servlet
-  API和其他Web相关技术的集成。它包括与Web安全、文件上传、WebSockets等相关的功能和工具，帮助开发者构建全功能的Web应用程序。
-- `Spring DAO`：Spring
-  DAO模块提供了对数据访问对象（DAO）的支持。它简化了与数据库的交互，提供了一组抽象和实现，用于执行CRUD操作、批处理、存储过程调用等。开发者可以集成各种数据访问技术（如JDBC、Hibernate、JPA等）来实现灵活和可扩展的数据访问层。
-- `Spring ORM`：Spring ORM模块用于集成和支持各种对象关系映射（ORM）框架，如Hibernate、JPA等。它提供了事务管理、异常转换和对象关系映射等功能，简化了与关系型数据库的交互。
-- `Spring Context`：Spring Context是Spring框架的核心模块之一，实现了IoC容器的功能。它负责管理和组织应用程序中的各个组件，包括Bean管理、依赖注入、生命周期管理、事件机制等。Spring
-  Context提供了一个上下文环境，使得开发者能够更方便地构建和管理应用程序。
-
-<figure markdown="span">
-  ![](https://cdn.jsdelivr.net/gh/luguosong/images@master/blog-img/202405301022240.png){ loading=lazy }
-  <figcaption>Spring八大模块</figcaption>
-</figure>
-
 ## 版本说明
+
+!!! warning
+
+    从`Spring Framework 6.0`开始，Spring需要`Java 17+`
 
 | Spring版本 | Jakarta EE版本                  | JDK版本     |
 |----------|-------------------------------|-----------|
@@ -63,7 +45,7 @@ Spring框架以 Apache License 2.0 开源许可协议的形式发布，该框架
 - 创建User对象：
 
 ``` java title="User.java"
---8<-- "docs/java_serve/spring/basic/spring-hello/src/main/java/com/luguosong/ioc/hello/User.java"
+--8<-- "docs/java_serve/spring/basic/spring-hello/src/main/java/com/luguosong/ioc/User.java"
 ```
 
 - 编写Spring配置文件：
@@ -77,12 +59,6 @@ Spring框架以 Apache License 2.0 开源许可协议的形式发布，该框架
 ``` java title="SpringHello.java"
 --8<-- "docs/java_serve/spring/basic/spring-hello/src/main/java/com/luguosong/ioc/hello/SpringHello.java"
 ```
-
-## 读取配置文件方式
-
-- `ClassPathXmlApplicationContext`：从类路径加载配置文件
-- `FileSystemXmlApplicationContext`：从文件系统加载配置文件
-- `AnnotationConfigApplicationContext`：从注解加载配置文件
 
 ## IOC原理分析
 
@@ -117,6 +93,88 @@ Spring框架以 Apache License 2.0 开源许可协议的形式发布，该框架
 --8<-- "docs/java_serve/spring/basic/spring-hello/src/main/resources/log4j2.xml"
 ```
 
+## bean的实例化方式
+
+### 构造方法
+
+直接配置文件中配置类的全路径，Spring会调用`构造方法`创建对象。
+
+```xml
+<!--Spring会根据class类路径，通过构造方法创建对象-->
+<bean id="user" class="com.luguosong.ioc.User"/>
+```
+
+### 简单工厂
+
+编写简单工厂：
+
+``` java
+--8<-- "docs/java_serve/spring/basic/spring-hello/src/main/java/com/luguosong/ioc/create_bean/SimpleFactory.java"
+```
+
+编写配置文件，配置`简单工厂类`：
+
+``` xml
+--8<-- "docs/java_serve/spring/basic/spring-hello/src/main/resources/ioc_create_simple_factory.xml"
+```
+
+通过简单工厂创建对象：
+
+``` java
+--8<-- "docs/java_serve/spring/basic/spring-hello/src/main/java/com/luguosong/ioc/create_bean/SimpleFactoryTest.java"
+```
+
+### 工厂方法
+
+实现`FactoryBean<T>`接口的对象本身就是用于`创建单个对象的工厂`(工厂方法模式)。如果一个bean实现了这个接口，它将作为一个`工厂`来暴露对象，而不是直接作为一个bean实例暴露自身。
+
+!!! warning
+
+    实现此接口的bean不能用作普通bean。一个FactoryBean以bean的风格定义，但对于bean引用暴露的对象（通过getObject()）总是它创建的对象。
+
+容器只负责管理FactoryBean实例的生命周期，而不负责FactoryBean创建的对象的生命周期。因此，暴露的bean对象上的销毁方法（如java.io.Closeable.close()）不会自动调用。相反，FactoryBean应该实现`DisposableBean接口`并将任何此类关闭调用委托给底层对象。
+
+
+#### 通过配置文件实现
+
+编写工厂对象：
+
+``` java
+--8<-- "docs/java_serve/spring/basic/spring-hello/src/main/java/com/luguosong/ioc/create_bean/FactoryMethod2.java"
+```
+
+编写配置文件：
+
+``` xml title="ioc_create_factory_method2.xml"
+--8<-- "docs/java_serve/spring/basic/spring-hello/src/main/resources/ioc_create_factory_method2.xml"
+```
+
+测试：
+
+``` java
+--8<-- "docs/java_serve/spring/basic/spring-hello/src/main/java/com/luguosong/ioc/create_bean/FactoryMethod2Test.java"
+```
+
+#### 直接继承FactoryBean接口
+
+编写工厂类，继承`FactoryBean<T>`接口：
+
+``` java
+--8<-- "docs/java_serve/spring/basic/spring-hello/src/main/java/com/luguosong/ioc/create_bean/FactoryMethod1.java"
+```
+
+编写配置文件：
+
+``` xml title="ioc_create_factory_method1.xml"
+--8<-- "docs/java_serve/spring/basic/spring-hello/src/main/resources/ioc_create_factory_method1.xml"
+```
+
+测试：
+
+``` java
+--8<-- "docs/java_serve/spring/basic/spring-hello/src/main/java/com/luguosong/ioc/create_bean/FactoryMethod1Test.java"
+```
+
 ## 依赖注入
 
 ### set注入
@@ -132,7 +190,7 @@ Spring框架以 Apache License 2.0 开源许可协议的形式发布，该框架
 ```
 
 ``` java
---8<-- "docs/java_serve/spring/basic/spring-hello/src/main/java/com/luguosong/ioc/hello/IocSetterTest.java"
+--8<-- "docs/java_serve/spring/basic/spring-hello/src/main/java/com/luguosong/ioc/dependency_injection/IocSetterTest.java"
 ```
 
 !!! property标签的name属性
@@ -158,8 +216,9 @@ Spring框架以 Apache License 2.0 开源许可协议的形式发布，该框架
 测试：
 
 ``` java
---8<-- "docs/java_serve/spring/basic/spring-hello/src/main/java/com/luguosong/ioc/hello/IocConstructorTest.java"
+--8<-- "docs/java_serve/spring/basic/spring-hello/src/main/java/com/luguosong/ioc/dependency_injection/IocConstructorTest.java"
 ```
+
 
 ### util命名空间
 
@@ -191,7 +250,68 @@ util命名空间针对与集合的复用场景。
 
 ## bean作用域
 
+- `单例（singleton）`:将单个bean定义范围限定为每个Spring IoC容器的单个对象实例。
+- `原型（prototype）`:将单个bean定义范围限定为任意数量的对象实例。
+
+仅在支持web的Spring ApplicationContext上下文中有效：
+
+- `请求（request）`:将单个bean定义范围限定为单个HTTP请求的生命周期。也就是说，每个HTTP请求都有自己的bean实例，该实例是基于单个bean定义创建的。
+- `会话（session）`:将单个bean定义范围限定为HTTP会话的生命周期。
+- `应用程序（application）`:将单个bean定义范围限定为ServletContext的生命周期。
+- `WebSocket（websocket）`:将单个bean定义范围限定为WebSocket的生命周期。
+
 ``` xml
 --8<-- "docs/java_serve/spring/basic/spring-hello/src/main/resources/ioc_scope.xml"
 ```
 
+## bean生命周期
+
+1. `实例化Bean`
+2. `调用setter方法属性赋值`
+3. `实现Aware相关接口，执行对应方法`:BeanNameAware接口、BeanClassLoaderAware接口、BeanFactoryAware接口
+4. `初始化Bean之前执行`:自定义处理器，实现BeanPostProcessor接口，重写postProcessBeforeInitialization方法
+5. `实现InitializingBean接口执行对应方法`
+6. `初始化Bean`：配置文件bean配置init-method属性
+7. `初始化Bean之后执行`：自定义处理器，实现BeanPostProcessor接口，重写postProcessAfterInitialization方法
+8. `使用Bean`
+9. `实现DisposableBean接口，执行对应方法`
+10. `销毁Bean`:配置文件bean配置destroy-method属性
+
+!!! warning
+
+    Spring容器只对作用域`scope="singleton"`的bean进行完整的生命周期管理。
+
+``` java
+--8<-- "docs/java_serve/spring/basic/spring-hello/src/main/java/com/luguosong/ioc/life_cycle/Dog.java"
+```
+
+配置文件，指定`init-method`和`destroy-method`:
+
+``` xml
+--8<-- "docs/java_serve/spring/basic/spring-hello/src/main/resources/ioc_life_cycle.xml"
+```
+
+配置处理器，其方法在初始化前后执行：
+
+``` java
+--8<-- "docs/java_serve/spring/basic/spring-hello/src/main/java/com/luguosong/ioc/life_cycle/MyBeanPostProcessor.java"
+```
+
+测试：
+
+``` java
+--8<-- "docs/java_serve/spring/basic/spring-hello/src/main/java/com/luguosong/ioc/life_cycle/LifeCycleTest.java"
+```
+
+## 将自己new的对象添加到Bean
+
+``` java
+--8<-- "docs/java_serve/spring/basic/spring-hello/src/main/java/com/luguosong/ioc/other/MyObjectToApplication.java"
+```
+
+## 注解开发
+
+<figure markdown="span">
+  ![](https://cdn.jsdelivr.net/gh/luguosong/images@master/blog-img/202406121824480.png){ loading=lazy }
+  <figcaption>注解开发依赖于aop包，context包中包含aop了</figcaption>
+</figure>

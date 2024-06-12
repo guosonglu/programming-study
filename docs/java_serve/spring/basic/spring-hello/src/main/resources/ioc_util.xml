@@ -11,11 +11,11 @@
         <entry key="职业" value="IT"/>
     </util:map>
 
-    <bean id="user1" class="com.luguosong.ioc.hello.User">
+    <bean id="user1" class="com.luguosong.ioc.User">
         <property name="additionalInfo" ref="utilMap"/>
     </bean>
 
-    <bean id="user2" class="com.luguosong.ioc.hello.User">
+    <bean id="user2" class="com.luguosong.ioc.User">
         <property name="additionalInfo" ref="utilMap"/>
     </bean>
 </beans>

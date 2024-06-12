@@ -1,8 +1,14 @@
 # 创建型模式
 
-## 抽象工厂(Abstract factory)🔥
+## 简单工厂(Simple factory)
+
+### 意图
+
+
 
 ## 工厂方法(Factory method)🔥
+
+## 抽象工厂(Abstract factory)🔥
 
 ## 生成器(建造者、Builder)🔥
 

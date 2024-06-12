@@ -1,4 +1,4 @@
-package com.luguosong.ioc.hello;
+package com.luguosong.ioc;
 
 /**
  * @author luguosong

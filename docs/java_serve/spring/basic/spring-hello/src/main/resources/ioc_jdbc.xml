@@ -9,7 +9,7 @@
     <context:property-placeholder location="jdbc.properties"/>
 
     <!--从配置文件中取值-->
-    <bean id="jdbc" class="com.luguosong.ioc.hello.Jdbc">
+    <bean id="jdbc" class="com.luguosong.ioc.dependency_injection.Jdbc">
         <property name="url" value="${url}"/>
         <property name="username" value="${user}"/>
         <property name="password" value="${password}"/>
