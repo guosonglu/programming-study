@@ -1,4 +1,4 @@
-# Spring教程
+# 控制反转
 
 ## 不使用Spring存在的问题
 
@@ -315,3 +315,79 @@ util命名空间针对与集合的复用场景。
   ![](https://cdn.jsdelivr.net/gh/luguosong/images@master/blog-img/202406121824480.png){ loading=lazy }
   <figcaption>注解开发依赖于aop包，context包中包含aop了</figcaption>
 </figure>
+
+### 入门示例
+
+通过注解的方式引入依赖：
+
+``` java
+--8<-- "docs/java_serve/spring/basic/spring-hello/src/main/java/com/luguosong/ioc/annotation/hello/User.java"
+```
+
+!!! note
+
+    如果不设置`@Component`注解的value属性，Spring会默认使用类名首字母小写作为bean的id
+
+配置文件配置包扫描：
+
+``` xml title="ioc_annotation_hello.xml"
+--8<-- "docs/java_serve/spring/basic/spring-hello/src/main/resources/ioc_annotation_hello.xml"
+```
+
+测试：
+
+``` java
+--8<-- "docs/java_serve/spring/basic/spring-hello/src/main/java/com/luguosong/ioc/annotation/hello/Test.java"
+```
+
+### @Component别名
+
+一下别名功能与`@Component`相同，只是为了区分不同使用场景：
+
+- `@Controller`：表示层bean
+- `@Service`：业务逻辑层bean
+- `@Repository`：持久化层bean
+
+### 依赖注入
+
+使用注解方式就行依赖注入可以分为以下几种方式：
+
+- `@Value`:注入基本数据类型
+- `@Autowired`:根据类型注入（接口只能有一个实现类）
+- `@Autowired+@Qualifier`：根据bean名称注入
+- `@Resource`：根据bean名称注入
+
+!!! warning
+
+    如果`@Resource`根据名称没有找到对应的类，则会根据`类型`注入。
+
+    此时也会要求接口只有唯一的实现类。
+
+要使用`@Resource`注解需要依赖以下包：
+
+```xml
+<dependency>
+    <groupId>jakarta.annotation</groupId>
+    <artifactId>jakarta.annotation-api</artifactId>
+    <version>3.0.0</version>
+</dependency>
+```
+
+``` java
+--8<-- "docs/java_serve/spring/basic/spring-hello/src/main/java/com/luguosong/ioc/annotation/dependency_injection/User.java"
+```
+
+### 注解配置文件
+
+可以使用`@Configuration`注解替代xml方式的配置文件。做到`全注解无xml`开发。
+
+``` java
+--8<-- "docs/java_serve/spring/basic/spring-hello/src/main/java/com/luguosong/ioc/annotation/config/SpringConfig.java"
+```
+
+编写测试类,将`ClassPathXmlApplicationContext`更改为`AnnotationConfigApplicationContext`，从`配置类`读取配置：
+
+``` java
+--8<-- "docs/java_serve/spring/basic/spring-hello/src/main/java/com/luguosong/ioc/annotation/config/Test.java"
+```
+

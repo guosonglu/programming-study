@@ -19,5 +19,3 @@
 ## 外观(门面、Facade)
 
 ## 享元(Flyweight)
-
-## 代理(Proxy)🔥

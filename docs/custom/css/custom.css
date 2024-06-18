@@ -73,9 +73,7 @@
 p > code, li > code {
     color: #73a0c5 !important;
     background-color: rgba(115, 160, 179, 0.1) !important;
-    font-size: .8rem !important;
-    font-weight: 900;
-    padding: 0 5px !important;
+    font-weight: 700;
 }
 
 :root > * {

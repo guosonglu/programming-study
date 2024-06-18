@@ -48,6 +48,8 @@ theme:
         name: 切换到黑暗模式
 
 markdown_extensions:
+  - pymdownx.arithmatex:
+      generic: true
   - tables # 表格支持
   - def_list
   - pymdownx.tasklist:
@@ -112,6 +114,9 @@ extra_css:
 
 extra_javascript:
   - custom/js/custom.js
+  - javascripts/mathjax.js
+  - https://polyfill.io/v3/polyfill.min.js?features=es6
+  - https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js
 
 exclude_docs: |
   **/node_modules
@@ -173,6 +178,10 @@ nav:
           - 面向对象基础: java/javase/src/main/java/com/luguosong/object_oriented/index.md
   - 服务端开发:
       - java_serve/index.md
+      - Spring框架:
+          - java_serve/spring/index.md
+          - 控制反转: java_serve/spring/basic/index.md
+          - 面向切面编程: java_serve/spring/aop/index.md
       - Web应用:
           - java_serve/web_application/index.md
           - Tomcat服务器: java_serve/web_application/tomcat/index.md
@@ -184,9 +193,6 @@ nav:
       - 数据库开发:
           - java_serve/database/index.md
           - JDBC: java_serve/database/jdbc/index.md
-      - Spring框架:
-          - java_serve/spring/index.md
-          - Spring基础教程: java_serve/spring/basic/index.md
   - 专项研究:
       - topics/index.md
       - 设计模式:
@@ -194,6 +200,7 @@ nav:
           - 概述: topics/design_pattern/src/main/java/com/luguosong/overview/index.md
           - 创建型模式: topics/design_pattern/src/main/java/com/luguosong/creational/index.md
           - 结构型模式: topics/design_pattern/src/main/java/com/luguosong/structural/index.md
+          - 结构型-代理🔥: topics/design_pattern/src/main/java/com/luguosong/structural/proxy/index.md
           - 行为型模式: topics/design_pattern/src/main/java/com/luguosong/behavioral/index.md
       - Maven:
           - topics/maven/index.md
@@ -229,5 +236,8 @@ nav:
       - 文章:
           - other/articles/index.md
       - Window命令笔记: other/windows_cmd/index.md
+      - MathJax:
+          - other/mathjax/index.md
+          - 公式代码示例: other/mathjax/formulas/index.md
 
 
