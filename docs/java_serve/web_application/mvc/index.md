@@ -18,6 +18,11 @@
   <figcaption>MVC架构图解</figcaption>
 </figure>
 
+<figure markdown="span">
+  ![](https://cdn.jsdelivr.net/gh/luguosong/images@master/blog-img/202406201047597.png){ loading=lazy }
+  <figcaption>MVC请求响应过程</figcaption>
+</figure>
+
 !!! note "DAO(Data Access Object、数据访问对象)"
 
     属于JavaEE的设计模式之一。只负责数据库的增删改查，没有任何业务逻辑在里面
@@ -27,3 +32,18 @@
 - `表示层`：Controller控制器+View视图
 - `业务逻辑层`：Service服务
 - `持久化层`：DAO数据访问对象
+
+## Spring MVC概述
+
+`Spring MVC`是`Spring Framework`框架的子模块
+
+`Spring MVC`是实现`MVC架构模式`的Web框架。底层使用`Servlet`实现。
+
+!!! note "Spring MVC能干什么"
+
+    - 入口控制：通过`DispatcherServlet`作为入口控制器负责接收请求和分发请求。
+    - 自动将表单请求参数封装为JavaBean对象
+    - 统一使用IOC容器管理对象
+    - 统一请求处理：提供拦截器、统一异常处理等机制
+    - 视图解析：轻松切换JSP、Freemarker、Velocity等视图模板
+

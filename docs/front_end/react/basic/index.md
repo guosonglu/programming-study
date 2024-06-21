@@ -61,6 +61,8 @@ React 是一个流行的`声明式库`，您可以使用它来构建用户界面
 
 React 是一个流行的`声明式`库，您可以使用它来构建用户界面。
 
+> 用户界面由`按钮`、`文本`和`图像`等小单元内容构建而成。React帮助你把它们组合成可重用、可嵌套的`组件`。
+
 ## JSX简介
 
 `JSX`（JavaScript
@@ -116,7 +118,7 @@ npm create vite@latest hello-react -- --template react
 
 ## 组件(component)
 
-用户界面可以分解为称为`组件`的较小构建块。
+用户界面可以分解为称为`组件`（ 应用程序中可复用的 UI 元素）的较小构建块。
 
 > 组件允许您构建独立的、可重复使用的代码片段。如果您将组件视为乐高积木，您可以将这些单独的积木组合在一起，形成更大的结构。如果您需要更新UI的某个部分，您可以更新特定的组件或积木。
 
@@ -127,9 +129,9 @@ npm create vite@latest hello-react -- --template react
 
 这种`模块化`使得您的代码在不断增长时更易于维护，因为您可以添加、更新和删除组件而不影响我们应用程序的其他部分。
 
-组件是一个返回UI元素的`函数`。在函数的返回语句中，你可以编写`JSX`。
+React组件是一段可以使用标签进行扩展的JavaScript`函数`。在函数的返回语句中，你可以编写`JSX`。
 
-React组件应该`大写`以区分它们与普通的 HTML 和 JavaScript。
+React组件应该`大写`以区分它们与普通的HTML和JavaScript。
 
 您可以像使用常规HTML标签一样使用React组件，使用尖括号。
 
@@ -139,6 +141,46 @@ React组件应该`大写`以区分它们与普通的 HTML 和 JavaScript。
 
 <iframe loading="lazy" src="example/hello_components.html"></iframe>
 
+## 组件导出和导入
+
+将组件封装在`单独的文件`中导出，更加有利于组件的复用。
+
+使用`export default`导出组件：
+
+``` jsx
+function Profile() {
+  return (
+    <img
+      src="https://i.imgur.com/QIrZWGIs.jpg"
+      alt="Alan L. Hart"
+    />
+  );
+}
+
+export default function Gallery() {
+  return (
+    <section>
+      <h1>了不起的科学家们</h1>
+      <Profile />
+      <Profile />
+      <Profile />
+    </section>
+  );
+}
+```
+
+使用`import`导入组件：
+
+```jsx
+import Gallery from './Gallery.js';
+
+export default function App() {
+  return (
+    <Gallery />
+  );
+}
+```
+
 ## Props
 
 常规的HTML元素具有`属性`，您可以使用这些属性传递信息片段，从而`改变这些元素的行为`。
@@ -146,5 +188,4 @@ React组件应该`大写`以区分它们与普通的 HTML 和 JavaScript。
 > 例如，更改元素的`src属性`会更改显示的图像。更改标签的href属性会更改链接的目的地。
 
 同样地，您可以将信息片段作为属性传递给React组件。这些被称为`props`。
-
 

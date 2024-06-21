@@ -9,29 +9,49 @@
         <module name="data_structures" />
         <module name="hello_jsp" />
         <module name="design_pattern" />
-        <module name="spring-hello" />
-        <module name="maven-hello" />
         <module name="hello-servlet" />
-        <module name="http-servlet-request-demo" />
-        <module name="servlet-context" />
-        <module name="annotation_servlet" />
+        <module name="aop-aspect" />
         <module name="jsp_jstl" />
-        <module name="http-servlet-response-demo" />
         <module name="jdbc-hello" />
         <module name="session_and_cookie" />
-        <module name="jsp_el" />
         <module name="listener-hello" />
         <module name="javase" />
         <module name="http-servlet" />
-        <module name="generic-servlet" />
-        <module name="servlet-config" />
-        <module name="programming-notes" />
         <module name="filter-hello" />
+        <module name="servlet-config" />
         <module name="algorithm" />
+        <module name="spring-hello" />
+        <module name="maven-hello" />
+        <module name="http-servlet-request-demo" />
+        <module name="servlet-context" />
+        <module name="annotation_servlet" />
+        <module name="http-servlet-response-demo" />
+        <module name="jsp_el" />
+        <module name="generic-servlet" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
-      <module name="hello_servlet" target="17" />
+      <module name="algorithm (1)" target="17" />
+      <module name="annotation_servlet (1)" target="11" />
+      <module name="data_structures (1)" target="17" />
+      <module name="design_pattern (1)" target="17" />
+      <module name="filter-hello (1)" target="11" />
+      <module name="generic-servlet (1)" target="11" />
+      <module name="hello-servlet (1)" target="17" />
+      <module name="hello_jsp (1)" target="11" />
+      <module name="http-servlet (1)" target="11" />
+      <module name="http-servlet-request-demo (1)" target="11" />
+      <module name="http-servlet-response-demo (1)" target="11" />
+      <module name="javase (1)" target="17" />
+      <module name="jdbc-hello (1)" target="17" />
+      <module name="jsp_el (1)" target="11" />
+      <module name="jsp_jstl (1)" target="11" />
+      <module name="listener-hello (1)" target="11" />
+      <module name="maven-hello (1)" target="17" />
+      <module name="servlet-config (1)" target="11" />
+      <module name="servlet-context (1)" target="11" />
+      <module name="session_and_cookie (1)" target="11" />
+      <module name="spring-hello (1)" target="17" />
     </bytecodeTargetLevel>
   </component>
 </project>

@@ -12,22 +12,21 @@
     const app = document.getElementById('app');
     const root = ReactDOM.createRoot(app);
 
-
     /*Header组件*/
-    function Header() {
-        return <h1>Develop. Preview. Ship.</h1>;
+    function Paragraph() {
+        return <p>Hello Components</p>;
     }
 
     /*HomePage组件*/
     function HomePage() {
         return (
             <div>
-                {/* Nesting the Header component */}
-                <Header/>
+                {/*组件可以复用*/}
+                <Paragraph/>
+                <Paragraph/>
             </div>
         );
     }
-
 
     // 您可以像使用常规HTML标签一样使用React组件，使用尖括号
     root.render(<HomePage />);

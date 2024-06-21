@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/source/front_end/react/basic/react-demo.iml" filepath="$PROJECT_DIR$/source/front_end/react/basic/react-demo.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/programming-notes.iml" filepath="$PROJECT_DIR$/.idea/programming-notes.iml" />
     </modules>
   </component>
 </project>

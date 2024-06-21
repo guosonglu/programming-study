@@ -20,6 +20,32 @@
 
 ### 代码实现
 
+服务接口：
+
+``` java
+--8<-- "docs/topics/design_pattern/src/main/java/com/luguosong/structural/proxy/static_proxy/UserService.java"
+```
+
+服务具体实现：
+
+``` java
+--8<-- "docs/topics/design_pattern/src/main/java/com/luguosong/structural/proxy/static_proxy/UserServiceImpl.java"
+```
+
+静态代理：
+
+``` java
+--8<-- "docs/topics/design_pattern/src/main/java/com/luguosong/structural/proxy/static_proxy/UserServiceProxy.java"
+```
+
+测试代码：
+
+``` java
+--8<-- "docs/topics/design_pattern/src/main/java/com/luguosong/structural/proxy/static_proxy/Test.java"
+```
+
+
+
 ### 静态代理存在的问题
 
 - 需要为所有想要被代理的`服务（Service）`编写`代理类（Proxy）`，会导致代理类爆炸式增多。
@@ -28,16 +54,55 @@
 
 ### JDK动态代理
 
+服务接口：
+
+``` java
+--8<-- "docs/topics/design_pattern/src/main/java/com/luguosong/structural/proxy/dynamic_proxy_jdk/UserService.java"
+```
+
+服务具体实现：
+
+``` java
+--8<-- "docs/topics/design_pattern/src/main/java/com/luguosong/structural/proxy/dynamic_proxy_jdk/UserServiceImpl.java"
+```
+
+在测试类中直接生成代理对象：
+
+``` java
+--8<-- "docs/topics/design_pattern/src/main/java/com/luguosong/structural/proxy/dynamic_proxy_jdk/Test.java"
+```
+
 ### cglib动态代理
 
 使用cglib动态代理需要导入相关依赖：
 
 ```xml
 
-<dependency>
-    <groupId>cglib</groupId>
-    <artifactId>cglib</artifactId>
-    <version>3.3.0</version>
-</dependency>
+<dependencies>
+    <!--❌这个依赖已经不维护了，JDK17调用会报错-->
+    <dependency>
+        <groupId>cglib</groupId>
+        <artifactId>cglib</artifactId>
+        <version>3.3.0</version>
+    </dependency>
+
+    <!--可以使用Spring内部的cglib实现，支持JDK17-->
+    <dependency>
+        <groupId>org.springframework</groupId>
+        <artifactId>spring-context</artifactId>
+        <version>6.1.8</version>
+    </dependency>
+</dependencies>
 ```
 
+没有接口的服务类：
+
+``` java
+--8<-- "docs/topics/design_pattern/src/main/java/com/luguosong/structural/proxy/dynamic_proxy_cglib/UserServiceImpl.java"
+```
+
+在测试类中动态创建代理对象：
+
+``` java
+--8<-- "docs/topics/design_pattern/src/main/java/com/luguosong/structural/proxy/dynamic_proxy_cglib/Test.java"
+```

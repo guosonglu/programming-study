@@ -69,6 +69,28 @@
         <option value="$PROJECT_DIR$/docs/java_serve/spring/basic/demo/spring-hello/pom.xml" />
         <option value="$PROJECT_DIR$/docs/java_serve/spring/basic/spring-hello/pom.xml" />
         <option value="$PROJECT_DIR$/docs/java_serve/database/jdbc/jdbc-hello/pom.xml" />
+        <option value="$PROJECT_DIR$/docs/java_serve/spring/aop/aop-aspect/pom.xml" />
+        <option value="$PROJECT_DIR$/site/java/javase/pom.xml" />
+        <option value="$PROJECT_DIR$/site/basic/data_structures_and_algorithm_analysis/algorithm/pom.xml" />
+        <option value="$PROJECT_DIR$/site/basic/data_structures_and_algorithm_analysis/data_structures/pom.xml" />
+        <option value="$PROJECT_DIR$/site/topics/maven/base/maven-hello/pom.xml" />
+        <option value="$PROJECT_DIR$/site/topics/design_pattern/pom.xml" />
+        <option value="$PROJECT_DIR$/site/java_serve/spring/basic/spring-hello/pom.xml" />
+        <option value="$PROJECT_DIR$/site/java_serve/database/jdbc/jdbc-hello/pom.xml" />
+        <option value="$PROJECT_DIR$/site/java_serve/web_application/jsp/jsp_el/pom.xml" />
+        <option value="$PROJECT_DIR$/site/java_serve/web_application/jsp/jsp_jstl/pom.xml" />
+        <option value="$PROJECT_DIR$/site/java_serve/web_application/jsp/hello_jsp/pom.xml" />
+        <option value="$PROJECT_DIR$/site/java_serve/web_application/servlet/http-servlet/pom.xml" />
+        <option value="$PROJECT_DIR$/site/java_serve/web_application/servlet/hello-servlet/pom.xml" />
+        <option value="$PROJECT_DIR$/site/java_serve/web_application/servlet/servlet-config/pom.xml" />
+        <option value="$PROJECT_DIR$/site/java_serve/web_application/servlet/generic-servlet/pom.xml" />
+        <option value="$PROJECT_DIR$/site/java_serve/web_application/servlet/servlet-context/pom.xml" />
+        <option value="$PROJECT_DIR$/site/java_serve/web_application/servlet/annotation_servlet/pom.xml" />
+        <option value="$PROJECT_DIR$/site/java_serve/web_application/servlet/http-servlet-request-demo/pom.xml" />
+        <option value="$PROJECT_DIR$/site/java_serve/web_application/servlet/http-servlet-response-demo/pom.xml" />
+        <option value="$PROJECT_DIR$/site/java_serve/web_application/session_cookie/session_and_cookie/pom.xml" />
+        <option value="$PROJECT_DIR$/site/java_serve/web_application/filter_listener/filter-hello/pom.xml" />
+        <option value="$PROJECT_DIR$/site/java_serve/web_application/filter_listener/listener-hello/pom.xml" />
       </list>
     </option>
     <option name="ignoredFiles">
@@ -77,7 +99,7 @@
       </set>
     </option>
   </component>
-  <component name="ProjectRootManager" version="2" languageLevel="JDK_17" default="true" project-jdk-name="17" project-jdk-type="JavaSDK">
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_17" project-jdk-name="17" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/out" />
   </component>
 </project>
