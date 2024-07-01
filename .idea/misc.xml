@@ -91,6 +91,7 @@
         <option value="$PROJECT_DIR$/site/java_serve/web_application/session_cookie/session_and_cookie/pom.xml" />
         <option value="$PROJECT_DIR$/site/java_serve/web_application/filter_listener/filter-hello/pom.xml" />
         <option value="$PROJECT_DIR$/site/java_serve/web_application/filter_listener/listener-hello/pom.xml" />
+        <option value="$PROJECT_DIR$/docs/java_serve/web_application/mvc/springmvc-hello/pom.xml" />
       </list>
     </option>
     <option name="ignoredFiles">

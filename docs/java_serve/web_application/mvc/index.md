@@ -46,4 +46,55 @@
     - 统一使用IOC容器管理对象
     - 统一请求处理：提供拦截器、统一异常处理等机制
     - 视图解析：轻松切换JSP、Freemarker、Velocity等视图模板
+    - 对Controller进行单元测试时，不依赖Tomcat Web服务器
 
+## Spring MVC入门案例
+
+创建maven工程，将工程改为war包，引入依赖：
+
+``` xml
+--8<-- "docs/java_serve/web_application/mvc/springmvc-hello/pom.xml"
+```
+
+在web.xml中配置前端控制器（DispatcherServlet）：
+
+``` xml
+--8<-- "docs/java_serve/web_application/mvc/springmvc-hello/src/main/webapp/WEB-INF/web.xml"
+```
+
+在Spring MVC配置文件配置包扫描视图解析器：
+
+> 其中常见的视图解析器有以下几种：
+> 
+> - JSP的视图解析器：InternalResourceViewResolver
+> - FreeMarker的视图解析器：FreeMarkerViewResolver
+> - Velocity的视图解析器：VelocityViewResolver
+
+``` xml
+--8<-- "docs/java_serve/web_application/mvc/springmvc-hello/src/main/webapp/WEB-INF/springmvc-servlet.xml"
+```
+
+编写视图：
+
+``` html title="hello.thymeleaf"
+--8<-- "docs/java_serve/web_application/mvc/springmvc-hello/src/main/webapp/WEB-INF/template/hello.thymeleaf"
+```
+
+编写Controller：
+
+``` java
+--8<-- "docs/java_serve/web_application/mvc/springmvc-hello/src/main/java/com/luguosong/controller/HelloController.java"
+```
+
+启动Tomcat，通过以下地址可以访问视图：
+
+```text
+http://localhost:8080/springmvc_hello_war_exploded/hello-mvc
+```
+
+## Spring MVC执行流程
+
+<figure markdown="span">
+  ![](https://cdn.jsdelivr.net/gh/luguosong/images@master/diagrams/java_serve/web_application/mvc/SpringMVC%E6%89%A7%E8%A1%8C%E8%BF%87%E7%A8%8B.svg){ loading=lazy }
+  <figcaption>Spring MVC执行流程</figcaption>
+</figure>

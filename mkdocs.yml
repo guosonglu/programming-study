@@ -155,6 +155,7 @@ nav:
           - 语句: front_end/js/05_Statements/index.md
           - 对象: front_end/js/06_Objects/index.md
           - 数组: front_end/js/07_Arrays/index.md
+          - 异步编程: front_end/js/13_Asynchronous_JavaScript/index.md
       - TypeScript:
           - front_end/typescript/index.md
           - 基本语法: front_end/typescript/basic/index.md
@@ -193,6 +194,9 @@ nav:
       - 数据库开发:
           - java_serve/database/index.md
           - JDBC: java_serve/database/jdbc/index.md
+      - 分布式/微服务:
+          - java_serve/distributed/index.md
+          - 网关: java_serve/distributed/gateway/index.md
   - 专项研究:
       - topics/index.md
       - 设计模式:
@@ -233,11 +237,12 @@ nav:
           - other/website_building/index.md
           - 网站配置: other/website_building/website_building.md
           - markdown示例: other/website_building/demo.md
-      - 文章:
-          - other/articles/index.md
       - Window命令笔记: other/windows_cmd/index.md
       - MathJax:
           - other/mathjax/index.md
           - 公式代码示例: other/mathjax/formulas/index.md
+      - 历史:
+          - other/history/index.md
+          - 中国史: other/history/chinese_history/index.md
 
 
