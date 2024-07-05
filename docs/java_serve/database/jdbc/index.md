@@ -28,6 +28,20 @@ JDBC编程可以分为以下三个步骤：
 - 代码如下：
 
 ``` java
---8<-- "docs/java_serve/database/jdbc/jdbc-hello/src/main/java/com/luguosong/JDBCHello.java"
+--8<-- "docs/java_serve/database/jdbc/jdbc-demo/src/main/java/com/luguosong/JDBCHello.java"
 ```
 
+!!! warning
+
+    JDBC4.0之后 自动扫描jar包下这个文件，理论上是不用我们主动的注册驱动，方便了我们的编程。
+
+    <figure markdown="span">
+      ![](https://cdn.jsdelivr.net/gh/luguosong/images@master/blog-img/202407022117913.png){ loading=lazy }
+      <figcaption></figcaption>
+    </figure>
+
+## Sql注入
+
+### Sql注入问题
+
+### prepareStatement解决Sql注入

@@ -111,12 +111,13 @@ plugins:
 extra_css:
   - custom/css/font.css
   - custom/css/custom.css
+  - //cdn.bootcss.com/font-awesome/4.3.0/css/font-awesome.min.css
 
 extra_javascript:
   - custom/js/custom.js
-  - javascripts/mathjax.js
-  - https://polyfill.io/v3/polyfill.min.js?features=es6
+  - custom/js/mathjax.js
   - https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js
+  - //busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js
 
 exclude_docs: |
   **/node_modules
@@ -194,6 +195,8 @@ nav:
       - 数据库开发:
           - java_serve/database/index.md
           - JDBC: java_serve/database/jdbc/index.md
+          - Mybatis: java_serve/database/mybatis/index.md
+          - Mybatis Plus: java_serve/database/mybatis_plus/index.md
       - 分布式/微服务:
           - java_serve/distributed/index.md
           - 网关: java_serve/distributed/gateway/index.md
@@ -224,6 +227,13 @@ nav:
           - shell脚本: topics/linux/shell/index.md
           - 使用者管理: topics/linux/user_management/index.md
           - 系统管理员: topics/linux/system_administrator/index.md
+      - iText库-PDF签章:
+          - topics/itext-signatures/src/main/java/com/luguosong/index.md
+          - 理解数字签名的概念: topics/itext-signatures/src/main/java/com/luguosong/chapter01_understanding_the_concept_of_digital_signatures/index.md
+          - PDF和数字签名: topics/itext-signatures/src/main/java/com/luguosong/chapter02_pdf_and_digital_signatures/index.md
+          - 证书颁发机构、证书吊销和时间戳: topics/itext-signatures/src/main/java/com/luguosong/chapter03_certificate_authorities_certificate_revocation_and_time_stamping/index.md
+          - 外部创建签名: topics/itext-signatures/src/main/java/com/luguosong/chapter04_creating_signatures_externally/index.md
+          - 签名文档的验证: topics/itext-signatures/src/main/java/com/luguosong/chapter05_validation_of_signed_documents/index.md
   - 英语:
       - english/index.md
       - 音标: english/phonetic_symbol.md

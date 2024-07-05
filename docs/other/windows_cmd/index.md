@@ -1,5 +1,5 @@
 ---
-icon: simple/windows11
+icon: material/microsoft-windows
 ---
 
 # windows命令

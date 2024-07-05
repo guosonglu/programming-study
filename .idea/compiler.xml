@@ -7,28 +7,32 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="data_structures" />
+        <module name="gateway-hello" />
+        <module name="itext-signatures" />
         <module name="hello_jsp" />
         <module name="design_pattern" />
-        <module name="spring-hello" />
         <module name="hello-servlet" />
-        <module name="maven-hello" />
-        <module name="http-servlet-request-demo" />
+        <module name="mybatis-hello" />
         <module name="aop-aspect" />
-        <module name="servlet-context" />
         <module name="jsp_jstl" />
-        <module name="annotation_servlet" />
-        <module name="http-servlet-response-demo" />
-        <module name="jdbc-hello" />
         <module name="session_and_cookie" />
-        <module name="jsp_el" />
         <module name="listener-hello" />
-        <module name="springmvc-hello" />
         <module name="javase" />
         <module name="http-servlet" />
         <module name="filter-hello" />
         <module name="servlet-config" />
-        <module name="generic-servlet" />
         <module name="algorithm" />
+        <module name="spring-hello" />
+        <module name="maven-hello" />
+        <module name="http-servlet-request-demo" />
+        <module name="gateway-hello-target" />
+        <module name="servlet-context" />
+        <module name="annotation_servlet" />
+        <module name="http-servlet-response-demo" />
+        <module name="jdbc-demo" />
+        <module name="jsp_el" />
+        <module name="springmvc-hello" />
+        <module name="generic-servlet" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
@@ -54,5 +58,11 @@
       <module name="session_and_cookie (1)" target="11" />
       <module name="spring-hello (1)" target="17" />
     </bytecodeTargetLevel>
+  </component>
+  <component name="JavacSettings">
+    <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="gateway-hello" options="-parameters" />
+      <module name="gateway-hello-target" options="-parameters" />
+    </option>
   </component>
 </project>
