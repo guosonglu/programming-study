@@ -43,6 +43,20 @@
     content: counter(section-1) "." counter(section-2) "." counter(section-3) "." counter(section-4) " ";
 }
 
+/*不限制内容的宽度*/
+.md-grid {
+    max-width: none;
+}
+
+.md-typeset .admonition, .md-typeset details {
+    margin: 1.5625em 3rem;
+}
+
+/*段落首行缩进*/
+p {
+    text-indent: 2em;
+}
+
 /*评论不需要前缀*/
 .md-typeset #__comments:before {
     content: none
