@@ -4,7 +4,7 @@
 }
 
 .md-typeset {
-    counter-reset: section-1, section-2, section-3, section-4;
+    counter-reset: section-1;
 }
 
 .md-typeset h2 {
@@ -50,6 +50,23 @@
 
 .md-typeset .admonition, .md-typeset details {
     margin: 1.5625em 3rem;
+}
+
+/*[dir=ltr] .md-nav--secondary .md-nav__list {*/
+/*    padding-left: 1rem;*/
+/*}*/
+
+/*.md-nav--secondary .md-nav__list {*/
+/*    counter-reset: item*/
+/*}*/
+
+/*.md-nav--secondary .md-ellipsis:before {*/
+/*    content: counters(item, ".") " ";*/
+/*    counter-increment: item*/
+/*}*/
+
+.md-main__inner{
+    margin: 1rem;
 }
 
 /*段落首行缩进*/

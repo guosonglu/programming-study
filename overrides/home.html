@@ -8,6 +8,17 @@
         font-weight: 300;
         line-height: 1.4;
     }
+
+    .statistics > div {
+        display: none;
+    }
+
+    .statistics > p {
+        text-indent: 0;
+        font-size: 0.6rem;
+    }
+
+
 </style>
 {% endblock %}
 
@@ -25,11 +36,14 @@
 </p>
 <hr>
 <span id="busuanzi_container_site_uv" style="font-size: 0.6rem">
-  本站访客数<span id="busuanzi_value_site_uv" style="margin: 0 5px">
-    <i class="fa fa-spinner fa-spin"></i>
-</span>人次
+    本站访客数
+    <span id="busuanzi_value_site_uv" style="margin: 0 5px;color: #73a0c5">
+        <i class="fa fa-spinner fa-spin"></i>
+    </span>人次
 </span>
+<div class="statistics">{{ page.content }}</div>
 {% endblock %}
+
 
 <!--隐藏网站导航-->
 {% block site_nav %}

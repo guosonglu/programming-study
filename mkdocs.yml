@@ -93,6 +93,9 @@ extra:
       name: 微信
 
 plugins:
+  - statistics: # 字数统计插件：https://github.com/TonyCrane/mkdocs-statistics-plugin
+      words_per_minute: 50
+      codelines_per_minute: 30
   - search
   - glightbox: # 图片查看插件
       touchNavigation: true
@@ -136,8 +139,8 @@ nav:
           - 应用层-HTTP: basic/computer_network/application_http/index.md
       - 数据结构与算法分析:
           - basic/data_structures_and_algorithm_analysis/index.md
-          - 数据结构: basic/data_structures_and_algorithm_analysis/data_structures/index.md
-          - 算法: basic/data_structures_and_algorithm_analysis/algorithm/index.md
+          - 数据结构: basic/data_structures_and_algorithm_analysis/data_structures/src/main/java/com/luguosong/index.md
+          - 算法: basic/data_structures_and_algorithm_analysis/algorithm/src/main/java/com/luguosong/index.md
 
   - 前端:
       - front_end/index.md
