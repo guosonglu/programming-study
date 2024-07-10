@@ -568,8 +568,6 @@ public class Department {
 </mapper>
 ```
 
-
-
 ### resultMap处理一对多
 
 > 需求：部门和用户之间的`一对多`关系，查询部门以及部门下的所有员工。
@@ -595,6 +593,10 @@ public class Department {
 ```
 
 #### collection标签
+
+```xml
+
+```
 
 #### 分步查询
 
