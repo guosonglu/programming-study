@@ -11,43 +11,43 @@
 创建项目，引入maven依赖：
 
 ``` xml
---8<-- "docs/java_serve/database/mybatis/mybatis-hello/pom.xml"
+--8<-- "docs/java_serve/database/mybatis/mybatis-demo/pom.xml"
 ```
 
 创建核心配置文件：
 
 ``` xml
---8<-- "docs/java_serve/database/mybatis/mybatis-hello/src/main/resources/mybatis-config.xml"
+--8<-- "docs/java_serve/database/mybatis/mybatis-demo/src/main/resources/mybatis-config-hello.xml"
 ```
 
 编写实体类：
 
 ``` java
---8<-- "docs/java_serve/database/mybatis/mybatis-hello/src/main/java/com/luguosong/pojo/Car.java"
+--8<-- "docs/java_serve/database/mybatis/mybatis-demo/src/main/java/com/luguosong/hello/pojo/Employees.java"
 ```
 
 编写Mapper接口：
 
 ``` java
---8<-- "docs/java_serve/database/mybatis/mybatis-hello/src/main/java/com/luguosong/mapper/CarMapper.java"
+--8<-- "docs/java_serve/database/mybatis/mybatis-demo/src/main/java/com/luguosong/hello/mapper/EmployeesMapper.java"
 ```
 
 编写Mapper映射文件：
 
 ``` xml
---8<-- "docs/java_serve/database/mybatis/mybatis-hello/src/main/resources/com/luguosong/mapper/CarMapper.xml"
+--8<-- "docs/java_serve/database/mybatis/mybatis-demo/src/main/resources/com/luguosong/hello/mapper/EmployeesMapper.xml"
 ```
 
 配置log4j日志配置文件：
 
 ``` properties
---8<-- "docs/java_serve/database/mybatis/mybatis-hello/src/main/resources/log4j.properties"
+--8<-- "docs/java_serve/database/mybatis/mybatis-demo/src/main/resources/log4j.properties"
 ```
 
 创建测试类：
 
 ``` java
---8<-- "docs/java_serve/database/mybatis/mybatis-hello/src/main/java/com/luguosong/MyBatisTest.java"
+--8<-- "docs/java_serve/database/mybatis/mybatis-demo/src/main/java/com/luguosong/hello/Test.java"
 ```
 
 ## Mybatis核心配置文件
@@ -193,18 +193,8 @@ password=123456
 
 `${xxx}`表示采用字符串拼接的方式生成sql语句
 
-```xml
-
-<mapper namespace="xxx">
-    <select id="xxx" resultType="xxx">
-        select * from t_car where id = ${id}
-    </select>
-
-    <!--如果参数是字符串，需要手动加上引号-->
-    <select id="xxx" resultType="xxx">
-        select * from t_car where name = '${name}'
-    </select>
-</mapper>
+``` xml
+--8<-- "docs/java_serve/database/mybatis/mybatis-demo/src/main/resources/com/luguosong/get_param/string_splicing/mapper/EmployeesMapper.xml"
 ```
 
 !!! warning
@@ -215,77 +205,40 @@ password=123456
 
 `#{xxx}`表示采用占位符赋值的方式生成sql语句
 
-```xml
-
-<mapper namespace="xxx">
-    <!--Car selectCarById(Integer id);-->
-    <select id="xxx" resultType="xxx">
-        select * from t_car where id = #{id}
-    </select>
-</mapper>
+``` xml
+--8<-- "docs/java_serve/database/mybatis/mybatis-demo/src/main/resources/com/luguosong/get_param/placeholder/mapper/EmployeesMapper.xml"
 ```
 
 ### 单个参数
 
-```xml title="单个参数的情况"
-
-<mapper namespace="xxx">
-    <!--Car selectCarById(Integer id);-->
-    <select id="xxx" resultType="xxx">
-        select * from t_car where id = #{id}
-    </select>
-
-    <!--当只有一个参数时，#{}中键名可以随便写-->
-    <select id="xxx" resultType="xxx">
-        select * from t_car where id = #{aaa}
-    </select>
-</mapper>
+``` xml
+--8<-- "docs/java_serve/database/mybatis/mybatis-demo/src/main/resources/com/luguosong/get_param/single_parameter/mapper/EmployeesMapper.xml"
 ```
 
 ### 多个参数传递
 
 多个参数时，Mybatis会采用`默认键名`将参数封装到Mapper集合中。
 
-```xml title="多个参数的情况"
-
-<mapper namespace="xxx">
-    <!--多个参数的情况-->
-    <!--User selectUser(String username, String password);-->
-    <select id="xxx" resultType="xxx">
-        select * from t_user where username = #{arg0} and password = #{arg1}
-    </select>
-    <!--或-->
-    <select id="xxx" resultType="xxx">
-        select * from t_user where username = #{param0} and password = #{param1}
-    </select>
-</mapper>
+``` xml
+--8<-- "docs/java_serve/database/mybatis/mybatis-demo/src/main/resources/com/luguosong/get_param/multiple_parameters/mapper/EmployeesMapper.xml"
 ```
 
 ### 多个参数传递-@Param
 
 `@Param`会将参数以指定`键名`封装进Mapper集合中。
 
-```xml
+``` java
+--8<-- "docs/java_serve/database/mybatis/mybatis-demo/src/main/java/com/luguosong/get_param/param_annotation/mapper/EmployeesMapper.java"
+```
 
-<mapper namespace="xxx">
-    <!--User selectUser(@Param("username") String username, @Param("password") String password);-->
-    <select id="xxx" resultType="xxx">
-        select * from t_user where username = #{username} and password = #{password}
-    </select>
-</mapper>
+``` xml
+--8<-- "docs/java_serve/database/mybatis/mybatis-demo/src/main/resources/com/luguosong/get_param/param_annotation/mapper/EmployeesMapper.xml"
 ```
 
 ### 对象和Mapper集合
 
-```xml title="适用于对象和mapper集合"
-
-<mapper namespace="xxx">
-    <!--当参数为对象，参与对象中的字段名获取参数-->
-    <!--User selectUser(User user);-->
-    <select id="xxx" resultType="xxx">
-        select * from t_user where username = #{username} and password = #{password}
-    </select>
-</mapper>
+``` xml
+--8<-- "docs/java_serve/database/mybatis/mybatis-demo/src/main/resources/com/luguosong/get_param/object_and_mapper/mapper/EmployeesMapper.xml"
 ```
 
 ### 模糊查询
@@ -408,7 +361,9 @@ Mapper接口采用`List集合`接收
 
 ### 表和实体类字段名不一致
 
-解决方式一：查询结果使用`别名`,将表中的字段名改为与实体类字段名一致。
+#### 使用别名
+
+查询结果使用`别名`,将表中的字段名改为与实体类字段名一致。
 
 ```xml
 
@@ -421,7 +376,9 @@ Mapper接口采用`List集合`接收
 </mapper>
 ```
 
-解决方案二：在核心配置文件中进行配置，让数据库字段名自动转换为实体类字段名。
+#### mapUnderscoreToCamelCase
+
+在核心配置文件中进行配置，让数据库字段名自动转换为实体类字段名。
 
 > 比如：可以自动将phone_number转为phoneNumber
 
@@ -435,7 +392,7 @@ Mapper接口采用`List集合`接收
 </configuration>
 ```
 
-解决方案三：使用ResultMap
+#### 使用ResultMap
 
 ```xml
 
@@ -458,74 +415,18 @@ Mapper接口采用`List集合`接收
 
 > 需求：用户和部门之间的`多对一`关系，查询员工以及员工所在部门。
 
-```java title="用户实体类"
-public class User {
-    private int id;
-    private String name;
-    private int age;
-    private int departmentId;
-    // 嵌入部门对象
-    private Department department;
-    // getters and setters
-}
+``` java
+--8<-- "docs/java_serve/database/mybatis/mybatis-demo/src/main/java/com/luguosong/many_to_one/pojo/Employees.java"
 ```
 
-```java title="部门实体类"
-public class Department {
-    private int id;
-    private String name;
-    // getters and setters
-}
-```
-
-#### 嵌套属性映射
-
-```xml
-
-<mapper namespace="com.example.UserMapper">
-    <resultMap id="userResultMap" type="User">
-        <id property="id" column="u.id"/>
-        <result property="name" column="u.name"/>
-        <result property="age" column="u.age"/>
-        <result property="department.id" column="d.id"/>
-        <result property="department.name" column="d.name"/>
-    </resultMap>
-
-    <!--User selectUserById(Integer id);-->
-    <select id="selectUserById" resultMap="userResultMap">
-        SELECT u.id, u.name, u.age,
-        d.id , d.name
-        FROM user u
-        LEFT JOIN department d ON u.departmentId = d.id
-        WHERE u.id = #{id}
-    </select>
-</mapper>
+``` java
+--8<-- "docs/java_serve/database/mybatis/mybatis-demo/src/main/java/com/luguosong/many_to_one/pojo/Departments.java"
 ```
 
 #### association标签
 
-```xml
-
-<mapper namespace="com.example.UserMapper">
-    <resultMap id="userResultMap" type="User">
-        <id property="id" column="u.id"/>
-        <result property="name" column="u.name"/>
-        <result property="age" column="u.age"/>
-        <association property="department" javaType="Department">
-            <id property="id" column="d.id"/>
-            <id property="name" column="d.name"/>
-        </association>
-    </resultMap>
-
-    <!--User selectUserById(Integer id);-->
-    <select id="selectUserById" resultMap="userResultMap">
-        SELECT u.id, u.name, u.age,
-        d.id , d.name
-        FROM user u
-        LEFT JOIN department d ON u.departmentId = d.id
-        WHERE u.id = #{id}
-    </select>
-</mapper>
+``` xml
+--8<-- "docs/java_serve/database/mybatis/mybatis-demo/src/main/resources/com/luguosong/many_to_one/association/mapper/EmployeesMapper.xml"
 ```
 
 #### 分步查询
@@ -602,7 +503,7 @@ public class Department {
 
 ### 延迟加载
 
-使用分步查询时，可以开启延迟加载，第二步查询会延迟执行：
+使用`分步查询`时，可以开启延迟加载，第二步查询会延迟执行：
 
 ```xml
 

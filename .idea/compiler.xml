@@ -2,6 +2,7 @@
 <project version="4">
   <component name="CompilerConfiguration">
     <annotationProcessing>
+      <profile default="true" name="Default" enabled="true" />
       <profile name="Maven default annotation processors profile" enabled="true">
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
@@ -12,7 +13,6 @@
         <module name="hello_jsp" />
         <module name="design_pattern" />
         <module name="hello-servlet" />
-        <module name="mybatis-hello" />
         <module name="aop-aspect" />
         <module name="jsp_jstl" />
         <module name="session_and_cookie" />
@@ -32,6 +32,7 @@
         <module name="jdbc-demo" />
         <module name="jsp_el" />
         <module name="springmvc-hello" />
+        <module name="mybatis-demo" />
         <module name="generic-servlet" />
       </profile>
     </annotationProcessing>
