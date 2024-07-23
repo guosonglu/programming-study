@@ -108,7 +108,6 @@ plugins:
       auto_caption: true
       caption_position: bottom
   - search
-  - git-revision-date-localized
   - minify:
       minify_html: true
       minify_js: true
