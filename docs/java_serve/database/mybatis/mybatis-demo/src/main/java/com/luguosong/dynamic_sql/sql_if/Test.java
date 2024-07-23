@@ -1,8 +1,8 @@
-package com.luguosong.many_to_one.step_by_step;
+package com.luguosong.dynamic_sql.sql_if;
 
 
-import com.luguosong.many_to_one.pojo.Employees;
-import com.luguosong.many_to_one.step_by_step.mapper.EmployeesMapper;
+import com.luguosong.dynamic_sql.pojo.Employees;
+import com.luguosong.dynamic_sql.sql_if.mapper.EmployeesMapper;
 import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
@@ -10,6 +10,7 @@ import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.List;
 
 /**
  * @author luguosong
@@ -21,14 +22,18 @@ public class Test {
         SqlSessionFactory factory = builder.build(is);
         // 表示Java程序与数据库之间的会话
         SqlSession sqlSession = factory.openSession();
-        // 动态创建Mapper接口对应的对象
+
         EmployeesMapper mapper = sqlSession.getMapper(EmployeesMapper.class);
-        Employees employees = mapper.getEmployeesById(5);
 
-        //因为开启了延迟加载，如果只是获取员工属性，只会执行第一步sql
-        System.out.println(employees.getFirstName());
+        Employees select1 = new Employees();
+        select1.setFirstName("强");
+        List<Employees> employees1 = mapper.selectEmployees(select1);
+        System.out.println(employees1);
 
-        //当获取全部属性（包括部门属性），会执行第二步sql
-        System.out.println(employees);
+        Employees select2 = new Employees();
+        select2.setLastName("王");
+        List<Employees> employees2 = mapper.selectEmployees(select2);
+        System.out.println(employees2);
+
     }
 }

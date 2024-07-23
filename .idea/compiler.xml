@@ -15,6 +15,7 @@
         <module name="hello-servlet" />
         <module name="aop-aspect" />
         <module name="jsp_jstl" />
+        <module name="mybatis-generator" />
         <module name="session_and_cookie" />
         <module name="listener-hello" />
         <module name="javase" />

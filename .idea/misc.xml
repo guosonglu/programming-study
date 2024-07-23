@@ -102,6 +102,7 @@
         <option value="$PROJECT_DIR$/docs/other/itext-signatures/pom.xml" />
         <option value="$PROJECT_DIR$/docs/topics/itext-signatures/pom.xml" />
         <option value="$PROJECT_DIR$/docs/java_serve/database/mybatis/mybatis-demo/pom.xml" />
+        <option value="$PROJECT_DIR$/docs/java_serve/database/mybatis/mybatis-generator/pom.xml" />
       </list>
     </option>
     <option name="ignoredFiles">

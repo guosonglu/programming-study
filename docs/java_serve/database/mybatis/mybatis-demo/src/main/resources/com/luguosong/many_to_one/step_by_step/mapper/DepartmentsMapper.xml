@@ -6,9 +6,9 @@
 
 <mapper namespace="com.luguosong.many_to_one.step_by_step.mapper.DepartmentsMapper">
 
-
-
-    <select id="getEmployeesById" resultMap="">
-
+    <select id="getDepartmentsById" resultType="com.luguosong.many_to_one.pojo.Departments">
+        SELECT *
+        FROM departments
+        WHERE id = #{id}
     </select>
 </mapper>

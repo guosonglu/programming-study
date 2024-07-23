@@ -1,8 +1,10 @@
-package com.luguosong.many_to_one.step_by_step;
+package com.luguosong.one_to_many.step_by_step;
 
 
 import com.luguosong.many_to_one.pojo.Employees;
-import com.luguosong.many_to_one.step_by_step.mapper.EmployeesMapper;
+import com.luguosong.one_to_many.pojo.Departments;
+import com.luguosong.one_to_many.step_by_step.mapper.DepartmentsMapper;
+import com.luguosong.one_to_many.step_by_step.mapper.EmployeesMapper;
 import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
@@ -22,13 +24,13 @@ public class Test {
         // 表示Java程序与数据库之间的会话
         SqlSession sqlSession = factory.openSession();
         // 动态创建Mapper接口对应的对象
-        EmployeesMapper mapper = sqlSession.getMapper(EmployeesMapper.class);
-        Employees employees = mapper.getEmployeesById(5);
+        DepartmentsMapper mapper = sqlSession.getMapper(DepartmentsMapper.class);
+        Departments departments = mapper.getDepartmentsById(2);
 
-        //因为开启了延迟加载，如果只是获取员工属性，只会执行第一步sql
-        System.out.println(employees.getFirstName());
+        //因为开启了延迟加载，如果只是获取部门属性，只会执行第一步sql
+        System.out.println(departments.getDepartmentName());
 
-        //当获取全部属性（包括部门属性），会执行第二步sql
-        System.out.println(employees);
+        //当获取全部属性（包括员工信息），会执行第二步sql
+        System.out.println(departments);
     }
 }

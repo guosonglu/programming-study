@@ -435,75 +435,76 @@ Mapper接口采用`List集合`接收
 
     - 每个查询是分开的，可以单独使用，也可以合并使用
 
-```xml title="根据id查询部门"
+第一步：
 
-<mapper namespace="com.example.DepartmentMapper">
-    <!--Department selectDepartmentById(Integer id);-->
-    <select id="selectDepartmentById" resultType="Department">
-        SELECT * FROM department WHERE id = #{id}
-    </select>
-</mapper>
+``` java
+--8<-- "docs/java_serve/database/mybatis/mybatis-demo/src/main/resources/com/luguosong/many_to_one/step_by_step/mapper/EmployeesMapper.xml"
 ```
 
-```xml
+第二步：
 
-<mapper namespace="com.example.UserMapper">
-    <resultMap id="userResultMap" type="User">
-        <id property="id" column="u.id"/>
-        <result property="name" column="u.name"/>
-        <result property="age" column="u.age"/>
-        <!--select表示分步查询的方法-->
-        <!--column表示分步查询的字段（条件）-->
-        <!--fetchType:当核心配置文件开启延迟加载时，
-        fetchType用于控制单个查询是否开启延迟加载，
-        默认为lazy，eager表示立即加载-->
-        <association property="department"
-                     select="com.example.DepartmentMapper.selectDepartmentById"
-                     column="departmentId"
-                     fetchType="eager"/>
-    </resultMap>
-    <!--User selectUserById(Integer id);-->
-    <select id="selectUserById" resultMap="userResultMap">
-        SELECT * FROM user WHERE id = #{id}
-    </select>
-</mapper>
+``` java
+--8<-- "docs/java_serve/database/mybatis/mybatis-demo/src/main/resources/com/luguosong/many_to_one/step_by_step/mapper/DepartmentsMapper.xml"
+```
+
+测试类：
+
+``` java
+--8<-- "docs/java_serve/database/mybatis/mybatis-demo/src/main/java/com/luguosong/many_to_one/step_by_step/Test.java"
+```
+
+执行结果：
+
+```shell
+2024-07-21 17:58:37,388 DEBUG getEmployeesById:135 - ==>  Preparing: SELECT * FROM employees WHERE id = ?
+2024-07-21 17:58:37,413 DEBUG getEmployeesById:135 - ==> Parameters: 5(Integer)
+2024-07-21 17:58:37,483 DEBUG getEmployeesById:135 - <==      Total: 1
+芳
+2024-07-21 17:58:37,485 DEBUG getDepartmentsById:135 - ==>  Preparing: SELECT * FROM departments WHERE id = ?
+2024-07-21 17:58:37,485 DEBUG getDepartmentsById:135 - ==> Parameters: 4(Integer)
+2024-07-21 17:58:37,487 DEBUG getDepartmentsById:135 - <==      Total: 1
+Employees(id=5, firstName=芳, lastName=陈, position=市场专员, hireDate=2016-08-13, departments=Departments(id=4, departmentName=市场部))
 ```
 
 ### resultMap处理一对多
 
 > 需求：部门和用户之间的`一对多`关系，查询部门以及部门下的所有员工。
 
-```java title="用户实体类"
-public class User {
-    private int id;
-    private String name;
-    private int age;
-    private int departmentId;
-    // getters and setters
-}
+``` java
+--8<-- "docs/java_serve/database/mybatis/mybatis-demo/src/main/java/com/luguosong/one_to_many/pojo/Departments.java"
 ```
 
-```java title="部门实体类"
-public class Department {
-    private int id;
-    private String name;
-    //一个部门下有多个员工
-    private List<User> users;
-    // getters and setters
-}
+``` java
+--8<-- "docs/java_serve/database/mybatis/mybatis-demo/src/main/java/com/luguosong/one_to_many/pojo/Employees.java"
 ```
 
 #### collection标签
 
-```xml
-
+``` xml
+--8<-- "docs/java_serve/database/mybatis/mybatis-demo/src/main/resources/com/luguosong/one_to_many/collection/mapper/DepartmentsMapper.xml"
 ```
 
 #### 分步查询
 
+第一步：
+
+``` xml
+--8<-- "docs/java_serve/database/mybatis/mybatis-demo/src/main/resources/com/luguosong/one_to_many/step_by_step/mapper/DepartmentsMapper.xml"
+```
+
+第二步：
+
+``` xml
+--8<-- "docs/java_serve/database/mybatis/mybatis-demo/src/main/resources/com/luguosong/one_to_many/step_by_step/mapper/EmployeesMapper.xml"
+```
+
 ### 延迟加载
 
 使用`分步查询`时，可以开启延迟加载，第二步查询会延迟执行：
+
+- `lazyLoadingEnabled`: 表示开启延迟加载
+- `aggressiveLazyLoading`: 表示是否按需加载，当等于`true`
+  时，任何方法调用都会加载该对象的所有属性。因此开启延迟加载该属性应该设置为`false`
 
 ```xml
 
@@ -515,3 +516,136 @@ public class Department {
     </settings>
 </configuration>
 ```
+
+如果全局设置了延迟加载，希望某个查询不延迟加载，可以通过`fetchType`属性来控制延迟加载，`eager`为不延迟加载，`lazy`为延迟加载。
+
+```xml
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="xxx">
+    <resultMap id="xxx" type="xxx">
+        <!--...-->
+        <association
+                fetchType="eager"
+                select="xxx"
+                column="xxx"
+                property="xxx"/>
+    </resultMap>
+
+    <select id="xxx" resultMap="xxx">
+        ...
+    </select>
+</mapper>
+```
+
+## 动态sql
+
+### if标签
+
+``` xml
+--8<-- "docs/java_serve/database/mybatis/mybatis-demo/src/main/resources/com/luguosong/dynamic_sql/sql_if/mapper/EmployeesMapper.xml"
+```
+
+测试类：
+
+``` java
+--8<-- "docs/java_serve/database/mybatis/mybatis-demo/src/main/java/com/luguosong/dynamic_sql/sql_if/Test.java"
+```
+
+### where标签
+
+可以使用`where标签`替换`where 1=1`这种写法。
+
+``` xml
+--8<-- "docs/java_serve/database/mybatis/mybatis-demo/src/main/resources/com/luguosong/dynamic_sql/sql_where/mapper/EmployeesMapper.xml"
+```
+
+### trim标签
+
+可以通过自定义`trim标签`来定制`where标签`的功能。
+
+```xml
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!--namespace属性指向mapper接口-->
+<mapper namespace="com.luguosong.dynamic_sql.sql_where.mapper.EmployeesMapper">
+  <select id="selectEmployees" resultType="com.luguosong.dynamic_sql.pojo.Employees">
+    select * from employees
+    <trim prefix="WHERE" prefixOverrides="AND |OR ">
+      <if test="firstName != null and firstName != ''">
+        and first_name = #{firstName}
+      </if>
+      <if test="lastName != null and lastName != ''">
+        and last_name = #{lastName}
+      </if>
+    </trim>
+  </select>
+</mapper>
+```
+
+### choose、when、otherwise标签
+
+相当于`if...else if ... else`的功能。
+
+```xml
+<select id="findActiveBlogLike"
+     resultType="Blog">
+  SELECT * FROM BLOG WHERE state = ‘ACTIVE’
+  <choose>
+    <when test="title != null">
+      AND title like #{title}
+    </when>
+    <when test="author != null and author.name != null">
+      AND author_name like #{author.name}
+    </when>
+    <otherwise>
+      AND featured = 1
+    </otherwise>
+  </choose>
+</select>
+```
+
+### foreach标签
+
+```xml
+
+<select id="selectPostIn" resultType="domain.blog.Post">
+    SELECT *
+    FROM POST P
+    <where>
+        <foreach
+                item="item"
+                index="index"
+                collection="list"
+                open="ID in ("
+                separator=","
+                close=")"
+                nullable="true">
+            #{item}
+        </foreach>
+    </where>
+</select>
+```
+
+## 缓存
+
+`一级缓存`：默认开启,同一个`SqlSession对象`查询的结果会被缓存起来。可以通过SqlSession对象的`clearCache()方法`来清除一级缓存。
+`二级缓存`：默认关闭,同一个`SqlSessionFactory`的查询结果会被缓存起来。
+
+要启用全局的二级缓存，只需要在你的 SQL 映射文件中添加一行：
+
+```xml
+<cache/>
+```
+
+## 代码生成(逆向工程)
+
+通过数据库表自动生成`实体类`和`Mapper接口`等相关代码
+
+
+

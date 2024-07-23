@@ -96,7 +96,6 @@ plugins:
   - statistics: # 字数统计插件：https://github.com/TonyCrane/mkdocs-statistics-plugin
       words_per_minute: 50
       codelines_per_minute: 30
-  - search
   - glightbox: # 图片查看插件
       touchNavigation: true
       loop: false
@@ -108,8 +107,13 @@ plugins:
       draggable: false
       auto_caption: true
       caption_position: bottom
-  - git-revision-date-localized:
-      enable_creation_date: true
+  - search
+  - git-revision-date-localized
+  - minify:
+      minify_html: true
+      minify_js: true
+      minify_css: true
+      cache_safe: true
 
 extra_css:
   - custom/css/font.css

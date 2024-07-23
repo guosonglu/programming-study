@@ -4,7 +4,7 @@ icon: octicons/number-16
 
 # 数学基础
 
-## 数字与代数式
+## 数与代数式
 
 ### 实数(real number)分类
 

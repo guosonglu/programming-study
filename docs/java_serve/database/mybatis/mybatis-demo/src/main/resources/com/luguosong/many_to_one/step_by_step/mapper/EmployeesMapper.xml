@@ -13,13 +13,15 @@
         <result property="position" column="position"/>
         <result property="hireDate" column="hire_date"/>
 
-        <association property="departments" javaType="com.luguosong.many_to_one.pojo.Departments">
-            <id property="id" column="dept_id"/>
-            <result property="departmentName" column="department_name"/>
-        </association>
+        <association
+                select="com.luguosong.many_to_one.step_by_step.mapper.DepartmentsMapper.getDepartmentsById"
+                column="department_id"
+                property="departments"/>
     </resultMap>
 
     <select id="getEmployeesById" resultMap="employeesResultMap">
         SELECT *
+        FROM employees
+        WHERE id = #{id}
     </select>
 </mapper>
