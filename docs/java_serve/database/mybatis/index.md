@@ -647,5 +647,47 @@ Employees(id=5, firstName=芳, lastName=陈, position=市场专员, hireDate=201
 
 通过数据库表自动生成`实体类`和`Mapper接口`等相关代码
 
+### 简单实现
 
+pom依赖中引入插件：
 
+``` xml
+--8<-- "docs/java_serve/database/mybatis/mybatis-generator/pom.xml"
+```
+
+代码生成插件配置：
+
+``` xml title="generatorConfig.xml"
+--8<-- "docs/java_serve/database/mybatis/mybatis-generator/src/main/resources/generatorConfig.xml"
+```
+
+## 分页插件
+
+添加依赖：
+
+```xml
+
+<dependency>
+    <groupId>com.github.pagehelper</groupId>
+    <artifactId>pagehelper</artifactId>
+    <version>6.1.0</version>
+</dependency>
+```
+
+Mybatis核心配置文件配置分页插件：
+
+``` xml title="mybatis-config-page.xml"
+--8<-- "docs/java_serve/database/mybatis/mybatis-demo/src/main/resources/mybatis-config-page.xml"
+```
+
+测试类：
+
+``` java
+--8<-- "docs/java_serve/database/mybatis/mybatis-demo/src/main/java/com/luguosong/pagination_plugin/Test.java"
+```
+
+结果：
+
+```
+Page{count=true, pageNum=1, pageSize=2, startRow=0, endRow=2, total=6, pages=3, reasonable=false, pageSizeZero=false}[Employees(id=1, firstName=伟, lastName=张, position=人力资源经理, hireDate=2015-06-01, departmentId=1), Employees(id=2, firstName=娜, lastName=李, position=软件工程师, hireDate=2018-09-15, departmentId=2)]
+```

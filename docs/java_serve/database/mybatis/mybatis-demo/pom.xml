@@ -34,6 +34,13 @@
             <version>1.18.34</version>
             <scope>provided</scope>
         </dependency>
+        <!-- 分页插件 -->
+        <dependency>
+            <groupId>com.github.pagehelper</groupId>
+            <artifactId>pagehelper</artifactId>
+            <version>6.1.0</version>
+        </dependency>
+
         <!--日志输出-->
         <dependency>
             <groupId>log4j</groupId>
