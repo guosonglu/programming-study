@@ -48,6 +48,16 @@
     - 视图解析：轻松切换JSP、Freemarker、Velocity等视图模板
     - 对Controller进行单元测试时，不依赖Tomcat Web服务器
 
+## Spring MVC功能
+
+与直接使用Servlet进行开发，Spring MVC提供了以下功能：
+
+- `入口控制`：Servlet开发中，每个Servlet都需要在web.xml中进行配置，Spring MVC通过`DispatcherServlet`作为入口控制器负责统一接收请求和分发请求。
+- Spring MVC会自动将表单数据封装为JavaBean对象,而不需要手动通过request对象获取表单数据。
+- Spring MVC通过IOC容器管理对象，不需要手动创建对象。
+- Spring MVC提供拦截器、异常处理器等统一处理请求机制。不需要手动编写过滤器。
+- `视图解析器`：Spring MVC提供了JSP、Freemarker、Velocity等视图解析器。
+
 ## Spring MVC入门案例
 
 创建maven工程，将工程改为war包，引入依赖：
@@ -55,6 +65,8 @@
 ``` xml
 --8<-- "docs/java_serve/web_application/mvc/springmvc-hello/pom.xml"
 ```
+
+创建`webapp/WEB-INF/web.xml`目录和文件。
 
 在web.xml中配置前端控制器（DispatcherServlet）：
 

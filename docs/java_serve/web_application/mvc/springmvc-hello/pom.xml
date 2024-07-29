@@ -16,6 +16,7 @@
     </properties>
 
     <dependencies>
+        <!--Spring MVC依赖中包含了Spring的相关依赖-->
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-webmvc</artifactId>

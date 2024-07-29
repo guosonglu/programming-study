@@ -30,6 +30,7 @@
         <module name="servlet-context" />
         <module name="annotation_servlet" />
         <module name="http-servlet-response-demo" />
+        <module name="mybatis-plus-hello" />
         <module name="jdbc-demo" />
         <module name="jsp_el" />
         <module name="springmvc-hello" />
@@ -65,6 +66,7 @@
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
       <module name="gateway-hello" options="-parameters" />
       <module name="gateway-hello-target" options="-parameters" />
+      <module name="mybatis-plus-hello" options="-parameters" />
     </option>
   </component>
 </project>
