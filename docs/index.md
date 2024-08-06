@@ -18,7 +18,7 @@ statistics: true
 <span id="busuanzi_container_site_uv">
     本站访客数
     <span id="busuanzi_value_site_uv" style="margin: 0 5px;color: #73a0c5">
-        <i class="fa fa-spinner fa-spin"></i>
+        <i class="fa fa-spinner fa-spin" style="text-indent:0"></i>
     </span>人次
 </span>
 
