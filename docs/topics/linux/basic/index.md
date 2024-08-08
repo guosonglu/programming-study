@@ -96,7 +96,7 @@ Minix，是一个迷你版本的类Unix操作系统，由`塔能鲍姆`教授为
 
 `自由软件基金会`（英语：Free Software Foundation，缩写：FSF）是一个致力于推广自由软件的美国民间非营利性组织。它于`1985年`10月由理查德·斯托曼建立。其主要工作是执行GNU计划，开发更多的自由软件。 从其建立到1990年代中自由软件基金会的基金主要被用来雇佣编程师来发展自由软件。从1990年代中开始写自由软件的公司和个人繁多，因此自由软件基金会的雇员和志愿者主要在自由软件运动的法律和结构问题上工作。
 
-### Linux
+### Linux诞生
 
 `1991年`，`林纳斯·托瓦兹`在赫尔辛基大学上学时，对操作系统很好奇。他对MINIX只允许在教育上使用很不满（在当时MINIX不允许被用作任何商业使用），于是他便开始写他自己的操作系统，这就是后来的`Linux内核`。该操作系统的内核由林纳斯·托瓦兹在1991年10月5日首次发布。
 
@@ -108,3 +108,14 @@ Minix，是一个迷你版本的类Unix操作系统，由`塔能鲍姆`教授为
   ![](https://cdn.jsdelivr.net/gh/luguosong/images@master/blog-img/202407251022892.png){ loading=lazy }
   <figcaption>林纳斯·托瓦兹</figcaption>
 </figure>
+
+## Linux发行版
+
+- Linux
+    - Debian
+        - Kali Linux
+        - Ubuntu
+    - SUSE Linux
+    - Red Hat
+        - CentOS
+        - Rocky Linux

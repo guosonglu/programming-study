@@ -30,6 +30,7 @@ PDF的主要目的是以可靠的方式查看和打印文档。这项技术的�
 
 ## 相关资源
 
+- [pdf文档-Digital Signatures for PDF documents](https://itextpdf.com/sites/default/files/2018-12/digitalsignatures20130304.pdf)
 - [在线教程](https://itextpdf.com/solutions/electronic-signatures-pdf)
 - [PDF文档数字签名的附录](https://itextpdf.com/resources/books/addendum-digital-signatures-pdf-documents)：文档中的代码使用的是iText5版，这里提供了iText7的实现
 - [iText 8 现在支持最新的ISO PDF扩展功能，用于数字签名。](https://itextpdf.com/blog/technical-notes/itext-8-supports-latest-digital-signature-extensions)

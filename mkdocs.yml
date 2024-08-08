@@ -258,6 +258,7 @@ nav:
       - 数学基础: math/basic/index.md
   - 其它:
       - other/index.md
+      - IDEA使用心得: other/idea/index.md
       - 网站搭建:
           - other/website_building/index.md
           - 网站配置: other/website_building/website_building.md
