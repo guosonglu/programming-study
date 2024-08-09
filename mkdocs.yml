@@ -247,11 +247,9 @@ nav:
           - 内网穿透-frp: topics/tools/frp/index.md
   - 英语:
       - english/index.md
-      - 音标: english/phonetic_symbol.md
-      - 新概念英语:
-          - english/new_concept_english/index.md
-          - 单词合集: english/new_concept_english/words.md
-          - 1-1 Excuse me!: english/new_concept_english/1_1_lesson.md
+      - 音标: english/phonetic_symbol/index.md
+      - 新概念单词: english/new_concept_english/index.md
+      - 语法: english/grammar/index.md
   - 数学:
       - math/index.md
       - Latex公式对照表: math/latex/index.md
