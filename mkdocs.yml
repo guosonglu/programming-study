@@ -85,7 +85,7 @@ markdown_extensions:
 extra:
   analytics:
     provider: google
-    property: G-1MRZMQST0H
+    property: G-MT4W7HGBVZ
   generator: true # 显示使用Material for MkDocs制作
   social: #底部社交媒体链接
     - icon: fontawesome/brands/github
