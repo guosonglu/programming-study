@@ -48,3 +48,7 @@ MybatisX 插件功能：
 - 支持 Mybatis.xml 和 Mapper.xml 的代码提示。
 - Mapper 和 XML 支持类似 JPA 的自动提示功能（参考 MybatisCodeHelperPro）。
 - 集成 Mybatis Generator 的图形界面（参考 Free Mybatis 插件）。
+
+## Translation 插件
+
+基于IntelliJ的IDE的翻译插件。

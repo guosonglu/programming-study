@@ -83,6 +83,9 @@ markdown_extensions:
       alternate_style: true
 
 extra:
+  analytics:
+    provider: google
+    property: G-1MRZMQST0H
   generator: true # 显示使用Material for MkDocs制作
   social: #底部社交媒体链接
     - icon: fontawesome/brands/github
@@ -118,14 +121,12 @@ extra_css:
   - custom/css/font.css
   - custom/css/custom.css
   - https://unpkg.com/katex@0/dist/katex.min.css
-  - //cdn.bootcss.com/font-awesome/4.3.0/css/font-awesome.min.css
 
 extra_javascript:
   - custom/js/custom.js
   - custom/js/katex.js
   - https://unpkg.com/katex@0/dist/katex.min.js
   - https://unpkg.com/katex@0/dist/contrib/auto-render.min.js
-  - //busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js
 
 exclude_docs: |
   **/node_modules

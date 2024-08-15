@@ -5,7 +5,6 @@ import javax.crypto.Cipher;
 import javax.crypto.IllegalBlockSizeException;
 import javax.crypto.NoSuchPaddingException;
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.math.BigInteger;
 import java.security.*;
@@ -17,7 +16,7 @@ import java.security.cert.CertificateException;
 public class EncryptDecrypt {
     public static void main(String[] args) {
         try {
-            //创建密钥库
+            //初始化密钥库
             KeyStore ks = KeyStore.getInstance(KeyStore.getDefaultType());
             ks.load(new FileInputStream("docs/topics/itext-signatures/src/main/resources/ks"), "12345678".toCharArray());
 
