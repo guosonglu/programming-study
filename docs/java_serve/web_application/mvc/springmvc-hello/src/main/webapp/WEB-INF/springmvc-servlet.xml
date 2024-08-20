@@ -15,8 +15,8 @@
             <bean class="org.thymeleaf.spring6.SpringTemplateEngine">
                 <property name="templateResolver">
                     <bean class="org.thymeleaf.spring6.templateresolver.SpringResourceTemplateResolver">
-                        <property name="prefix" value="/WEB-INF/template/"/>
-                        <property name="suffix" value=".thymeleaf"/>
+                        <property name="prefix" value="/WEB-INF/templates/"/>
+                        <property name="suffix" value=".html"/>
                         <property name="templateMode" value="HTML"/>
                         <property name="characterEncoding" value="UTF-8"/>
                     </bean>

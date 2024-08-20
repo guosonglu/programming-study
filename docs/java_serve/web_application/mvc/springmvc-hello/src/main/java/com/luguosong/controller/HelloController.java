@@ -12,6 +12,6 @@ public class HelloController {
     @RequestMapping("/hello-mvc")
     public String hello() {
         //返回逻辑视图名称
-        return "ok";
+        return "hello";
     }
 }

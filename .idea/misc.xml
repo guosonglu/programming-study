@@ -108,6 +108,8 @@
     </option>
     <option name="ignoredFiles">
       <set>
+        <option value="$PROJECT_DIR$/docs/basic/data_structures_and_algorithm_analysis/algorithm/pom.xml" />
+        <option value="$PROJECT_DIR$/docs/basic/data_structures_and_algorithm_analysis/data_structures/pom.xml" />
         <option value="$PROJECT_DIR$/site/basic/data_structures_and_algorithm_analysis/algorithm/pom.xml" />
         <option value="$PROJECT_DIR$/site/basic/data_structures_and_algorithm_analysis/data_structures/pom.xml" />
         <option value="$PROJECT_DIR$/site/java/javase/pom.xml" />

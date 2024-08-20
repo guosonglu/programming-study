@@ -160,9 +160,9 @@ nav:
           - 应用层-HTTP: basic/computer_network/application_http/index.md
       - 数据结构与算法分析:
           - basic/data_structures_and_algorithm_analysis/index.md
-          - 数据结构: basic/data_structures_and_algorithm_analysis/data_structures/src/main/java/com/luguosong/index.md
-          - 算法: basic/data_structures_and_algorithm_analysis/algorithm/src/main/java/com/luguosong/index.md
-
+          - 基础:
+              - basic/data_structures_and_algorithm_analysis/01_foundations/index.md
+              - 算法在计算中的作用: basic/data_structures_and_algorithm_analysis/01_foundations/01_the_role_of_algorithms_in_computers/index.md
   - 前端:
       - front_end/index.md
       - HTML:

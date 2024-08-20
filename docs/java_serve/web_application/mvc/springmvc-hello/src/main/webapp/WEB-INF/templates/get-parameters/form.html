@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Spring MVC 获取表单数据</title>
+</head>
+<body>
+
+后台收到参数: [[${username}]]
+
+<form method="post" th:action="@{/form/servlet}">
+    <label>
+        <input name="username" type="text">
+    </label>
+    <input type="submit" value="servlet post">
+</form>
+
+<form method="post" th:action="@{/form/springMvc}">
+    <label>
+        <input name="username" type="text">
+    </label>
+    <input type="submit" value="servlet post">
+</form>
+
+</body>
+</html>

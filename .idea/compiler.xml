@@ -7,7 +7,6 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="data_structures" />
         <module name="gateway-hello" />
         <module name="itext-signatures" />
         <module name="hello_jsp" />
@@ -22,7 +21,6 @@
         <module name="http-servlet" />
         <module name="filter-hello" />
         <module name="servlet-config" />
-        <module name="algorithm" />
         <module name="spring-hello" />
         <module name="maven-hello" />
         <module name="http-servlet-request-demo" />
@@ -39,8 +37,10 @@
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
+      <module name="algorithm" target="17" />
       <module name="algorithm (1)" target="17" />
       <module name="annotation_servlet (1)" target="11" />
+      <module name="data_structures" target="17" />
       <module name="data_structures (1)" target="17" />
       <module name="design_pattern (1)" target="17" />
       <module name="filter-hello (1)" target="11" />
