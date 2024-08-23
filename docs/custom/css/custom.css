@@ -48,6 +48,11 @@
     max-width: none;
 }
 
+/*图片设置白色背景*/
+figure img {
+    background-color: white;
+}
+
 /*[dir=ltr] .md-nav--secondary .md-nav__list {*/
 /*    padding-left: 1rem;*/
 /*}*/
