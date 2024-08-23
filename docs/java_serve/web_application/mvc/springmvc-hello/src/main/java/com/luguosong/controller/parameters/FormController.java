@@ -31,6 +31,7 @@ public class FormController {
     /*
      * @RequestParam注解value值为请求参数名
      * required属性表示参数是否必须，默认为true
+     * defaultValue属性为默认值
      * */
     @PostMapping("/springMvc")
     public String springMvc(
@@ -44,4 +45,14 @@ public class FormController {
     }
 
 
+    /*
+     * 如果请求参数的形参名和方法参数名一样，则@RequestParam注解可以省略
+     * */
+    @PostMapping("/springMvc2")
+    public String springMvc2(
+            String username,
+            HttpServletRequest request) {
+        request.setAttribute("username", username);
+        return "get-parameters/form";
+    }
 }

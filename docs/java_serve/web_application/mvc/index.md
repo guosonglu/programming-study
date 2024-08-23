@@ -35,7 +35,11 @@
 
 ## Spring MVC概述
 
-`Spring MVC`是`Spring Framework`框架的子模块
+`Spring Web MVC` 是基于 Servlet API 构建的原始 Web 框架，从 Spring 框架诞生之初就已包含其中。其正式名称`Spring Web MVC`
+源自其源码模块名称:`spring-webmvc`，但更常被称为`Spring MVC`。
+
+与 Spring Web MVC 并行，Spring Framework 5.0 引入了一个名为`Spring WebFlux`的响应式堆栈Web框架，其名称也基于其源模块
+`spring-webflux`。
 
 `Spring MVC`是实现`MVC架构模式`的Web框架。底层使用`Servlet`实现。
 
@@ -46,11 +50,7 @@
     - 统一使用IOC容器管理对象
     - 统一请求处理：提供拦截器、统一异常处理等机制
     - 视图解析：轻松切换JSP、Freemarker、Velocity等视图模板
-    - 对Controller进行单元测试时，不依赖Tomcat Web服务器
-
-## Spring MVC功能
-
-与直接使用Servlet进行开发，Spring MVC提供了以下功能：
+    - 对Controller进行单元测试时
 
 - `入口控制`：Servlet开发中，每个Servlet都需要在web.xml中进行配置，Spring MVC通过`DispatcherServlet`作为入口控制器负责统一接收请求和分发请求。
 - Spring MVC会自动将表单数据封装为JavaBean对象,而不需要手动通过request对象获取表单数据。
@@ -253,6 +253,7 @@ public class HelloController {
 `params属性`对请求参数进行限制
 
 ```java
+
 @Controller
 public class HelloController {
     //表示请求参数中必须存在username和password，且username必须为张三
@@ -269,6 +270,7 @@ public class HelloController {
 `headers属性`对请求头进行限制
 
 ```java
+
 @Controller
 public class HelloController {
     //表示请求头中必须存在token
@@ -280,32 +282,88 @@ public class HelloController {
 }
 ```
 
-## 获取请求数据
+## 获取请求参数
 
-### 获取表单请求参数
+### 形参获取表单请求参数
 
-使用原生Servlet获取表单请求参数：
-
-```java
-public class GetServletDemo extends HttpServlet {
-
-    @Override
-    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        String username = req.getParameter("username");
-        String password = req.getParameter("password");
-    }
-} 
+``` java title="FormController.java"
+--8<-- "docs/java_serve/web_application/mvc/springmvc-hello/src/main/java/com/luguosong/controller/parameters/FormController.java"
 ```
 
-Spring MVC获取表单请求参数：
+!!! warning "如果是Spring6+,想要省略@RequestParam注解，需要在pom.xml中配置`-parameters`标记"
 
-```java
-public class HelloController {
-    @RequestMapping("/hello")
-    public String hello(@RequestParam String username, @RequestParam String password) {
-        
-        //...
-        return "ok";
-    }
-}
+    ```xml
+    
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.13.0</version>
+                <configuration>
+                    <source>17</source>
+                    <target>17</target>
+                    <compilerArgs>
+                        <arg>-parameters</arg>
+                    </compilerArgs>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+    ```
+
+### JavaBean获取表单请求参数
+
+``` java title="FormPojoController.java"
+--8<-- "docs/java_serve/web_application/mvc/springmvc-hello/src/main/java/com/luguosong/controller/parameters/FormPojoController.java"
 ```
+
+``` java title="User.java"
+--8<-- "docs/java_serve/web_application/mvc/springmvc-hello/src/main/java/com/luguosong/pojo/User.java"
+```
+
+### Get请求中文乱码问题
+
+Tomcat8以及之前版本，解决Get请求中文乱码，在Tomcat服务器`CATALINA_HOME/conf/server.xml`中配置:
+
+<figure markdown="span">
+  ![](https://cdn.jsdelivr.net/gh/luguosong/images@master/blog-img/202408211608413.png){ loading=lazy }
+  <figcaption>解决Get请求乱码问题</figcaption>
+</figure>
+
+Tomcat8之后版本，请求行默认采用UTF-8编码，无需解决中文乱码问题。
+
+### Post请求中文乱码问题
+
+Tomcat9以及之前的版本，需要解决Post请求中文乱码问题。
+
+在`Servlet编程`中，可以使用`request.setCharacterEncoding("UTF-8");`解决乱码问题。
+
+但在Spring MVC中，无法在Controller中使用以上方法解决中文乱码。
+
+解决方案一：编写`Servlet过滤器`，过滤器会在DispatcherServlet之前执行。因此在过滤器中设置
+`request.setCharacterEncoding("UTF-8");`
+可以解决乱码问题。
+
+解决方案二：Spring MVC为我们提供了类似的过滤器类CharacterEncodingFilter，无需我们重新手写过滤器类。只需要在`web.xml`
+中配置该过滤器并设置`encoding属性`即可。
+
+Tomcat10请求体默认采用UTF-8编码，无需解决中文乱码问题。
+
+## 获取请求头信息
+
+### 根据请求头名称获取请求头信息
+
+``` java title="HeaderInfoController.java"
+--8<-- "docs/java_serve/web_application/mvc/springmvc-hello/src/main/java/com/luguosong/controller/header_info/HeaderInfoController.java"
+```
+
+### 获取Cookie信息
+
+``` java title="CookieController.java"
+--8<-- "docs/java_serve/web_application/mvc/springmvc-hello/src/main/java/com/luguosong/controller/header_info/CookieController.java"
+```
+
+## 域对象操作
+
+

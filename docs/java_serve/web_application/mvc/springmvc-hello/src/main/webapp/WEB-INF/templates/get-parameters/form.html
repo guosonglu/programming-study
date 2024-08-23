@@ -12,15 +12,46 @@
     <label>
         <input name="username" type="text">
     </label>
-    <input type="submit" value="servlet post">
+    <input type="submit" value="servlet获取参数">
 </form>
 
 <form method="post" th:action="@{/form/springMvc}">
     <label>
         <input name="username" type="text">
     </label>
-    <input type="submit" value="servlet post">
+    <input type="submit" value="spring mvc @RequestParam注解获取参数">
 </form>
+
+<form method="post" th:action="@{/form/springMvc2}">
+    <label>
+        <input name="username" type="text">
+    </label>
+    <input type="submit" value="spring mvc 省略@RequestParam注解获取参数">
+</form>
+
+<form method="post" th:action="@{/formPojo/springMvc}">
+    <label>
+        <input name="username" type="text">
+    </label>
+    <input type="submit" value="spring mvc通过实体类获取参数">
+</form>
+
+<form method="post" th:action="@{/header-info/springMvc}">
+    <label>
+        <input name="username" type="text">
+    </label>
+    <input type="submit" value="获取请求头信息">
+</form>
+
+<button id="cookie">发送Cookie</button>
+
+<script th:inline="javascript" type="text/javascript">
+    document.getElementById("cookie").addEventListener("click", function () {
+        const ctxPath = /*[[@{/}]]*/'';
+        document.cookie = "username=zhangsan";
+        document.location = ctxPath + "cookie/springMvc";
+    })
+</script>
 
 </body>
 </html>
