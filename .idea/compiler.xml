@@ -67,6 +67,7 @@
       <module name="gateway-hello" options="-parameters" />
       <module name="gateway-hello-target" options="-parameters" />
       <module name="mybatis-plus-hello" options="-parameters" />
+      <module name="springmvc-hello" options="-parameters" />
     </option>
   </component>
 </project>
