@@ -48,10 +48,6 @@
     max-width: none;
 }
 
-.md-typeset .admonition, .md-typeset details {
-    margin: 1.5625em 3rem;
-}
-
 /*[dir=ltr] .md-nav--secondary .md-nav__list {*/
 /*    padding-left: 1rem;*/
 /*}*/
