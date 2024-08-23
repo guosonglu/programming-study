@@ -19,6 +19,16 @@ icon: octicons/number-16
     - `分数(Fraction)`：比如：$\frac {1}{3}$,$\frac {2}{3}$
 - `无理数(Irrational number)`：无法用分数表示,比如：$\sqrt{2}$,$\pi$
 
+### 幂运算(exponentiation)
+
+$$
+a^m \times a^n = a^{m+n}\\
+a^m \div a^n = a^{m-n}\\
+(a^m)^n = a^{n \times m}\\
+x^0 = 1 \quad \text{where} \quad x \neq 0\\
+x^{-3} = \frac {1}{x^3}
+$$
+
 ### 代数式(Algebraic expression)
 
 !!! note "代数式（英语：Algebraic expression）"
@@ -27,11 +37,11 @@ icon: octicons/number-16
 
 代数式分类如下：
 
-- `有理式(Rational expression)`:
+- `有理式(Rational expression)`: 根号中没有字母的式子
     - `整式(Integral expression)`:
-        - `单项式(Monomial)`:
-        - `多项式(Polynomial)`:
-    - `分式(Fractional expression)`:分母有字母的称为分式。比如：$\frac {3}{a+2} + 10$,$\frac {a+2}{b-2}$
+        - `单项式(Monomial)`: 比如：$2a$,$\frac {a}{2}$
+        - `多项式(Polynomial)`: 包含加减运算，比如：$1+a$
+    - `分式(Fractional expression)`:`分母有字母`称为分式。比如：$\frac {3}{a+2} + 10$,$\frac {a+2}{b-2}$
 - `无理式(Irrational expression)`:
   如果代数式中含有表达式的`开方运算`，而开方中又`含有字母`，则此代数式就叫做这些字母的无理代数式，简称`无理式`
   。比如：$\sqrt{2+a}$,$\sqrt{a^2}$
@@ -45,11 +55,26 @@ icon: octicons/number-16
   <figcaption>代数式分类</figcaption>
 </figure>
 
-### 幂运算(exponentiation)
+---
+
+习题：代数式化简
 
 $$
-a^m \times a^n = a^{m+n}\\
-a^m \div a^n = a^{m-n}\\
-(a^m)^n = a^{n \times m}
+2\sin 60^\circ + \left|\sqrt{3} - 2\right| + \left(-1\right)^{-1} - \sqrt[3]{-8}\\
+2 \times \frac{\sqrt 3}{2} + 2 - \sqrt 3 - 1 + 2\\
+\sqrt 3 + 2 - \sqrt 3 - 1 + 2\\
+3
 $$
 
+---
+
+---
+
+习题：代数式化简
+
+$$
+(2019 - \pi)^0 - 2\sin 30^\circ + \sqrt{12} + (- \frac{1}{2})^{-3}\\
+1-2 \times \frac{1}{2}
+$$
+
+---
