@@ -26,6 +26,7 @@
         <module name="http-servlet-request-demo" />
         <module name="gateway-hello-target" />
         <module name="servlet-context" />
+        <module name="ssia-ch2-ex1" />
         <module name="annotation_servlet" />
         <module name="http-servlet-response-demo" />
         <module name="mybatis-plus-hello" />
@@ -68,6 +69,7 @@
       <module name="gateway-hello-target" options="-parameters" />
       <module name="mybatis-plus-hello" options="-parameters" />
       <module name="springmvc-hello" options="-parameters" />
+      <module name="ssia-ch2-ex1" options="-parameters" />
     </option>
   </component>
 </project>
