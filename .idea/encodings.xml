@@ -1,14 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="Encoding" defaultCharsetForPropertiesFiles="UTF-8">
-    <file url="file://$PROJECT_DIR$/docs/basic/data_structures_and_algorithm_analysis/algorithm/src/main/java" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/docs/basic/data_structures_and_algorithm_analysis/algorithm/src/main/resources" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/docs/basic/data_structures_and_algorithm_analysis/data_structures/src/main/java" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/docs/basic/data_structures_and_algorithm_analysis/data_structures/src/main/resources" charset="UTF-8" />
+  <component name="Encoding">
     <file url="file://$PROJECT_DIR$/docs/java/javase/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/docs/java/javase/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/docs/java_serve/authentication/spring-security/02_hello/ssia-ch2-ex1/src/main/java" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/docs/java_serve/authentication/spring-security/02_hello/ssia-ch2-ex1/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/docs/java_serve/authentication/spring-security/02_hello/ssia-ch2-ex2/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/docs/java_serve/authentication/spring-security/02_hello/ssia-ch2-ex3/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/docs/java_serve/authentication/spring-security/02_hello/ssia-ch2-ex4/src/main/java" charset="UTF-8" />
@@ -56,8 +51,6 @@
     <file url="file://$PROJECT_DIR$/docs/java_serve/web_application/servlet/servlet-context/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/docs/java_serve/web_application/session_cookie/session_and_cookie/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/docs/java_serve/web_application/session_cookie/session_and_cookie/src/main/resources" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/docs/other/itext-signatures/src/main/java" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/docs/other/itext-signatures/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/docs/topics/design_pattern/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/docs/topics/design_pattern/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/docs/topics/itext-signatures/src/main/java" charset="UTF-8" />

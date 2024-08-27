@@ -2,7 +2,6 @@
 <project version="4">
   <component name="CompilerConfiguration">
     <annotationProcessing>
-      <profile default="true" name="Default" enabled="true" />
       <profile name="Maven default annotation processors profile" enabled="true">
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
@@ -23,49 +22,25 @@
         <module name="servlet-config" />
         <module name="spring-hello" />
         <module name="maven-hello" />
-        <module name="http-servlet-request-demo" />
         <module name="gateway-hello-target" />
-        <module name="servlet-context" />
+        <module name="http-servlet-request-demo" />
         <module name="ssia-ch2-ex3" />
+        <module name="servlet-context" />
         <module name="ssia-ch2-ex2" />
         <module name="ssia-ch2-ex1" />
         <module name="annotation_servlet" />
-        <module name="http-servlet-response-demo" />
         <module name="ssia-ch2-ex5" />
+        <module name="http-servlet-response-demo" />
         <module name="ssia-ch2-ex4" />
         <module name="mybatis-plus-hello" />
         <module name="jdbc-demo" />
         <module name="jsp_el" />
         <module name="springmvc-hello" />
         <module name="mybatis-demo" />
+        <module name="programming-notes" />
         <module name="generic-servlet" />
       </profile>
     </annotationProcessing>
-    <bytecodeTargetLevel>
-      <module name="algorithm" target="17" />
-      <module name="algorithm (1)" target="17" />
-      <module name="annotation_servlet (1)" target="11" />
-      <module name="data_structures" target="17" />
-      <module name="data_structures (1)" target="17" />
-      <module name="design_pattern (1)" target="17" />
-      <module name="filter-hello (1)" target="11" />
-      <module name="generic-servlet (1)" target="11" />
-      <module name="hello-servlet (1)" target="17" />
-      <module name="hello_jsp (1)" target="11" />
-      <module name="http-servlet (1)" target="11" />
-      <module name="http-servlet-request-demo (1)" target="11" />
-      <module name="http-servlet-response-demo (1)" target="11" />
-      <module name="javase (1)" target="17" />
-      <module name="jdbc-hello (1)" target="17" />
-      <module name="jsp_el (1)" target="11" />
-      <module name="jsp_jstl (1)" target="11" />
-      <module name="listener-hello (1)" target="11" />
-      <module name="maven-hello (1)" target="17" />
-      <module name="servlet-config (1)" target="11" />
-      <module name="servlet-context (1)" target="11" />
-      <module name="session_and_cookie (1)" target="11" />
-      <module name="spring-hello (1)" target="17" />
-    </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
