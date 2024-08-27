@@ -66,12 +66,12 @@ figure img {
 /*    counter-increment: item*/
 /*}*/
 
-.md-main__inner{
+.md-main__inner {
     margin: 1rem;
 }
 
 /*段落首行缩进*/
-p {
+article > p {
     text-indent: 2em;
 }
 
