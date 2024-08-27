@@ -51,9 +51,12 @@ Security和Spring Boot开发应用程序的初步步骤。它展示了Spring Sec
   <figcaption>图2.1 我们的初始应用程序在访问端点时使用HTTP Basic进行用户身份验证和授权。它在指定路径（/hello）提供一个REST端点。请求成功后，它会返回一个HTTP 200状态消息以及响应主体。此实例展示了Spring Security设置的默认身份验证和授权机制。</figcaption>
 </figure>
 
-我们开始学习 Spring Security 时，首先创建一个空项目，并将其命名为 `ssia-ch2-ex1`。（在其他提供的项目中，你也会找到同名的示例。）在我们的第一个项目中，你只需要添加
+我们开始学习 Spring Security 时，首先创建一个空项目，并将其命名为 ssia-ch2-ex1[^1]
+。（在其他提供的项目中，你也会找到同名的示例。）在我们的第一个项目中，你只需要添加
 `spring-boot-starter-web` 和 `spring-boot-starter-security` 这两个依赖，如清单 2.1 所示。创建项目后，请确保将这些依赖添加到你的
 pom.xml 文件中。进行这个项目的主要目的是观察一个默认配置的应用程序在 Spring Security 下的行为。我们还希望了解哪些组件是这个默认配置的一部分，以及它们的用途。
+
+[^1]: ssia-ch2-ex1：完全使用Spring Security默认配置
 
 ```xml title="清单 2.1 我们第一个 Web 应用的 Spring Security 依赖项"
 
@@ -270,3 +273,529 @@ Spring Security 提供的一个实现，名为 `InMemoryUserDetailsManager`。�
 
 为了向您展示如何使用我们选择的实现来覆盖此组件，我们将更改第一个示例中的内容。这样做使我们能够拥有自己的托管凭据进行身份验证。在这个示例中，我们不实现自己的类，而是使用Spring
 Security提供的实现。
+
+在这个例子中，我们使用了 `InMemoryUserDetailsManager 实现`。尽管它不仅仅是一个 UserDetailsService，但目前我们仅从
+UserDetailsService 的角度来讨论它。这个实现将凭证存储在内存中，随后可以被 Spring Security 用于验证请求。
+
+!!! note
+
+    `InMemoryUserDetailsManager 的实现`并不适用于`生产环境`的应用程序，但它是用于示例或概念验证的绝佳工具。在某些情况下，你只需要用户数据，而不需要花时间实现这部分功能。在我们的例子中，我们使用它来理解如何重写默认的 `UserDetailsService` 实现。
+
+我们首先定义一个`配置类`。通常，我们在一个名为 config 的单独包中声明`配置类`。以下列表展示了配置类的定义。你也可以在
+项目 ssia-ch2-ex2[^2] 中找到这个示例。
+
+[^2]: ssia-ch2-ex2: 定制用户详情管理,配置UserDetailsService和PasswordEncoder对象,并通过HttpSecurity创建SecurityFilterChain对象，从而配置认证方式和授权规则
+
+```java
+
+@Configuration
+public class ProjectConfig {
+
+  @Bean
+  UserDetailsService userDetailsService() {
+    return new InMemoryUserDetailsManager();
+  }
+}
+```
+
+我们用`@Configuration注解`标注这个类。`@Bean注解`
+指示Spring将方法返回的实例添加到Spring上下文中。如果你按现在的代码执行，将不再在控制台中看到自动生成的密码。应用程序现在使用你添加到上下文中的
+`UserDetailsService`类型的实例，而不是默认的自动配置实例。但与此同时，你将无法再访问该端点，原因有两个：
+
+- 您还没有任何用户。
+- 您没有密码编码器。
+
+在图2.2中，你看到身份验证也依赖于`PasswordEncoder`。让我们一步步解决这两个问题。我们需要
+
+1. 创建至少一个具有凭证（用户名和密码）的用户。
+2. 将用户添加到由我们的 UserDetailsService 实现管理的用户中
+3. 定义一个 PasswordEncoder 类型的 bean，供我们的应用程序用于验证给定密码与由 UserDetailsService 存储和管理的密码。
+
+首先，我们声明并添加一组`凭证`，以便在 `InMemoryUserDetailsManager 实例`
+中用于身份验证。在第三章中，我们将详细讨论用户及其管理方法。目前，我们使用一个预定义的构建器来创建一个 `UserDetails` 类型的对象。
+
+!!! note
+
+    有时你会看到我在代码中使用var。Java 10引入了保留类型名var，你只能在局部声明中使用它。虽然在某些情况下，本书中使用var的方式从代码整洁的角度来看可能不太好，但这样做是为了简化语法，并隐藏变量类型。这种方法可以帮助你专注于示例中相关的部分。我们将在后面的章节中讨论var隐藏的类型，所以在需要深入分析之前，你不必担心这些类型。
+
+在创建实例时，我们必须提供`用户名`、`密码`和`至少一个权限`。权限是允许该用户执行的操作，我们可以使用任何字符串来表示。在接下来的示例中，我将权限命名为
+`read`，但因为我们暂时不会使用这个权限，所以这个名称并不重要。
+
+```java
+
+@Configuration
+public class ProjectConfig {
+
+  @Bean
+  UserDetailsService userDetailsService() {
+    var user = User.withUsername("john")
+            .password("12345")
+            .authorities("read")
+            .build();
+
+    return new InMemoryUserDetailsManager(user);
+  }
+}
+```
+
+!!! note
+
+    您会在 `org.springframework.security.core.userdetails` 包中找到 User 类。我们使用这个构建器实现来创建表示用户的对象。此外，作为本书的一般规则，如果我没有在代码示例中展示如何编写一个类，这意味着 Spring Security 已经提供了该类。
+
+如上面代码所示，我们必须提供一个`用户名的值`、`一个密码的值`以及`至少一个权限`。然而，这仍不足以让我们调用端点。我们还需要声明一个
+`PasswordEncoder`。
+
+使用`默认的UserDetailsService`时，`PasswordEncoder`也会自动配置。由于我们重写了`UserDetailsService`，因此也必须声明一个
+`PasswordEncoder`。现在尝试这个示例时，当你调用端点时会看到一个异常。在尝试进行身份验证时，Spring
+Security意识到它不知道如何管理密码，因此失败。异常的样子如下一个代码片段所示，你应该能在应用程序的控制台中看到它。客户端会收到一个
+`HTTP 401 Unauthorized`消息和一个空的响应体：
+
+```shell
+C:\Users\10545>curl -i -u john:12345 http://localhost:8080/hello
+HTTP/1.1 401
+WWW-Authenticate: Basic realm="Realm"
+X-Content-Type-Options: nosniff
+X-XSS-Protection: 0
+Cache-Control: no-cache, no-store, max-age=0, must-revalidate
+Pragma: no-cache
+Expires: 0
+X-Frame-Options: DENY
+Set-Cookie: JSESSIONID=0AED260DB67D15962B6366275EF3C26C; Path=/; HttpOnly
+Content-Length: 0
+Date: Mon, 26 Aug 2022 09:13:41 GMT
+```
+
+为了解决这个问题，我们可以像处理 `UserDetailsService` 一样，在上下文中添加一个 `PasswordEncoder bean`。对于这个
+bean，我们使用现有的 PasswordEncoder 实现：
+
+```java
+
+@Bean
+public PasswordEncoder passwordEncoder() {
+  return NoOpPasswordEncoder.getInstance();
+}
+```
+
+!!! note
+
+    `NoOpPasswordEncoder`实例将密码视为纯文本处理，不对其进行加密或哈希。在匹配时，`NoOpPasswordEncoder`仅使用String类的`equals(Object o)方法`比较字符串。在生产环境的应用程序中不应使用这种类型的PasswordEncoder。
+
+!!! warning
+
+    `NoOpPasswordEncoder`适用于不想关注密码哈希算法的示例。因此，该类的开发者将其标记为`@Deprecated`(已弃用)，并且在开发环境中其名称会显示为`删除线`。
+    
+    这个 PasswordEncoder 不安全。应改用适应性单向函数，如 BCryptPasswordEncoder、Pbkdf2PasswordEncoder 或 SCryptPasswordEncoder。更好的是使用DelegatingPasswordEncoder，它支持密码升级。没有计划移除这个支持。弃用它是为了表明这是一个遗留实现，使用它被认为不安全。
+
+目前，完整的配置文件类代码如下：
+
+```java
+
+@Configuration
+public class ProjectConfig {
+
+  @Bean
+  UserDetailsService userDetailsService() {
+    var user = User.withUsername("john")
+            .password("12345")
+            .authorities("read")
+            .build();
+
+    return new InMemoryUserDetailsManager(user);
+  }
+
+  @Bean
+  PasswordEncoder passwordEncoder() {
+    return NoOpPasswordEncoder.getInstance();
+  }
+}
+```
+
+让我们用新用户尝试这个端点，用户名为john，密码为12345：
+
+```shell
+C:\Users\10545>curl -i -u john:12345 http://localhost:8080/hello
+HTTP/1.1 200
+X-Content-Type-Options: nosniff
+X-XSS-Protection: 0
+Cache-Control: no-cache, no-store, max-age=0, must-revalidate
+Pragma: no-cache
+Expires: 0
+X-Frame-Options: DENY
+Content-Type: text/plain;charset=UTF-8
+Content-Length: 6
+Date: Mon, 26 Aug 2024 09:30:54 GMT
+
+Hello!
+```
+
+### 在端点级别应用授权
+
+随着用户管理的新安排到位，如上一小节节所述，我们现在可以讨论终端的`认证方法和配置`
+。在深入细节之前，您必须了解整体概况。实现这一点的最佳方式是通过我们的第一个示例。在默认配置下，所有终端都假定您有一个由应用程序管理的有效用户。此外，默认情况下，您的应用程序使用HTTP基本认证，但您可以轻松覆盖此配置。
+
+正如你将在接下来的章节中了解到的，HTTP基本认证并不适合大多数应用程序架构。有时，我们希望对其进行更改以匹配我们的`应用程序`
+。同样，并不是所有的应用程序端点都需要安全保护，对于那些需要保护的端点，我们可能需要选择不同的认证方法和授权规则。为了定制认证和授权的处理，我们需要定义一个类型为
+`SecurityFilterChain`的bean。在这个例子中，我将继续在项目`ssia-ch2-ex2`中编写代码。
+
+```java
+
+@Configuration
+public class ProjectConfig {
+
+  @Bean
+  SecurityFilterChain configure(HttpSecurity http)
+          throws Exception {
+
+    return http.build();
+  }
+
+  // 省略的代码
+}
+```
+
+然后，我们可以使用 `HttpSecurity` 对象的不同方法来修改配置，如下所示。
+
+```java title="清单2.7:使用 HttpSecurity 参数修改配置"
+
+@Configuration
+public class ProjectConfig {
+
+  @Bean
+  SecurityFilterChain configure(HttpSecurity http)
+          throws Exception {
+
+    http.httpBasic(Customizer.withDefaults());
+
+    http.authorizeHttpRequests(
+            // 认证后可以访问
+            c -> c.anyRequest().authenticated()
+    );
+
+    return http.build();
+  }
+
+  // Omitted code
+
+}
+```
+
+清单2.7中的代码配置了与默认行为相同的端点授权。你可以再次调用该端点，查看其行为是否与上一节中的测试相同。稍作修改，你可以使所有端点在
+`无需凭证的情况下访问`。你将在接下来的清单中看到如何实现这一点。
+
+```java title="清单2.8 使用 permitAll() 更改授权配置"
+
+@Configuration
+public class ProjectConfig {
+
+  @Bean
+  public SecurityFilterChain configure(HttpSecurity http)
+          throws Exception {
+
+    http.httpBasic(Customizer.withDefaults());
+
+    http.authorizeHttpRequests(
+            // 允许所有访问
+            c -> c.anyRequest().permitAll()
+    );
+
+    return http.build();
+  }
+
+  // Omitted code
+}
+```
+
+现在我们可以在不需要凭证的情况下调用 `/hello 端点`。配置中的 `permitAll()` 调用与 `anyRequest()`
+方法一起，使所有端点都可以在无需凭证的情况下访问：
+
+```shell
+C:\Users\10545>curl -i  http://localhost:8080/hello
+HTTP/1.1 200
+X-Content-Type-Options: nosniff
+X-XSS-Protection: 0
+Cache-Control: no-cache, no-store, max-age=0, must-revalidate
+Pragma: no-cache
+Expires: 0
+X-Frame-Options: DENY
+Content-Type: text/plain;charset=UTF-8
+Content-Length: 6
+Date: Mon, 26 Aug 2024 12:34:44 GMT
+
+Hello!
+```
+
+在此示例中，我们使用了两种配置方法：
+
+- `httpBasic()` 帮助我们配置了认证方式。通过调用此方法，您指示应用程序接受 `HTTP Basic` 作为认证方法。
+- `authorizeHttpRequests() `方法帮助我们在`端点级别`配置授权规则。通过调用此方法，您可以指导应用程序如何对特定端点接收到的请求进行授权。
+
+对于这两种方法，你需要使用一个`Customizer对象`作为参数。Customizer是一个契约，你可以通过实现它来定义你配置的Spring
+Security元素的自定义设置：认证、授权，或者特定的保护机制，如CSRF或CORS（将在第9章和第10章中讨论）。以下代码片段展示了Customizer接口的定义。注意，Customizer是一个
+`函数式接口`（因此我们可以使用lambda表达式来实现它），而我在代码清单2.8中使用的`withDefaults()方法`
+实际上只是一个不执行任何操作的Customizer实现：
+
+```java
+
+@FunctionalInterface
+public interface Customizer<T> {
+  void customize(T t);
+
+  static <T> Customizer<T> withDefaults() {
+    return (t) -> {
+    };
+  }
+}
+```
+
+在早期版本的 Spring Security 中，你可以使用`链式语法`来应用配置，而无需使用 `Customizer 对象`，如下代码片段所示。注意，这里并没有为
+authorizeHttpRequests() 方法提供 Customizer 对象，配置直接跟在方法调用之后：
+
+```java
+http.authorizeHttpRequests() 
+      .
+
+anyRequest().
+
+authenticated()
+```
+
+这种方法被弃用的原因是，Customizer 对象可以让你在需要时更灵活地移动配置。确实，对于简单的例子，使用 lambda
+表达式很方便。但在实际应用中，配置可能会变得非常复杂。在这种情况下，将这些配置移到独立的类中有助于使配置更易于维护和测试。
+
+这个例子的目的是让你了解如何覆盖默认配置。关于授权的详细信息，我们将在第7到第10章中深入探讨。
+
+!!! note
+
+    在早期版本的 Spring Security 中，安全配置类需要继承名为 `WebSecurityConfigurerAdapter` 的类。我们现在不再使用这种做法。
+
+### 以不同方式进行配置
+
+使用 Spring Security 创建配置时，一个令人困惑的方面是可以通过多种方式配置同一事物。在本节中，您将学习配置
+`UserDetailsService` 和 `PasswordEncoder`
+的替代方法。了解您拥有的选项非常重要，这样您才能在本书或其他来源如博客和文章中找到的示例中识别这些选项。同样重要的是，您要理解如何以及何时在您的应用程序中使用这些选项。后续章节将提供不同的示例，以扩展本节中的信息。
+
+让我们来看第一个项目。在创建了一个默认应用程序后，我们通过在 Spring 上下文中添加新的实现作为 bean，成功地重写了
+`UserDetailsService` 和 `PasswordEncoder`。让我们寻找另一种方式来进行 `UserDetailsService` 和 `PasswordEncoder` 的相同配置。
+
+我们可以直接使用 SecurityFilterChain bean 来设置 UserDetailsService 和 PasswordEncoder，如下所示。你可以在项目
+ssia-ch2-ex3[^3] 中找到这个示例。
+
+[^3]: ssia-ch2-ex3: 以不同方式进行配置，通过HttpSecurity配置userDetailsService，而不是构建UserDetailsService Bean
+
+```java title="清单 2.9 使用 SecurityFilterChain bean 设置 UserDetailsService"
+
+@Configuration
+public class ProjectConfig {
+
+  @Bean
+  public SecurityFilterChain configure(HttpSecurity http)
+          throws Exception {
+
+    http.httpBasic(Customizer.withDefaults());
+    http.authorizeHttpRequests(
+            c -> c.anyRequest().authenticated()
+    );
+
+    var user = User.withUsername("john")
+            .password("12345")
+            .authorities("read")
+            .build();
+
+    var userDetailsService =
+            new InMemoryUserDetailsManager(user);
+
+    http.userDetailsService(userDetailsService);
+
+    return http.build();
+  }
+
+  // Omitted code
+
+}
+
+```
+
+在代码清单2.9中，你可以看到我们以与代码清单2.5相同的方式声明了UserDetailsService。不同之处在于，现在这是在创建
+`SecurityFilterChain的bean方法内部本地完成的`。我们还调用了HttpSecurity的`userDetailsService()方法`来注册
+`UserDetailsService实例`。下一个清单展示了配置类的完整内容。
+
+``` java title="清单 2.10 配置类的完整定义"
+--8<-- "docs/java_serve/authentication/spring-security/02_hello/ssia-ch2-ex3/src/main/java/com/luguosong/ssiach2ex3/config/ProjectConfig.java"
+```
+
+这些配置选项都是正确的。第一种选项是将 beans 添加到`上下文`中，这样你可以在可能需要的其他类中注入这些值。但如果你不需要这样做，第二种选项同样不错。
+
+### 定义自定义认证逻辑
+
+正如您已经观察到的，Spring Security组件提供了很大的灵活性，在适应我们应用程序的架构时提供了许多选项。到目前为止，您已经了解了
+`UserDetailsService`和`PasswordEncoder`在Spring Security架构中的作用，并且也看到了几种配置它们的方法。现在是时候学习如何自定义委托给这些组件的
+`AuthenticationProvider`，如图2.3所示。`AuthenticationProvider实现了认证逻辑`，并委托给`UserDetailsService`和
+`PasswordEncoder`进行用户和密码管理。因此，我们可以说，通过这一部分的学习，我们将更深入地了解`认证架构`，学习如何使用
+`AuthenticationProvider`实现自定义认证逻辑。
+
+因为这是第一个例子，我只给你展示一个简要的图示，以便你更好地理解架构中各组件之间的关系。但我们将在第3到第6章中进行更详细的探讨。
+
+我建议你考虑一下 Spring Security 架构中设计的职责。这个架构是松耦合的，具有细粒度的职责分配。这种设计是使 Spring Security
+灵活且易于与应用程序集成的原因之一。根据你如何利用其灵活性，你也可以改变设计。你必须小心这些方法，因为它们可能会使你的解决方案变得复杂。例如，你可以选择以
+`不再需要 UserDetailsService 或 PasswordEncoder 的方式重写默认的 AuthenticationProvider`。考虑到这一点，清单 2.11
+展示了如何创建自定义认证提供者。你可以在项目 `ssia-ch2-ex4` 中找到这个示例。
+
+<figure markdown="span">
+  ![](https://cdn.jsdelivr.net/gh/luguosong/images@master/blog-img/202408271105101.png){ loading=lazy }
+  <figcaption>图 2.3 AuthenticationProvider 实现了认证逻辑。它接收来自 AuthenticationManager 的请求，并将查找用户的任务委托给 UserDetailsService，将密码验证任务委托给 PasswordEncoder。</figcaption>
+</figure>
+
+```java title="清单 2.11 实现 AuthenticationProvider 接口"
+
+@Component
+public class CustomAuthenticationProvider implements AuthenticationProvider {
+
+  @Override
+  public Authentication authenticate(Authentication authentication) throws AuthenticationException {
+
+    // authentication logic here
+  }
+
+  @Override
+  public boolean supports(Class<?> authenticationType) {
+
+    // type of the Authentication implementation here
+  }
+}
+```
+
+`authenticate(Authentication authentication) 方法`包含了所有的`认证逻辑`，因此我们将在清单2.12中添加一个这样的实现。我将在第6章详细解释
+`supports()方法`的用法。目前，我建议你暂时接受它的实现。在当前的例子中，它并不是必需的。
+
+```java title="清单 2.12 实现认证逻辑"
+
+@Override
+public Authentication authenticate(
+        Authentication authentication)
+        throws AuthenticationException {
+
+  String username = authentication.getName();
+  String password = String.valueOf(
+          authentication.getCredentials());
+
+  if ("john".equals(username) &&
+          "12345".equals(password)) {
+    return new UsernamePasswordAuthenticationToken(
+            username,
+            password,
+            Arrays.asList());
+  } else {
+    throw new AuthenticationCredentialsNotFoundException("Error!");
+  }
+
+}
+
+```
+
+在这里，`if-else 语句`的条件替代了 `UserDetailsService` 和 `PasswordEncoder` 的职责。你并不需要使用这两个
+bean，但如果你处理用户和密码进行身份验证，我强烈建议你将其管理逻辑分开。即使你重写身份验证的实现，也要按照 Spring Security
+架构的设计来应用它。
+
+您可能会发现，通过实现自己的 AuthenticationProvider 来替换认证逻辑是有用的。如果默认实现不完全符合您的应用需求，您可以选择实现自定义的认证逻辑。完整的
+AuthenticationProvider 实现如下所示。
+
+``` java title="清单 2.13 认证提供者的完整实现"
+--8<-- "docs/java_serve/authentication/spring-security/02_hello/ssia-ch2-ex4/src/main/java/com/luguosong/ssiach2ex4/security/CustomAuthenticationProvider.java"
+```
+
+在配置类中，您可以使用 HttpSecurity 的 `authenticationProvider() 方法`注册 `AuthenticationProvider`，如下所示。
+
+``` java title="清单 2.14 注册新的 AuthenticationProvider 实现"
+--8<-- "docs/java_serve/authentication/spring-security/02_hello/ssia-ch2-ex4/src/main/java/com/luguosong/ssiach2ex4/config/ProjectConfig.java"
+```
+
+```shell
+C:\Users\10545>curl -i -u john:12345 http://localhost:8080/hello
+HTTP/1.1 200
+X-Content-Type-Options: nosniff
+X-XSS-Protection: 0
+Cache-Control: no-cache, no-store, max-age=0, must-revalidate
+Pragma: no-cache
+Expires: 0
+X-Frame-Options: DENY
+Content-Type: text/plain;charset=UTF-8
+Content-Length: 6
+Date: Tue, 27 Aug 2024 07:06:26 GMT
+
+Hello!
+```
+
+在第六章中，您将深入了解`AuthenticationProvider`，以及如何在认证过程中重写其行为。在同一章节中，我们还将讨论
+`Authentication接口`及其实现，例如`UserPasswordAuthenticationToken`。
+
+### 使用多个配置类
+
+在之前实现的示例中，我们只使用了一个配置类。然而，最好还是将`职责分离`
+，即使是对于配置类也是如此。我们需要这种分离，因为配置开始变得更加复杂。在一个准备投产的应用程序中，可能会有比我们最初示例中更多的声明。你可能还会发现，拥有多个配置类有助于提高项目的可读性。
+
+通常来说，每个职责只对应一个类是个不错的实践。在这个例子中，我们可以将`用户管理配置`与`授权配置`分开。我们通过定义两个配置类来实现这一点：
+`UserManagementConfig`（在下一个列表中定义）和 `WebAuthorizationConfig`（在列表 2.16 中定义）。你可以在项目 ssia-ch2-ex5
+中找到这个例子。
+
+```java title="清单2.15 定义用户和密码管理的配置类"
+
+@Configuration
+public class UserManagementConfig {
+
+  @Bean
+  public UserDetailsService userDetailsService() {
+    var userDetailsService = new InMemoryUserDetailsManager();
+
+    var user = User.withUsername("john")
+            .password("12345")
+            .authorities("read")
+            .build();
+
+    userDetailsService.createUser(user);
+    return userDetailsService;
+  }
+
+  @Bean
+  public PasswordEncoder passwordEncoder() {
+    return NoOpPasswordEncoder.getInstance();
+  }
+}
+```
+
+在这种情况下，`UserManagementConfig` 类仅包含负责用户管理的两个 bean：`UserDetailsService` 和 `PasswordEncoder`
+。下面的列表展示了这个定义。
+
+```java
+
+@Configuration
+public class WebAuthorizationConfig {
+
+  @Bean
+  SecurityFilterChain configure(HttpSecurity http)
+          throws Exception {
+
+    http.httpBasic(Customizer.withDefaults());
+
+    http.authorizeHttpRequests(
+            c -> c.anyRequest().authenticated()
+    );
+
+    return http.build();
+  }
+}
+```
+
+在这里，`WebAuthorizationConfig` 类需要定义一个类型为 `SecurityFilterChain` 的 bean，以配置认证和授权规则。
+
+## 小结
+
+- 当你将 Spring Security 添加到应用程序的依赖项中时，Spring Boot 会提供一些默认配置。
+- 您实现了以下用于身份验证和授权的基本组件：`UserDetailsService`、`PasswordEncoder` 和 `AuthenticationProvider`。
+- 您可以使用 User 类定义用户。一个用户至少应具备用户名、密码和权限。权限是指您允许用户在应用程序中执行的操作。
+- Spring Security 提供的一个简单实现 `UserDetailsService` 的方式是 `InMemoryUserDetailsManager`。你可以向这样的
+  `UserDetailsService 实例`中添加用户，以便在应用程序的内存中管理用户。
+- `NoOpPasswordEncoder` 是 `PasswordEncoder` 合约的一种实现，它使用明文密码。此实现适合用于学习示例和（可能的）概念验证，但不适合用于生产环境的应用程序。
+- 您可以使用 `AuthenticationProvider` 合约在应用程序中实现自定义身份验证逻辑。
+- 在一个应用程序中，有多种方式可以编写配置，但你应该选择并坚持一种方法。这有助于使代码更简洁且更易于理解。
+
+
