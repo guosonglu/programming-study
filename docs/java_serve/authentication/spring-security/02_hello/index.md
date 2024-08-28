@@ -291,10 +291,10 @@ UserDetailsService 的角度来讨论它。这个实现将凭证存储在内存�
 @Configuration
 public class ProjectConfig {
 
-  @Bean
-  UserDetailsService userDetailsService() {
-    return new InMemoryUserDetailsManager();
-  }
+    @Bean
+    UserDetailsService userDetailsService() {
+        return new InMemoryUserDetailsManager();
+    }
 }
 ```
 
@@ -326,15 +326,15 @@ public class ProjectConfig {
 @Configuration
 public class ProjectConfig {
 
-  @Bean
-  UserDetailsService userDetailsService() {
-    var user = User.withUsername("john")
-            .password("12345")
-            .authorities("read")
-            .build();
+    @Bean
+    UserDetailsService userDetailsService() {
+        var user = User.withUsername("john")
+                .password("12345")
+                .authorities("read")
+                .build();
 
-    return new InMemoryUserDetailsManager(user);
-  }
+        return new InMemoryUserDetailsManager(user);
+    }
 }
 ```
 
@@ -372,7 +372,7 @@ bean，我们使用现有的 PasswordEncoder 实现：
 
 @Bean
 public PasswordEncoder passwordEncoder() {
-  return NoOpPasswordEncoder.getInstance();
+    return NoOpPasswordEncoder.getInstance();
 }
 ```
 
@@ -393,20 +393,20 @@ public PasswordEncoder passwordEncoder() {
 @Configuration
 public class ProjectConfig {
 
-  @Bean
-  UserDetailsService userDetailsService() {
-    var user = User.withUsername("john")
-            .password("12345")
-            .authorities("read")
-            .build();
+    @Bean
+    UserDetailsService userDetailsService() {
+        var user = User.withUsername("john")
+                .password("12345")
+                .authorities("read")
+                .build();
 
-    return new InMemoryUserDetailsManager(user);
-  }
+        return new InMemoryUserDetailsManager(user);
+    }
 
-  @Bean
-  PasswordEncoder passwordEncoder() {
-    return NoOpPasswordEncoder.getInstance();
-  }
+    @Bean
+    PasswordEncoder passwordEncoder() {
+        return NoOpPasswordEncoder.getInstance();
+    }
 }
 ```
 
@@ -442,14 +442,14 @@ Hello!
 @Configuration
 public class ProjectConfig {
 
-  @Bean
-  SecurityFilterChain configure(HttpSecurity http)
-          throws Exception {
+    @Bean
+    SecurityFilterChain configure(HttpSecurity http)
+            throws Exception {
 
-    return http.build();
-  }
+        return http.build();
+    }
 
-  // 省略的代码
+    // 省略的代码
 }
 ```
 
@@ -460,21 +460,21 @@ public class ProjectConfig {
 @Configuration
 public class ProjectConfig {
 
-  @Bean
-  SecurityFilterChain configure(HttpSecurity http)
-          throws Exception {
+    @Bean
+    SecurityFilterChain configure(HttpSecurity http)
+            throws Exception {
 
-    http.httpBasic(Customizer.withDefaults());
+        http.httpBasic(Customizer.withDefaults());
 
-    http.authorizeHttpRequests(
-            // 认证后可以访问
-            c -> c.anyRequest().authenticated()
-    );
+        http.authorizeHttpRequests(
+                // 认证后可以访问
+                c -> c.anyRequest().authenticated()
+        );
 
-    return http.build();
-  }
+        return http.build();
+    }
 
-  // Omitted code
+    // Omitted code
 
 }
 ```
@@ -487,21 +487,21 @@ public class ProjectConfig {
 @Configuration
 public class ProjectConfig {
 
-  @Bean
-  public SecurityFilterChain configure(HttpSecurity http)
-          throws Exception {
+    @Bean
+    public SecurityFilterChain configure(HttpSecurity http)
+            throws Exception {
 
-    http.httpBasic(Customizer.withDefaults());
+        http.httpBasic(Customizer.withDefaults());
 
-    http.authorizeHttpRequests(
-            // 允许所有访问
-            c -> c.anyRequest().permitAll()
-    );
+        http.authorizeHttpRequests(
+                // 允许所有访问
+                c -> c.anyRequest().permitAll()
+        );
 
-    return http.build();
-  }
+        return http.build();
+    }
 
-  // Omitted code
+    // Omitted code
 }
 ```
 
@@ -538,12 +538,12 @@ Security元素的自定义设置：认证、授权，或者特定的保护机制
 
 @FunctionalInterface
 public interface Customizer<T> {
-  void customize(T t);
+    void customize(T t);
 
-  static <T> Customizer<T> withDefaults() {
-    return (t) -> {
-    };
-  }
+    static <T> Customizer<T> withDefaults() {
+        return (t) -> {
+        };
+    }
 }
 ```
 
@@ -587,29 +587,29 @@ ssia-ch2-ex3[^3] 中找到这个示例。
 @Configuration
 public class ProjectConfig {
 
-  @Bean
-  public SecurityFilterChain configure(HttpSecurity http)
-          throws Exception {
+    @Bean
+    public SecurityFilterChain configure(HttpSecurity http)
+            throws Exception {
 
-    http.httpBasic(Customizer.withDefaults());
-    http.authorizeHttpRequests(
-            c -> c.anyRequest().authenticated()
-    );
+        http.httpBasic(Customizer.withDefaults());
+        http.authorizeHttpRequests(
+                c -> c.anyRequest().authenticated()
+        );
 
-    var user = User.withUsername("john")
-            .password("12345")
-            .authorities("read")
-            .build();
+        var user = User.withUsername("john")
+                .password("12345")
+                .authorities("read")
+                .build();
 
-    var userDetailsService =
-            new InMemoryUserDetailsManager(user);
+        var userDetailsService =
+                new InMemoryUserDetailsManager(user);
 
-    http.userDetailsService(userDetailsService);
+        http.userDetailsService(userDetailsService);
 
-    return http.build();
-  }
+        return http.build();
+    }
 
-  // Omitted code
+    // Omitted code
 
 }
 
@@ -638,7 +638,9 @@ public class ProjectConfig {
 我建议你考虑一下 Spring Security 架构中设计的职责。这个架构是松耦合的，具有细粒度的职责分配。这种设计是使 Spring Security
 灵活且易于与应用程序集成的原因之一。根据你如何利用其灵活性，你也可以改变设计。你必须小心这些方法，因为它们可能会使你的解决方案变得复杂。例如，你可以选择以
 `不再需要 UserDetailsService 或 PasswordEncoder 的方式重写默认的 AuthenticationProvider`。考虑到这一点，清单 2.11
-展示了如何创建自定义认证提供者。你可以在项目 `ssia-ch2-ex4` 中找到这个示例。
+展示了如何创建自定义认证提供者。你可以在项目ssia-ch2-ex4[^4]中找到这个示例。
+
+[^4]: ssia-ch2-ex4: 通过实现AuthenticationProvider接口，自定义CustomAuthenticationProvider类，实现自定义认证逻辑。
 
 <figure markdown="span">
   ![](https://cdn.jsdelivr.net/gh/luguosong/images@master/blog-img/202408271105101.png){ loading=lazy }
@@ -650,17 +652,17 @@ public class ProjectConfig {
 @Component
 public class CustomAuthenticationProvider implements AuthenticationProvider {
 
-  @Override
-  public Authentication authenticate(Authentication authentication) throws AuthenticationException {
+    @Override
+    public Authentication authenticate(Authentication authentication) throws AuthenticationException {
 
-    // authentication logic here
-  }
+        // authentication logic here
+    }
 
-  @Override
-  public boolean supports(Class<?> authenticationType) {
+    @Override
+    public boolean supports(Class<?> authenticationType) {
 
-    // type of the Authentication implementation here
-  }
+        // type of the Authentication implementation here
+    }
 }
 ```
 
@@ -674,19 +676,19 @@ public Authentication authenticate(
         Authentication authentication)
         throws AuthenticationException {
 
-  String username = authentication.getName();
-  String password = String.valueOf(
-          authentication.getCredentials());
+    String username = authentication.getName();
+    String password = String.valueOf(
+            authentication.getCredentials());
 
-  if ("john".equals(username) &&
-          "12345".equals(password)) {
-    return new UsernamePasswordAuthenticationToken(
-            username,
-            password,
-            Arrays.asList());
-  } else {
-    throw new AuthenticationCredentialsNotFoundException("Error!");
-  }
+    if ("john".equals(username) &&
+            "12345".equals(password)) {
+        return new UsernamePasswordAuthenticationToken(
+                username,
+                password,
+                Arrays.asList());
+    } else {
+        throw new AuthenticationCredentialsNotFoundException("Error!");
+    }
 
 }
 
@@ -734,31 +736,33 @@ Hello!
 ，即使是对于配置类也是如此。我们需要这种分离，因为配置开始变得更加复杂。在一个准备投产的应用程序中，可能会有比我们最初示例中更多的声明。你可能还会发现，拥有多个配置类有助于提高项目的可读性。
 
 通常来说，每个职责只对应一个类是个不错的实践。在这个例子中，我们可以将`用户管理配置`与`授权配置`分开。我们通过定义两个配置类来实现这一点：
-`UserManagementConfig`（在下一个列表中定义）和 `WebAuthorizationConfig`（在列表 2.16 中定义）。你可以在项目 ssia-ch2-ex5
+`UserManagementConfig`（在下一个列表中定义）和 `WebAuthorizationConfig`（在列表 2.16 中定义）。你可以在项目 ssia-ch2-ex5[^5]
 中找到这个例子。
+
+[^5]: ssia-ch2-ex5: 使用多个配置类
 
 ```java title="清单2.15 定义用户和密码管理的配置类"
 
 @Configuration
 public class UserManagementConfig {
 
-  @Bean
-  public UserDetailsService userDetailsService() {
-    var userDetailsService = new InMemoryUserDetailsManager();
+    @Bean
+    public UserDetailsService userDetailsService() {
+        var userDetailsService = new InMemoryUserDetailsManager();
 
-    var user = User.withUsername("john")
-            .password("12345")
-            .authorities("read")
-            .build();
+        var user = User.withUsername("john")
+                .password("12345")
+                .authorities("read")
+                .build();
 
-    userDetailsService.createUser(user);
-    return userDetailsService;
-  }
+        userDetailsService.createUser(user);
+        return userDetailsService;
+    }
 
-  @Bean
-  public PasswordEncoder passwordEncoder() {
-    return NoOpPasswordEncoder.getInstance();
-  }
+    @Bean
+    public PasswordEncoder passwordEncoder() {
+        return NoOpPasswordEncoder.getInstance();
+    }
 }
 ```
 
@@ -770,18 +774,18 @@ public class UserManagementConfig {
 @Configuration
 public class WebAuthorizationConfig {
 
-  @Bean
-  SecurityFilterChain configure(HttpSecurity http)
-          throws Exception {
+    @Bean
+    SecurityFilterChain configure(HttpSecurity http)
+            throws Exception {
 
-    http.httpBasic(Customizer.withDefaults());
+        http.httpBasic(Customizer.withDefaults());
 
-    http.authorizeHttpRequests(
-            c -> c.anyRequest().authenticated()
-    );
+        http.authorizeHttpRequests(
+                c -> c.anyRequest().authenticated()
+        );
 
-    return http.build();
-  }
+        return http.build();
+    }
 }
 ```
 
