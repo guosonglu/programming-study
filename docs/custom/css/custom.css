@@ -108,6 +108,10 @@ p > code, li > code {
     font-weight: 700;
 }
 
+li::marker {
+    color: #5e8bde; /* 设置圆点颜色为蓝色 */
+}
+
 :root > * {
     --md-code-hl-number-color: #BBBBBB;
     --md-code-hl-special-color: #BBBBBB;
