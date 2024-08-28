@@ -200,9 +200,9 @@ nav:
       - java/index.md
       - JavaSE:
           - java/javase/src/main/java/com/luguosong/index.md
-          - 概述: java/javase/src/main/java/com/luguosong/overview/index.md
-          - 语言基础: java/javase/src/main/java/com/luguosong/basic/index.md
-          - 面向对象基础: java/javase/src/main/java/com/luguosong/object_oriented/index.md
+          - 概述: java/javase/src/main/java/com/luguosong/_01_overview/index.md
+          - 语言基础: java/javase/src/main/java/com/luguosong/_02_basic/index.md
+          - 面向对象: java/javase/src/main/java/com/luguosong/_03_object_oriented/index.md
   - 服务端开发:
       - java_serve/index.md
       - Spring框架:
@@ -230,6 +230,7 @@ nav:
               - java_serve/authentication/spring-security/index.md
               - 安全现状: java_serve/authentication/spring-security/01-security-today/index.md
               - Spring Security入门: java_serve/authentication/spring-security/02_hello/index.md
+              - 管理用户: java_serve/authentication/spring-security/03_managing_users/index.md
       - 分布式/微服务:
           - java_serve/distributed/index.md
           - 网关: java_serve/distributed/gateway/index.md
