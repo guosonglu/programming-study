@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ExternalStorageConfigurationManager" enabled="true" />
+  <component name="FrameworkDetectionExcludesConfiguration">
+    <file type="web" url="file://$PROJECT_DIR$/out/artifacts/springmvc_parameters_Web_exploded/WEB-INF/web.xml" />
+  </component>
   <component name="MavenProjectsManager">
     <option name="originalFiles">
       <list>
@@ -37,6 +40,8 @@
         <option value="$PROJECT_DIR$/docs/topics/design_pattern/pom.xml" />
         <option value="$PROJECT_DIR$/docs/topics/itext-signatures/pom.xml" />
         <option value="$PROJECT_DIR$/docs/topics/maven/base/maven-hello/pom.xml" />
+        <option value="$PROJECT_DIR$/docs/java_serve/web_application/mvc/springmvc-parameters/pom.xml" />
+        <option value="$PROJECT_DIR$/docs/java_serve/web_application/mvc/springmvc-header-info/pom.xml" />
       </list>
     </option>
   </component>
