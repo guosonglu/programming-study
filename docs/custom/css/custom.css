@@ -50,7 +50,10 @@
 
 /*图片设置白色背景*/
 figure img {
-    background-color: white;
+    background-color: RGB(255, 255, 255);
+    padding: 2px;
+    border-radius: 1px;
+    cursor: zoom-in;
 }
 
 /*[dir=ltr] .md-nav--secondary .md-nav__list {*/

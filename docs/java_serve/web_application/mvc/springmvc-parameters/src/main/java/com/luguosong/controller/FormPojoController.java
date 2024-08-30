@@ -1,4 +1,4 @@
-package com.luguosong.controller.parameters;
+package com.luguosong.controller;
 
 import com.luguosong.pojo.User;
 import jakarta.servlet.http.HttpServletRequest;

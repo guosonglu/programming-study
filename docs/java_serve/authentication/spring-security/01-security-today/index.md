@@ -84,7 +84,7 @@ Security 提供了预定义的功能，帮助你避免编写样板代码或在�
 我们采用分层安全策略，每一层都需要不同的方法。可以将这些层比作一座受保护的城堡（图1.2）。黑客需要绕过多个障碍才能获取应用程序管理的资源。你对每一层的安全措施做得越好，恶意人员访问数据或执行未经授权操作的可能性就越低。
 
 <figure markdown="span">
-  ![](https://cdn.jsdelivr.net/gh/luguosong/images@master/blog-img/202408221547881.png){ loading=lazy }
+  ![](https://gcore.jsdelivr.net/gh/luguosong/images@master/blog-img/202408221547881.png){ loading=lazy }
   <figcaption>图1.2：黑暗巫师（黑客）必须绕过重重障碍（安全层）才能从公主（你的应用程序）那里偷走魔法剑（用户资源）。</figcaption>
 </figure>
 
@@ -95,7 +95,7 @@ Security 提供了预定义的功能，帮助你避免编写样板代码或在�
 `应用级别`的安全性（图1.3）指的是应用程序应采取的一切措施，以保护其运行环境以及处理和存储的数据。请注意，这不仅仅涉及应用程序影响和使用的数据。一个应用程序可能存在漏洞，使得恶意人员能够影响整个系统！
 
 <figure markdown="span">
-  ![](https://cdn.jsdelivr.net/gh/luguosong/images@master/blog-img/202408221555170.png){ loading=lazy }
+  ![](https://gcore.jsdelivr.net/gh/luguosong/images@master/blog-img/202408221555170.png){ loading=lazy }
   <figcaption>图 1.3 我们以分层的方式实现安全性，每一层都建立在前一层的基础之上。本书重点讲解如何使用 Spring Security，这是一种在最高层提供应用级安全性的框架。</figcaption>
 </figure>
 
@@ -108,7 +108,7 @@ Security 提供了预定义的功能，帮助你避免编写样板代码或在�
 在使用这些服务和微服务架构时，我们可能会遇到各种漏洞，因此需要格外小心。如前所述，安全性是一个跨越多个层面的关注点。处理某一层的安全问题时，最佳实践是假设上层尽可能不存在。想想图1.2中的城堡类比。如果你管理一层有30名士兵的防线，你会希望他们尽可能强大。即使你知道在到达他们之前，敌人需要先穿过燃烧的桥梁，你仍然会这样做。
 
 <figure markdown="span">
-  ![](https://cdn.jsdelivr.net/gh/luguosong/images@master/blog-img/202408221633655.png){ loading=lazy }
+  ![](https://gcore.jsdelivr.net/gh/luguosong/images@master/blog-img/202408221633655.png){ loading=lazy }
   <figcaption>图1.4 如果恶意用户设法获取了虚拟机（VM）的访问权限，并且没有应用程序级别的安全措施，黑客就能控制系统中的其他应用程序。如果通信发生在两个不同的可用区（AZ）之间，恶意个人将更容易拦截消息。这种漏洞使他们能够窃取数据或冒充用户。</figcaption>
 </figure>
 

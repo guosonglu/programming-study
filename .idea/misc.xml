@@ -42,6 +42,8 @@
         <option value="$PROJECT_DIR$/docs/topics/maven/base/maven-hello/pom.xml" />
         <option value="$PROJECT_DIR$/docs/java_serve/web_application/mvc/springmvc-parameters/pom.xml" />
         <option value="$PROJECT_DIR$/docs/java_serve/web_application/mvc/springmvc-header-info/pom.xml" />
+        <option value="$PROJECT_DIR$/docs/java_serve/web_application/mvc/springmvc-scope/pom.xml" />
+        <option value="$PROJECT_DIR$/docs/java_serve/web_application/mvc/springmvc-view-jsp/pom.xml" />
       </list>
     </option>
   </component>

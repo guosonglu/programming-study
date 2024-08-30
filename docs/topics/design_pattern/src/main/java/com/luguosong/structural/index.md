@@ -3,7 +3,7 @@
 ## 适配器(Adapter)🔥
 
 <figure markdown="span">
-  ![](https://cdn.jsdelivr.net/gh/luguosong/images@master/blog-img/202405151018161.png){ loading=lazy }
+  ![](https://gcore.jsdelivr.net/gh/luguosong/images@master/blog-img/202405151018161.png){ loading=lazy }
 </figure>
 
 ### 意图

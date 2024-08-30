@@ -108,7 +108,7 @@ extra:
       link: https://github.com/luguosong
       name: Github
     - icon: simple/wechat
-      link: https://cdn.jsdelivr.net/gh/luguosong/images@master/blog-img/202404272008366.png
+      link: https://gcore.jsdelivr.net/gh/luguosong/images@master/blog-img/202404272008366.png
       name: 微信
 
 plugins:

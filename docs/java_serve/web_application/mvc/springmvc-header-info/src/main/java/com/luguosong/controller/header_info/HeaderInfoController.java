@@ -15,6 +15,6 @@ public class HeaderInfoController {
     @PostMapping("/springMvc")
     public String springMvc(@RequestHeader(value = "content-type", required = false) String contentType) {
         System.out.println(contentType);
-        return "get-parameters/form";
+        return "header-info/form";
     }
 }

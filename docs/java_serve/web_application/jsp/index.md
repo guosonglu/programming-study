@@ -3,7 +3,7 @@
 ## 设置网站欢迎页
 
 <figure markdown="span">
-  ![](https://cdn.jsdelivr.net/gh/luguosong/images@master/blog-img/202405191755672.png){ loading=lazy }
+  ![](https://gcore.jsdelivr.net/gh/luguosong/images@master/blog-img/202405191755672.png){ loading=lazy }
   <figcaption>Tomcat全局配置欢迎页</figcaption>
 </figure>
 
@@ -43,7 +43,7 @@ JSP引入了被称为`JSP动作`的XML标签，用来调用内置功能。
 Tomcat会将`.jsp`文件编译成`Servlet`。
 
 <figure markdown="span">
-  ![](https://cdn.jsdelivr.net/gh/luguosong/images@master/blog-img/202405221757065.png){ loading=lazy }
+  ![](https://gcore.jsdelivr.net/gh/luguosong/images@master/blog-img/202405221757065.png){ loading=lazy }
   <figcaption>jsp文件被转换为Servlet代码</figcaption>
 </figure>
 
@@ -96,7 +96,7 @@ JSP中通过`<% %>`添加Java代码，添加的代码会在`service()方法`中�
 使用request`请求域`进行数据查询流程：
 
 <figure markdown="span">
-  ![](https://cdn.jsdelivr.net/gh/luguosong/images@master/diagrams/java_serve/web_application/jsp/request%E8%AF%B7%E6%B1%82%E5%9F%9F%E6%95%B0%E6%8D%AE%E6%9F%A5%E8%AF%A2%E6%B5%81%E7%A8%8B.svg){ loading=lazy }
+  ![](https://gcore.jsdelivr.net/gh/luguosong/images@master/diagrams/java_serve/web_application/jsp/request%E8%AF%B7%E6%B1%82%E5%9F%9F%E6%95%B0%E6%8D%AE%E6%9F%A5%E8%AF%A2%E6%B5%81%E7%A8%8B.svg){ loading=lazy }
   <figcaption>通过请求域对象查询数据</figcaption>
 </figure>
 
@@ -167,7 +167,7 @@ public class ServletConfigDemo extends GenericServlet {
 ```
 
 <figure markdown="span">
-  ![](https://cdn.jsdelivr.net/gh/luguosong/images@master/blog-img/202405280924354.png){ loading=lazy }
+  ![](https://gcore.jsdelivr.net/gh/luguosong/images@master/blog-img/202405280924354.png){ loading=lazy }
   <figcaption>与Page指令相关的属性</figcaption>
 </figure>
 

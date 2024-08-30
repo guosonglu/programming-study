@@ -18,12 +18,12 @@ public class CookieController {
      * */
     @GetMapping("/view")
     public String view() {
-        return "get-parameters/form";
+        return "header-info/form";
     }
 
     @RequestMapping("/springMvc")
     public String springMvc(@CookieValue("username") String username) {
         System.out.println(username);
-        return "get-parameters/form";
+        return "header-info/form";
     }
 }

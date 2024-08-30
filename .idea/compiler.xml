@@ -16,6 +16,7 @@
         <module name="springmvc-header-info" />
         <module name="jsp_jstl" />
         <module name="mybatis-generator" />
+        <module name="springmvc-scope" />
         <module name="session_and_cookie" />
         <module name="listener-hello" />
         <module name="javase" />
@@ -40,6 +41,7 @@
         <module name="jsp_el" />
         <module name="springmvc-hello" />
         <module name="mybatis-demo" />
+        <module name="springmvc-view-jsp" />
         <module name="programming-notes" />
         <module name="generic-servlet" />
       </profile>

@@ -20,7 +20,7 @@ const adaptiveHeight = () => {
 }
 
 // 页面切换时执行
-document$.subscribe(function () {
+document$.subscribe(async function () {
     adaptiveHeight();
 })
 

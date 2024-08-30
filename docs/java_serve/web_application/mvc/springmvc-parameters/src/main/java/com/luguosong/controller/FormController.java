@@ -1,4 +1,4 @@
-package com.luguosong.controller.parameters;
+package com.luguosong.controller;
 
 import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.stereotype.Controller;

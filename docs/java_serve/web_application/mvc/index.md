@@ -14,12 +14,12 @@
 - `C(Controller、控制器)`:控制器是MVC架构的核心，
 
 <figure markdown="span">
-  ![](https://cdn.jsdelivr.net/gh/luguosong/images@master/diagrams/java_serve/web_application/mvc/MVC%E6%9E%B6%E6%9E%84%E6%A8%A1%E5%BC%8F.svg){ loading=lazy }
+  ![](https://gcore.jsdelivr.net/gh/luguosong/images@master/diagrams/java_serve/web_application/mvc/MVC%E6%9E%B6%E6%9E%84%E6%A8%A1%E5%BC%8F.svg){ loading=lazy }
   <figcaption>MVC架构图解</figcaption>
 </figure>
 
 <figure markdown="span">
-  ![](https://cdn.jsdelivr.net/gh/luguosong/images@master/blog-img/202406201047597.png){ loading=lazy }
+  ![](https://gcore.jsdelivr.net/gh/luguosong/images@master/blog-img/202406201047597.png){ loading=lazy }
   <figcaption>MVC请求响应过程</figcaption>
 </figure>
 
@@ -65,6 +65,10 @@
 ``` xml
 --8<-- "docs/java_serve/web_application/mvc/springmvc-hello/pom.xml"
 ```
+
+!!! warning
+
+    注意，需要将maven工程改为war包：`<packaging>war</packaging>`
 
 创建`webapp/WEB-INF/web.xml`目录和文件。
 
@@ -115,7 +119,7 @@ http://localhost:8080/springmvc_hello_war_exploded/hello-mvc
 ## Spring MVC执行流程
 
 <figure markdown="span">
-  ![](https://cdn.jsdelivr.net/gh/luguosong/images@master/diagrams/java_serve/web_application/mvc/SpringMVC%E6%89%A7%E8%A1%8C%E8%BF%87%E7%A8%8B.svg){ loading=lazy }
+  ![](https://gcore.jsdelivr.net/gh/luguosong/images@master/diagrams/java_serve/web_application/mvc/SpringMVC%E6%89%A7%E8%A1%8C%E8%BF%87%E7%A8%8B.svg){ loading=lazy }
   <figcaption>Spring MVC执行流程</figcaption>
 </figure>
 
@@ -287,7 +291,7 @@ public class HelloController {
 ### 形参获取表单请求参数
 
 ``` java title="FormController.java"
---8<-- "docs/java_serve/web_application/mvc/springmvc-hello/src/main/java/com/luguosong/controller/parameters/FormController.java"
+--8<-- "docs/java_serve/web_application/mvc/springmvc-parameters/src/main/java/com/luguosong/controller/FormController.java"
 ```
 
 !!! warning "如果是Spring6+,想要省略@RequestParam注解，需要在pom.xml中配置`-parameters`标记"
@@ -315,11 +319,11 @@ public class HelloController {
 ### JavaBean获取表单请求参数
 
 ``` java title="FormPojoController.java"
---8<-- "docs/java_serve/web_application/mvc/springmvc-hello/src/main/java/com/luguosong/controller/parameters/FormPojoController.java"
+--8<-- "docs/java_serve/web_application/mvc/springmvc-parameters/src/main/java/com/luguosong/controller/FormPojoController.java"
 ```
 
 ``` java title="User.java"
---8<-- "docs/java_serve/web_application/mvc/springmvc-hello/src/main/java/com/luguosong/pojo/User.java"
+--8<-- "docs/java_serve/web_application/mvc/springmvc-parameters/src/main/java/com/luguosong/pojo/User.java"
 ```
 
 ### Get请求中文乱码问题
@@ -327,7 +331,7 @@ public class HelloController {
 Tomcat8以及之前版本，解决Get请求中文乱码，在Tomcat服务器`CATALINA_HOME/conf/server.xml`中配置:
 
 <figure markdown="span">
-  ![](https://cdn.jsdelivr.net/gh/luguosong/images@master/blog-img/202408211608413.png){ loading=lazy }
+  ![](https://gcore.jsdelivr.net/gh/luguosong/images@master/blog-img/202408211608413.png){ loading=lazy }
   <figcaption>解决Get请求乱码问题</figcaption>
 </figure>
 
@@ -355,15 +359,64 @@ Tomcat10请求体默认采用UTF-8编码，无需解决中文乱码问题。
 ### 根据请求头名称获取请求头信息
 
 ``` java title="HeaderInfoController.java"
---8<-- "docs/java_serve/web_application/mvc/springmvc-hello/src/main/java/com/luguosong/controller/header_info/HeaderInfoController.java"
+--8<-- "docs/java_serve/web_application/mvc/springmvc-header-info/src/main/java/com/luguosong/controller/header_info/HeaderInfoController.java"
 ```
 
 ### 获取Cookie信息
 
 ``` java title="CookieController.java"
---8<-- "docs/java_serve/web_application/mvc/springmvc-hello/src/main/java/com/luguosong/controller/header_info/CookieController.java"
+--8<-- "docs/java_serve/web_application/mvc/springmvc-header-info/src/main/java/com/luguosong/controller/header_info/CookieController.java"
 ```
 
 ## 域对象操作
 
+### request域
+
+``` java title="RequestScopeController.java"
+--8<-- "docs/java_serve/web_application/mvc/springmvc-scope/src/main/java/com/luguosong/controller/RequestScopeController.java"
+```
+
+<figure markdown="span">
+  ![](https://gcore.jsdelivr.net/gh/luguosong/images@master/blog-img/202408290914385.png){ loading=lazy }
+  <figcaption>BindingAwareModelMap类结构</figcaption>
+</figure>
+
+不管是`Model对象`、`Map集合`还是`ModelMap对象`，实际创建的的都是`BindingAwareModelMap对象`。
+
+Spring MVC为了更好的体现MVC架构模式，还提供了`ModelAndView类`
+，这个类封装了Model和View。也就是说这个类封装业务处理之后的数据，体支持跳转指定视图。通过ModelAndView也可以设置请求域。
+
+### session域
+
+``` java title="SessionScopeController.java"
+--8<-- "docs/java_serve/web_application/mvc/springmvc-scope/src/main/java/com/luguosong/controller/SessionScopeController.java"
+```
+
+一般情况下`modelAndView.addObject`是设置request域的，但通过`@SessionAttributes({"xxx"})`注解可以指定特定字段为session域。
+
+### application域
+
+``` java title="ApplicationScopeController.java"
+--8<-- "docs/java_serve/web_application/mvc/springmvc-scope/src/main/java/com/luguosong/controller/ApplicationScopeController.java"
+```
+
+一般直接采用Servlet原始方式设置application域。
+
+## 视图(View)
+
+### 常见的视图
+
+- `InternalResourceView`:内部资源视图，Spring MVC框架内置，专门为JSP模板语法准备
+- `RedirectView`：重定向视图，Spring MVC框架内置,用来完成重定向效果
+- `ThymeLeafView`:Thymeleaf 是一种现代化的服务器端 Java 模板引擎，适用于网页和独立环境。Thymeleaf
+  的主要目标是为您的开发流程带来优雅的自然模板——这些 HTML 可以在浏览器中正确显示，同时也能作为静态原型使用，从而增强开发团队的协作。它提供了
+  Spring Framework 的模块、与您喜爱的工具的多种集成，并允许您插入自己的功能，因此 Thymeleaf 非常适合现代 HTML5 JVM
+  的网页开发——尽管它的功能远不止于此。
+- `FreeMarkerView`：Apache FreeMarker™ 是一个模板引擎：它是一个 Java 库，用于根据模板和变化的数据生成文本输出（如 HTML
+  网页、电子邮件、配置文件、源代码等）。模板使用 FreeMarker 模板语言（FTL）编写，这是一种简单的专用语言（不像 PHP
+  那样是完整的编程语言）。通常，会使用通用编程语言（如 Java）来准备数据（执行数据库查询、进行业务计算）。然后，Apache FreeMarker
+  使用模板展示这些准备好的数据。在模板中，你专注于如何展示数据，而在模板之外，你专注于展示哪些数据。
+- `VelocityView`:VelocityView 包含所有的 GenericTools，并增加了在 Web 应用程序（Java EE 项目）视图层中使用 Velocity 的基础设施和专用工具。这包括用于处理 Velocity 模板请求的 VelocityViewServlet 或 VelocityLayoutServlet，以及用于在 JSP 中嵌入 Velocity 的 VelocityViewTag。
+- `PDFView`:第三方，用于生成pdf文件视图
+- `ExcelView`:第三方，用于生成excel文件视图
 
