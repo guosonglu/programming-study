@@ -45,7 +45,7 @@
 
 /*不限制内容的宽度*/
 .md-grid {
-    max-width: none;
+    max-width: none !important;
 }
 
 /*图片设置白色背景*/
