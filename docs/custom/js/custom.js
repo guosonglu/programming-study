@@ -39,7 +39,7 @@ const backupImgAddress = () => {
 }
 
 // 页面切换时执行
-document$.subscribe(async function () {
+document$.subscribe(function () {
     backupImgAddress();
     // 自适应iframe高度
     adaptiveHeight();
