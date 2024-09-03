@@ -20,13 +20,10 @@ const adaptiveHeight = () => {
 }
 
 /*
-* 当默认地址不可以，设置为备用地址
+* 如果是本地使用默认地址,如果是在线使用cdn加速地址(存在缓存问题)
 * */
 const backupImgAddress = () => {
-
     const hostname = window.location.hostname;
-    console.log(hostname)
-
     if (hostname.includes("luguosong")) {
         // 获取所有 img 元素
         const images = document.querySelectorAll('img');
