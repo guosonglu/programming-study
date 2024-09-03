@@ -10,8 +10,8 @@ theme:
   custom_dir: overrides # 自定义主题目录
   font:
     code: Source Code Pro
-  logo: assert/logo.gif
-  favicon: assert/logo.gif
+  logo: https://gcore.jsdelivr.net/gh/luguosong/programming-notes@main/docs/assert/logo.gif
+  favicon: https://gcore.jsdelivr.net/gh/luguosong/programming-notes@main/docs/assert/logo.gif
   icon:
     repo: fontawesome/brands/github
   features:
