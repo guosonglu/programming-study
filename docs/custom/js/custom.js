@@ -28,14 +28,20 @@ const backupImgAddress = () => {
     if (hostname.includes("luguosong")) {
         // 获取所有 img 元素
         const images = document.querySelectorAll('img');
-
         // 为每个 img 元素添加 error 事件监听器
         images.forEach(img => {
             img.src = img.src.replace(
                 "https://raw.githubusercontent.com/luguosong/images/master",
                 "https://gcore.jsdelivr.net/gh/luguosong/images@master")
-
         });
+
+        const as = document.querySelectorAll(".glightbox");
+
+        as.forEach(a => {
+            a.href = a.href.replace(
+                "https://raw.githubusercontent.com/luguosong/images/master",
+                "https://gcore.jsdelivr.net/gh/luguosong/images@master")
+        })
     }
 }
 
