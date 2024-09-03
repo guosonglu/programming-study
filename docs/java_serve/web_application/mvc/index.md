@@ -14,12 +14,12 @@
 - `C(Controller、控制器)`:控制器是MVC架构的核心，
 
 <figure markdown="span">
-  ![](https://gcore.jsdelivr.net/gh/luguosong/images@master/diagrams/java_serve/web_application/mvc/MVC%E6%9E%B6%E6%9E%84%E6%A8%A1%E5%BC%8F.svg){ loading=lazy }
+  ![](https://raw.githubusercontent.com/luguosong/images/master/diagrams/java_serve/web_application/mvc/MVC%E6%9E%B6%E6%9E%84%E6%A8%A1%E5%BC%8F.svg){ loading=lazy }
   <figcaption>MVC架构图解</figcaption>
 </figure>
 
 <figure markdown="span">
-  ![](https://gcore.jsdelivr.net/gh/luguosong/images@master/blog-img/202406201047597.png){ loading=lazy }
+  ![](https://raw.githubusercontent.com/luguosong/images/master/blog-img/202406201047597.png){ loading=lazy }
   <figcaption>MVC请求响应过程</figcaption>
 </figure>
 
@@ -119,7 +119,7 @@ http://localhost:8080/springmvc_hello_war_exploded/hello-mvc
 ## Spring MVC执行流程
 
 <figure markdown="span">
-  ![](https://gcore.jsdelivr.net/gh/luguosong/images@master/diagrams/java_serve/web_application/mvc/SpringMVC%E6%89%A7%E8%A1%8C%E8%BF%87%E7%A8%8B.svg){ loading=lazy }
+  ![](https://raw.githubusercontent.com/luguosong/images/master/diagrams/java_serve/web_application/mvc/SpringMVC%E6%89%A7%E8%A1%8C%E8%BF%87%E7%A8%8B.svg){ loading=lazy }
   <figcaption>Spring MVC执行流程</figcaption>
 </figure>
 
@@ -331,7 +331,7 @@ public class HelloController {
 Tomcat8以及之前版本，解决Get请求中文乱码，在Tomcat服务器`CATALINA_HOME/conf/server.xml`中配置:
 
 <figure markdown="span">
-  ![](https://gcore.jsdelivr.net/gh/luguosong/images@master/blog-img/202408211608413.png){ loading=lazy }
+  ![](https://raw.githubusercontent.com/luguosong/images/master/blog-img/202408211608413.png){ loading=lazy }
   <figcaption>解决Get请求乱码问题</figcaption>
 </figure>
 
@@ -377,7 +377,7 @@ Tomcat10请求体默认采用UTF-8编码，无需解决中文乱码问题。
 ```
 
 <figure markdown="span">
-  ![](https://gcore.jsdelivr.net/gh/luguosong/images@master/blog-img/202408290914385.png){ loading=lazy }
+  ![](https://raw.githubusercontent.com/luguosong/images/master/blog-img/202408290914385.png){ loading=lazy }
   <figcaption>BindingAwareModelMap类结构</figcaption>
 </figure>
 
@@ -416,7 +416,141 @@ Spring MVC为了更好的体现MVC架构模式，还提供了`ModelAndView类`
   网页、电子邮件、配置文件、源代码等）。模板使用 FreeMarker 模板语言（FTL）编写，这是一种简单的专用语言（不像 PHP
   那样是完整的编程语言）。通常，会使用通用编程语言（如 Java）来准备数据（执行数据库查询、进行业务计算）。然后，Apache FreeMarker
   使用模板展示这些准备好的数据。在模板中，你专注于如何展示数据，而在模板之外，你专注于展示哪些数据。
-- `VelocityView`:VelocityView 包含所有的 GenericTools，并增加了在 Web 应用程序（Java EE 项目）视图层中使用 Velocity 的基础设施和专用工具。这包括用于处理 Velocity 模板请求的 VelocityViewServlet 或 VelocityLayoutServlet，以及用于在 JSP 中嵌入 Velocity 的 VelocityViewTag。
+- `VelocityView`:VelocityView 包含所有的 GenericTools，并增加了在 Web 应用程序（Java EE 项目）视图层中使用 Velocity
+  的基础设施和专用工具。这包括用于处理 Velocity 模板请求的 VelocityViewServlet 或 VelocityLayoutServlet，以及用于在 JSP
+  中嵌入 Velocity 的 VelocityViewTag。
 - `PDFView`:第三方，用于生成pdf文件视图
 - `ExcelView`:第三方，用于生成excel文件视图
+
+### 配置JSP视图解析器
+
+``` xml title="springmvc-servlet.xml"
+--8<-- "docs/java_serve/web_application/mvc/springmvc-view-jsp/src/main/webapp/WEB-INF/springmvc-servlet.xml"
+```
+
+### 配置Thymeleaf视图解析器
+
+``` xml title="springmvc-servlet.xml"
+--8<-- "docs/java_serve/web_application/mvc/springmvc-hello/src/main/webapp/WEB-INF/springmvc-servlet.xml"
+```
+
+### 视图控制器
+
+如何仅仅是进行视图转发，无需编写Controller类，可以通过spring mvc配置文件`mvc:view-controller`标签进行配置。
+
+``` xml title="springmvc-servlet.xml"
+--8<-- "docs/java_serve/web_application/mvc/springmvc-view-controller/src/main/webapp/WEB-INF/springmvc-servlet.xml"
+```
+
+## 转发和重定向
+
+``` java
+--8<-- "docs/java_serve/web_application/mvc/springmvc-forward-redirect/src/main/java/com/luguosong/controller/TestController.java"
+```
+
+## 静态资源访问
+
+由于DispatcherServlet的`url-pattern`配置的是`/`,访问静态资源会经过`DispatcherServlet`。`DispatcherServlet`没有静态资源处理。
+
+### 方式一:开启默认Servlet
+
+Tomcat目录`conf/web.xml`中存在名为`default`的servlet
+
+<figure markdown="span">
+  ![](https://raw.githubusercontent.com/luguosong/images/master/blog-img/202409021617210.png){ loading=lazy }
+  <figcaption>DefaultServlet</figcaption>
+</figure>
+
+其`url-pattern`与`DispatcherServlet`一样也是`/`，因此`默认servlet`访问被`DispatcherServlet`覆盖。
+
+<figure markdown="span">
+  ![](https://raw.githubusercontent.com/luguosong/images/master/blog-img/202409021618904.png){ loading=lazy }
+  <figcaption>default Servlet servlet-mapping</figcaption>
+</figure>
+
+Spring MVC仍然允许静态资源请求由Tomcat的`默认Servlet`处理。它配置了一个`DefaultServletHttpRequestHandler`，URL映射为`/**`
+，并且相对于其他URL映射具有`最低优先级`。
+
+以下示例展示了如何通过默认设置启用该功能：
+
+```java
+
+@Configuration
+@EnableWebMvc
+public class WebConfig implements WebMvcConfigurer {
+
+    @Override
+    public void configureDefaultServletHandling(DefaultServletHandlerConfigurer configurer) {
+        configurer.enable();
+    }
+}
+```
+
+以下示例展示了如何在Spring MVC配置文件 XML 中实现相同的配置：
+
+```xml
+
+<beans>
+    <mvc:default-servlet-handler/>
+    <mvc:annotation-driven/>
+</beans>
+```
+
+### 方式二：配置静态资源处理
+
+在下一个示例中，对于以 /resources 开头的请求，将使用相对路径来查找和提供相对于 Web 应用程序根目录下的 /public 或类路径下的
+/static 的静态资源。这些资源的过期时间设置为一年，以确保最大限度地利用浏览器缓存并减少浏览器发出的 HTTP 请求。Last-Modified
+信息通过 Resource#lastModified 推断，以支持带有 "Last-Modified" 头的 HTTP 条件请求。
+
+以下列表展示了如何使用 Java 配置来实现：
+
+```java
+
+@Configuration
+@EnableWebMvc
+public class WebConfig implements WebMvcConfigurer {
+
+    @Override
+    public void addResourceHandlers(ResourceHandlerRegistry registry) {
+        registry.addResourceHandler("/resources/**")
+                .addResourceLocations("/public", "classpath:/static/")
+                .setCacheControl(CacheControl.maxAge(Duration.ofDays(365)));
+    }
+}
+```
+
+以下示例展示了如何在 XML 中实现相同的配置：XML
+
+```xml
+
+<beans>
+    <mvc:resources mapping="/resources/**"
+                   location="/public, classpath:/static/"
+                   cache-period="31556926"/>
+    <mvc:annotation-driven/>
+</beans>
+```
+
+## RESTFul
+
+### 概述
+
+RESTFul是web服务接口的一种`设计风格`。提供了一套约束，可以让web服务接口更加简介、易于理解。
+
+- 查询：使用GET方法请求
+- 添加：使用POST方法请求
+- 更新：使用PUT方法请求
+- 删除：使用DELETE方法请求
+
+请求参数从`/springmvc/getUserById?id=1`风格转为`/springmvc/user/1`风格,变得更加简洁。
+
+### 示例
+
+模拟通过表单发送`get`、`post`、`put`、`delete`请求。
+
+!!! warning
+
+    理论上表单只能发送`get请求`和`post请求`。
+
+    但是可以借助`HiddenHttpMethodFilter过滤器`，将`post`方法转为`put`、`delete`或`patch`方法。
 

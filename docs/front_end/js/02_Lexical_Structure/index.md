@@ -43,14 +43,14 @@ null // 无对象
 JavaScript为语言自身使用保留了一些标识符，这些`保留字`不能用作常规标识符。
 
 <figure markdown="span">
-  ![](https://gcore.jsdelivr.net/gh/luguosong/images@master/blog-img/202401241455861.png){ loading=lazy }
+  ![](https://raw.githubusercontent.com/luguosong/images/master/blog-img/202401241455861.png){ loading=lazy }
   <figcaption>标识符</figcaption>
 </figure>
 
 还有一些保留字，虽然目前没有用到，但是未来可能会用到，所以也不要使用。
 
 <figure markdown="span">
-  ![](https://gcore.jsdelivr.net/gh/luguosong/images@master/blog-img/202401241456789.png){ loading=lazy }
+  ![](https://raw.githubusercontent.com/luguosong/images/master/blog-img/202401241456789.png){ loading=lazy }
   <figcaption>保留字</figcaption>
 </figure>
 

@@ -47,7 +47,7 @@ Security和Spring Boot开发应用程序的初步步骤。它展示了Spring Sec
 
 
 <figure markdown="span">
-  ![](https://gcore.jsdelivr.net/gh/luguosong/images@master/blog-img/202408231033150.png){ loading=lazy }
+  ![](https://raw.githubusercontent.com/luguosong/images/master/blog-img/202408231033150.png){ loading=lazy }
   <figcaption>图2.1 我们的初始应用程序在访问端点时使用HTTP Basic进行用户身份验证和授权。它在指定路径（/hello）提供一个REST端点。请求成功后，它会返回一个HTTP 200状态消息以及响应主体。此实例展示了Spring Security设置的默认身份验证和授权机制。</figcaption>
 </figure>
 
@@ -95,14 +95,14 @@ HTTP 响应的响应体设置为方法的返回值。
 一旦运行应用程序，除了控制台中的其他行，你应该会看到类似这样的内容：
 
 <figure markdown="span">
-  ![](https://gcore.jsdelivr.net/gh/luguosong/images@master/blog-img/202408231101797.png){ loading=lazy }
+  ![](https://raw.githubusercontent.com/luguosong/images/master/blog-img/202408231101797.png){ loading=lazy }
   <figcaption>控制台中会显示密码</figcaption>
 </figure>
 
 每次运行应用程序时，它都会`生成一个新密码`，并在控制台中打印出该密码，如之前的代码片段所示。您必须使用此密码通过HTTP基本认证调用应用程序的任何端点。首先，让我们尝试在不使用授权头的情况下调用端点：
 
 <figure markdown="span">
-  ![](https://gcore.jsdelivr.net/gh/luguosong/images@master/blog-img/202408231448444.png){ loading=lazy }
+  ![](https://raw.githubusercontent.com/luguosong/images/master/blog-img/202408231448444.png){ loading=lazy }
   <figcaption>访问服务响应401</figcaption>
 </figure>
 
@@ -110,7 +110,7 @@ HTTP 响应的响应体设置为方法的返回值。
 期望使用默认用户名（user）和提供的密码。让我们再试一次，这次使用正确的凭证：
 
 <figure markdown="span">
-  ![](https://gcore.jsdelivr.net/gh/luguosong/images@master/blog-img/202408231452750.png){ loading=lazy }
+  ![](https://raw.githubusercontent.com/luguosong/images/master/blog-img/202408231452750.png){ loading=lazy }
   <figcaption>成功响应内容</figcaption>
 </figure>
 
@@ -147,7 +147,7 @@ Boot会根据你使用的依赖项为你设置一些组件（即我们在本章�
 Boot在您的应用程序中关于Spring Security的配置。我们还将讨论身份验证流程中各实体之间的关系。
 
 <figure markdown="span">
-  ![](https://gcore.jsdelivr.net/gh/luguosong/images@master/blog-img/202408231536368.png){ loading=lazy }
+  ![](https://raw.githubusercontent.com/luguosong/images/master/blog-img/202408231536368.png){ loading=lazy }
   <figcaption>图 2.2 这里重点介绍了 Spring Security 认证过程中涉及的核心元素及其相互关系。这个框架构成了使用 Spring Security 执行认证的基本结构。在本书中，我们将在研究各种认证和授权策略时频繁引用这一架构。</figcaption>
 </figure>
 
@@ -643,7 +643,7 @@ public class ProjectConfig {
 [^4]: ssia-ch2-ex4: 通过实现AuthenticationProvider接口，自定义CustomAuthenticationProvider类，实现自定义认证逻辑。
 
 <figure markdown="span">
-  ![](https://gcore.jsdelivr.net/gh/luguosong/images@master/blog-img/202408271105101.png){ loading=lazy }
+  ![](https://raw.githubusercontent.com/luguosong/images/master/blog-img/202408271105101.png){ loading=lazy }
   <figcaption>图 2.3 AuthenticationProvider 实现了认证逻辑。它接收来自 AuthenticationManager 的请求，并将查找用户的任务委托给 UserDetailsService，将密码验证任务委托给 PasswordEncoder。</figcaption>
 </figure>
 

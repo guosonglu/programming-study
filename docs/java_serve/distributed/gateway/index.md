@@ -13,12 +13,12 @@
 创建路由模块:
 
 <figure markdown="span">
-  ![](https://gcore.jsdelivr.net/gh/luguosong/images@master/blog-img/202407021009775.png){ loading=lazy }
+  ![](https://raw.githubusercontent.com/luguosong/images/master/blog-img/202407021009775.png){ loading=lazy }
   <figcaption>创建Spring Boot</figcaption>
 </figure>
 
 <figure markdown="span">
-  ![](https://gcore.jsdelivr.net/gh/luguosong/images@master/blog-img/202407021018857.png){ loading=lazy }
+  ![](https://raw.githubusercontent.com/luguosong/images/master/blog-img/202407021018857.png){ loading=lazy }
   <figcaption>选择gateway依赖</figcaption>
 </figure>
 

@@ -15,7 +15,7 @@
 ### 结构
 
 <figure markdown="span">
-  ![](https://gcore.jsdelivr.net/gh/luguosong/images@master/blog-img/202405301053573.png){ loading=lazy }
+  ![](https://raw.githubusercontent.com/luguosong/images/master/blog-img/202405301053573.png){ loading=lazy }
   <figcaption>模板方法结构</figcaption>
 </figure>
 

@@ -9,7 +9,7 @@
 当用户访问一个网页时，服务器会向浏览器返回一个HTML文件，`浏览器`然后读取HTML并构建`文档对象模型（DOM）`。
 
 <figure markdown="span">
-  ![](https://gcore.jsdelivr.net/gh/luguosong/images@master/blog-img/202405201810128.png){ loading=lazy }
+  ![](https://raw.githubusercontent.com/luguosong/images/master/blog-img/202405201810128.png){ loading=lazy }
   <figcaption>HTML和DOM</figcaption>
 </figure>
 
@@ -42,7 +42,7 @@
 > 命令式编程就像给厨师逐步指示如何制作披萨。
 
 <figure markdown="span">
-  ![](https://gcore.jsdelivr.net/gh/luguosong/images@master/blog-img/202405211656281.png){ loading=lazy }
+  ![](https://raw.githubusercontent.com/luguosong/images/master/blog-img/202405211656281.png){ loading=lazy }
   <figcaption>命令式编程</figcaption>
 </figure>
 
@@ -53,7 +53,7 @@
 React 是一个流行的`声明式库`，您可以使用它来构建用户界面。作为开发者，你可以告诉React你想要用户界面发生什么变化，React会自动计算出如何更新DOM的步骤。
 
 <figure markdown="span">
-  ![](https://gcore.jsdelivr.net/gh/luguosong/images@master/blog-img/202405211657199.png){ loading=lazy }
+  ![](https://raw.githubusercontent.com/luguosong/images/master/blog-img/202405211657199.png){ loading=lazy }
   <figcaption>声明式编程</figcaption>
 </figure>
 
@@ -123,7 +123,7 @@ npm create vite@latest hello-react -- --template react
 > 组件允许您构建独立的、可重复使用的代码片段。如果您将组件视为乐高积木，您可以将这些单独的积木组合在一起，形成更大的结构。如果您需要更新UI的某个部分，您可以更新特定的组件或积木。
 
 <figure markdown="span">
-  ![](https://gcore.jsdelivr.net/gh/luguosong/images@master/blog-img/202405231353523.png){ loading=lazy }
+  ![](https://raw.githubusercontent.com/luguosong/images/master/blog-img/202405231353523.png){ loading=lazy }
   <figcaption>组件</figcaption>
 </figure>
 

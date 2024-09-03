@@ -43,7 +43,7 @@ Command-Option-I），然后选择“控制台”选项卡。你可以在提示�
 1-1 所示），这通常非常方便。
 
 <figure markdown="span">
-  ![](https://gcore.jsdelivr.net/gh/luguosong/images@master/blog-img/202409021104106.png){ loading=lazy }
+  ![](https://raw.githubusercontent.com/luguosong/images/master/blog-img/202409021104106.png){ loading=lazy }
   <figcaption>图1-1. Firefox开发者工具中的JavaScript控制台</figcaption>
 </figure>
 

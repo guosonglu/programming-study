@@ -23,7 +23,7 @@ MULTICS以`兼容分时系统`（CTSS）做基础，建置在美国通用电力�
 上。目的是`连接1000部终端，支持300位用户同时上线`。
 
 <figure markdown="span">
-  ![](https://gcore.jsdelivr.net/gh/luguosong/images@master/blog-img/202407250948674.png){ loading=lazy }
+  ![](https://raw.githubusercontent.com/luguosong/images/master/blog-img/202407250948674.png){ loading=lazy }
   <figcaption>Multics</figcaption>
 </figure>
 
@@ -35,7 +35,7 @@ Travel）`
 的游戏程序。贝尔实验室退出Multics计划后，由贝尔实验室的两位软件工程师肯·汤普逊与丹尼斯·里奇以B语言和汇编语言为基础而发展出`UNIX`。
 
 <figure markdown="span">
-  ![](https://gcore.jsdelivr.net/gh/luguosong/images@master/blog-img/202407251017931.png){ loading=lazy }
+  ![](https://raw.githubusercontent.com/luguosong/images/master/blog-img/202407251017931.png){ loading=lazy }
   <figcaption>肯·汤普逊（左）和丹尼斯·里奇</figcaption>
 </figure>
 
@@ -47,7 +47,7 @@ Travel）`
 Unix）是一个派生自Unix（类Unix）的操作系统，1970年代由伯克利加州大学的学生比尔·乔伊开创，也被用来代表其派生出的各种包。
 
 <figure markdown="span">
-  ![](https://gcore.jsdelivr.net/gh/luguosong/images@master/blog-img/202407251016907.png){ loading=lazy }
+  ![](https://raw.githubusercontent.com/luguosong/images/master/blog-img/202407251016907.png){ loading=lazy }
   <figcaption>比尔·乔伊</figcaption>
 </figure>
 
@@ -77,7 +77,7 @@ System V是AT&T的第一个商业UNIX版本（UNIX System III）的加强。传�
 Minix，是一个迷你版本的类Unix操作系统，由`塔能鲍姆`教授为了教学之用而创作，采用微核心设计。它启发了Linux核心的创作。
 
 <figure markdown="span">
-  ![](https://gcore.jsdelivr.net/gh/luguosong/images@master/blog-img/202407251014230.png){ loading=lazy }
+  ![](https://raw.githubusercontent.com/luguosong/images/master/blog-img/202407251014230.png){ loading=lazy }
   <figcaption>安德鲁·斯图尔特·特南鲍姆</figcaption>
 </figure>
 
@@ -90,7 +90,7 @@ Minix，是一个迷你版本的类Unix操作系统，由`塔能鲍姆`教授为
 `GNU计划`（英语：GNU Project），又译为革奴计划，是一个自由软件集体协作计划，`1983年`9月27日由`理查德·斯托曼`在麻省理工学院公开发起。它的目标是创建一套完全自由的操作系统，称为GNU。理查德·斯托曼最早在net.unix-wizards新闻组上公布该消息，并附带一份《GNU宣言》等解释为何发起该计划的文章，其中一个理由就是要`重现当年软件界合作互助的团结精神`。
 
 <figure markdown="span">
-  ![](https://gcore.jsdelivr.net/gh/luguosong/images@master/blog-img/202407251013098.png){ loading=lazy }
+  ![](https://raw.githubusercontent.com/luguosong/images/master/blog-img/202407251013098.png){ loading=lazy }
   <figcaption>理查德·斯托曼</figcaption>
 </figure>
 
@@ -105,7 +105,7 @@ Minix，是一个迷你版本的类Unix操作系统，由`塔能鲍姆`教授为
 `1994年`3月，Linux1.0版正式发布。
 
 <figure markdown="span">
-  ![](https://gcore.jsdelivr.net/gh/luguosong/images@master/blog-img/202407251022892.png){ loading=lazy }
+  ![](https://raw.githubusercontent.com/luguosong/images/master/blog-img/202407251022892.png){ loading=lazy }
   <figcaption>林纳斯·托瓦兹</figcaption>
 </figure>
 

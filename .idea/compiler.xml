@@ -13,6 +13,7 @@
         <module name="design_pattern" />
         <module name="hello-servlet" />
         <module name="aop-aspect" />
+        <module name="springmvc-forward-redirect" />
         <module name="springmvc-header-info" />
         <module name="jsp_jstl" />
         <module name="mybatis-generator" />
@@ -41,6 +42,7 @@
         <module name="jsp_el" />
         <module name="springmvc-hello" />
         <module name="mybatis-demo" />
+        <module name="springmvc-view-controller" />
         <module name="springmvc-view-jsp" />
         <module name="programming-notes" />
         <module name="generic-servlet" />

@@ -58,7 +58,7 @@ iText是一个PDF编写器，自iText 5.3.0起，我们不再允许创建此类�
 图2.1展示了一个签名PDF的示意图。
 
 <figure markdown="span">
-  ![](https://gcore.jsdelivr.net/gh/luguosong/images@master/blog-img/202407081711342.png){ loading=lazy }
+  ![](https://raw.githubusercontent.com/luguosong/images/master/blog-img/202407081711342.png){ loading=lazy }
   <figcaption>图2.1：一个签过名的PDF</figcaption>
 </figure>
 
@@ -74,7 +74,7 @@ PAdES为PDF数字签名规范引入了额外的限制，这已经在`ISO-32000-2
 在图2.2的一侧展示了组成签名所需的元素。另一侧展示了实际内容。
 
 <figure markdown="span">
-  ![](https://gcore.jsdelivr.net/gh/luguosong/images@master/blog-img/202407081718054.png){ loading=lazy }
+  ![](https://raw.githubusercontent.com/luguosong/images/master/blog-img/202407081718054.png){ loading=lazy }
   <figcaption>图2.2：数字签名的内容</figcaption>
 </figure>
 
@@ -146,7 +146,7 @@ PAdES为PDF数字签名规范引入了额外的限制，这已经在`ISO-32000-2
 让我们从签名的`Hello World`应用程序开始。我们如何使用iText对文件进行签名，并得到如图2.3所示的结果？
 
 <figure markdown="span">
-  ![](https://gcore.jsdelivr.net/gh/luguosong/images@master/blog-img/202407081826378.png){ loading=lazy }
+  ![](https://raw.githubusercontent.com/luguosong/images/master/blog-img/202407081826378.png){ loading=lazy }
   <figcaption>图2.3：一个签名外观</figcaption>
 </figure>
 
@@ -171,12 +171,12 @@ PAdES为PDF数字签名规范引入了额外的限制，这已经在`ISO-32000-2
 Castle 作为提供者。
 
 <figure markdown="span">
-  ![](https://gcore.jsdelivr.net/gh/luguosong/images@master/blog-img/202408112231057.png){ loading=lazy }
+  ![](https://raw.githubusercontent.com/luguosong/images/master/blog-img/202408112231057.png){ loading=lazy }
   <figcaption>摘要接口以及实现</figcaption>
 </figure>
 
 <figure markdown="span">
-  ![](https://gcore.jsdelivr.net/gh/luguosong/images@master/blog-img/202408112234128.png){ loading=lazy }
+  ![](https://raw.githubusercontent.com/luguosong/images/master/blog-img/202408112234128.png){ loading=lazy }
   <figcaption>签名接口以及实现</figcaption>
 </figure>
 
@@ -194,7 +194,7 @@ Castle 作为提供者。
 图2.4展示了不同的图标，这些图标指示签名是否有效。正如你所见，这些图标随着Adobe Acrobat或Reader版本的不同而有所变化。
 
 <figure markdown="span">
-  ![](https://gcore.jsdelivr.net/gh/luguosong/images@master/blog-img/202408121014904.png){ loading=lazy }
+  ![](https://raw.githubusercontent.com/luguosong/images/master/blog-img/202408121014904.png){ loading=lazy }
   <figcaption>图2.4</figcaption>
 </figure>
 
@@ -218,7 +218,7 @@ Reader意识到了这个问题，并提示我们：`签名者的身份未知，�
 来打开证书查看器。参见图2.5。
 
 <figure markdown="span">
-  ![](https://gcore.jsdelivr.net/gh/luguosong/images@master/blog-img/202408121047707.png){ loading=lazy }
+  ![](https://raw.githubusercontent.com/luguosong/images/master/blog-img/202408121047707.png){ loading=lazy }
   <figcaption>图2.5:证书详细信息查看器：添加到受信任的身份</figcaption>
 </figure>
 
@@ -226,33 +226,33 @@ Reader意识到了这个问题，并提示我们：`签名者的身份未知，�
 在信任设置中，有一个按钮，标有`添加到受信任的身份`。如果点击该按钮，会出现另一个对话框，如图2.6所示。
 
 <figure markdown="span">
-  ![](https://gcore.jsdelivr.net/gh/luguosong/images@master/blog-img/202408121052730.png){ loading=lazy }
+  ![](https://raw.githubusercontent.com/luguosong/images/master/blog-img/202408121052730.png){ loading=lazy }
   <figcaption>警告</figcaption>
 </figure>
 
 <figure markdown="span">
-  ![](https://gcore.jsdelivr.net/gh/luguosong/images@master/blog-img/202408121055297.png){ loading=lazy }
+  ![](https://raw.githubusercontent.com/luguosong/images/master/blog-img/202408121055297.png){ loading=lazy }
   <figcaption>图2.6：导入联系人设置对话框</figcaption>
 </figure>
 
 你可以选择将此证书用作受信任的根证书。让我们尝试一下，看看会发生什么。按照图2.7所示，转到“编辑 > 保护 > 管理受信任的身份...”。
 
 <figure markdown="span">
-  ![](https://gcore.jsdelivr.net/gh/luguosong/images@master/blog-img/202408121116120.png){ loading=lazy }
+  ![](https://raw.githubusercontent.com/luguosong/images/master/blog-img/202408121116120.png){ loading=lazy }
   <figcaption>图2.7：导入联系人设置对话框</figcaption>
 </figure>
 
 如果你像图2.8所示那样显示证书，你会发现我们的自签名证书被列在其中。
 
 <figure markdown="span">
-  ![](https://gcore.jsdelivr.net/gh/luguosong/images@master/blog-img/202408121457693.png){ loading=lazy }
+  ![](https://raw.githubusercontent.com/luguosong/images/master/blog-img/202408121457693.png){ loading=lazy }
   <figcaption>图2.8：管理受信任的身份”对话框</figcaption>
 </figure>
 
 从现在开始，您在打开签名文件时会看到一个绿色的勾号。请参见图 2.9。
 
 <figure markdown="span">
-  ![](https://gcore.jsdelivr.net/gh/luguosong/images@master/blog-img/202408121500623.png){ loading=lazy }
+  ![](https://raw.githubusercontent.com/luguosong/images/master/blog-img/202408121500623.png){ loading=lazy }
   <figcaption>图2.9：已签署的文档且签名有效。</figcaption>
 </figure>
 
@@ -272,7 +272,7 @@ $ keytool -export -alias demo -file bruno.crt -keystore ks -storepass password
 Specimen 的签名。
 
 <figure markdown="span">
-  ![](https://gcore.jsdelivr.net/gh/luguosong/images@master/blog-img/202408121522130.png){ loading=lazy }
+  ![](https://raw.githubusercontent.com/luguosong/images/master/blog-img/202408121522130.png){ loading=lazy }
   <figcaption>图2.10：将证书导入受信任身份列表</figcaption>
 </figure>
 
@@ -297,7 +297,7 @@ PdfSigner 对象，再次对我们的 Hello World 文件进行签名。
 将在该目录中创建一个具有唯一名称的文件。
 
 <figure markdown="span">
-  ![](https://gcore.jsdelivr.net/gh/luguosong/images@master/blog-img/202408121617942.png){ loading=lazy }
+  ![](https://raw.githubusercontent.com/luguosong/images/master/blog-img/202408121617942.png){ loading=lazy }
   <figcaption>签章过程中会产生临时文件</figcaption>
 </figure>
 
@@ -325,7 +325,7 @@ Acrobat创建一个带有空白签名域的PDF文档。
 ，并绘制一个矩形。Acrobat会为该字段建议一个`名称`，例如Signature1。如图2.11所示。如果有必要，您可以更改此名称，但对我们来说，这个名称就可以了。
 
 <figure markdown="span">
-  ![](https://gcore.jsdelivr.net/gh/luguosong/images@master/blog-img/202408121729475.png){ loading=lazy }
+  ![](https://raw.githubusercontent.com/luguosong/images/master/blog-img/202408121729475.png){ loading=lazy }
   <figcaption>图2.11：使用Adobe Acrobat添加空白签名域</figcaption>
 </figure>
 
