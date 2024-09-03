@@ -24,6 +24,7 @@ const adaptiveHeight = () => {
 * */
 const backupImgAddress = () => {
     const hostname = window.location.hostname;
+    console.log(hostname)
     if (hostname.includes("luguosong")) {
         // 获取所有 img 元素
         const images = document.querySelectorAll('img');
@@ -39,7 +40,7 @@ const backupImgAddress = () => {
 }
 
 // 页面切换时执行
-document$.subscribe(function () {
+document$.subscribe(async function () {
     backupImgAddress();
     // 自适应iframe高度
     adaptiveHeight();
