@@ -20,7 +20,7 @@
 pip install mkdocs
 ```
 
-Material for MkDocs 作为一个 Python 包发布，可以通过 pip 安装，打开终端并安装 Material for MkDocs：
+- Material for MkDocs 作为一个 Python 包发布，可以通过 pip 安装，打开终端并安装 Material for MkDocs：
 
 ```shell
 pip install mkdocs-material
