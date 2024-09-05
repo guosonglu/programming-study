@@ -10,8 +10,6 @@
 <img alt="GitHub License" src="https://img.shields.io/github/license/luguosong/programming-notes">
 </p>
 
-<hr>
-
 ## 安装
 
 - 首先安装Python环境。
