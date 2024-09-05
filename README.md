@@ -1,6 +1,7 @@
+<h1 align="center">programming-notes</h1>
+
 <p align="center">
-<h1>programming-notes</h1>
-学习编程过程中整理的笔记集合。它涵盖了多个领域的知识
+<span>学习编程过程中整理的笔记集合。它涵盖了多个领域的知识</span>
 </p>
 
 <p align="center">
@@ -27,7 +28,8 @@ Material for MkDocs 作为一个 Python 包发布，可以通过 pip 安装，�
 pip install mkdocs-material
 ```
 
-- MkDocs 自带一个内置开发服务器，可以让您在编写文档时进行预览。请确保您位于 mkdocs.yml 配置文件所在的目录，然后通过运行 mkdocs serve 命令启动服务器：
+- MkDocs 自带一个内置开发服务器，可以让您在编写文档时进行预览。请确保您位于 mkdocs.yml 配置文件所在的目录，然后通过运行
+  mkdocs serve 命令启动服务器：
 
 ```shell
 mkdocs serve
