@@ -71,3 +71,17 @@ MybatisX 插件功能：
 - 当前代码块高亮
 - 支持代码块列表
 - Kotlin 函数字面量括号和箭头彩虹效果
+
+## Grep Console 插件
+
+日志高亮美化插件
+
+<figure markdown="span">
+  ![](https://raw.githubusercontent.com/luguosong/images/master/blog-img/202409061558667.png){ loading=lazy }
+  <figcaption>配置</figcaption>
+</figure>
+
+<figure markdown="span">
+  ![](https://raw.githubusercontent.com/luguosong/images/master/blog-img/202409061559895.png){ loading=lazy }
+  <figcaption>效果</figcaption>
+</figure>
