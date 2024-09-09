@@ -14,6 +14,7 @@
         <module name="hello-servlet" />
         <module name="aop-aspect" />
         <module name="springmvc-forward-redirect" />
+        <module name="springmvc-restful" />
         <module name="springmvc-header-info" />
         <module name="jsp_jstl" />
         <module name="mybatis-generator" />

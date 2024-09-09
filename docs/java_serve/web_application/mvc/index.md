@@ -286,9 +286,23 @@ public class HelloController {
 }
 ```
 
-## 获取请求参数
+## 请求参数处理⭐
 
-### 形参获取表单请求参数
+### 消息转换器
+
+`消息转换器`可以将HTTP请求的消息转换为Java对象，或者将Java对象转换为HTTP响应。
+
+<figure markdown="span">
+  ![](https://raw.githubusercontent.com/luguosong/images/master/diagrams/java_serve/web_application/mvc/MVC%E6%B6%88%E6%81%AF%E8%BD%AC%E6%8D%A2%E5%99%A8.svg){ loading=lazy }
+  <figcaption>消息转换器接口和实现类</figcaption>
+</figure>
+
+<figure markdown="span">
+  ![](https://raw.githubusercontent.com/luguosong/images/master/blog-img/202409042205422.png){ loading=lazy }
+  <figcaption>消息转换器作用</figcaption>
+</figure>
+
+### Form请求-形参解析参数
 
 ``` java title="FormController.java"
 --8<-- "docs/java_serve/web_application/mvc/springmvc-parameters/src/main/java/com/luguosong/controller/FormController.java"
@@ -316,7 +330,11 @@ public class HelloController {
     </build>
     ```
 
-### JavaBean获取表单请求参数
+### Form请求-Bean对象解析参数
+
+!!! note
+
+    SpringMVC会使用`FormHttpMessageConverter`消息转换器将表单数据转为JavaBean。
 
 ``` java title="FormPojoController.java"
 --8<-- "docs/java_serve/web_application/mvc/springmvc-parameters/src/main/java/com/luguosong/controller/FormPojoController.java"
@@ -324,6 +342,37 @@ public class HelloController {
 
 ``` java title="User.java"
 --8<-- "docs/java_serve/web_application/mvc/springmvc-parameters/src/main/java/com/luguosong/pojo/User.java"
+```
+
+### Form请求-获取参数原始字符串
+
+通过`@RequestBody注解`可以拿到请求参数的原始字符串。
+
+``` java title="FormStringController.java"
+--8<-- "docs/java_serve/web_application/mvc/springmvc-parameters/src/main/java/com/luguosong/controller/FormStringController.java"
+```
+
+!!! note
+
+    底层使用`FormHttpMessageConverter`消息转换器。
+
+### JSON请求-Bean对象解析参数
+
+在pom.xml引入处理json的依赖：
+
+```xml
+<!--负责json字符串和java对象之间的转换-->
+<dependency>
+    <groupId>com.fasterxml.jackson.core</groupId>
+    <artifactId>jackson-databind</artifactId>
+    <version>2.17.0</version>
+</dependency>
+```
+
+通过`@RequestBody注解`可以将JSON格式的请求参数转为Java对象。
+
+``` java title="JsonPojoController.java"
+--8<-- "docs/java_serve/web_application/mvc/springmvc-parameters/src/main/java/com/luguosong/controller/JsonPojoController.java"
 ```
 
 ### Get请求中文乱码问题
@@ -349,10 +398,184 @@ Tomcat9以及之前的版本，需要解决Post请求中文乱码问题。
 `request.setCharacterEncoding("UTF-8");`
 可以解决乱码问题。
 
-解决方案二：Spring MVC为我们提供了类似的过滤器类CharacterEncodingFilter，无需我们重新手写过滤器类。只需要在`web.xml`
+解决方案二：Spring MVC为我们提供了类似的过滤器类`CharacterEncodingFilter`，无需我们重新手写过滤器类。只需要在`web.xml`
 中配置该过滤器并设置`encoding属性`即可。
 
+```xml title="解决Post请求中文乱码问题"
+
+<web-app>
+    <filter>
+        <filter-name>characterEncodingFilter</filter-name>
+        <filter-class>org.springframework.web.filter.CharacterEncodingFilter</filter-class>
+        <!--指定编码-->
+        <init-param>
+            <param-name>encoding</param-name>
+            <param-value>UTF-8</param-value>
+        </init-param>
+        <!--是否强制设置编码-->
+        <init-param>
+            <param-name>forceRequestEncoding</param-name>
+            <param-value>true</param-value>
+        </init-param>
+        <!--是否强制设置编码-->
+        <init-param>
+            <param-name>forceResponseEncoding</param-name>
+            <param-value>true</param-value>
+        </init-param>
+    </filter>
+    <filter-mapping>
+        <filter-name>characterEncodingFilter</filter-name>
+        <url-pattern>/*</url-pattern>
+    </filter-mapping>
+</web-app>
+```
+
 Tomcat10请求体默认采用UTF-8编码，无需解决中文乱码问题。
+
+### RequestEntity对象
+
+`RequestEntity对象`中存储了所有请求信息，包括请求行、请求头、请求体。
+
+RequestEntity的`泛型`对应请求体信息，如果是String表示请求体字符串，如果是实体类会将请求体转换为实体类。
+
+``` java title="RequestEntityController.java"
+--8<-- "docs/java_serve/web_application/mvc/springmvc-parameters/src/main/java/com/luguosong/controller/RequestEntityController.java"
+```
+
+### 文件上传
+
+❗Spring MVC 5以及之前版本在pom.xml引入处理文件的依赖：
+
+```xml
+<!--负责文件上传-->
+<!--Spring MVC 6之后不再需要添加此依赖-->
+<dependency>
+    <groupId>commons-fileupload</groupId>
+    <artifactId>commons-fileupload</artifactId>
+    <version>1.5</version>
+</dependency>
+```
+
+上传参数配置：
+
+=== "Spring MVC 6在web.xml中配置"
+
+    ```xml
+      
+      <web-app xmlns="https://jakarta.ee/xml/ns/jakartaee"
+               xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+               xsi:schemaLocation="https://jakarta.ee/xml/ns/jakartaee https://jakarta.ee/xml/ns/jakartaee/web-app_6_0.xsd"
+               version="6.0">
+          <servlet>
+              <servlet-name>springmvc</servlet-name>
+              <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+              <!--配置上传参数-->
+              <multipart-config>
+                  <max-file-size>102400</max-file-size>
+                  <!--设置整个表单所有文件上传的最大值-->
+                  <max-request-size>102400</max-request-size>
+                  <!--最小上传大小-->
+                  <file-size-threshold>0</file-size-threshold>
+              </multipart-config>
+          </servlet>
+          <servlet-mapping>
+              <servlet-name>springmvc</servlet-name>
+              <url-pattern>/</url-pattern>
+          </servlet-mapping>
+      </web-app>
+    ```
+
+=== "Spring MVC 5在Spring MVC 配置文件中配置"
+
+    ```xml
+      
+      <beans>
+          <bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+              <property name="maxUploadSizePerFile" value="#{10*1024*1024}"/>
+              <property name="maxUploadSize" value="#{100*1024*1024}"/>
+          </bean>
+      </beans>
+    ```
+
+文件上传必须时post请求，因为文件数据需要通过请求体传递，get请求没有请求体。
+
+设置请求参数类型为`multipart/form-data`。
+
+```html
+
+<form method="post" th:action="@{/fileUpload/springMvc}" enctype="multipart/form-data">
+    文件上传：<input type="file" name="fileName">
+    <input type="submit" value="文件上传">
+</form>
+```
+
+Controller通过`MultipartFile对象`接收文件：
+
+``` java title="FileUploadController.java"
+--8<-- "docs/java_serve/web_application/mvc/springmvc-parameters/src/main/java/com/luguosong/controller/FileUploadController.java"
+```
+
+## 响应结果处理⭐
+
+### 返回逻辑视图名称
+
+默认情况下，Controller返回String，回转到对应的视图解析器进行视图解析。
+
+### 响应纯字符串
+
+默认情况下，Controller返回String，回转到对应的视图解析器进行视图解析。
+
+可以通过`@ResponseBody注解`返回String字符串，此时返回的不再是逻辑视图名称，而是直接返回`text/html`。
+
+!!! note
+
+    @ResponseBody采用的是`StringHttpMessageConverter`消息转换器将String字符串转换为`text/html`格式。
+
+``` java title="ResponseStringController.java"
+--8<-- "docs/java_serve/web_application/mvc/springmvc-parameters/src/main/java/com/luguosong/controller/ResponseStringController.java"
+```
+
+### 响应JSON字符串
+
+在pom.xml引入处理json的依赖：
+
+```xml
+<!--负责json字符串和java对象之间的转换-->
+<dependency>
+    <groupId>com.fasterxml.jackson.core</groupId>
+    <artifactId>jackson-databind</artifactId>
+    <version>2.17.0</version>
+</dependency>
+```
+
+在spring mvc配置文件中需要配置：
+
+```xml
+
+<mvc:annotation-driven/>
+```
+
+``` java title="ResponseJSONStringController.java"
+--8<-- "docs/java_serve/web_application/mvc/springmvc-parameters/src/main/java/com/luguosong/controller/ResponseJSONStringController.java"
+```
+
+!!! note
+
+    当处理器方法上面有@ResponseBody注解，并返回一个Java对象，SpringMVC会自动将对象转为json字符串并响应。
+
+    此时使用的是`MappingJackson2HttpMessageConverter`消息转换器。
+
+### RestController注解
+
+在类上添加`@RestController注解`，等同于在该类上添加了`@Controller注解`，同时为该类的所有方法添加了`@ResponseBody注解`。
+
+### ResponseEntity对象
+
+`ResponseEntity对象`可以定制响应协议，包括状态行、响应头和响应体。当想自定定制响应协议时，可以使用该类。
+
+``` java title="ResponseEntityController.java"
+--8<-- "docs/java_serve/web_application/mvc/springmvc-parameters/src/main/java/com/luguosong/controller/ResponseEntityController.java"
+```
 
 ## 获取请求头信息
 
@@ -544,13 +767,33 @@ RESTFul是web服务接口的一种`设计风格`。提供了一套约束，可�
 
 请求参数从`/springmvc/getUserById?id=1`风格转为`/springmvc/user/1`风格,变得更加简洁。
 
+### HiddenHttpMethodFilter
+
+理论上表单只能发送`get请求`和`post请求`。
+
+但是可以借助`HiddenHttpMethodFilter过滤器`，将`post`方法转为`put`、`delete`或`patch`方法。
+
 ### 示例
 
 模拟通过表单发送`get`、`post`、`put`、`delete`请求。
 
-!!! warning
+在web.xml中配置`HiddenHttpMethodFilter过滤器`：
 
-    理论上表单只能发送`get请求`和`post请求`。
+``` xml title="web.xml"
+--8<-- "docs/java_serve/web_application/mvc/springmvc-restful/src/main/webapp/WEB-INF/web.xml"
+```
 
-    但是可以借助`HiddenHttpMethodFilter过滤器`，将`post`方法转为`put`、`delete`或`patch`方法。
+Controller中的`@RequestMapping`地址是一样的，通过`请求方法`区分请求：
+
+``` java
+--8<-- "docs/java_serve/web_application/mvc/springmvc-restful/src/main/java/com/luguosong/controller/TestController.java"
+```
+
+表单发送不同方法的请求：
+
+``` html
+--8<-- "docs/java_serve/web_application/mvc/springmvc-restful/src/main/webapp/WEB-INF/templates/test.html"
+```
+
+    
 

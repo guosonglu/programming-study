@@ -46,6 +46,7 @@
         <option value="$PROJECT_DIR$/docs/java_serve/web_application/mvc/springmvc-view-jsp/pom.xml" />
         <option value="$PROJECT_DIR$/docs/java_serve/web_application/mvc/springmvc-forward-redirect/pom.xml" />
         <option value="$PROJECT_DIR$/docs/java_serve/web_application/mvc/springmvc-view-controller/pom.xml" />
+        <option value="$PROJECT_DIR$/docs/java_serve/web_application/mvc/springmvc-restful/pom.xml" />
       </list>
     </option>
   </component>
