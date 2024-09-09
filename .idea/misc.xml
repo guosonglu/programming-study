@@ -1,9 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ExternalStorageConfigurationManager" enabled="true" />
-  <component name="FrameworkDetectionExcludesConfiguration">
-    <file type="web" url="file://$PROJECT_DIR$/out/artifacts/springmvc_parameters_Web_exploded/WEB-INF/web.xml" />
-  </component>
   <component name="MavenProjectsManager">
     <option name="originalFiles">
       <list>
@@ -27,28 +24,30 @@
         <option value="$PROJECT_DIR$/docs/java_serve/web_application/jsp/hello_jsp/pom.xml" />
         <option value="$PROJECT_DIR$/docs/java_serve/web_application/jsp/jsp_el/pom.xml" />
         <option value="$PROJECT_DIR$/docs/java_serve/web_application/jsp/jsp_jstl/pom.xml" />
+        <option value="$PROJECT_DIR$/docs/java_serve/web_application/mvc/springmvc-forward-redirect/pom.xml" />
+        <option value="$PROJECT_DIR$/docs/java_serve/web_application/mvc/springmvc-header-info/pom.xml" />
         <option value="$PROJECT_DIR$/docs/java_serve/web_application/mvc/springmvc-hello/pom.xml" />
+        <option value="$PROJECT_DIR$/docs/java_serve/web_application/mvc/springmvc-parameters/pom.xml" />
+        <option value="$PROJECT_DIR$/docs/java_serve/web_application/mvc/springmvc-restful/pom.xml" />
+        <option value="$PROJECT_DIR$/docs/java_serve/web_application/mvc/springmvc-scope/pom.xml" />
+        <option value="$PROJECT_DIR$/docs/java_serve/web_application/mvc/springmvc-view-controller/pom.xml" />
+        <option value="$PROJECT_DIR$/docs/java_serve/web_application/mvc/springmvc-view-jsp/pom.xml" />
         <option value="$PROJECT_DIR$/docs/java_serve/web_application/servlet/annotation_servlet/pom.xml" />
         <option value="$PROJECT_DIR$/docs/java_serve/web_application/servlet/generic-servlet/pom.xml" />
         <option value="$PROJECT_DIR$/docs/java_serve/web_application/servlet/hello-servlet/pom.xml" />
+        <option value="$PROJECT_DIR$/docs/java_serve/web_application/servlet/hello-servlet/target/maven-archiver/pom.properties" />
         <option value="$PROJECT_DIR$/docs/java_serve/web_application/servlet/http-servlet/pom.xml" />
         <option value="$PROJECT_DIR$/docs/java_serve/web_application/servlet/http-servlet-request-demo/pom.xml" />
         <option value="$PROJECT_DIR$/docs/java_serve/web_application/servlet/http-servlet-response-demo/pom.xml" />
+        <option value="$PROJECT_DIR$/docs/java_serve/web_application/servlet/http-servlet/target/maven-archiver/pom.properties" />
         <option value="$PROJECT_DIR$/docs/java_serve/web_application/servlet/servlet-config/pom.xml" />
         <option value="$PROJECT_DIR$/docs/java_serve/web_application/servlet/servlet-context/pom.xml" />
         <option value="$PROJECT_DIR$/docs/java_serve/web_application/session_cookie/session_and_cookie/pom.xml" />
         <option value="$PROJECT_DIR$/docs/topics/design_pattern/pom.xml" />
         <option value="$PROJECT_DIR$/docs/topics/itext-signatures/pom.xml" />
         <option value="$PROJECT_DIR$/docs/topics/maven/base/maven-hello/pom.xml" />
-        <option value="$PROJECT_DIR$/docs/java_serve/web_application/mvc/springmvc-parameters/pom.xml" />
-        <option value="$PROJECT_DIR$/docs/java_serve/web_application/mvc/springmvc-header-info/pom.xml" />
-        <option value="$PROJECT_DIR$/docs/java_serve/web_application/mvc/springmvc-scope/pom.xml" />
-        <option value="$PROJECT_DIR$/docs/java_serve/web_application/mvc/springmvc-view-jsp/pom.xml" />
-        <option value="$PROJECT_DIR$/docs/java_serve/web_application/mvc/springmvc-forward-redirect/pom.xml" />
-        <option value="$PROJECT_DIR$/docs/java_serve/web_application/mvc/springmvc-view-controller/pom.xml" />
-        <option value="$PROJECT_DIR$/docs/java_serve/web_application/mvc/springmvc-restful/pom.xml" />
       </list>
     </option>
   </component>
-  <component name="ProjectRootManager" version="2" languageLevel="JDK_17" project-jdk-name="17" project-jdk-type="JavaSDK" />
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_21" default="true" project-jdk-name="jbr-21" project-jdk-type="JavaSDK" />
 </project>

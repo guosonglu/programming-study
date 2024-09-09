@@ -2,7 +2,6 @@
 <project version="4">
   <component name="CompilerConfiguration">
     <annotationProcessing>
-      <profile default="true" name="Default" enabled="true" />
       <profile name="Maven default annotation processors profile" enabled="true">
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
@@ -19,6 +18,7 @@
         <module name="jsp_jstl" />
         <module name="mybatis-generator" />
         <module name="springmvc-scope" />
+        <module name="maven-archiver (2)" />
         <module name="session_and_cookie" />
         <module name="listener-hello" />
         <module name="javase" />
@@ -33,13 +33,14 @@
         <module name="servlet-context" />
         <module name="ssia-ch2-ex2" />
         <module name="ssia-ch2-ex1" />
-        <module name="annotation_servlet" />
         <module name="springmvc-parameters" />
+        <module name="annotation_servlet" />
         <module name="ssia-ch2-ex5" />
         <module name="http-servlet-response-demo" />
         <module name="ssia-ch2-ex4" />
         <module name="mybatis-plus-hello" />
         <module name="jdbc-demo" />
+        <module name="maven-archiver (1)" />
         <module name="jsp_el" />
         <module name="springmvc-hello" />
         <module name="mybatis-demo" />
@@ -56,7 +57,6 @@
       <module name="gateway-hello-target" options="-parameters" />
       <module name="mybatis-plus-hello" options="-parameters" />
       <module name="springmvc-hello" options="-parameters" />
-      <module name="springmvc-parameters" options="" />
       <module name="ssia-ch2-ex1" options="-parameters" />
       <module name="ssia-ch2-ex2" options="-parameters" />
       <module name="ssia-ch2-ex3" options="-parameters" />
