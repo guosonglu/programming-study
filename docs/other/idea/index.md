@@ -85,3 +85,20 @@ MybatisX 插件功能：
   ![](https://raw.githubusercontent.com/luguosong/images/master/blog-img/202409061559895.png){ loading=lazy }
   <figcaption>效果</figcaption>
 </figure>
+
+## .ignore插件
+
+- 文件语法高亮
+- 在规则生成器中按名称和内容筛选和选择模板
+- 用户自定义模板
+- 通过指定的Gitignore文件显示被忽略的文件（右键点击.gitignore文件）
+- 在当前选定目录中创建文件
+- 基于[GitHub的模板集合][github-gitignore]生成Gitignore规则
+- 从弹出菜单中将选定的文件/目录添加到Gitignore规则中
+- 为新项目建议创建.gitignore文件
+- 条目检查（重复、覆盖、未使用、语法错误、相对条目）并提供快速修复操作
+- 支持注释和括号
+- 在项目视图中导航到条目
+- 从dot-ignore文件中重命名条目
+- 关闭已打开的被忽略文件操作
+- 用户自定义模板支持导入/导出功能
