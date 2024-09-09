@@ -59,7 +59,7 @@ replay_pid*
 
 # Gradle 和 Maven 带自动导入
 # 使用 Gradle 或 Maven 自动导入时，您应排除模块文件。
-# 因为它们将被重新创建，并且可能导致搅动。如果使用，请取消注释自动导入
+# 因为它们将被重新创建，并且可能导致搅动。
 .idea/artifacts
 .idea/compiler.xml
 .idea/jarRepositories.xml
