@@ -1,1 +1,2 @@
 *.html linguist-documentation
+*.java linguist-language=Java
