@@ -3,6 +3,7 @@ site_url: https://www.luguosong.com
 repo_url: https://github.com/luguosong/programming-notes # 右上角仓库链接地址
 repo_name: programming-notes # 右上角仓库名称
 edit_uri: edit/main/docs/
+docs_dir: code
 
 theme:
   name: material

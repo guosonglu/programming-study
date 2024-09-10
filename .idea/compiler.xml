@@ -2,13 +2,13 @@
 <project version="4">
   <component name="CompilerConfiguration">
     <annotationProcessing>
-      <profile default="true" name="Default" enabled="true" />
       <profile name="Maven default annotation processors profile" enabled="true">
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="gateway-hello" />
         <module name="itext-signatures" />
+        <module name="springmvc-exception-annotation" />
         <module name="hello_jsp" />
         <module name="design_pattern" />
         <module name="hello-servlet" />
@@ -19,9 +19,10 @@
         <module name="jsp_jstl" />
         <module name="mybatis-generator" />
         <module name="springmvc-scope" />
-        <module name="maven-archiver (2)" />
+        <module name="springmvc-exception-xml" />
         <module name="session_and_cookie" />
         <module name="listener-hello" />
+        <module name="springmvc-interceptor-hello" />
         <module name="javase" />
         <module name="http-servlet" />
         <module name="filter-hello" />
@@ -41,7 +42,6 @@
         <module name="ssia-ch2-ex4" />
         <module name="mybatis-plus-hello" />
         <module name="jdbc-demo" />
-        <module name="maven-archiver (1)" />
         <module name="jsp_el" />
         <module name="springmvc-hello" />
         <module name="mybatis-demo" />
