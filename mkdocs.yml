@@ -2,7 +2,7 @@ site_name: 陆国松的编程笔记
 site_url: https://www.luguosong.com
 repo_url: https://github.com/luguosong/programming-notes # 右上角仓库链接地址
 repo_name: programming-notes # 右上角仓库名称
-edit_uri: edit/main/docs/
+edit_uri: edit/main/code/
 docs_dir: code
 
 theme:
@@ -11,8 +11,8 @@ theme:
   custom_dir: overrides # 自定义主题目录
   font:
     code: Source Code Pro
-  logo: https://gcore.jsdelivr.net/gh/luguosong/programming-notes@main/docs/assert/logo.gif
-  favicon: https://gcore.jsdelivr.net/gh/luguosong/programming-notes@main/docs/assert/logo.gif
+  logo: https://gcore.jsdelivr.net/gh/luguosong/programming-notes@main/code/assert/logo.gif
+  favicon: https://gcore.jsdelivr.net/gh/luguosong/programming-notes@main/code/assert/logo.gif
   icon:
     repo: fontawesome/brands/github
   features:
