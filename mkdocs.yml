@@ -211,6 +211,7 @@ nav:
           - Spring框架版本说明: java_serve/spring/spring-framework-versions/index.md
           - 控制反转: java_serve/spring/basic/index.md
           - 面向切面编程: java_serve/spring/aop/index.md
+          - SSM整合: java_serve/spring/ssm/index.md
       - Web应用:
           - java_serve/web_application/index.md
           - Tomcat服务器: java_serve/web_application/tomcat/index.md
@@ -219,6 +220,7 @@ nav:
           - Session和Cookie: java_serve/web_application/session_cookie/index.md
           - 过滤器和监听器: java_serve/web_application/filter_listener/index.md
           - MVC架构模式: java_serve/web_application/mvc/index.md
+          - 响应式编程: java_serve/web_application/reactive/index.md
       - 数据库开发:
           - java_serve/database/index.md
           - JDBC: java_serve/database/jdbc/index.md
@@ -232,6 +234,8 @@ nav:
               - 安全现状: java_serve/authentication/spring-security/01-security-today/index.md
               - Spring Security入门: java_serve/authentication/spring-security/02_hello/index.md
               - 管理用户: java_serve/authentication/spring-security/03_managing_users/index.md
+      - Spring Boot:
+          - java_serve/springboot/index.md
       - 分布式/微服务:
           - java_serve/distributed/index.md
           - 网关: java_serve/distributed/gateway/index.md
