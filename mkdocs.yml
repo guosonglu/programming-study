@@ -204,6 +204,9 @@ nav:
           - 概述: java/javase/src/main/java/com/luguosong/_01_overview/index.md
           - 语言基础: java/javase/src/main/java/com/luguosong/_02_basic/index.md
           - 面向对象: java/javase/src/main/java/com/luguosong/_03_object_oriented/index.md
+      - Java日志:
+          - java/log/index.md
+          - 基础: java/log/basic/index.md
   - 服务端开发:
       - java_serve/index.md
       - Spring框架:
