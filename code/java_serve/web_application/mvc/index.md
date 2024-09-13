@@ -123,6 +123,18 @@ http://localhost:8080/springmvc_hello_war_exploded/hello-mvc
   <figcaption>Spring MVC执行流程</figcaption>
 </figure>
 
+1. 发送请求，`DispatcherServlet类`接收请求。
+	1. `doDispatch方法`负责处理请求。
+		1. 通过`HttpServletRequest`请求对象得到uri，根据uri得到`HandlerExecutionChain处理器执行链`对象(
+		   其中包含拦截器和处理器)。
+		2. `HandlerExecutionChain处理器执行链`获取处理器适配器`HandlerAdapter`对象。
+		3. `HandlerExecutionChain对象`执行该请求所有拦截器中的`preHandle方法`。
+		4. 通过消息转换器将请求参数进行转换，`HandlerAdapter`对象调用Controller处理器方法。返回`ModelAndView`对象。
+		5. `HandlerExecutionChain对象`执行该请求所有拦截器中的`postHandle方法`。
+		6. `processDispatchResult方法`处理响应结果。
+            1. 通过`视图解析器`解析，返回`视图对象`。调用视图对象的渲染方法。
+            2. 执行该请求所有拦截器中的`afterCompletion方法`。
+
 ## 自定义Spring MVC配置文件名称
 
 默认情况下，Spring MVC会根据web.xml中`<servlet-name>标签`的值去寻找Spring MVC配置文件。
@@ -169,19 +181,19 @@ http://localhost:8080/springmvc_hello_war_exploded/hello-mvc
 
 @Controller
 public class HelloController {
-    //请求映射
-    @RequestMapping("/hello1-1")
-    public String hello() {
-        //返回逻辑视图名称
-        return "hello";
-    }
+	//请求映射
+	@RequestMapping("/hello1-1")
+	public String hello() {
+		//返回逻辑视图名称
+		return "hello";
+	}
 
-    //多个映射可以指向同一个方法
-    @RequestMapping({"/hello2-1", "/hello2-2"})
-    public String hello() {
-        //返回逻辑视图名称
-        return "hello";
-    }
+	//多个映射可以指向同一个方法
+	@RequestMapping({"/hello2-1", "/hello2-2"})
+	public String hello() {
+		//返回逻辑视图名称
+		return "hello";
+	}
 }
 ```
 
@@ -201,12 +213,12 @@ value属性也支持`Ant风格`的通配符：
 
 @Controller
 public class HelloController {
-    //?表示任意单个字符，比如 hello1 或 helloa 都会访问到该方法
-    @RequestMapping("/hello?")
-    public String hello() {
-        //返回逻辑视图名称
-        return "hello";
-    }
+	//?表示任意单个字符，比如 hello1 或 helloa 都会访问到该方法
+	@RequestMapping("/hello?")
+	public String hello() {
+		//返回逻辑视图名称
+		return "hello";
+	}
 }
 ```
 
@@ -220,13 +232,13 @@ public class HelloController {
 
 @Controller
 public class HelloController {
-    @RequestMapping("/login/{username}/{password}")
-    public String login(@PathVariable String username,
-                        @PathVariable String password) {
-        //用户登录
-        //...
-        return "ok";
-    }
+	@RequestMapping("/login/{username}/{password}")
+	public String login(@PathVariable String username,
+						@PathVariable String password) {
+		//用户登录
+		//...
+		return "ok";
+	}
 }
 ```
 
@@ -238,12 +250,12 @@ public class HelloController {
 
 @Controller
 public class HelloController {
-    //只会接收Get类型的请求
-    @RequestMapping(value = "/hello", method = RequestMethod.GET)
-    public String hello() {
-        //返回逻辑视图名称
-        return "hello";
-    }
+	//只会接收Get类型的请求
+	@RequestMapping(value = "/hello", method = RequestMethod.GET)
+	public String hello() {
+		//返回逻辑视图名称
+		return "hello";
+	}
 }
 ```
 
@@ -260,12 +272,12 @@ public class HelloController {
 
 @Controller
 public class HelloController {
-    //表示请求参数中必须存在username和password，且username必须为张三
-    @PostMapping(value = "/hello", params = {"username=张三", "password"})
-    public String hello() {
-        //返回逻辑视图名称
-        return "ok";
-    }
+	//表示请求参数中必须存在username和password，且username必须为张三
+	@PostMapping(value = "/hello", params = {"username=张三", "password"})
+	public String hello() {
+		//返回逻辑视图名称
+		return "ok";
+	}
 }
 ```
 
@@ -277,12 +289,12 @@ public class HelloController {
 
 @Controller
 public class HelloController {
-    //表示请求头中必须存在token
-    @PostMapping(value = "/hello", headers = {"token"})
-    public String hello() {
-        //返回逻辑视图名称
-        return "ok";
-    }
+	//表示请求头中必须存在token
+	@PostMapping(value = "/hello", headers = {"token"})
+	public String hello() {
+		//返回逻辑视图名称
+		return "ok";
+	}
 }
 ```
 
@@ -708,10 +720,10 @@ Spring MVC仍然允许静态资源请求由Tomcat的`默认Servlet`处理。它�
 @EnableWebMvc
 public class WebConfig implements WebMvcConfigurer {
 
-    @Override
-    public void configureDefaultServletHandling(DefaultServletHandlerConfigurer configurer) {
-        configurer.enable();
-    }
+	@Override
+	public void configureDefaultServletHandling(DefaultServletHandlerConfigurer configurer) {
+		configurer.enable();
+	}
 }
 ```
 
@@ -739,12 +751,12 @@ public class WebConfig implements WebMvcConfigurer {
 @EnableWebMvc
 public class WebConfig implements WebMvcConfigurer {
 
-    @Override
-    public void addResourceHandlers(ResourceHandlerRegistry registry) {
-        registry.addResourceHandler("/resources/**")
-                .addResourceLocations("/public", "classpath:/static/")
-                .setCacheControl(CacheControl.maxAge(Duration.ofDays(365)));
-    }
+	@Override
+	public void addResourceHandlers(ResourceHandlerRegistry registry) {
+		registry.addResourceHandler("/resources/**")
+				.addResourceLocations("/public", "classpath:/static/")
+				.setCacheControl(CacheControl.maxAge(Duration.ofDays(365)));
+	}
 }
 ```
 
@@ -849,8 +861,39 @@ Spring MVC`拦截器`作用是在请求到达Controller`之前`和`之后`进行
 - 请求日志
 - 更改响应
 
+### 示例
 
-### 入门案例
+通过实现`HandlerInterceptor接口`，实现拦截器。
 
+`preHandle方法`如果`返回false`，请求将被拦截，不会再执行后续的拦截器和Controller。
 
+编写拦截器：
+
+``` java title="Interceptor1.java"
+--8<-- "code/java_serve/web_application/mvc/springmvc-interceptor-hello/src/main/java/com/luguosong/interceptors/Interceptor1.java"
+```
+
+``` java title="Interceptor2.java"
+--8<-- "code/java_serve/web_application/mvc/springmvc-interceptor-hello/src/main/java/com/luguosong/interceptors/Interceptor2.java"
+```
+
+在spring mvc配置文件中配置拦截器：
+
+``` xml title="springmvc-servlet.xml"
+--8<-- "code/java_serve/web_application/mvc/springmvc-interceptor-hello/src/main/webapp/WEB-INF/springmvc-servlet.xml"
+```
+
+## 全注解开发
+
+编写Spring 配置类，继承`AbstractAnnotationConfigDispatcherServletInitializer`类，相当于`web.xml`：
+
+``` java title="WebAppInitialize.java"
+--8<-- "code/java_serve/web_application/mvc/springmvc-hello-annotation/src/main/java/com/luguosong/config/WebAppInitialize.java"
+```
+
+Spring MVC配置类：
+
+``` java title="SpringMvcConfig.java"
+--8<-- "code/java_serve/web_application/mvc/springmvc-hello-annotation/src/main/java/com/luguosong/config/SpringMvcConfig.java"
+```
 

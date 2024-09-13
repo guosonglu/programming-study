@@ -12,7 +12,14 @@ public class HelloController {
     //请求映射
     @RequestMapping("/hello-interceptor")
     public String hello() {
+        System.out.println("Controller方法执行");
         //返回逻辑视图名称
         return "hello interceptor";
+    }
+
+    @RequestMapping("/hello-interceptor2")
+    public String hello2() {
+        System.out.println("Controller方法执行，拦截器不进行拦截");
+        return "hello interceptor2";
     }
 }
