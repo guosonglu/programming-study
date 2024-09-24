@@ -24,6 +24,13 @@ Boot配置的默认实例。我们还有更多细节需要讨论，例如：
 `UserDetailsService` 以及 `UserDetailsManager` 如何扩展该接口。您将应用这些接口的实现（例如，`InMemoryUserDetailsManager`、
 `JdbcUserDetailsManager` 和 `LdapUserDetailsManager`）。当这些实现不适合您的系统时，您将编写一个自定义实现。
 
+## 思维导图
+
+<figure markdown="span">
+  ![](https://edrawcloudpubliccn.oss-cn-shenzhen.aliyuncs.com/viewer/self/1059758/share/2024-9-24/1727141086/main.svg){ loading=lazy }
+  <figcaption>用户管理思维导图</figcaption>
+</figure>
+
 ## 在Spring Security中实现身份验证
 
 在上一章中，我们开始学习Spring Security。在第一个例子中，我们讨论了Spring
