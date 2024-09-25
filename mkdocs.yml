@@ -237,8 +237,11 @@ nav:
               - 安全现状: java_serve/authentication/spring-security/01-security-today/index.md
               - Spring Security入门: java_serve/authentication/spring-security/02_hello/index.md
               - 管理用户: java_serve/authentication/spring-security/03_managing_users/index.md
+              - 管理密码: java_serve/authentication/spring-security/04_managing_passwords/index.md
+              - 网络应用的安全性始于过滤器: java_serve/authentication/spring-security/05_begins_with_filters/index.md
       - Spring Boot:
           - java_serve/springboot/index.md
+          - 基础知识: java_serve/springboot/basic/index.md
       - 分布式/微服务:
           - java_serve/distributed/index.md
           - 网关: java_serve/distributed/gateway/index.md
@@ -247,10 +250,14 @@ nav:
       - 设计模式:
           - topics/design_pattern/src/main/java/com/luguosong/index.md
           - 概述: topics/design_pattern/src/main/java/com/luguosong/overview/index.md
-          - 创建型模式: topics/design_pattern/src/main/java/com/luguosong/creational/index.md
-          - 结构型模式: topics/design_pattern/src/main/java/com/luguosong/structural/index.md
-          - 结构型-代理🔥: topics/design_pattern/src/main/java/com/luguosong/structural/proxy/index.md
-          - 行为型模式: topics/design_pattern/src/main/java/com/luguosong/behavioral/index.md
+          - 创建型模式:
+              - topics/design_pattern/src/main/java/com/luguosong/creational/index.md
+          - 结构型模式:
+              - topics/design_pattern/src/main/java/com/luguosong/structural/index.md
+              - 代理🔥: topics/design_pattern/src/main/java/com/luguosong/structural/proxy/index.md
+          - 行为型模式:
+              - topics/design_pattern/src/main/java/com/luguosong/behavioral/index.md
+              - 责任链: topics/design_pattern/src/main/java/com/luguosong/behavioral/chain_of_responsibility/index.md
       - Maven:
           - topics/maven/index.md
           - Maven基础教程: topics/maven/base/index.md
@@ -269,6 +276,8 @@ nav:
           - shell脚本: topics/linux/shell/index.md
           - 使用者管理: topics/linux/user_management/index.md
           - 系统管理员: topics/linux/system_administrator/index.md
+      - 密码学:
+          - topics/cryptography/src/main/java/com/luguosong/index.md
       - iText库-PDF签章:
           - topics/itext-signatures/src/main/java/com/luguosong/index.md
           - 理解数字签名的概念: topics/itext-signatures/src/main/java/com/luguosong/chapter01_understanding_the_concept_of_digital_signatures/index.md
