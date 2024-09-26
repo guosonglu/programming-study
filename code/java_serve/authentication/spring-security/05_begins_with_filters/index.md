@@ -86,8 +86,11 @@ SecurityWebFiltersOrder，访问[地址](https://docs.spring.io/spring-security/
 本节讨论如何在过滤器链中将自定义HTTP过滤器应用于现有过滤器之前。你可能会遇到这种情况，在这种情况下，这会很有用。为了以实用的方式解决这个问题，我们将以一个项目为例，你将学习如何轻松实现一个自定义过滤器，并在过滤器链中将其应用于现有过滤器之前。然后，你可以将这个示例调整为在生产应用中遇到的任何类似需求。
 
 对于我们的第一个自定义过滤器实现，让我们考虑一个简单的场景。我们希望确保每个请求都有一个名为 `Request-Id` 的头（参见项目
-ssia-ch5-ex1）。我们假设我们的应用程序使用这个头来跟踪请求，并且这个头是必需的。同时，我们希望在应用程序执行身份验证之前验证这些假设。身份验证过程可能涉及查询数据库或其他消耗资源的操作，如果请求格式无效，我们不希望应用程序执行这些操作。我们该如何做到这一点呢？解决当前需求只需两个步骤，最后过滤器链如图
+ssia-ch5-ex1[^1]
+）。我们假设我们的应用程序使用这个头来跟踪请求，并且这个头是必需的。同时，我们希望在应用程序执行身份验证之前验证这些假设。身份验证过程可能涉及查询数据库或其他消耗资源的操作，如果请求格式无效，我们不希望应用程序执行这些操作。我们该如何做到这一点呢？解决当前需求只需两个步骤，最后过滤器链如图
 5.6 所示。
+
+[^1]:ssia-ch5-ex1:在现有过滤器前后添加自定义过滤器
 
 1. 实现过滤器。创建一个`RequestValidationFilter`类，用于检查请求中是否存在所需的头信息。
 2. 将过滤器添加到过滤器链中。在配置类中使用 SecurityFilterChain bean 来完成此操作。
@@ -282,7 +285,9 @@ Hello!
 </figure>
 
 让我们通过一个示例来演示如何应用自定义过滤器。为了保持案例的相关性和简洁性，我们专注于配置，并考虑一个简单的认证逻辑。在我们的场景中，我们有一个
-`静态密钥`的值，这个值对所有请求都是相同的。要进行认证，用户必须在授权头中添加正确的静态密钥值，如图5.12所示。你可以在项目ssia-ch5-ex2中找到这个示例的代码。
+`静态密钥`的值，这个值对所有请求都是相同的。要进行认证，用户必须在授权头中添加正确的静态密钥值，如图5.12所示。你可以在项目ssia-ch5-ex2[^2]中找到这个示例的代码。
+
+[^2]:ssia-ch5-ex2：在指定位置添加自定义过滤器
 
 <figure markdown="span">
   ![](https://raw.githubusercontent.com/luguosong/images/master/blog-img/202409261445936.png){ loading=lazy }
@@ -385,7 +390,9 @@ Spring Security 提供了一些实现了 Filter 接口的抽象类，您可以�
 `OncePerRequestFilter`类来实现过滤器。我在一个名为ssia-ch5-ex3的独立项目中写了这个。
 
 在代码清单5.9中，你会看到我对`AuthenticationLoggingFilter`类所做的更改。与5.3节中的示例直接实现Filter接口不同，现在它扩展了
-`OncePerRequestFilter`类。我们在这里重写的方法是`doFilterInternal()`。你可以在项目ssia-ch5-ex3中找到这段代码。
+`OncePerRequestFilter`类。我们在这里重写的方法是`doFilterInternal()`。你可以在项目ssia-ch5-ex3[^3]中找到这段代码。
+
+[^3]:ssia-ch5-ex3:自定义过滤器继承OncePerRequestFilter，达到同一请求不被执行多次的效果
 
 ``` java title="清单 5.9 扩展 OncePerRequestFilter 类"
 --8<-- "code/java_serve/authentication/spring-security/05_begins_with_filters/ssia-ch5-ex3/src/main/java/com/luguosong/ssiach5ex3/filters/AuthenticationLoggingFilter.java"
