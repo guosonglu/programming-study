@@ -180,7 +180,7 @@ lambda 表达式来实现它的例子。另一种方法是使用 `SimpleGrantedA
 类提供了一种创建不可变 `GrantedAuthority` 实例的方法。构建实例时，你需要提供权限名称。在接下来的代码片段中，你会看到两个实现
 `GrantedAuthority` 的例子。我们首先使用 lambda 表达式，然后使用 `SimpleGrantedAuthority` 类：
 
-```java
+``` java
 GrantedAuthority g1 = () -> "READ";
 GrantedAuthority g2 = new SimpleGrantedAuthority("READ");
 ```
@@ -302,7 +302,7 @@ public class SimpleUser implements UserDetails {
 `不可变的 UserDetails 实例`。你至少需要提供一个`用户名`和`密码`，并且用户名不能为空字符串。以下示例展示了如何使用这个构建器。通过这种方式构建用户，你不需要自定义实现
 `UserDetails` 合约。
 
-```java title="清单 3.6 使用 User 构建器类构建用户"
+``` java title="清单 3.6 使用 User 构建器类构建用户"
 UserDetails u = User.withUsername("bill")
 		.password("12345")
 		.authorities("read", "write")
@@ -315,7 +315,7 @@ UserDetails u = User.withUsername("bill")
 类中的 `UserBuilder` 类的实例。创建构建器的另一种方法是从另一个 `UserDetails` 实例开始。在示例 3.7 中，第一行通过给定的字符串用户名构建了一个
 `UserBuilder`。随后，我们展示了如何从一个已存在的 `UserDetails` 实例开始创建构建器。
 
-```java title="清单 3.7 创建 User.UserBuilder 实例"
+``` java title="清单 3.7 创建 User.UserBuilder 实例"
 User.UserBuilder builder1 = User.withUsername("bill");
 
 UserDetails u1 = builder1

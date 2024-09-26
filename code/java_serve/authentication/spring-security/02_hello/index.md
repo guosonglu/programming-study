@@ -291,10 +291,10 @@ UserDetailsService 的角度来讨论它。这个实现将凭证存储在内存�
 @Configuration
 public class ProjectConfig {
 
-    @Bean
-    UserDetailsService userDetailsService() {
-        return new InMemoryUserDetailsManager();
-    }
+	@Bean
+	UserDetailsService userDetailsService() {
+		return new InMemoryUserDetailsManager();
+	}
 }
 ```
 
@@ -326,15 +326,15 @@ public class ProjectConfig {
 @Configuration
 public class ProjectConfig {
 
-    @Bean
-    UserDetailsService userDetailsService() {
-        var user = User.withUsername("john")
-                .password("12345")
-                .authorities("read")
-                .build();
+	@Bean
+	UserDetailsService userDetailsService() {
+		var user = User.withUsername("john")
+				.password("12345")
+				.authorities("read")
+				.build();
 
-        return new InMemoryUserDetailsManager(user);
-    }
+		return new InMemoryUserDetailsManager(user);
+	}
 }
 ```
 
@@ -372,7 +372,7 @@ bean，我们使用现有的 PasswordEncoder 实现：
 
 @Bean
 public PasswordEncoder passwordEncoder() {
-    return NoOpPasswordEncoder.getInstance();
+	return NoOpPasswordEncoder.getInstance();
 }
 ```
 
@@ -393,20 +393,20 @@ public PasswordEncoder passwordEncoder() {
 @Configuration
 public class ProjectConfig {
 
-    @Bean
-    UserDetailsService userDetailsService() {
-        var user = User.withUsername("john")
-                .password("12345")
-                .authorities("read")
-                .build();
+	@Bean
+	UserDetailsService userDetailsService() {
+		var user = User.withUsername("john")
+				.password("12345")
+				.authorities("read")
+				.build();
 
-        return new InMemoryUserDetailsManager(user);
-    }
+		return new InMemoryUserDetailsManager(user);
+	}
 
-    @Bean
-    PasswordEncoder passwordEncoder() {
-        return NoOpPasswordEncoder.getInstance();
-    }
+	@Bean
+	PasswordEncoder passwordEncoder() {
+		return NoOpPasswordEncoder.getInstance();
+	}
 }
 ```
 
@@ -442,14 +442,14 @@ Hello!
 @Configuration
 public class ProjectConfig {
 
-    @Bean
-    SecurityFilterChain configure(HttpSecurity http)
-            throws Exception {
+	@Bean
+	SecurityFilterChain configure(HttpSecurity http)
+			throws Exception {
 
-        return http.build();
-    }
+		return http.build();
+	}
 
-    // 省略的代码
+	// 省略的代码
 }
 ```
 
@@ -460,21 +460,21 @@ public class ProjectConfig {
 @Configuration
 public class ProjectConfig {
 
-    @Bean
-    SecurityFilterChain configure(HttpSecurity http)
-            throws Exception {
+	@Bean
+	SecurityFilterChain configure(HttpSecurity http)
+			throws Exception {
 
-        http.httpBasic(Customizer.withDefaults());
+		http.httpBasic(Customizer.withDefaults());
 
-        http.authorizeHttpRequests(
-                // 认证后可以访问
-                c -> c.anyRequest().authenticated()
-        );
+		http.authorizeHttpRequests(
+				// 认证后可以访问
+				c -> c.anyRequest().authenticated()
+		);
 
-        return http.build();
-    }
+		return http.build();
+	}
 
-    // Omitted code
+	// Omitted code
 
 }
 ```
@@ -487,21 +487,21 @@ public class ProjectConfig {
 @Configuration
 public class ProjectConfig {
 
-    @Bean
-    public SecurityFilterChain configure(HttpSecurity http)
-            throws Exception {
+	@Bean
+	public SecurityFilterChain configure(HttpSecurity http)
+			throws Exception {
 
-        http.httpBasic(Customizer.withDefaults());
+		http.httpBasic(Customizer.withDefaults());
 
-        http.authorizeHttpRequests(
-                // 允许所有访问
-                c -> c.anyRequest().permitAll()
-        );
+		http.authorizeHttpRequests(
+				// 允许所有访问
+				c -> c.anyRequest().permitAll()
+		);
 
-        return http.build();
-    }
+		return http.build();
+	}
 
-    // Omitted code
+	// Omitted code
 }
 ```
 
@@ -538,25 +538,20 @@ Security元素的自定义设置：认证、授权，或者特定的保护机制
 
 @FunctionalInterface
 public interface Customizer<T> {
-    void customize(T t);
+	void customize(T t);
 
-    static <T> Customizer<T> withDefaults() {
-        return (t) -> {
-        };
-    }
+	static <T> Customizer<T> withDefaults() {
+		return (t) -> {
+		};
+	}
 }
 ```
 
 在早期版本的 Spring Security 中，你可以使用`链式语法`来应用配置，而无需使用 `Customizer 对象`，如下代码片段所示。注意，这里并没有为
 authorizeHttpRequests() 方法提供 Customizer 对象，配置直接跟在方法调用之后：
 
-```java
-http.authorizeHttpRequests() 
-      .
-
-anyRequest().
-
-authenticated()
+``` java
+http.authorizeHttpRequests().anyRequest().authenticated()
 ```
 
 这种方法被弃用的原因是，Customizer 对象可以让你在需要时更灵活地移动配置。确实，对于简单的例子，使用 lambda
@@ -587,29 +582,29 @@ ssia-ch2-ex3[^3] 中找到这个示例。
 @Configuration
 public class ProjectConfig {
 
-    @Bean
-    public SecurityFilterChain configure(HttpSecurity http)
-            throws Exception {
+	@Bean
+	public SecurityFilterChain configure(HttpSecurity http)
+			throws Exception {
 
-        http.httpBasic(Customizer.withDefaults());
-        http.authorizeHttpRequests(
-                c -> c.anyRequest().authenticated()
-        );
+		http.httpBasic(Customizer.withDefaults());
+		http.authorizeHttpRequests(
+				c -> c.anyRequest().authenticated()
+		);
 
-        var user = User.withUsername("john")
-                .password("12345")
-                .authorities("read")
-                .build();
+		var user = User.withUsername("john")
+				.password("12345")
+				.authorities("read")
+				.build();
 
-        var userDetailsService =
-                new InMemoryUserDetailsManager(user);
+		var userDetailsService =
+				new InMemoryUserDetailsManager(user);
 
-        http.userDetailsService(userDetailsService);
+		http.userDetailsService(userDetailsService);
 
-        return http.build();
-    }
+		return http.build();
+	}
 
-    // Omitted code
+	// Omitted code
 
 }
 
@@ -652,17 +647,17 @@ public class ProjectConfig {
 @Component
 public class CustomAuthenticationProvider implements AuthenticationProvider {
 
-    @Override
-    public Authentication authenticate(Authentication authentication) throws AuthenticationException {
+	@Override
+	public Authentication authenticate(Authentication authentication) throws AuthenticationException {
 
-        // authentication logic here
-    }
+		// authentication logic here
+	}
 
-    @Override
-    public boolean supports(Class<?> authenticationType) {
+	@Override
+	public boolean supports(Class<?> authenticationType) {
 
-        // type of the Authentication implementation here
-    }
+		// type of the Authentication implementation here
+	}
 }
 ```
 
@@ -673,22 +668,22 @@ public class CustomAuthenticationProvider implements AuthenticationProvider {
 
 @Override
 public Authentication authenticate(
-        Authentication authentication)
-        throws AuthenticationException {
+		Authentication authentication)
+		throws AuthenticationException {
 
-    String username = authentication.getName();
-    String password = String.valueOf(
-            authentication.getCredentials());
+	String username = authentication.getName();
+	String password = String.valueOf(
+			authentication.getCredentials());
 
-    if ("john".equals(username) &&
-            "12345".equals(password)) {
-        return new UsernamePasswordAuthenticationToken(
-                username,
-                password,
-                Arrays.asList());
-    } else {
-        throw new AuthenticationCredentialsNotFoundException("Error!");
-    }
+	if ("john".equals(username) &&
+			"12345".equals(password)) {
+		return new UsernamePasswordAuthenticationToken(
+				username,
+				password,
+				Arrays.asList());
+	} else {
+		throw new AuthenticationCredentialsNotFoundException("Error!");
+	}
 
 }
 
@@ -746,23 +741,23 @@ Hello!
 @Configuration
 public class UserManagementConfig {
 
-    @Bean
-    public UserDetailsService userDetailsService() {
-        var userDetailsService = new InMemoryUserDetailsManager();
+	@Bean
+	public UserDetailsService userDetailsService() {
+		var userDetailsService = new InMemoryUserDetailsManager();
 
-        var user = User.withUsername("john")
-                .password("12345")
-                .authorities("read")
-                .build();
+		var user = User.withUsername("john")
+				.password("12345")
+				.authorities("read")
+				.build();
 
-        userDetailsService.createUser(user);
-        return userDetailsService;
-    }
+		userDetailsService.createUser(user);
+		return userDetailsService;
+	}
 
-    @Bean
-    public PasswordEncoder passwordEncoder() {
-        return NoOpPasswordEncoder.getInstance();
-    }
+	@Bean
+	public PasswordEncoder passwordEncoder() {
+		return NoOpPasswordEncoder.getInstance();
+	}
 }
 ```
 
@@ -774,18 +769,18 @@ public class UserManagementConfig {
 @Configuration
 public class WebAuthorizationConfig {
 
-    @Bean
-    SecurityFilterChain configure(HttpSecurity http)
-            throws Exception {
+	@Bean
+	SecurityFilterChain configure(HttpSecurity http)
+			throws Exception {
 
-        http.httpBasic(Customizer.withDefaults());
+		http.httpBasic(Customizer.withDefaults());
 
-        http.authorizeHttpRequests(
-                c -> c.anyRequest().authenticated()
-        );
+		http.authorizeHttpRequests(
+				c -> c.anyRequest().authenticated()
+		);
 
-        return http.build();
-    }
+		return http.build();
+	}
 }
 ```
 
