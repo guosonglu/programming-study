@@ -4,6 +4,15 @@ icon: simple/jetbrains
 
 # IDEA使用心得
 
+## 常用设置
+
+### 定义实时模板
+
+<figure markdown="span">
+  ![](https://raw.githubusercontent.com/luguosong/images/master/blog-img/202409261739726.png){ loading=lazy }
+  <figcaption>通过输入少量提示，生成代码块</figcaption>
+</figure>
+
 ## One Dark Theme 主题
 
 [https://github.com/atom/one-dark-syntax](https://github.com/atom/one-dark-syntax)
