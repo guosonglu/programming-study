@@ -239,6 +239,7 @@ nav:
               - 管理用户: java_serve/authentication/spring-security/03_managing_users/index.md
               - 管理密码: java_serve/authentication/spring-security/04_managing_passwords/index.md
               - 网络应用的安全性始于过滤器: java_serve/authentication/spring-security/05_begins_with_filters/index.md
+              - 实现身份认证: java_serve/authentication/spring-security/06_implementing_authentications/index.md
       - Spring Boot:
           - java_serve/springboot/index.md
           - 基础知识: java_serve/springboot/basic/index.md
