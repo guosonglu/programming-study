@@ -231,7 +231,6 @@ nav:
           - Mybatis Plus: java_serve/database/mybatis_plus/index.md
       - 认证和鉴权:
           - java_serve/authentication/index.md
-          - 基础知识: java_serve/authentication/basic/index.md
           - Spring Security实战:
               - java_serve/authentication/spring-security/index.md
               - 安全现状: java_serve/authentication/spring-security/01-security-today/index.md

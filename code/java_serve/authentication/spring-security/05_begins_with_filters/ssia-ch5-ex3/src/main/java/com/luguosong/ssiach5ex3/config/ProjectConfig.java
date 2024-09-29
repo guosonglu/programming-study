@@ -1,7 +1,8 @@
 package com.luguosong.ssiach5ex3.config;
 
-import com.laurentiuspilca.ssia.filters.AuthenticationLoggingFilter;
-import com.laurentiuspilca.ssia.filters.RequestValidationFilter;
+
+import com.luguosong.ssiach5ex3.filters.AuthenticationLoggingFilter;
+import com.luguosong.ssiach5ex3.filters.RequestValidationFilter;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
