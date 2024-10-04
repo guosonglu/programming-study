@@ -119,14 +119,10 @@ plugins:
   - glightbox: # 图片查看插件
       touchNavigation: true
       loop: false
-      effect: zoom
-      slide_effect: none
-      width: 100%
-      height: auto
       zoomable: true
       draggable: false
       auto_caption: true
-      caption_position: bottom
+      background: #000000
   - search
   - minify:
       minify_html: true
@@ -244,7 +240,9 @@ nav:
           - 基础知识: java_serve/springboot/basic/index.md
       - 分布式/微服务:
           - java_serve/distributed/index.md
-          - 网关: java_serve/distributed/gateway/index.md
+          - 网关:
+              - java_serve/distributed/gateway/index.md
+              - Spring Cloud Gateway: java_serve/distributed/gateway/spring_cloud_gateway/index.md
   - 专项研究:
       - topics/index.md
       - 设计模式:
