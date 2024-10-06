@@ -259,6 +259,9 @@ nav:
       - Maven:
           - topics/maven/index.md
           - Maven基础教程: topics/maven/base/index.md
+      - Docker:
+          - topics/docker/index.md
+          - 基础知识: topics/docker/basic/index.md
       - sql:
           - topics/sql/index.md
           - 环境搭建: topics/sql/environment_building.md
