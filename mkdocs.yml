@@ -262,6 +262,7 @@ nav:
       - Docker:
           - topics/docker/index.md
           - 基础知识: topics/docker/basic/index.md
+          - 环境搭建: topics/docker/environmental-setup/index.md
       - sql:
           - topics/sql/index.md
           - 环境搭建: topics/sql/environment_building.md
