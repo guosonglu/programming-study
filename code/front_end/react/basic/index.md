@@ -104,19 +104,55 @@ Create React App 是官方支持的创建单页 React 应用程序的方式。�
 # 创建React项目
 npx create-react-app hello-react
 
-#不建议使用 create-react-app 创建 React 应用程序。在没有框架的情况下使用 React 时，首选方式是使用带Vite Bundler 的模板。
-npm create vite@latest hello-react -- --template react
+# 使用vite创建react项目
+npm create vite@latest my-vue-app -- --template react
+# 或
+yarn create vite my-vue-app --template react
 ```
 
 ``` html title="index.html"
---8<-- "source/front_end/react/basic/hello-react/public/index.html"
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#000000" />
+    <meta
+      name="description"
+      content="Web site created using create-react-app"
+    />
+    <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
+    <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
+    <title>React App</title>
+  </head>
+  <body>
+    <noscript>You need to enable JavaScript to run this app.</noscript>
+    <div id="root"></div>
+  </body>
+</html>
 ```
 
 ``` javascript title="index.js"
---8<-- "source/front_end/react/basic/hello-react/src/index.js"
+import React from 'react';
+import ReactDOM from 'react-dom/client';
+import './index.css';
+import App from './App';
+import reportWebVitals from './reportWebVitals';
+
+const root = ReactDOM.createRoot(document.getElementById('root'));
+root.render(
+  <React.StrictMode>
+    <App />
+  </React.StrictMode>
+);
+
+reportWebVitals();
 ```
 
 ## 组件(component)
+
+### 组件概述
 
 用户界面可以分解为称为`组件`（ 应用程序中可复用的 UI 元素）的较小构建块。
 
@@ -141,7 +177,7 @@ React组件应该`大写`以区分它们与普通的HTML和JavaScript。
 
 <iframe loading="lazy" src="example/hello_components.html"></iframe>
 
-## 组件导出和导入
+### 组件导出和导入
 
 将组件封装在`单独的文件`中导出，更加有利于组件的复用。
 
@@ -181,7 +217,7 @@ export default function App() {
 }
 ```
 
-## Props
+### Props
 
 常规的HTML元素具有`属性`，您可以使用这些属性传递信息片段，从而`改变这些元素的行为`。
 

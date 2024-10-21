@@ -157,10 +157,10 @@ nav:
           - basic/computer_network/index.md
           - 应用层-HTTP: basic/computer_network/application_http/index.md
       - 数据结构与算法分析:
-          - basic/data_structures_and_algorithm_analysis/index.md
+          - basic/data-structures-and-algorithm-analysis/src/main/java/com/luguosong/index.md
           - 基础:
-              - basic/data_structures_and_algorithm_analysis/01_foundations/index.md
-              - 算法在计算中的作用: basic/data_structures_and_algorithm_analysis/01_foundations/01_the_role_of_algorithms_in_computers/index.md
+              - basic/data-structures-and-algorithm-analysis/src/main/java/com/luguosong/_01_foundations/index.md
+              - 算法在计算中的作用: basic/data-structures-and-algorithm-analysis/src/main/java/com/luguosong/_01_foundations/_01_the_role_of_algorithms_in_computers/index.md
   - 前端:
       - front_end/index.md
       - HTML:
@@ -240,6 +240,13 @@ nav:
           - 基础知识: java_serve/springboot/basic/index.md
       - 分布式/微服务:
           - java_serve/distributed/index.md
+          - 服务发现:
+              - java_serve/distributed/service-discovery/index.md
+              - Nacos: java_serve/distributed/service-discovery/nacos/index.md
+          - 服务调用:
+              - java_serve/distributed/invocation/index.md
+              - RestTemplate: java_serve/distributed/invocation/rest-template/index.md
+              - OpenFeign: java_serve/distributed/invocation/open-feign/index.md
           - 网关:
               - java_serve/distributed/gateway/index.md
               - Spring Cloud Gateway: java_serve/distributed/gateway/spring_cloud_gateway/index.md
