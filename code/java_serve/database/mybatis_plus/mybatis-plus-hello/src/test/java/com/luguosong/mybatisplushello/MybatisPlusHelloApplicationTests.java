@@ -1,7 +1,7 @@
 package com.luguosong.mybatisplushello;
 
-import com.luguosong.mybatisplushello.entity.Employees;
-import com.luguosong.mybatisplushello.mapper.EmployeesMapper;
+import com.luguosong.mybatisplushello.entity.User;
+import com.luguosong.mybatisplushello.mapper.UserMapper;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -12,12 +12,12 @@ import java.util.List;
 class MybatisPlusHelloApplicationTests {
 
 	@Autowired
-	private EmployeesMapper employeesMapper;
+	private UserMapper userMapper;
 
 	@Test
 	void testSelect() {
-		List<Employees> employees = employeesMapper.selectList(null);
-		System.out.println(employees);
+		List<User> users = userMapper.selectList(null);
+		users.forEach(System.out::println);
 	}
 
 }
