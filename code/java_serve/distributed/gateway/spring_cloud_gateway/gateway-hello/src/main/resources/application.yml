@@ -1,0 +1,16 @@
+spring:
+  application:
+    name: gateway-hello
+  cloud:
+    nacos:
+      server-addr: 127.0.0.1:8848
+    gateway:
+      routes:
+        - id: gateway-server1
+          uri: lb://gateway-server1
+          predicates:
+            - Path=/**
+      default-filters:
+        - StripPrefix=1
+server:
+  port: 8080
