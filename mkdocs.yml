@@ -197,9 +197,9 @@ nav:
       - java/index.md
       - JavaSE:
           - java/javase/src/main/java/com/luguosong/index.md
-          - 概述: java/javase/src/main/java/com/luguosong/_01_overview/index.md
-          - 语言基础: java/javase/src/main/java/com/luguosong/_02_basic/index.md
-          - 面向对象: java/javase/src/main/java/com/luguosong/_03_object_oriented/index.md
+          - 概述: java/javase/src/main/java/com/luguosong/overview/index.md
+          - 语言基础: java/javase/src/main/java/com/luguosong/basic/index.md
+          - 面向对象: java/javase/src/main/java/com/luguosong/object_oriented/index.md
       - Java日志:
           - java/log/index.md
           - 基础: java/log/basic/index.md
@@ -229,12 +229,19 @@ nav:
           - java_serve/authentication/index.md
           - Spring Security实战:
               - java_serve/authentication/spring-security/index.md
-              - 安全现状: java_serve/authentication/spring-security/01-security-today/index.md
-              - Spring Security入门: java_serve/authentication/spring-security/02_hello/index.md
-              - 管理用户: java_serve/authentication/spring-security/03_managing_users/index.md
-              - 管理密码: java_serve/authentication/spring-security/04_managing_passwords/index.md
-              - 网络应用的安全性始于过滤器: java_serve/authentication/spring-security/05_begins_with_filters/index.md
-              - 实现身份认证: java_serve/authentication/spring-security/06_implementing_authentications/index.md
+              - 1️⃣第一部分：Spring Security入门: java_serve/authentication/spring-security/part1_say_hello_to_spring_security.md
+              - 1.安全现状: java_serve/authentication/spring-security/01_security_today/index.md
+              - 2.Spring Security入门: java_serve/authentication/spring-security/02_hello/index.md
+              - 2️⃣第二部分：配置身份认证: java_serve/authentication/spring-security/part2_configuring_authentication.md
+              - 3.管理用户: java_serve/authentication/spring-security/03_managing_users/index.md
+              - 4.管理密码: java_serve/authentication/spring-security/04_managing_passwords/index.md
+              - 5.网络应用的安全性始于过滤器: java_serve/authentication/spring-security/05_begins_with_filters/index.md
+              - 6.实现身份认证: java_serve/authentication/spring-security/06_implementing_authentications/index.md
+              - 3️⃣第三部分：配置授权: java_serve/authentication/spring-security/part3_configuring_authorization.md
+              - 7.配置端点级授权：限制访问: java_serve/authentication/spring-security/07_configuring_endpoint_level_authorization_restricting_access/index.md
+              - 4️⃣第四部分：实施OAuth 2和OpenID Connect: java_serve/authentication/spring-security/part4_implementing_oAuth2_and_openid_connect.md
+              - 5️⃣第五部分：响应式: java_serve/authentication/spring-security/part5_going_reactive.md
+              - 6️⃣第六部分：测试安全配置: java_serve/authentication/spring-security/part6_testing_security_configurations.md
       - Spring Boot:
           - java_serve/springboot/index.md
           - 基础知识: java_serve/springboot/basic/index.md
