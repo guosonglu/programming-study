@@ -97,10 +97,26 @@ spring:
 
 ## 自定义路由过滤器
 
+创建路由过滤器工厂：
+
+``` java title="PrintAnyGatewayFilterFactory.java"
+--8<-- "code/java_serve/distributed/gateway/spring_cloud_gateway/gateway-custom-gateway-filter/src/main/java/com/upda/gatewaycustomgatewayfilter/filter/PrintAnyGatewayFilterFactory.java"
+```
+
+在配置文件中对指定路由配置过滤器：
+
+``` yaml title="application.yml"
+--8<-- "code/java_serve/distributed/gateway/spring_cloud_gateway/gateway-custom-gateway-filter/src/main/resources/application.yml"
+```
+
 ## 自定义全局过滤器
 
-## 登录校验
+定义全局过滤器：
 
-自定义全局过滤器：
+``` java title="MyGlobalFilter.java"
+--8<-- "code/java_serve/distributed/gateway/spring_cloud_gateway/gateway-custom-global-filter/src/main/java/com/upda/gatewaycustomglobalfilter/filter/MyGlobalFilter.java"
+```
+
+不需要在配置文件中进行配置，全局过滤器会直接生效。
 
 

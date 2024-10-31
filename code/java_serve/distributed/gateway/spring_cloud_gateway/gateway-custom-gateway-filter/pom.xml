@@ -8,11 +8,11 @@
         <version>3.3.5</version>
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
-    <groupId>com.luguosong</groupId>
-    <artifactId>gateway-hello</artifactId>
+    <groupId>com.upda</groupId>
+    <artifactId>gateway-custom-gateway-filter</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>gateway-hello</name>
-    <description>gateway-hello</description>
+    <name>gateway-custom-gateway-filter</name>
+    <description>gateway-custom-gateway-filter</description>
     <url/>
     <licenses>
         <license/>
@@ -58,6 +58,7 @@
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
         </dependency>
+
         <!--服务注册和发现-->
         <dependency>
             <groupId>com.alibaba.cloud</groupId>
@@ -72,6 +73,10 @@
         <dependency>
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-loadbalancer</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
         </dependency>
     </dependencies>
 
