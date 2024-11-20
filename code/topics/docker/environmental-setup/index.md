@@ -41,7 +41,7 @@ docker run -d \
 	nginx
 ```
 
-## Docker部署
+## Nacos部署
 
 ### 基本部署
 
