@@ -98,7 +98,7 @@ API 是一个大型的现成软件组件集合，提供了许多实用功能。�
 
 启动您的编辑器。您可以通过开始菜单选择程序 > 附件 > 记事本来启动记事本编辑器。在新文档中输入以下代码：
 
-```java
+``` java
 /**
  * The HelloWorldApp class implements an application that
  * simply prints "Hello World!" to standard output.
@@ -219,7 +219,7 @@ C:\myapplication>
 
 现在您已经看过“Hello World!”应用程序（也许还编译并运行过它），您可能会想知道它是如何工作的。以下是它的代码：
 
-```java
+``` java
 
 class HelloWorldApp {
     public static void main(String[] args) {
@@ -234,7 +234,7 @@ class HelloWorldApp {
 
 以下高亮文本定义了“Hello World!”应用程序的注释：
 
-```java hl_lines="1-4"
+``` java hl_lines="1-4"
 /**
  * The HelloWorldApp class implements an application that
  * simply prints "Hello World!" to standard output.
@@ -256,7 +256,7 @@ class HelloWorldApp {
 
 以下高亮文本开始了“Hello World!”应用程序的类定义块：
 
-```java hl_lines="5 9"
+``` java hl_lines="5 9"
 /**
  * The HelloWorldApp class implements an application that
  * simply displays "Hello World!" to the standard output.
@@ -270,7 +270,7 @@ class HelloWorldApp {
 
 如上所示，类定义的最基本形式是：
 
-```java
+``` java
 class name {
     //. . .
 }
@@ -282,7 +282,7 @@ class name {
 
 以下高亮文本开始定义main方法：
 
-```java hl_lines="6 8"
+``` java hl_lines="6 8"
 /**
  * The HelloWorldApp class implements an application that
  * simply displays "Hello World!" to the standard output.
@@ -296,7 +296,7 @@ class HelloWorldApp {
 
 在 Java 编程语言中，每个应用程序都必须包含一个主方法，其签名为：
 
-```java
+``` java
 public static void main(String[] args)
 ```
 
@@ -324,7 +324,7 @@ java MyApp arg1 arg2
 
 最后，这一行：
 
-```java
+``` java
 System.out.println("Hello World!");
 ```
 
