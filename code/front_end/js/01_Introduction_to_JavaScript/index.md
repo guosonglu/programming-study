@@ -87,7 +87,7 @@ $ node snippet.js
 `console.log()` 在终端窗口或浏览器的开发者工具控制台中显示文本和其他 JavaScript 值。例如，如果你创建一个包含以下代码行的
 hello.js 文件：
 
-```javascript
+``` javascript
 console.log("Hello World!");
 ```
 
@@ -114,7 +114,7 @@ file:///Users/username/javascript/hello.html
 
 以下是一些示例代码，用于展示这两章的重点内容：
 
-```javascript
+``` javascript
 // 双斜杠后面的任何内容都是英文注释。
 // 仔细阅读注释：它们解释了JavaScript代码。
 
@@ -143,7 +143,7 @@ x = undefined; // Undefined 也是一个特殊值，与null类似
 JavaScript 程序可以操作的另外两种非常重要的类型是对象和数组。这些内容将在第 6 章和第 7
 章中详细介绍，但由于它们非常重要，你在阅读到这些章节之前会多次遇到它们。
 
-```javascript
+``` javascript
 // JavaScript 最重要的数据类型是对象。
 // 一个对象是名称/值对的集合，或者是一个字符串到值的映射。
 let book = { // 对象用大括号括起来。
@@ -240,11 +240,15 @@ false === (x > y) // => true: false等于false
 !(x === y) // => true: ! 反转布尔值
 ```
 
-如果说 JavaScript 表达式像短语，那么 JavaScript `语句`就像完整的句子。`语句`是第 5 章的主题。大致来说，表达式是计算一个值但不执行任何操作的东西：它不会以任何方式改变程序状态。而`语句`则没有值，但它们会改变状态。你已经在上面看到变量声明和赋值语句。另一大类语句是`控制结构`，比如`条件语句`和`循环`。在我们讲解`函数`之后，你会看到下面的例子。
+如果说 JavaScript 表达式像短语，那么 JavaScript `语句`就像完整的句子。`语句`是第 5
+章的主题。大致来说，表达式是计算一个值但不执行任何操作的东西：它不会以任何方式改变程序状态。而`语句`
+则没有值，但它们会改变状态。你已经在上面看到变量声明和赋值语句。另一大类语句是`控制结构`，比如`条件语句`和`循环`。在我们讲解
+`函数`之后，你会看到下面的例子。
 
-函数是一个具名且带参数的 JavaScript 代码块，你可以定义一次，然后反复调用。函数的正式讲解在第 8 章，但就像对象和数组一样，你会在到达那一章之前多次看到它们。以下是一些简单的例子：
+函数是一个具名且带参数的 JavaScript 代码块，你可以定义一次，然后反复调用。函数的正式讲解在第 8
+章，但就像对象和数组一样，你会在到达那一章之前多次看到它们。以下是一些简单的例子：
 
-```javascript
+``` javascript
 // 函数是参数化的 JavaScript 代码块，我们可以调用它们。
 function plus1(x) { // 定义一个名为"plus1"、带有参数"x"的函数
     return x + 1; // 返回一个比传入值大一的值
@@ -259,9 +263,10 @@ let square = function (x) { // 函数是值，可以赋给变量
 square(plus1(y)) // => 16: 在一个表达式中调用两个函数
 ```
 
-在 ES6 及之后的版本中，有一种简洁的语法用于定义函数。这种简洁的语法使用 `=>` 将参数列表与函数体分开，因此以这种方式定义的函数被称为`箭头函数`。箭头函数通常用于在需要将一个匿名函数作为参数传递给另一个函数时使用。使用箭头函数重写后的代码如下所示：
+在 ES6 及之后的版本中，有一种简洁的语法用于定义函数。这种简洁的语法使用 `=>` 将参数列表与函数体分开，因此以这种方式定义的函数被称为
+`箭头函数`。箭头函数通常用于在需要将一个匿名函数作为参数传递给另一个函数时使用。使用箭头函数重写后的代码如下所示：
 
-```javascript
+``` javascript
 const plus1 = x => x + 1; // The input x maps to the output x + 1
 const square = x => x * x; // The input x maps to the output x * x
 plus1(y) // => 4: 函数调用是相同的
@@ -270,7 +275,7 @@ square(plus1(y)) // => 16
 
 当我们将函数用于对象时，我们称其为`方法`：
 
-```javascript
+``` javascript
 // 当函数被分配给一个对象的属性时，我们称之为
 // “它们的方法。” 所有 JavaScript 对象（包括数组）都有方法：
 let a = []; // 创建一个空数组
@@ -293,7 +298,7 @@ points.dist() // => Math.sqrt(2): 我们两个点之间的距离
 
 现在，正如承诺的那样，这里有一些函数，其主体展示了常见的 JavaScript `控制结构语句`：
 
-```javascript
+``` javascript
 // JavaScript 语句包括使用 C、C++、Java 及其他语言语法的条件语句和循环语句。
 function abs(x) {
     // if语句...
@@ -316,50 +321,53 @@ function sum(array) {
     return sum;
 }
 
-sum(primes) 
+sum(primes)
 
 
-function factorial(n) { 
-    let product = 1; 
+function factorial(n) {
+    let product = 1;
     // while循环语句
-    while (n > 1) { 
-        product *= n; 
-        n--; 
-    } 
-    return product; 
+    while (n > 1) {
+        product *= n;
+        n--;
+    }
+    return product;
 }
 
-factorial(4) 
-function factorial2(n) { 
-    let i, product = 1; 
+factorial(4)
+
+function factorial2(n) {
+    let i, product = 1;
     // for循环语句
-    for (i = 2; i <= n; i++) 
-        product *= i; 
-    return product; 
+    for (i = 2; i <= n; i++)
+        product *= i;
+    return product;
 }
 
 factorial2(5) 
 ```
 
-JavaScript 支持面向对象的编程风格，但与“经典”面向对象编程语言有显著不同。第 9 章详细介绍了 JavaScript 中的面向对象编程，并提供了大量示例。以下是一个非常简单的示例，展示了如何定义一个 JavaScript 类来表示二维几何点。该类的实例对象有一个名为 distance() 的方法，用于计算点到原点的距离：
+JavaScript 支持面向对象的编程风格，但与“经典”面向对象编程语言有显著不同。第 9 章详细介绍了 JavaScript
+中的面向对象编程，并提供了大量示例。以下是一个非常简单的示例，展示了如何定义一个 JavaScript 类来表示二维几何点。该类的实例对象有一个名为
+distance() 的方法，用于计算点到原点的距离：
 
-```javascript
-class Point { 
+``` javascript
+class Point {
     constructor(x, y) { // 构造函数用于初始化新实例.
-        this.x = x; 
-        this.y = y; 
-    } 
-    
+        this.x = x;
+        this.y = y;
+    }
+
     distance() { // 计算从原点到点的距离的方法。
-        return Math.sqrt( 
-            this.x * this.x + 
-            this.y * this.y 
+        return Math.sqrt(
+            this.x * this.x +
+            this.y * this.y
         );
     }
 }
 
 // 使用 "new" 关键字与 Point() 构造函数来创建 Point 对象。
-let p = new Point(1, 1); 
+let p = new Point(1, 1);
 // 现在使用 Point 对象 p 的方法
 p.distance() // => Math.SQRT2
 ```
@@ -374,9 +382,3 @@ p.distance() // => Math.SQRT2
 - 第15章：浏览器中的JavaScript
 - 第16章：Node服务器端JavaScript
 - 第17章：JavaScript工具和扩展
-
-## 示例：字符频率直方图
-
-本章以一个简短但不简单的JavaScript程序作为结尾。示例1-1是一个Node程序，它从标准输入读取文本，计算该文本的字符频率直方图，然后输出该直方图。你可以像这样调用该程序来分析其自身源代码的字符频率：
-
-

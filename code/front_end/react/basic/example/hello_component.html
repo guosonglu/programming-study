@@ -17,18 +17,34 @@
 <script src="js/babel.min.js"></script>
 <!--您需要通知 Babel 要将哪些代码转换，方法是将脚本类型更改为 type=text/jsx。-->
 <script type="text/jsx">
+    /*
+    * 定义组件
+    *
+    * 组件的名称必须以大写字母开头
+    * */
+    function RedText() {
+        return (
+            <p style={{color: "red"}}>
+                Hello,React component!
+            </p>
+        );
+    }
+
+    /*
+    * 使用组件
+    * */
     function MyApp() {
-        return <h1>Hello, world!</h1>;
+        return (
+            <>
+                <RedText/>
+                <RedText/>
+            </>
+        );
     }
 
     const container = document.getElementById('app');
     const root = ReactDOM.createRoot(container);
     root.render(<MyApp/>);
 </script>
-
-<!--
-    请注意：此页面是尝试 React 的好方法，但不适合用于生产环境。
-	它在浏览器中使用 Babel 缓慢编译 JSX，并使用了较大的 React 开发版本。
--->
 </body>
 </html>

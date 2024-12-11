@@ -17,18 +17,27 @@
 <script src="js/babel.min.js"></script>
 <!--您需要通知 Babel 要将哪些代码转换，方法是将脚本类型更改为 type=text/jsx。-->
 <script type="text/jsx">
+
     function MyApp() {
-        return <h1>Hello, world!</h1>;
+        const val = "hello";
+
+        return (
+            <>
+                <div>
+                    使用大括号引用变量:
+                    <input value={val}/>
+                </div>
+                <div>
+                    运行表达式或函数调用：
+                    {1 + 1}
+                </div>
+            </>
+        );
     }
 
     const container = document.getElementById('app');
     const root = ReactDOM.createRoot(container);
     root.render(<MyApp/>);
 </script>
-
-<!--
-    请注意：此页面是尝试 React 的好方法，但不适合用于生产环境。
-	它在浏览器中使用 Babel 缓慢编译 JSX，并使用了较大的 React 开发版本。
--->
 </body>
 </html>

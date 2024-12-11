@@ -8,7 +8,7 @@
 
 ### 对象字面量创建对象
 
-```javascript
+``` javascript
 let empty = {}; 
 
 let point = {
@@ -25,7 +25,7 @@ let book = {
 
 ### new 创建对象
 
-```javascript
+``` javascript
 let o = new Object();
 let a = new Array();
 let d = new Date();
@@ -35,7 +35,7 @@ let d = new Date();
 
 通过`Object.create()`创建对象，可以指定对象的原型。
 
-```javascript
+``` javascript
 // Object.create使用第一个参数作为新对象的原型
 // 因为参数为字面量，因此继承自Object.prototype
 // 因此对象o1也继承Object.prototype
@@ -56,7 +56,7 @@ let o3 = Object.create(Object.prototype);
 
     而使用`{}`创建的对象则是继承自Object.prototype的普通对象，可能会包含一些默认的属性和方法。
 
-```javascript
+``` javascript
 let o = {x: "不要修改这个值"};
 // 这样做可以有效防止对象o在函数中被意外修改
 library.function(Object.create(o));
@@ -66,7 +66,7 @@ library.function(Object.create(o));
 
 ### 查询属性
 
-```javascript
+``` javascript
 // 使用点.操作符访问属性
 let author = book.author;
 
@@ -76,7 +76,7 @@ let title = book["main title"];
 
 ### 创建或设置属性
 
-```javascript
+``` javascript
 book.edition = 7;
 
 book["main title"] = "JavaScript: The Definitive Guide";
@@ -86,7 +86,7 @@ book["main title"] = "JavaScript: The Definitive Guide";
 
 对象的属性可以通过`原型链`实现继承效果。
 
-```javascript
+``` javascript
 let o = {};
 o.x = 1;
 // 对象p的原型为对象o
@@ -111,7 +111,7 @@ console.log(o.x) // 1
 
 ### 访问属性错误
 
-```javascript title="属性访问错误问题"
+``` javascript title="属性访问错误问题"
 let book = {
     title: "JavaScript: The Definitive Guide"
 }
@@ -123,7 +123,7 @@ let subtitle = book.subtitle; // undefined
 let len = book.subtitle.length; //❌报错
 ```
 
-```javascript title="解决方案"
+``` javascript title="解决方案"
 let len = undefined;
 
 // 方式一
@@ -158,7 +158,7 @@ let len = book?.subtitle?.length;
 
     delete操作符不会删除configurable特性为false的属性。
 
-```javascript
+``` javascript
 delete book.author; // book对象现在没有author属性了
 delete book["main title"]; // book对象现在没有main title属性了
 
@@ -176,7 +176,7 @@ delete x; // 非严格模式下可以直接删除全局属性
 
 ## 测试属性
 
-```javascript
+``` javascript
 let o = {x: 1};
 
 /*
@@ -207,7 +207,7 @@ Object.prototype.propertyIsEnumerable("toString"); // false,toString不可枚举
 
 ### for...in
 
-```javascript
+``` javascript
 for (let p in o) {
     // 跳过继承属性
     if (!o.hasOwnProperty(p)) continue;
@@ -221,7 +221,7 @@ for (let p in o) {
 
 ### 先获取属性名数组
 
-```javascript
+``` javascript
 /*
 * 获取可枚举自有属性名数组
 * */
@@ -241,7 +241,7 @@ for (key of keys){
 
 ### 手动扩展
 
-```javascript
+``` javascript
 let target = {x: 1}, source = {y: 2, z: 3};
 for (let key in source) {
     target[key] = source[key];
@@ -251,7 +251,7 @@ console.log(target);
 
 ### Object.assign()
 
-```javascript
+``` javascript
 let target = {x: 1}, source = {y: 2, z: 3};
 
 Object.assign(target, source);
@@ -260,7 +260,7 @@ console.log(target);
 
 ### ...操作符
 
-```javascript
+``` javascript
 let target = {x: 1}, source = {y: 2, z: 3};
 let result = {...target, ...source};
 console.log(result);
@@ -268,7 +268,7 @@ console.log(result);
 
 ## 序列化对象
 
-```javascript
+``` javascript
 let o= {x: 1, y: null};
 
 /*
@@ -290,7 +290,7 @@ console.log(p)
 
 返回调用它的对象的值的字符串。
 
-```javascript
+``` javascript
 let o = {x: 1, y: 2};
 console.log(o.toString()); //[object Object]
 
@@ -313,7 +313,7 @@ console.log(point.toString());
 
 Object定义的默认toLocaleString()方法本身没有实现任何本地化，而是简单的调用toString()并返回该值。
 
-```javascript
+``` javascript
 console.log(new Date().toLocaleString())
 ```
 
@@ -321,7 +321,7 @@ console.log(new Date().toLocaleString())
 
 将对象转为某些非字符串原始值。
 
-```javascript
+``` javascript
 new Date().valueOf() //1716320593562
 ```
 
@@ -331,7 +331,7 @@ new Date().valueOf() //1716320593562
 
 但`JSON.stringify()`方法会从序列化对象上寻找`toJSON()`方法。存在就会调用它。
 
-```javascript
+``` javascript
 console.log(new Date().toJSON())
 // 因为Date对象自己实现了toJSON()，因此JSON.stringify的结果为toJSON方法的返回值
 console.log(JSON.stringify(new Date()))
@@ -341,7 +341,7 @@ console.log(JSON.stringify(new Date()))
 
 ### 简写属性
 
-```javascript
+``` javascript
 let x = 1, y = 2;
 let o = {x: x, y: y}
 
@@ -357,7 +357,7 @@ o = {x, y}
 
 同理，`计算属性语法`也可以将`符号`作为`属性名`。
 
-```javascript
+``` javascript
 const PROPERTY_NAME = "p1";
 
 function computePropertyName() {
@@ -386,7 +386,7 @@ console.log(p) // { p1: 1, p2: 2 }
 
 ES2018及之后，可以使用扩展操作符`...`把已有对象复制到新对象中。
 
-```javascript
+``` javascript
 let target = {x: 1}, source = {y: 2, z: 3};
 let result = {...target, ...source};
 console.log(result);
@@ -394,7 +394,7 @@ console.log(result);
 
 ### 简写方法
 
-```javascript
+``` javascript
 /*
 * ES6之前方法的定义
 * */
@@ -420,7 +420,7 @@ let square = {
 
 ES5中引入`获取方法`与`设置方法`。
 
-```javascript
+``` javascript
 let o ={
     // 通过一对函数定义的一个访问器属性
     get x() {

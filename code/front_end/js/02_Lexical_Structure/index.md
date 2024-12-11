@@ -2,111 +2,100 @@
 
 ## JavaScript程序的文本
 
-- 区分大小写
-- 忽略空格，换行，制表符
-- 将`换行符`、`回车符`和`回车 / 换行序列`视为`行终止符`
+- JS代码区分大小写。
+- JavaScript 会忽略程序中标记之间出现的`空格`。在大多数情况下，JavaScript 也会忽略`换行符`。由于可以在程序中自由使用`空格`和
+  `换行符`，你可以以整洁一致的方式格式化和缩进程序，使代码易于阅读和理解。
+- 除了常规的`空格字符（\u0020）`外，JavaScript 还识别`制表符`、各种 `ASCII 控制字符`以及多种 `Unicode 空格字符`
+  作为空白字符。JavaScript 将`换行符`、`回车符`以及`回车/换行序列`识别为`行终止符`。
 
 ## 注释
 
-```javascript
-// 这是单行注释
+``` javascript
+// 这是一个单行注释.
 
-/* 这也是注释 */ //而这是另一个注释
+/* 这也是一个注释 */ // 这里还有另一个注释.
 
 /*
- * 这是多行注释
- * 每行开头额外的*字符不是必须的，只是为了美观
- */
+* 这是一个多行注释。每行开头的 * 字符并不是语法的一部分，它们只是看起来很酷！
+*/
 ```
 
 ## 字面量
 
-`字面量`是一种直接出现在程序中的数据值。
+`字面量`是直接出现在程序中的数据值。
 
-```javascript
-12 // 数值12
-1.2 // 数值1.2
-"hello world" // 字符串
-"Hi" // 另一个字符串
-true // 布尔值
-false // 另一个布尔值
+``` javascript
+12 // 数字 12
+1.2 // 数字 1.2
+"hello world" // 一串文本
+'Hi' // 另一串文本
+true // 布尔值 =>真
+false // 布尔值 =>假
 null // 无对象
 ```
 
-## 标识符和保留字
+## 标识符
 
-`标识符`是指变量、函数、属性的名字，或者函数的参数。
+`标识符`用于在JS中命名常量、变量、属性、函数和类,以及为某些循环提供标记（label）。
 
-- 第一个字符必须是一个字母、下划线（_）或一个美元符号（$）
-- 其他字符可以是字母、下划线、美元符号或数字
+`标识符`命名规范：
 
-JavaScript为语言自身使用保留了一些标识符，这些`保留字`不能用作常规标识符。
+- 以字母、下划线（`_`）或美元符号(`$`)开头。
+- 后续字符可以是字母、数字、下划线（`_`）或美元符号(`$`)。
 
-<figure markdown="span">
-  ![](https://raw.githubusercontent.com/luguosong/images/master/blog-img/202401241455861.png){ loading=lazy }
-  <figcaption>标识符</figcaption>
-</figure>
+## 保留字
 
-还有一些保留字，虽然目前没有用到，但是未来可能会用到，所以也不要使用。
+以下词汇是 JavaScript 语言的一部分。
 
-<figure markdown="span">
-  ![](https://raw.githubusercontent.com/luguosong/images/master/blog-img/202401241456789.png){ loading=lazy }
-  <figcaption>保留字</figcaption>
-</figure>
+许多词（如 if、while 和 for）是保留关键字，不能用作常量、变量、函数或类的名称（尽管它们可以用作对象属性的名称）。
 
-由于历史原因，某些情况下也不允许使用arguments和eval作为标识符。
+其他词（如 from、of、get 和 set）在特定上下文中使用，没有语法歧义，可以合法用作标识符。
 
-其中from、set、target虽然是保留字，但还是可以作为标识符使用。
+还有一些关键字（如 let）为了保持与旧程序的向后兼容性，不能完全保留，因此有复杂的规则来决定它们何时可以用作标识符，何时不能。（例如，let
+可以在类外用 var 声明时作为变量名，但不能在类内或用 const 声明时使用。）
+
+最简单的做法是避免将这些词用作标识符，除了 from、set 和 target，这些词是安全的并且已经被广泛使用。
+
+|       |          |          |            |        |        |       |
+|-------|----------|----------|------------|--------|--------|-------|
+| as    | const    | export   | get        | null   | target | void  |
+| async | continue | extends  | if         | of     | this   | while |
+| await | debugger | false    | import     | return | throw  | with  |
+| break | default  | finally  | in         | set    | true   | yield |
+| case  | delete   | for      | instanceof | static | try    |       |
+| catch | do       | from     | let        | super  | typeof |       |
+| class | else     | function | new        | switch | var    |       |
+
+JavaScript 还保留或限制了一些当前未被语言使用但可能在未来版本中使用的关键字：
+
+|      |            |           |         |         |           |        |
+|------|------------|-----------|---------|---------|-----------|--------|
+| enum | implements | interface | package | private | protected | public |
+
+由于历史原因，在某些情况下，arguments 和 eval 不能用作标识符，最好完全避免使用。
 
 ## Unicode
 
-Unicode转义序列：使用ASCII字符来表示Unicode字符。
+JS采用Unicode字符集进行程序编写。
 
-```javascript
-console.log("\u4F60\u597D") //你好
-//ES6增加了带花括号的版本，用于表示超过0xFFFF的字符
-console.log("\u{1F600}") //😀
+!!!warning "编程惯例"
+
+    考虑可移植性和易于编辑。建议标识符中只使用ASCII字母和数字。
+
+### 转义字符
+
+某些老旧的硬件或软件无法处理或显示Unicode字符。为了让JS代码在老的系统中也能兼容展示。可以使用ASCII转义字符来替换Unicode字符。
+
+``` javascript
+let café = 1; // 使用 Unicode 字符定义变量
+caf\u00e9 // => 1; 使用转义序列访问变量
+caf\u{E9} // => 1; 同一转义序列的另一种形式
 ```
 
 !!! warning
 
-    Unicode允许使用多种不同的方式来表示同一个字符。JavaScript底层认为它们是不同的。
+    Unicode 转义字符也可以出现在注释中，但由于注释会被忽略，因此在这种情况下，它们仅被视为 ASCII 字符，而不会被解释为 Unicode。
 
-    JavaScript不会执行任何归一化，开发者应确保自己的编辑器对自己的源码执行Unicode归一化。以防其中包含看起来一样但实际不同的标识符。
+### 归一化
 
-    例如：`café`可以表示为`café`或`cafe\u0301`，这两种表示法在JavaScript中是不同的。
 
-## 可选的分号
-
-- 如果语句位于两行，之间的分号可以省略
-
-```javascript
-a = 3
-b = 4
-```
-
-- 如果语句位于一行，则分号不能省略：
-
-```
-a = 3; b = 4
-```
-
-换行符并非每次都会解释为分号，只在它后面的内容无法解释为有效的语句时才会这样做。
-
-```javascript
-let a
-a
-  =
-  3
-console.log(a) // 3
-
-//上面代码等价于
-let a
-a = 3
-console.log(a) // 3
-```
-
-!!! warning
-    
-     - 一定不能在return、break或continue语句的后面换行，否则会自动插入分号，导致return、break或continue语句失效。
-     - 一定不能在`++`或`--`运算符的后面换行，否则会自动插入分号，导致`++`或`--`运算符失效。

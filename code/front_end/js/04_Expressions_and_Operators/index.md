@@ -17,7 +17,7 @@
 
 比如字面量值、某些语言关键字和变量引用等。
 
-```javascript
+``` javascript
 1.23 //数值字面量
 "hello" //字符串字面量
 / pattern / //正则表达式字面量
@@ -30,7 +30,7 @@ this //当前对象
 
 ## 对象和数组初始化表达式
 
-```javascript
+``` javascript
 let e = [] //空数组
 let a = [1 + 2, 3 + 4] //数组初始化表达式
 let p = { x: 2.3, y: -1.2 } //对象初始化表达式
@@ -38,7 +38,7 @@ let p = { x: 2.3, y: -1.2 } //对象初始化表达式
 
 ## 函数定义表达式
 
-```javascript
+``` javascript
 let square = function(x) {
   return x * x;
 } //函数定义表达式
@@ -46,7 +46,7 @@ let square = function(x) {
 
 ## 属性访问表达式
 
-```javascript
+``` javascript
 let o = { x: 1, y: { z: 3 } }; //定义一个对象
 let a = [o, 4, [5, 6]]; //定义一个数组
 o.x // => 1: 属性访问表达式
@@ -59,7 +59,7 @@ a[0].x // => 1: 数组元素访问表达式
 
 条件式属性访问:
 
-```javascript
+``` javascript
 let a = { b: 1 }
 a?.b //如果a不是null或undefined，返回a.b，否则返回undefined
 
@@ -71,7 +71,7 @@ a?.[0] //如果a不是null或undefined，返回a[0]，否则返回undefined
 
 调用函数或方法的一种语法
 
-```javascript
+``` javascript
 f(0) //调用函数f
 Math.max(x, y, z) //调用Math.max方法
 a.sort() //调用数组a的sort方法
@@ -81,7 +81,7 @@ log?.(message) //如果log是null或undefined，返回undefined，否则调用lo
 
 ## 对象创建表达式
 
-```javascript
+``` javascript
 new Point(2, 3) //创建一个Point对象
 ```
 
@@ -96,7 +96,7 @@ new Point(2, 3) //创建一个Point对象
 
 ## 算数表达式
 
-```javascript
+``` javascript
 /*基本算数操作符*/
 3 ** 2 //9,幂运算
 3 * 2 //6,乘法
@@ -128,7 +128,7 @@ let a = 2, b = a-- //a是1，b是2,后置递减
 
 ## 关系表达式
 
-```javascript
+``` javascript
 /*相等和不相等操作符*/
 1 == "1" //true,相等
 1 === "1" //false,严格相等
@@ -159,7 +159,7 @@ d instanceof Number //false,对象不是Number的实例
 
 ## 逻辑表达式
 
-```javascript
+``` javascript
 true && false //false,逻辑与
 true || false //true,逻辑或
 !true //false,逻辑非
@@ -167,7 +167,7 @@ true || false //true,逻辑或
 
 ## 赋值表达式
 
-```javascript
+``` javascript
 let i, j
 i = 1 //赋值
 
@@ -181,19 +181,19 @@ i += 1 //i = i + 1
 
 ## 求值表达式
 
-```javascript
+``` javascript
 eval("3 + 2") //5,对字符串求值
 ```
 
 ## 条件操作符
 
-```javascript
+``` javascript
 let max = (x > y) ? x : y //条件操作符
 ```
 
 ## 先定义
 
-```javascript
+``` javascript
 // 缺值合并
 let m1 = a ?? b //a不为null或undefined返回a，否则返回b
 
@@ -220,7 +220,7 @@ let m2 = a || b //a不为falsy返回a(❗0,空字符串都是假值)，否则返
 
 让异步编程更自然
 
-```javascript
+``` javascript
 // 模拟一个异步操作，比如从服务器获取数据
 function fetchData() {
   return new Promise(resolve => {
@@ -246,7 +246,7 @@ fetchDataAsync().then(data => {
 
 丢弃操作数的值，返回undefined
 
-```javascript
+``` javascript
 let counter = 0;
 const increment = () => void counter++; //如果不使用void，返回的是0
 console.log(increment()); // undefined
@@ -255,7 +255,7 @@ console.log(counter); // 1
 
 相当于：
 
-```javascript
+``` javascript
 const increment = () => {
   counter++;
   return undefined;
@@ -270,7 +270,7 @@ const increment = () => {
 
 只有当左表达式有副作用，才有必要使用逗号操作符。
 
-```javascript
+``` javascript
 // 逗号操作符
 for (let i = 0, j = 10; i < j; i++, j--) {
   console.log(i + j);

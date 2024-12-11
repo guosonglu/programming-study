@@ -4,6 +4,13 @@ icon: simple/javascript
 
 # JavaScript
 
+## 知识点
+
+<figure markdown="span">
+  ![](https://edrawcloudpubliccn.oss-cn-shenzhen.aliyuncs.com/viewer/self/1059758/share/2024-11-21/1732177135/main.svg){ loading=lazy }
+  <figcaption>JavaScript知识点</figcaption>
+</figure>
+
 ## 书籍和教程
 
 <figure markdown="span">

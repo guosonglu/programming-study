@@ -10,7 +10,7 @@
 
 `有副作用的表达式`是一种最简单的语句。
 
-```javascript
+``` javascript
 // 赋值语句
 i = 0
 
@@ -29,7 +29,7 @@ delete o.x
 
 复合语句允许我们在期待一个语句的地方使用多个语句
 
-```javascript
+``` javascript
 // 复合语句
 {
   x = Math.PI
@@ -43,7 +43,7 @@ delete o.x
 
 ## 条件语句
 
-```javascript
+``` javascript
 //if语句
 if (username === "admin") {
   console.log("管理员")
@@ -68,7 +68,7 @@ switch (username) {
 
 ## 循环语句
 
-```javascript
+``` javascript
 //while语句
 let i = 0
 while (i < 10) {
@@ -77,7 +77,7 @@ while (i < 10) {
 }
 ```
 
-```javascript
+``` javascript
 //do-while语句
 let i = 0
 do {
@@ -86,14 +86,14 @@ do {
 } while (i < 10)
 ```
 
-```javascript
+``` javascript
 //for语句
 for (let i = 0; i < 10; i++) {
   console.log(i)
 }
 ```
 
-```javascript
+``` javascript
 //for-of语句
 let arr = [1, 2, 3]
 for (let i of arr) {
@@ -101,7 +101,7 @@ for (let i of arr) {
 }
 ```
 
-```javascript
+``` javascript
 /*
 * for-in语句
 * foc/in语句循环指定对象的属性名
@@ -115,7 +115,7 @@ for (let i in obj) {
 
 ## 跳出语句
 
-```javascript title="break语句"
+``` javascript title="break语句"
 // break语句
 for (let i = 0; i < 10; i++) {
   if (i === 5) {
@@ -135,7 +135,7 @@ outer: for(let i = 0; i < 10; i++) {
 }
 ```
 
-```javascript title="continue语句"
+``` javascript title="continue语句"
 // continue语句
 for (let i = 0; i < 10; i++) {
   if (i === 5) {
@@ -145,7 +145,7 @@ for (let i = 0; i < 10; i++) {
 }
 ```
 
-```javascript title="return语句"
+``` javascript title="return语句"
 // return语句
 function f() {
   return 1
@@ -157,7 +157,7 @@ function f2() {
 }
 ```
 
-```javascript title="yield语句"
+``` javascript title="yield语句"
 
 /*
 * 类似于return。
@@ -180,7 +180,7 @@ console.log(g.next()) // { value: 2, done: false }
 console.log(g.next()) // { value: 3, done: false }
 ```
 
-```javascript title="throw语句"
+``` javascript title="throw语句"
 // throw
 function f() {
   throw new Error("出错了")
@@ -204,7 +204,7 @@ with的作用是方便访问深层嵌套的对象
         
     with在严格模式下被禁用
 
-```javascript
+``` javascript
 // 不使用with的情况
 let obj = { x: { y1: 1, y2: 2, y3: 3 } }
 console.log(obj.x.y1)
@@ -224,7 +224,7 @@ with (obj.x) {
 
 `debugger`语句用于在代码中设置断点，调试代码时会在这里停下来。
 
-```javascript
+``` javascript
 function f() {
   debugger
   console.log("调试")

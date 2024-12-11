@@ -25,7 +25,7 @@ React 是一个流行的`声明式`库，您可以使用它构建交互式用户
 
     DOM操作不仅允许您针对特定元素，还可以更改它们的样式和内容。
 
-### js更新UI
+### 命令式-js更新UI
 
 通过使用`JavaScript`和`DOM`方法向您的项目添加一个`h1标签`来开始构建我们的项目。
 
@@ -129,12 +129,31 @@ npm create vite@latest my-vue-app -- --template react
 yarn create vite my-vue-app --template react
 ```
 
+## 组件入门
+
+React 组件是一段可以 使用标签进行扩展 的 JavaScript 函数，是用程序中可复用的 UI 元素。
+
+``` html title="hello_component.html"
+--8<-- "code/front_end/react/basic/example/hello_component.html"
+```
+
+<iframe loading="lazy" src="example/hello_component.html"></iframe>
+
 ## JSX简介
 
-`JSX`（JavaScript
-XML，正式称为JavaScript语法扩展）是JavaScript语言语法的类似XML的扩展。最初由Facebook创建以用于React，JSX已被多个Web框架采用。作为一种
-`语法糖`
-，JSX通常被转译成类似于原始JSX的嵌套JavaScript函数调用。
+`JSX`（JavaScript XML，正式称为JavaScript语法扩展）是JavaScript语言语法的类似XML的扩展。最初由Facebook创建以用于React，JSX已被多个Web框架采用。
+
+将`渲染逻辑`和`标签`共同存放在组件中。可以让js更好的控制HTML内容。
+
+JSX 规则：
+
+- 只能返回一个根元素
+- 标签必须闭合，像 `<img>` 这样的自闭合标签必须书写成 `<img />`
+- 使用驼峰式命名法给大部分属性命名！
+
+!!! warning
+
+	由于历史原因，`aria-*` 和 `data-*` 属性是以带 `-` 符号的 HTML 格式书写的。
 
 JSX代码示例:
 
@@ -150,81 +169,10 @@ const App = () => {
 }
 ```
 
-在JSX中编写的代码需要使用诸如`Babel`之类的工具进行转换，以便能够被`Web浏览器`理解。这种处理通常是在软件`构建`
-过程中进行的，在应用程序部署之前。
+!!! note
 
-## 组件(component)
+	在JSX中编写的代码需要使用诸如`Babel`之类的工具进行转换，以便能够被`Web浏览器`理解。这种处理通常是在软件`构建`
+	过程中进行的，在应用程序部署之前。
 
-### 组件概述
-
-用户界面可以分解为称为`组件`（ 应用程序中可复用的 UI 元素）的较小构建块。
-
-> 组件允许您构建独立的、可重复使用的代码片段。如果您将组件视为乐高积木，您可以将这些单独的积木组合在一起，形成更大的结构。如果您需要更新UI的某个部分，您可以更新特定的组件或积木。
-
-<figure markdown="span">
-  ![](https://raw.githubusercontent.com/luguosong/images/master/blog-img/202405231353523.png){ loading=lazy }
-  <figcaption>组件</figcaption>
-</figure>
-
-这种`模块化`使得您的代码在不断增长时更易于维护，因为您可以添加、更新和删除组件而不影响我们应用程序的其他部分。
-
-React组件是一段可以使用标签进行扩展的JavaScript`函数`。在函数的返回语句中，你可以编写`JSX`。
-
-React组件应该`大写`以区分它们与普通的HTML和JavaScript。
-
-您可以像使用常规HTML标签一样使用React组件，使用尖括号。
-
-``` html title="hello_components.html"
---8<-- "code/front_end/react/basic/example/hello_components.html"
-```
-
-<iframe loading="lazy" src="example/hello_components.html"></iframe>
-
-### 组件导出和导入
-
-将组件封装在`单独的文件`中导出，更加有利于组件的复用。
-
-使用`export default`导出组件：
-
-``` jsx
-function Profile() {
-  return (
-    <img
-      src="https://i.imgur.com/QIrZWGIs.jpg"
-      alt="Alan L. Hart"
-    />
-  );
-}
-
-export default function Gallery() {
-  return (
-    <section>
-      <h1>了不起的科学家们</h1>
-      <Profile />
-      <Profile />
-      <Profile />
-    </section>
-  );
-}
-```
-
-使用`import`导入组件：
-
-```jsx
-import Gallery from './Gallery.js';
-
-export default function App() {
-    return (
-        <Gallery/>
-    );
-}
-```
-
-### Props
-
-常规的HTML元素具有`属性`，您可以使用这些属性传递信息片段，从而`改变这些元素的行为`。
-
-> 例如，更改元素的`src属性`会更改显示的图像。更改标签的href属性会更改链接的目的地。
-
-同样地，您可以将信息片段作为属性传递给React组件。这些被称为`props`。
+## JSX中使用大括号
 

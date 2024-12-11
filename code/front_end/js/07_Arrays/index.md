@@ -14,6 +14,6 @@ js中，同一个数组中的元素可以是不同类型。
 
 ### 数组字面量
 
-```javascript
+``` javascript
 let empty = []
 ```
