@@ -115,7 +115,6 @@ extra:
 plugins:
   - statistics: # 字数统计插件：https://github.com/TonyCrane/mkdocs-statistics-plugin
       words_per_minute: 50
-      codelines_per_minute: 30
   - glightbox: # 图片查看插件
       touchNavigation: true
       loop: false
