@@ -156,7 +156,7 @@ Maven版本具有就近原则特性，如果我们不想使用Spring Boot提供�
 
 默认情况下，Spring Boot会扫描入口类下面以及其子包下的所有类。
 
-```java
+``` java
 
 @SpringBootApplication
 public class SpringBootHelloApplication {
@@ -173,7 +173,7 @@ public class SpringBootHelloApplication {
 
 可以使用`@SpringBootApplication`注解的`scanBasePackages`参数来配置包的扫描范围。
 
-```java
+``` java
 
 @SpringBootApplication(scanBasePackages = "com.luguosong")
 public class SpringBootHelloApplication {
@@ -190,7 +190,7 @@ public class SpringBootHelloApplication {
 
 可以使用`@ComponentScan`注解来配置包的扫描范围
 
-```java
+``` java
 
 @SpringBootApplication
 @ComponentScan("com.luguosong")
@@ -208,7 +208,7 @@ public class SpringBootHelloApplication {
 
 Spring Profiles 提供了一种方法，可以将应用程序配置的部分进行隔离，使其仅在特定环境中可用。任何 @Component、@Configuration 或 @ConfigurationProperties 都可以使用 `@Profile` 标注，以限制其加载时机，如下例所示：
 
-```java
+``` java
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Profile;
 

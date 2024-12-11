@@ -177,7 +177,7 @@ http://localhost:8080/springmvc_hello_war_exploded/hello-mvc
 
 `value属性`与`path属性`功能相同,都是用于映射请求路径。
 
-```java
+``` java
 
 @Controller
 public class HelloController {
@@ -209,7 +209,7 @@ value属性也支持`Ant风格`的通配符：
 
     如果使用`**`，左右两边只能是`/`。
 
-```java
+``` java
 
 @Controller
 public class HelloController {
@@ -228,7 +228,7 @@ public class HelloController {
 
 方法中通过`@PathVariable`获取参数
 
-```java
+``` java
 
 @Controller
 public class HelloController {
@@ -246,7 +246,7 @@ public class HelloController {
 
 `method属性`用于限制请求方法，`method`属性的值可以是`GET`、`POST`、`PUT`、`DELETE`等。
 
-```java
+``` java
 
 @Controller
 public class HelloController {
@@ -268,7 +268,7 @@ public class HelloController {
 
 `params属性`对请求参数进行限制
 
-```java
+``` java
 
 @Controller
 public class HelloController {
@@ -285,7 +285,7 @@ public class HelloController {
 
 `headers属性`对请求头进行限制
 
-```java
+``` java
 
 @Controller
 public class HelloController {
@@ -714,7 +714,7 @@ Spring MVC仍然允许静态资源请求由Tomcat的`默认Servlet`处理。它�
 
 以下示例展示了如何通过默认设置启用该功能：
 
-```java
+``` java
 
 @Configuration
 @EnableWebMvc
@@ -745,7 +745,7 @@ public class WebConfig implements WebMvcConfigurer {
 
 以下列表展示了如何使用 Java 配置来实现：
 
-```java
+``` java
 
 @Configuration
 @EnableWebMvc

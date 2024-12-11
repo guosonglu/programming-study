@@ -108,7 +108,7 @@ JSP中通过`<% %>`添加Java代码，添加的代码会在`service()方法`中�
 
 会话作用域，等价于：
 
-```java
+``` java
 public class GetServletDemo extends HttpServlet {
 
     @Override
@@ -138,7 +138,7 @@ public class GetServletDemo extends HttpServlet {
 
 Servlet配置对象，等价于：
 
-```java
+``` java
 public class ServletConfigDemo extends GenericServlet {
     @Override
     public void service(ServletRequest req, ServletResponse res) throws ServletException, IOException {

@@ -60,7 +60,7 @@ EE(`Jakarta EE 9开始`)，所有已实现API的主要包都从`javax.*`变更�
 
 ## Servlet接口
 
-```java
+``` java
 package jakarta.servlet;
 
 import java.io.IOException;
@@ -212,7 +212,7 @@ Servlet的生命周期完全由Tomcat服务器控制。
 Tomcat初始化时，会调用`init方法`，并传递`ServletConfig对象`给`init方法`。默认情况下`ServletConfig对象`只能在`init方法内部`
 调用。
 
-```java
+``` java
 public class GenericServlet implements Servlet {
     @Override
     public void init(ServletConfig config) throws ServletException {
@@ -228,7 +228,7 @@ public class GenericServlet implements Servlet {
 如果想在`service方法`中访问`ServletConfig对象`，可以将ServletConfig这个`局部对象`传递给一个新建的ServletConfig`字段`
 。达到可以在Servlet对象任意位置访问ServletConfig对象的目的。
 
-```java
+``` java
 public class GenericServlet implements Servlet {
 
     /*
@@ -354,7 +354,7 @@ public class GenericServlet implements Servlet {
 
 ### 模板方法设计模式
 
-```java
+``` java
 /*
  * 模板类
  * 简化的HttpServlet代码，只为展示模板方法设计模式

@@ -98,13 +98,13 @@ OpenFeign有如下日志级别：
 
 局部生效：
 
-```java
+``` java
 @FeignClient(value = "open-feign-producer", configuration = DefaultFeignConfig.class)
 ```
 
 全局生效：
 
-```java
+``` java
 @EnableFeignClients(defaultConfiguration = DefaultFeignConfig.class)
 ```
 

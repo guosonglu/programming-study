@@ -79,7 +79,7 @@ Spring Security 应用程序中为用户建立一个蓝图。
 
 在本节中，您将学习如何实现UserDetails接口，以描述应用程序中的用户。我们将讨论UserDetails契约中声明的方法，以理解我们如何以及为何实现每一个方法。首先，让我们来看一下下面列出的接口。
 
-```java title="清单 3.1 UserDetails 接口"
+``` java title="清单 3.1 UserDetails 接口"
 
 package org.springframework.security.core.userdetails;
 
@@ -154,7 +154,7 @@ Spring Security 中，您可以使用 `GrantedAuthority` 接口来描述权限�
 在讨论实现 `UserDetails` 之前，让我们先了解一下 `GrantedAuthority` 接口。我们在定义用户详细信息时使用这个接口，它代表授予用户的
 `权限`。用户必须`至少拥有一个权限`。以下是 `GrantedAuthority` 定义的实现：
 
-```java
+``` java
 public interface GrantedAuthority extends Serializable {
 
 	/*
@@ -193,7 +193,7 @@ GrantedAuthority g2 = new SimpleGrantedAuthority("READ");
 使用一个名为 `DummyUser` 的类，我们来实现一个用户的简要描述，如下所示。我主要使用这个类来演示如何实现 UserDetails
 合约的方法。这个类的实例总是指向一个用户，即`bill`，他的密码是 `12345`，并拥有一个名为 `READ` 的权限。
 
-```java title="代码清单 3.2 DummyUser 类"
+``` java title="代码清单 3.2 DummyUser 类"
 public class DummyUser implements UserDetails {
 
 	@Override
@@ -217,7 +217,7 @@ public class DummyUser implements UserDetails {
 接下来，我们为权限列表添加一个定义。下面的代码展示了`getAuthorities()`方法的实现。该方法返回一个仅包含`GrantedAuthority`
 接口单一实现的集合。
 
-```java title="清单 3.3 getAuthorities() 方法的实现"
+``` java title="清单 3.3 getAuthorities() 方法的实现"
 public class DummyUser implements UserDetails {
 
 	// Omitted code
@@ -235,7 +235,7 @@ public class DummyUser implements UserDetails {
 最后，您需要为 UserDetails 接口的最后四个方法添加实现。对于 DummyUser 类，这些方法始终返回
 true，表示用户始终处于活跃状态且可用。您可以在以下列表中找到示例。
 
-```java
+``` java
 public class DummyUser implements UserDetails {
 
 	// Omitted code
@@ -267,7 +267,7 @@ public class DummyUser implements UserDetails {
 
 当然，这种最小化的实现意味着该类的所有实例都代表同一个用户。这是理解契约的一个良好开端，但在实际应用中你不会这样做。对于实际应用，你应该创建一个类，用于生成可以代表不同用户的实例。在这种情况下，你的定义至少应该在类中包含用户名和密码作为属性，如下一个列表所示。
 
-```java title="清单 3.5 UserDetails 接口的更实用实现"
+``` java title="清单 3.5 UserDetails 接口的更实用实现"
 public class SimpleUser implements UserDetails {
 
 	private final String username;
@@ -345,7 +345,7 @@ UserDetails u2 = builder2.build();
 接口。在实际场景中，这通常更为复杂。在大多数情况下，用户会涉及多个职责。如果您将用户存储在数据库中，那么在应用程序中，您还需要一个类来表示持久化实体。或者，如果您通过网络服务从其他系统中获取用户，那么您可能需要一个数据传输对象来表示用户实例。假设是第一种情况，一个简单但也典型的例子，我们在一个
 SQL 数据库中有一个表来存储用户。为了简化示例，我们给每个用户只分配一个权限。以下是映射该表的实体类。
 
-```java title="清单 3.8 定义 JPA 用户实体类"
+``` java title="清单 3.8 定义 JPA 用户实体类"
 
 @Entity
 public class User {
@@ -363,7 +363,7 @@ public class User {
 
 如果让同一个类也实现 Spring Security 的用户详情契约，这个类就会变得更加复杂。你觉得下面的代码看起来怎么样？在我看来，这是一团糟，我会在其中迷失。
 
-```java title="❌清单 3.9 User 类具有两个职责"
+``` java title="❌清单 3.9 User 类具有两个职责"
 
 @Entity
 public class User implements UserDetails {
@@ -406,7 +406,7 @@ public class User implements UserDetails {
 `SecurityUser` 的独立类来分离这些职责，该类适配 User 类。正如下一个列表所示，`SecurityUser` 类实现了 `UserDetails`
 接口，并利用它将我们的用户接入 Spring Security 架构。`User` 类则仅保留其 JPA 实体的职责。
 
-```java title="清单3.10 仅将User类实现为JPA实体"
+``` java title="清单3.10 仅将User类实现为JPA实体"
 
 @Entity
 public class User {
@@ -425,7 +425,7 @@ public class User {
 在代码清单3.10中，User类仅保留了其JPA实体的职责，因此变得更加易读。阅读这段代码时，您现在可以专注于与持久化相关的细节，而这些细节从Spring
 Security的角度来看并不重要。在下一个清单中，我们将实现SecurityUser类来封装User实体。
 
-```java title="代码清单 3.11 实现 UserDetails 合约的 SecurityUser 类"
+``` java title="代码清单 3.11 实现 UserDetails 合约的 SecurityUser 类"
 public class SecurityUser implements UserDetails {
 
 	private final User user;
@@ -478,7 +478,7 @@ Security是如何管理用户的呢？在比较凭证时，它们是从哪里获
 在本节中，您将了解`UserDetailsService`接口的定义。在理解如何以及为何实现它之前，您必须首先了解其约定。现在是深入探讨
 `UserDetailsService`以及如何使用该组件的实现的时候了。`UserDetailsService`接口仅包含一个方法，如下所示：
 
-```java
+``` java
 public interface UserDetailsService {
 
 	UserDetails loadUserByUsername(String username)
@@ -554,7 +554,7 @@ Hello!
 Security需要`UserDetailsService`合同来进行身份验证。但通常在应用程序中，也需要管理用户。大多数情况下，应用程序应该能够添加新用户或删除现有用户。在这种情况下，我们实现了由Spring
 Security定义的更具体的接口`UserDetailsManager`。它扩展了`UserDetailsService`，并增加了我们需要实现的更多操作：
 
-```java
+``` java
 public interface UserDetailsManager extends UserDetailsService {
 	void createUser(UserDetails user);
 
@@ -693,7 +693,7 @@ spring.sql.init.mode=always
 在项目的配置类中，你需要定义 `UserDetailsService` 和 `PasswordEncoder`。`JdbcUserDetailsManager` 需要 `DataSource`
 来连接数据库。数据源可以通过方法的参数自动装配（如下所示），也可以通过类的属性进行装配。
 
-```java title="清单 3.19 在配置类中注册 JdbcUserDetailsManager"
+``` java title="清单 3.19 在配置类中注册 JdbcUserDetailsManager"
 
 @Configuration
 public class ProjectConfig {
@@ -712,7 +712,7 @@ public class ProjectConfig {
 
 要访问应用程序的任何端点，现在需要使用存储在数据库中的用户进行HTTP基本身份验证。为了证明这一点，我们创建了一个新的端点，如下所示，然后使用cURL调用它。
 
-```java title="清单 3.20 用于检查实现的测试端点"
+``` java title="清单 3.20 用于检查实现的测试端点"
 
 @RestController
 public class HelloController {
@@ -740,7 +740,7 @@ Hello!
 JdbcUserDetailsManager 的实现需要这些名称。但这些名称可能并不是您应用程序的最佳选择。下面的示例展示了如何覆盖
 JdbcUserDetailsManager 的查询。
 
-```java
+``` java
 
 @Bean
 public UserDetailsService userDetailsService(DataSource dataSource) {
@@ -826,7 +826,7 @@ spring.ldap.embedded.port=33389
 
 一旦拥有用于身份验证的LDAP服务器，就可以配置您的应用程序使用它。下面的列表展示了如何配置LdapUserDetailsManager，以使您的应用能够通过LDAP服务器进行用户身份验证。
 
-```java title="清单 3.23 配置文件中 LdapUserDetailsManager 的定义"
+``` java title="清单 3.23 配置文件中 LdapUserDetailsManager 的定义"
 
 @Configuration
 public class ProjectConfig {
@@ -857,7 +857,7 @@ public class ProjectConfig {
 
 让我们创建一个简单的端点来测试安全配置。我添加了一个控制器类，如下代码片段所示：
 
-```java
+``` java
 
 @RestController
 public class HelloController {

@@ -70,7 +70,7 @@ Spring Security 更加容易。
 
 让我们在下面的列表中进一步了解`Authentication`接口的设计。
 
-```java title="清单6.1 Spring Security中声明的Authentication接口"
+``` java title="清单6.1 Spring Security中声明的Authentication接口"
 public interface Authentication extends Principal, Serializable {
 
 	Collection<? extends GrantedAuthority> getAuthorities();
@@ -104,7 +104,7 @@ public interface Authentication extends Principal, Serializable {
 `UserDetailsService`。在认证过程中，它还使用 `PasswordEncoder` 进行密码管理。以下是 `AuthenticationProvider`
 的定义，你需要为你的应用程序定义一个自定义认证提供者。
 
-```java title="清单 6.2 AuthenticationProvider 接口"
+``` java title="清单 6.2 AuthenticationProvider 接口"
 public interface AuthenticationProvider {
 
 	Authentication authenticate(Authentication authentication)
@@ -164,7 +164,7 @@ public interface AuthenticationProvider {
 4. 实现 `authenticate(Authentication a)` 方法以实现认证逻辑
 5. 将新的 `AuthenticationProvider` 实现实例注册到 Spring Security 中。
 
-```java title="清单6.3 重写AuthenticationProvider的supports()方法"
+``` java title="清单6.3 重写AuthenticationProvider的supports()方法"
 
 @Component
 public class CustomAuthenticationProvider
@@ -189,7 +189,7 @@ public class CustomAuthenticationProvider
 根据这个定义，我们让 `AuthenticationProvider` 支持特定类型的密钥。一旦我们确定了 `AuthenticationProvider` 的范围，就可以通过重写
 `authenticate()` 方法来实现认证逻辑，如下所示。
 
-```java title="清单 6.4 实现认证逻辑"
+``` java title="清单 6.4 实现认证逻辑"
 
 @Component
 public class CustomAuthenticationProvider
@@ -236,7 +236,7 @@ public class CustomAuthenticationProvider
 
 要插入新的`AuthenticationProvider`实现，我们定义了一个`SecurityFilterChain bean`。以下示例展示了这一点。
 
-```java title="清单 6.5 在配置类中注册 AuthenticationProvider"
+``` java title="清单 6.5 在配置类中注册 AuthenticationProvider"
 
 @Configuration
 public class ProjectConfig {
@@ -307,7 +307,7 @@ public class ProjectConfig {
 
 Spring Security 的安全上下文由 `SecurityContext` 接口描述，并在以下列表中定义。
 
-```java title="清单 6.6 SecurityContext 接口"
+``` java title="清单 6.6 SecurityContext 接口"
 public interface SecurityContext extends Serializable {
 	Authentication getAuthentication();
 
@@ -351,7 +351,7 @@ T3），因此每个请求只能看到存储在其自身安全上下文中的详
   <figcaption>图6.8 每个请求都有自己的线程，用箭头表示。每个线程只能访问其自身的安全上下文信息。当创建新线程时（例如，通过@Async方法），父线程的详细信息不会被复制。</figcaption>
 </figure>
 
-```java title="清单 6.7 从 SecurityContextHolder 获取 SecurityContext"
+``` java title="清单 6.7 从 SecurityContextHolder 获取 SecurityContext"
 
 @GetMapping("/hello")
 public String hello() {
@@ -363,7 +363,7 @@ public String hello() {
 
 在端点级别获取上下文中的认证信息更加方便，因为Spring会直接将其注入到方法参数中。你不需要每次都显式引用SecurityContextHolder类。如下所示的方法更佳。
 
-```java title="清单6.8 Spring在方法参数中注入Authentication值"
+``` java title="清单6.8 Spring在方法参数中注入Authentication值"
 
 /*
  * Spring Boot 会在方法参数中注入当前的身份验证信息。
@@ -389,7 +389,7 @@ Hello, user!
 
 如果我们必须处理每个请求的多个线程，情况会变得更加复杂。看看当你将端点设为异步时会发生什么。执行该方法的线程不再是处理请求的同一个线程。请考虑下一个列表中展示的端点。
 
-```java title="清单6.9 由不同线程提供服务的@Async方法"
+``` java title="清单6.9 由不同线程提供服务的@Async方法"
 
 /*
  * 由于使用了@Async，该方法在单独的线程上执行。
@@ -406,7 +406,7 @@ public void goodbye() {
 
 为了启用`@Async`注解的功能，我还创建了一个配置类，并使用`@EnableAsync`注解进行了标注：
 
-```java
+``` java
 
 @Configuration
 @EnableAsync
@@ -434,7 +434,7 @@ public class ProjectConfig {
 
 以下列表展示了一种通过调用 `setStrategyName()` 方法来设置安全上下文管理策略的方法。
 
-```java
+``` java
 
 @Configuration
 @EnableAsync
@@ -466,7 +466,7 @@ public class ProjectConfig {
 如下代码片段所示，您可以像我们对 `MODE_INHERITABLETHREADLOCAL` 所做的那样更改策略。您可以使用
 `SecurityContextHolder.setStrategyName()` 方法或系统属性 `spring.security.strategy`：
 
-```java
+``` java
 
 @Bean
 public InitializingBean initializingBean() {
@@ -499,7 +499,7 @@ Security提供的一些实用工具，帮助您将安全上下文传播到新创
 下面的示例展示了如何使用 `DelegatingSecurityContextCallable`。首先，我们定义一个简单的端点方法，该方法声明了一个 `Callable`
 对象。这个 `Callable` 任务将返回当前安全上下文中的用户名。
 
-```java title="清单6.11 定义一个可调用对象并在单独的线程上执行它作为任务"
+``` java title="清单6.11 定义一个可调用对象并在单独的线程上执行它作为任务"
 
 @GetMapping("/ciao")
 public String ciao() throws Exception {
@@ -513,7 +513,7 @@ public String ciao() throws Exception {
 
 我们继续这个例子，将任务提交给`ExecutorService`。执行结果被获取，并作为响应主体由端点返回。
 
-```java
+``` java
 
 @GetMapping("/ciao")
 public String ciao() throws Exception {
@@ -533,7 +533,7 @@ public String ciao() throws Exception {
 如果直接运行该应用程序，只会得到一个`NullPointerException`。在新创建的线程中运行可调用任务时，身份验证已不存在，安全上下文为空。为了解决这个问题，我们使用
 `DelegatingSecurityContextCallable`装饰任务，它为新线程提供当前上下文，如下所示。
 
-```java
+``` java
 
 @GetMapping("/ciao")
 public String ciao() throws Exception {
@@ -582,7 +582,7 @@ Spring Security 提供的更多优秀实用类来应用这种技术。
 以下代码示例展示了如何使用 `DelegatingSecurityContextExecutorService` 来装饰 `ExecutorService`
 ，这样在提交任务时，它会负责传播安全上下文的详细信息。
 
-```java
+``` java
 
 @GetMapping("/hola")
 public String hola() throws Exception {

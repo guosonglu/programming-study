@@ -26,7 +26,7 @@ Spring Security 实现的应用程序中管理密码和密钥。我们将讨论 
 Security如何验证用户的密码。在认证过程中，PasswordEncoder决定密码是否有效。每个系统都会以某种方式存储密码，最好是以哈希方式存储，以确保没有人能够读取它们。PasswordEncoder还可以对密码进行编码。接口中声明的encode()
 和matches()方法实际上定义了其职责。这两个方法是同一接口的一部分，因为它们紧密相关。应用程序对密码进行编码的方式与密码的验证方式息息相关。首先，让我们回顾一下PasswordEncoder接口的内容：
 
-```java
+``` java
 public interface PasswordEncoder {
 
 	String encode(CharSequence rawPassword);
@@ -58,7 +58,7 @@ false。如果你重写它以返回 true，那么编码后的密码将再次编�
 
 以明文管理密码正是 `NoOpPasswordEncoder` 实例的作用。我们在第二章的第一个例子中使用了这个类。如果你要自己编写一个，它可能会像下面的代码一样。
 
-```java title="清单 4.1 最简单的 PasswordEncoder 实现"
+``` java title="清单 4.1 最简单的 PasswordEncoder 实现"
 public class PlainTextPasswordEncoder
 		implements PasswordEncoder {
 
@@ -79,7 +79,7 @@ public class PlainTextPasswordEncoder
 编码的结果总是与密码相同。因此，要检查它们是否匹配，只需使用`equals()`比较字符串即可。下面的示例展示了一个简单的
 `PasswordEncoder`实现，它使用`SHA-512`哈希算法。
 
-```java title="清单 4.2 实现使用 SHA-512 的 PasswordEncoder"
+``` java title="清单 4.2 实现使用 SHA-512 的 PasswordEncoder"
 public class Sha512PasswordEncoder
 		implements PasswordEncoder {
 
@@ -104,7 +104,7 @@ public class Sha512PasswordEncoder
 `encode()`方法中调用此方法，该方法现在返回其输入的哈希值。为了验证输入与哈希的匹配，`matches()`
 方法会对其输入中的原始密码进行哈希处理，并将其与用于验证的哈希进行比较。
 
-```java title="清单 4.3 使用 SHA-512 对输入进行哈希的方法实现"
+``` java title="清单 4.3 使用 SHA-512 对输入进行哈希的方法实现"
 private String hashWithSHA512(String input) {
 	StringBuilder result = new StringBuilder();
 	try {
@@ -139,7 +139,7 @@ private String hashWithSHA512(String input) {
 `PlainTextPasswordEncoder`。因此，我们仅在理论示例中使用这种密码编码器。此外，`NoOpPasswordEncoder`
 类被设计为单例模式。你不能从类外直接调用它的构造函数，但可以使用`NoOpPasswordEncoder.getInstance()`方法来获取类的实例，如下所示：
 
-```java
+``` java
 PasswordEncoder p = NoOpPasswordEncoder.getInstance();
 ```
 
@@ -147,7 +147,7 @@ Spring Security 提供的 `StandardPasswordEncoder` 实现使用 `SHA-256` 对�
 ，你可以提供一个用于哈希过程的密钥。你可以通过构造函数的参数来设置这个密钥的值。如果选择调用无参数的构造函数，默认会使用空字符串作为密钥的值。然而，
 `StandardPasswordEncoder` 现在`已经被弃用`，我不建议在新的实现中使用它。你可能会在旧应用程序或遗留代码中发现它的使用，因此需要对此有所了解。下面的代码片段展示了如何创建这个密码编码器的实例：
 
-```java
+``` java
 PasswordEncoder p = new StandardPasswordEncoder();
 PasswordEncoder p = new StandardPasswordEncoder("secret");
 ```
@@ -155,7 +155,7 @@ PasswordEncoder p = new StandardPasswordEncoder("secret");
 Spring Security 提供的另一个选项是使用 `PBKDF2` 进行密码编码的 `Pbkdf2PasswordEncoder` 实现。要创建
 `Pbkdf2PasswordEncoder` 的实例，您可以选择以下方法：
 
-```java
+``` java
 PasswordEncoder p =
 		new Pbkdf2PasswordEncoder("secret", 16, 310000, Pbkdf2PasswordEncoder.SecretKeyFactoryAlgorithm.PBKDF2WithHmacSHA256);
 ```
@@ -173,7 +173,7 @@ Spring Security 提供的另一个优秀选项是 `BCryptPasswordEncoder`，它�
 `BCryptPasswordEncoder`。不过，你也可以选择指定一个`强度系数`，该系数代表编码过程中使用的对数轮数。此外，你还可以更改用于编码的
 `SecureRandom` 实例：
 
-```java
+``` java
 PasswordEncoder p = new BCryptPasswordEncoder();
 PasswordEncoder p = new BCryptPasswordEncoder(4);
 
@@ -223,7 +223,7 @@ PasswordEncoder p = new BCryptPasswordEncoder(4, s);
 接下来，让我们了解如何定义一个 `DelegatingPasswordEncoder`。首先，创建一个包含所需 `PasswordEncoder` 实现实例的集合，然后将这些实例组合到一个
 `DelegatingPasswordEncoder` 中，如下所示。
 
-```java title="清单 4.4 创建 DelegatingPasswordEncoder 实例"
+``` java title="清单 4.4 创建 DelegatingPasswordEncoder 实例"
 
 @Configuration
 public class ProjectConfig {
@@ -265,7 +265,7 @@ public class ProjectConfig {
 `PasswordEncoder` 实现的映射。`PasswordEncoderFactories` 类提供了一个 `createDelegatingPasswordEncoder()`
 静态方法，该方法返回一个包含完整 `PasswordEncoder` 映射集的 `DelegatingPasswordEncoder` 实现，并将 `bcrypt` 作为默认编码器。
 
-```java
+``` java
 PasswordEncoder passwordEncoder = PasswordEncoderFactories.createDelegatingPasswordEncoder();
 ```
 
@@ -321,7 +321,7 @@ PasswordEncoder passwordEncoder = PasswordEncoderFactories.createDelegatingPassw
 `KeyGenerators` 直接构建它们。你可以使用由 `StringKeyGenerator` 合约表示的字符串密钥生成器来获取一个字符串形式的密钥。通常，我们将这个密钥用作
 `哈希或加密算法的盐值`。你可以在以下代码片段中找到 `StringKeyGenerator` 合约的定义：
 
-```java
+``` java
 public interface StringKeyGenerator {
 
 	String generateKey();
@@ -332,7 +332,7 @@ public interface StringKeyGenerator {
 生成器只有一个generateKey()方法，该方法返回一个表示键值的字符串。下面的代码片段展示了如何获取一个`StringKeyGenerator`
 实例以及如何使用它来获取盐值：
 
-```java
+``` java
 StringKeyGenerator keyGenerator = KeyGenerators.string();
 String salt = keyGenerator.generateKey();
 ```
@@ -340,7 +340,7 @@ String salt = keyGenerator.generateKey();
 生成器创建一个8字节的密钥，并将其编码为十六进制字符串。该方法将这些操作的结果作为字符串返回。
 `描述密钥生成器的第二个接口是BytesKeyGenerator`，其定义如下：
 
-```java
+``` java
 public interface BytesKeyGenerator {
 
 	int getKeyLength();
@@ -353,7 +353,7 @@ public interface BytesKeyGenerator {
 除了返回字节数组形式密钥的 `generateKey()`方法外，该接口还定义了另一个方法，用于返回密钥的字节长度。默认的
 `BytesKeyGenerator` 生成的密钥长度为 8 字节：
 
-```java
+``` java
 BytesKeyGenerator keyGenerator = KeyGenerators.secureRandom();
 byte[] key = keyGenerator.generateKey();
 int keyLength = keyGenerator.getKeyLength();
@@ -362,7 +362,7 @@ int keyLength = keyGenerator.getKeyLength();
 在之前的代码片段中，密钥生成器生成的是8字节长度的密钥。如果你想指定不同的密钥长度，可以在获取密钥生成器实例时，通过向
 `KeyGenerators.secureRandom()`方法提供所需的值来实现。
 
-```java
+``` java
 BytesKeyGenerator keyGenerator = KeyGenerators.secureRandom(16);
 ```
 
@@ -370,7 +370,7 @@ BytesKeyGenerator keyGenerator = KeyGenerators.secureRandom(16);
 方法时都是唯一的。在某些情况下，我们更倾向于实现一个在每次调用同一个密钥生成器时返回相同密钥值的方案。在这种情况下，我们可以使用
 `KeyGenerators.shared(int length)` 方法创建一个 `BytesKeyGenerator`。在这个代码片段中，key1 和 key2 具有相同的值：
 
-```java
+``` java
 BytesKeyGenerator keyGenerator = KeyGenerators.shared(16);
 byte[] key1 = keyGenerator.generateKey();
 byte[] key2 = keyGenerator.generateKey();
@@ -384,7 +384,7 @@ byte[] key2 = keyGenerator.generateKey();
 `BytesEncryptor`和`TextEncryptor`。虽然它们的职责相似，但处理的数据类型不同。`TextEncryptor`
 将数据作为字符串处理。其方法接收字符串作为输入，并返回字符串作为输出，正如您可以从其接口定义中看到的那样：
 
-```java
+``` java
 public interface TextEncryptor {
 
 	String encrypt(String text);
@@ -396,7 +396,7 @@ public interface TextEncryptor {
 
 `BytesEncryptor` 更加通用。您可以将输入数据以字节数组的形式提供。
 
-```java
+``` java
 public interface BytesEncryptor {
 
 	byte[] encrypt(byte[] byteArray);
@@ -409,7 +409,7 @@ public interface BytesEncryptor {
 让我们来看看有哪些选项可以用来构建和使用加密器。`Encryptors` 工厂类为我们提供了多种可能性。对于 `BytesEncryptor`，我们可以使用
 `Encryptors.standard()` 或 `Encryptors.stronger()` 方法，如下所示：
 
-```java
+``` java
 String salt = KeyGenerators.string().generateKey();
 String password = "secret";
 String valueToEncrypt = "HELLO";
@@ -422,7 +422,7 @@ byte[] decrypted = e.decrypt(encrypted);
 在幕后，标准字节加密器使用`256字节的AES加密`来加密输入。要构建一个更强大的字节加密器实例，可以调用`Encryptors.stronger()`
 方法：
 
-```java
+``` java
 BytesEncryptor e = Encryptors.stronger(password, salt);
 ```
 
@@ -433,7 +433,7 @@ BytesEncryptor e = Encryptors.stronger(password, salt);
 `Encryptors.noOpText()`。在下面的代码片段中，您将看到使用文本加密器的示例。即使在示例中调用了加密器，`encrypted`和
 `valueToEncrypt`的值仍然相同：
 
-```java
+``` java
 String valueToEncrypt = "HELLO";
 TextEncryptor e = Encryptors.noOpText();
 String encrypted = e.encrypt(valueToEncrypt);
@@ -442,7 +442,7 @@ String encrypted = e.encrypt(valueToEncrypt);
 `Encryptors.text()` 加密器使用 `Encryptors.standard()` 方法来管理加密操作，而 `Encryptors.delux()` 方法则使用
 `Encryptors.stronger()` 实例，如下所示：
 
-```java
+``` java
 String salt = KeyGenerators.string().generateKey();
 String password = "secret";
 String valueToEncrypt = "HELLO";

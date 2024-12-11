@@ -230,7 +230,7 @@ Spring Boot在配置默认设置时也选择了一种身份验证方法：`HTTP�
 
     在运行生成证书的命令后，系统会在提示中要求输入密码（在我的情况下是12345）。这就是为什么你在命令中看不到它。现在，让我们为应用程序添加一个测试端点，然后使用HTTPS调用它：
 
-    ```java
+    ``` java
     @RestController
     public class HelloController {
     
@@ -286,7 +286,7 @@ UserDetailsService 的角度来讨论它。这个实现将凭证存储在内存�
 
 [^2]: ssia-ch2-ex2: 定制用户详情管理,配置UserDetailsService和PasswordEncoder对象,并通过HttpSecurity创建SecurityFilterChain对象，从而配置认证方式和授权规则
 
-```java
+``` java
 
 @Configuration
 public class ProjectConfig {
@@ -321,7 +321,7 @@ public class ProjectConfig {
 在创建实例时，我们必须提供`用户名`、`密码`和`至少一个权限`。权限是允许该用户执行的操作，我们可以使用任何字符串来表示。在接下来的示例中，我将权限命名为
 `read`，但因为我们暂时不会使用这个权限，所以这个名称并不重要。
 
-```java
+``` java
 
 @Configuration
 public class ProjectConfig {
@@ -368,7 +368,7 @@ Date: Mon, 26 Aug 2022 09:13:41 GMT
 为了解决这个问题，我们可以像处理 `UserDetailsService` 一样，在上下文中添加一个 `PasswordEncoder bean`。对于这个
 bean，我们使用现有的 PasswordEncoder 实现：
 
-```java
+``` java
 
 @Bean
 public PasswordEncoder passwordEncoder() {
@@ -388,7 +388,7 @@ public PasswordEncoder passwordEncoder() {
 
 目前，完整的配置文件类代码如下：
 
-```java
+``` java
 
 @Configuration
 public class ProjectConfig {
@@ -437,7 +437,7 @@ Hello!
 。同样，并不是所有的应用程序端点都需要安全保护，对于那些需要保护的端点，我们可能需要选择不同的认证方法和授权规则。为了定制认证和授权的处理，我们需要定义一个类型为
 `SecurityFilterChain`的bean。在这个例子中，我将继续在项目`ssia-ch2-ex2`中编写代码。
 
-```java
+``` java
 
 @Configuration
 public class ProjectConfig {
@@ -455,7 +455,7 @@ public class ProjectConfig {
 
 然后，我们可以使用 `HttpSecurity` 对象的不同方法来修改配置，如下所示。
 
-```java title="清单2.7:使用 HttpSecurity 参数修改配置"
+``` java title="清单2.7:使用 HttpSecurity 参数修改配置"
 
 @Configuration
 public class ProjectConfig {
@@ -482,7 +482,7 @@ public class ProjectConfig {
 清单2.7中的代码配置了与默认行为相同的端点授权。你可以再次调用该端点，查看其行为是否与上一节中的测试相同。稍作修改，你可以使所有端点在
 `无需凭证的情况下访问`。你将在接下来的清单中看到如何实现这一点。
 
-```java title="清单2.8 使用 permitAll() 更改授权配置"
+``` java title="清单2.8 使用 permitAll() 更改授权配置"
 
 @Configuration
 public class ProjectConfig {
@@ -534,7 +534,7 @@ Security元素的自定义设置：认证、授权，或者特定的保护机制
 `函数式接口`（因此我们可以使用lambda表达式来实现它），而我在代码清单2.8中使用的`withDefaults()方法`
 实际上只是一个不执行任何操作的Customizer实现：
 
-```java
+``` java
 
 @FunctionalInterface
 public interface Customizer<T> {
@@ -577,7 +577,7 @@ ssia-ch2-ex3[^3] 中找到这个示例。
 
 [^3]: ssia-ch2-ex3: 以不同方式进行配置，通过HttpSecurity配置userDetailsService，而不是构建UserDetailsService Bean
 
-```java title="清单 2.9 使用 SecurityFilterChain bean 设置 UserDetailsService"
+``` java title="清单 2.9 使用 SecurityFilterChain bean 设置 UserDetailsService"
 
 @Configuration
 public class ProjectConfig {
@@ -642,7 +642,7 @@ public class ProjectConfig {
   <figcaption>图 2.3 AuthenticationProvider 实现了认证逻辑。它接收来自 AuthenticationManager 的请求，并将查找用户的任务委托给 UserDetailsService，将密码验证任务委托给 PasswordEncoder。</figcaption>
 </figure>
 
-```java title="清单 2.11 实现 AuthenticationProvider 接口"
+``` java title="清单 2.11 实现 AuthenticationProvider 接口"
 
 @Component
 public class CustomAuthenticationProvider implements AuthenticationProvider {
@@ -664,7 +664,7 @@ public class CustomAuthenticationProvider implements AuthenticationProvider {
 `authenticate(Authentication authentication) 方法`包含了所有的`认证逻辑`，因此我们将在清单2.12中添加一个这样的实现。我将在第6章详细解释
 `supports()方法`的用法。目前，我建议你暂时接受它的实现。在当前的例子中，它并不是必需的。
 
-```java title="清单 2.12 实现认证逻辑"
+``` java title="清单 2.12 实现认证逻辑"
 
 @Override
 public Authentication authenticate(
@@ -736,7 +736,7 @@ Hello!
 
 [^5]: ssia-ch2-ex5: 使用多个配置类
 
-```java title="清单2.15 定义用户和密码管理的配置类"
+``` java title="清单2.15 定义用户和密码管理的配置类"
 
 @Configuration
 public class UserManagementConfig {
@@ -764,7 +764,7 @@ public class UserManagementConfig {
 在这种情况下，`UserManagementConfig` 类仅包含负责用户管理的两个 bean：`UserDetailsService` 和 `PasswordEncoder`
 。下面的列表展示了这个定义。
 
-```java
+``` java
 
 @Configuration
 public class WebAuthorizationConfig {

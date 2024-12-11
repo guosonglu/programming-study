@@ -102,7 +102,7 @@ ssia-ch5-ex1[^1]
 
 要完成步骤1——实现过滤器，我们需要定义一个自定义过滤器。下面的列表展示了具体的实现。
 
-```java title="清单 5.1 实现自定义过滤器"
+``` java title="清单 5.1 实现自定义过滤器"
 public class RequestValidationFilter
 		implements Filter {
 
@@ -127,7 +127,7 @@ Request，而不将其转发到链中的下一个过滤器（图 5.7）。代码
   <figcaption>图5.7 我们在认证之前添加的自定义过滤器会检查请求中是否存在Request-Id头。如果请求中存在该头，应用程序将转发请求进行认证。如果该头不存在，应用程序将设置HTTP状态为400 Bad Request并返回给客户端。</figcaption>
 </figure>
 
-```java title="清单5.2 在 doFilter() 方法中实现逻辑"
+``` java title="清单5.2 在 doFilter() 方法中实现逻辑"
 
 @Override
 public void doFilter(

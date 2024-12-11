@@ -44,7 +44,7 @@ application.yml文件配置数据库连接：
 
 默认情况实体类类名驼峰转下划线作为表名，`@TableName`用来自定义表名。
 
-```java
+``` java
 
 @TableName("tb_user")
 public class User {
@@ -59,7 +59,7 @@ public class User {
 
 默认情况下实体类名为id的字段作为主键，`@TableId`用来自定义主键。
 
-```java
+``` java
 
 public class User {
 
@@ -74,7 +74,7 @@ public class User {
 
 默认情况下实体类成员字段名驼峰转下划线作为表的字段名，`@TableField`用来自定义字段名。
 
-```java
+``` java
 
 @TableName("tb_user")
 public class User {
