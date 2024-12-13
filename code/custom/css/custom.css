@@ -100,6 +100,17 @@ article > p {
     font-size: 0.65em;
 }
 
+.md-nav--secondary .md-nav__list .md-nav__list .md-nav__list{
+    list-style: "🏷️";
+    padding-left: 1.2rem;
+}
+
+.md-nav--secondary > .md-nav__list {
+    list-style: "📖";
+    padding-left: 1rem !important;
+}
+
+
 /*文章图片最大高度限制*/
 .md-typeset img {
     max-height: 50vh;
