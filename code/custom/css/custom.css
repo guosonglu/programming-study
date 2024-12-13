@@ -105,8 +105,9 @@ article > p {
 }
 
 .md-nav--secondary .md-nav__list .md-nav__list .md-nav__list{
-    list-style: "🏷️";
-    padding-left: 1.2rem;
+    list-style: circle;
+    padding-left: 1.4rem;
+    font-style: italic;
 }
 
 .md-nav--secondary > .md-nav__list {
