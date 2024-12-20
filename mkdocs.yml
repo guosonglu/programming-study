@@ -249,6 +249,9 @@ nav:
           - 服务发现:
               - java_serve/distributed/service-discovery/index.md
               - Nacos: java_serve/distributed/service-discovery/nacos/index.md
+          - 配置管理:
+              - java_serve/distributed/configuration/index.md
+              - Nacos: java_serve/distributed/configuration/nacos/nacos.md
           - 服务调用:
               - java_serve/distributed/invocation/index.md
               - RestTemplate: java_serve/distributed/invocation/rest-template/index.md
@@ -284,6 +287,9 @@ nav:
           - 数据库控制语言: topics/sql/dcl.md
       - Git:
           - topics/git/index.md
+      - 对象存储:
+          - topics/object-store/index.md
+          - MinIO: topics/object-store/minio/index.md
       - Linux:
           - topics/linux/index.md
           - Linux概述: topics/linux/basic/index.md
