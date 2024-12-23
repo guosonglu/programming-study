@@ -24,6 +24,7 @@
 }
 
 .md-typeset h5 {
+    text-transform: none;
     counter-increment: section-4;
 }
 
