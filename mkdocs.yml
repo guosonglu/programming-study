@@ -278,6 +278,8 @@ nav:
       - Docker:
           - topics/docker/index.md
           - 基础知识: topics/docker/basic/index.md
+          - Docker Build: topics/docker/docker-build/index.md
+          - Docker Compose: topics/docker/docker-compose/index.md
           - 环境搭建: topics/docker/environmental-setup/index.md
       - sql:
           - topics/sql/index.md

@@ -1,5 +1,7 @@
 # 基础知识
 
+[参考文档](https://docs.docker.com/manuals/)
+
 ## 安装Docker
 
 ### Centos安装配置
@@ -119,17 +121,6 @@ docker load -i mysql.tar
 ```shell
 # 保存本地镜像为文件
 docker save -o mysql.tar mysql
-```
-
-### build-构建镜像
-
-build命令根据Dockerfile文件构建镜像。
-
-```shell
-# 构建镜像
-# -t: 指定镜像名
-# . : 指定dockerfile在当前目录
-docker build -t myImage:1.0 .
 ```
 
 ## 容器基本操作
@@ -336,92 +327,4 @@ nginx
 
 	通过自定义网络，容器间可以通过`容器名称`进行访问。
 
-## Dockerfile-打包镜像
 
-### 常用指令
-
-| 指令         | 说明                     | 示例                                                                    |
-|------------|------------------------|-----------------------------------------------------------------------|
-| FROM       | 指定基础镜像                 | FROM centos:6                                                         |
-| ENV        | 设置环境变量，可以在后面指令使用       | ENV key value                                                         |
-| COPY       | 拷贝本地文件到镜像指定目录          | COPY ./jrell.tar.gz /tmp                                              |
-| RUN        | 执行linux指令，用于创建容器时安装的命令 | RUN tar -zxvf /tmp/jrell.tar.gz <br/>&& EXPORTS path=/tmp/jrell:$path |
-| EXPOSE     | 指定容器运行时监听的端口，给镜像使用者看   | EXPOSE 8080                                                           |
-| ENTRYPOINT | 镜像中应用的启动命令，容器运行时调用     | ENTRYPOINT java -jar xxx.jar                                          |
-
-
-## Docker Compose
-
-Docker Compose通过`docker-compose.yml`文件来定义一组相关联的应用容器，帮助我们实现`多个互相关联的Docker容器的快速部署`。
-
-### DockerCompose参数与docker run 参数对比
-
-<figure markdown="span">
-  ![](https://raw.githubusercontent.com/luguosong/images/master/blog-img/202410122202192.png){ loading=lazy }
-  <figcaption>DockerCompose参数与docker run 参数对比</figcaption>
-</figure>
-
-### DockerCompose示例
-
-```yaml
-version: "3.8"
-
-services:
-  mysql:
-    image: mysql
-    container_name: mysql
-    ports:
-      - "3306:3306"
-    environment:
-      TZ: Asia/Shanghai
-      MYSQL_ROOT_PASSWORD: 123
-    volumes:
-      - "./mysql/conf:/etc/mysql/conf.d"
-      - "./mysql/data:/var/lib/mysql"
-      - "./mysql/init:/docker-entrypoint-initdb.d"
-    networks:
-      - hm-net
-  hmall:
-    build:
-      context: .
-      dockerfile: Dockerfile
-    container_name: hmall
-    ports:
-      - "8080:8080"
-    networks:
-      - hm-net
-    depends_on:
-      - mysql
-  nginx:
-    image: nginx
-    container_name: nginx
-    ports:
-      - "18080:18080"
-      - "18081:18081"
-    volumes:
-      - "./nginx/nginx.conf:/etc/nginx/nginx.conf"
-      - "./nginx/html:/usr/share/nginx/html"
-    depends_on:
-      - hmall
-    networks:
-      - hm-net
-networks:
-  hm-net:
-    name: hmall
-```
-
-通过docker compose 命令启动容器：
-
-```shell
-# 启动容器
-# -f: 指定docker-compose.yml文件
-# -d: 后台运行
-docker-compose up \
--f xxx.yml \
--d
-
-# 停止并移除容器、自定义网络
-# -f: 指定docker-compose.yml文件
-# -p: 指定容器名称
-docker-compose down
-```
