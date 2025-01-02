@@ -280,6 +280,7 @@ nav:
           - 基础知识: topics/docker/basic/index.md
           - Docker Build: topics/docker/docker-build/index.md
           - Docker Compose: topics/docker/docker-compose/index.md
+          - IDEA中使用Docker: topics/docker/docker-idea/index.md
           - 环境搭建: topics/docker/environmental-setup/index.md
       - sql:
           - topics/sql/index.md
@@ -289,6 +290,7 @@ nav:
           - 数据库控制语言: topics/sql/dcl.md
       - Git:
           - topics/git/index.md
+          - 基础知识: topics/git/basic/index.md
       - 对象存储:
           - topics/object-store/index.md
           - MinIO: topics/object-store/minio/index.md
