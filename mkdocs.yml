@@ -336,5 +336,5 @@ nav:
       - 历史:
           - other/history/index.md
           - 中国史: other/history/chinese_history/index.md
-
+      - PotPlayer设置: other/potplayer/index.md
 
