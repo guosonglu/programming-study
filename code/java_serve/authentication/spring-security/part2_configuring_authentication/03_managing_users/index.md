@@ -512,13 +512,13 @@ Security唯一需要您提供的就是一个`通过用户名检索用户的实�
 `UserDetails`。
 
 ``` java title="清单 3.12 UserDetails 接口的实现"
---8<-- "code/java_serve/authentication/spring-security/03_managing_users/ssia-ch3-ex1/src/main/java/com/luguosong/ssiach3ex1/model/User.java"
+--8<-- "code/java_serve/authentication/spring-security/part2_configuring_authentication/03_managing_users/ssia-ch3-ex1/src/main/java/com/luguosong/ssiach3ex1/model/User.java"
 ```
 
 在名为 services 的包中，我们创建了一个名为 `InMemoryUserDetailsService` 的类。以下是我们实现该类的方法。
 
 ``` java title="清单 3.13 UserDetailsService 接口的实现"
---8<-- "code/java_serve/authentication/spring-security/03_managing_users/ssia-ch3-ex1/src/main/java/com/luguosong/ssiach3ex1/services/InMemoryUserDetailsService.java"
+--8<-- "code/java_serve/authentication/spring-security/part2_configuring_authentication/03_managing_users/ssia-ch3-ex1/src/main/java/com/luguosong/ssiach3ex1/services/InMemoryUserDetailsService.java"
 ```
 
 `loadUserByUsername(String username)` 方法在用户列表中搜索给定的用户名，并返回所需的 `UserDetails` 实例。如果没有找到该用户名的实例，则抛出
@@ -526,13 +526,13 @@ Security唯一需要您提供的就是一个`通过用户名检索用户的实�
 bean，并在其中注册一个用户。
 
 ``` java title="代码清单 3.14 在配置类中将 UserDetailsService 注册为一个 Bean"
---8<-- "code/java_serve/authentication/spring-security/03_managing_users/ssia-ch3-ex1/src/main/java/com/luguosong/ssiach3ex1/config/ProjectConfig.java"
+--8<-- "code/java_serve/authentication/spring-security/part2_configuring_authentication/03_managing_users/ssia-ch3-ex1/src/main/java/com/luguosong/ssiach3ex1/config/ProjectConfig.java"
 ```
 
 最后，我们创建一个简单的端点并测试其实现。以下列表定义了该端点。
 
 ``` java title="清单 3.15 用于测试实现的端点定义"
---8<-- "code/java_serve/authentication/spring-security/03_managing_users/ssia-ch3-ex1/src/main/java/com/luguosong/ssiach3ex1/controller/HelloController.java"
+--8<-- "code/java_serve/authentication/spring-security/part2_configuring_authentication/03_managing_users/ssia-ch3-ex1/src/main/java/com/luguosong/ssiach3ex1/controller/HelloController.java"
 ```
 
 使用 cURL 调用端点时，我们注意到，对于用户名为 john、密码为 12345 的用户，我们收到 HTTP 200 OK 的响应。如果使用其他信息，应用程序则返回

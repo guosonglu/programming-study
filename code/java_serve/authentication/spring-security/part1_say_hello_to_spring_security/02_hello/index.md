@@ -84,7 +84,7 @@ HelloController。为此，我们将该类添加到 Spring Boot 项目主命名�
     Spring Boot 仅扫描包含 `@SpringBootApplication 注解类`的`包及其子包`中的组件。如果你在主包之外使用 Spring 的任何构件注解对类进行标注，则必须使用 `@ComponentScan 注解`显式声明其位置。
 
 ``` java title="清单 2.2 HelloController 类和一个 REST 端点"
---8<-- "code/java_serve/authentication/spring-security/02_hello/ssia-ch2-ex1/src/main/java/com/luguosong/ssiach2ex1/controllers/HelloController.java"
+--8<-- "code/java_serve/authentication/spring-security/part1_say_hello_to_spring_security/02_hello/ssia-ch2-ex1/src/main/java/com/luguosong/ssiach2ex1/controllers/HelloController.java"
 ```
 
 `@RestController` 注解在上下文中注册了 bean，并告知 Spring 应用程序将此实例用作 Web 控制器。此外，该注解指定应用程序必须将
@@ -615,7 +615,7 @@ public class ProjectConfig {
 `UserDetailsService实例`。下一个清单展示了配置类的完整内容。
 
 ``` java title="清单 2.10 配置类的完整定义"
---8<-- "code/java_serve/authentication/spring-security/02_hello/ssia-ch2-ex3/src/main/java/com/luguosong/ssiach2ex3/config/ProjectConfig.java"
+--8<-- "code/java_serve/authentication/spring-security/part1_say_hello_to_spring_security/02_hello/ssia-ch2-ex3/src/main/java/com/luguosong/ssiach2ex3/config/ProjectConfig.java"
 ```
 
 这些配置选项都是正确的。第一种选项是将 beans 添加到`上下文`中，这样你可以在可能需要的其他类中注入这些值。但如果你不需要这样做，第二种选项同样不错。
@@ -697,13 +697,13 @@ bean，但如果你处理用户和密码进行身份验证，我强烈建议你�
 AuthenticationProvider 实现如下所示。
 
 ``` java title="清单 2.13 认证提供者的完整实现"
---8<-- "code/java_serve/authentication/spring-security/02_hello/ssia-ch2-ex4/src/main/java/com/luguosong/ssiach2ex4/security/CustomAuthenticationProvider.java"
+--8<-- "code/java_serve/authentication/spring-security/part1_say_hello_to_spring_security/02_hello/ssia-ch2-ex4/src/main/java/com/luguosong/ssiach2ex4/security/CustomAuthenticationProvider.java"
 ```
 
 在配置类中，您可以使用 HttpSecurity 的 `authenticationProvider() 方法`注册 `AuthenticationProvider`，如下所示。
 
 ``` java title="清单 2.14 注册新的 AuthenticationProvider 实现"
---8<-- "code/java_serve/authentication/spring-security/02_hello/ssia-ch2-ex4/src/main/java/com/luguosong/ssiach2ex4/config/ProjectConfig.java"
+--8<-- "code/java_serve/authentication/spring-security/part1_say_hello_to_spring_security/02_hello/ssia-ch2-ex4/src/main/java/com/luguosong/ssiach2ex4/config/ProjectConfig.java"
 ```
 
 ```shell

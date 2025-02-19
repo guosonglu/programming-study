@@ -165,13 +165,13 @@ public void doFilter(
 下面的示例展示了如何在配置类中将自定义过滤器添加到认证过滤器之前。为了简化示例，我们使用了`permitAll()`方法来允许所有未经认证的请求。
 
 ``` java title="清单 5.3 在认证之前配置自定义过滤器"
---8<-- "code/java_serve/authentication/spring-security/05_begins_with_filters/ssia-ch5-ex1/src/main/java/com/luguosong/ssiach5ex1/config/ProjectConfig.java"
+--8<-- "code/java_serve/authentication/spring-security/part2_configuring_authentication/05_begins_with_filters/ssia-ch5-ex1/src/main/java/com/luguosong/ssiach5ex1/config/ProjectConfig.java"
 ```
 
 我们还需要一个控制器类和一个端点来测试功能。下面的列表定义了控制器类。
 
 ``` java title="清单 5.4 控制器类"
---8<-- "code/java_serve/authentication/spring-security/05_begins_with_filters/ssia-ch5-ex1/src/main/java/com/luguosong/ssiach5ex1/controllers/HelloController.java"
+--8<-- "code/java_serve/authentication/spring-security/part2_configuring_authentication/05_begins_with_filters/ssia-ch5-ex1/src/main/java/com/luguosong/ssiach5ex1/controllers/HelloController.java"
 ```
 
 您现在可以运行和测试该应用程序了。如果在没有添加请求头的情况下调用端点，会生成一个HTTP状态为400 Bad
@@ -218,13 +218,13 @@ Hello!
 以下列表展示了一个过滤器的定义，该过滤器记录通过身份验证过滤器的请求。
 
 ``` java title="清单 5.5 定义用于记录请求的过滤器"
---8<-- "code/java_serve/authentication/spring-security/05_begins_with_filters/ssia-ch5-ex1/src/main/java/com/luguosong/ssiach5ex1/filters/AuthenticationLoggingFilter.java"
+--8<-- "code/java_serve/authentication/spring-security/part2_configuring_authentication/05_begins_with_filters/ssia-ch5-ex1/src/main/java/com/luguosong/ssiach5ex1/filters/AuthenticationLoggingFilter.java"
 ```
 
 要在身份验证过滤器之后的链中添加自定义过滤器，可以调用 `HttpSecurity` 的 `addFilterAfter()` 方法。下面的列表展示了具体实现。
 
 ``` java title="清单5.6 在过滤器链中在现有过滤器之后添加自定义过滤器"
---8<-- "code/java_serve/authentication/spring-security/05_begins_with_filters/ssia-ch5-ex1/src/main/java/com/luguosong/ssiach5ex1/config/ProjectConfig.java"
+--8<-- "code/java_serve/authentication/spring-security/part2_configuring_authentication/05_begins_with_filters/ssia-ch5-ex1/src/main/java/com/luguosong/ssiach5ex1/config/ProjectConfig.java"
 ```
 
 在运行应用程序并调用端点后，我们观察到每次成功调用端点时，应用程序都会在控制台中打印一行日志。对于该调用，
@@ -299,7 +299,7 @@ Hello!
 `401 Unauthorized`，而不在过滤器链中转发请求。以下是`StaticKeyAuthenticationFilter`类的定义。
 
 ``` java title="清单5.7 StaticKeyAuthenticationFilter类的定义"
---8<-- "code/java_serve/authentication/spring-security/05_begins_with_filters/ssia-ch5-ex2/src/main/java/com/luguosong/ssiach5ex2/filters/StaticKeyAuthenticationFilter.java"
+--8<-- "code/java_serve/authentication/spring-security/part2_configuring_authentication/05_begins_with_filters/ssia-ch5-ex2/src/main/java/com/luguosong/ssiach5ex2/filters/StaticKeyAuthenticationFilter.java"
 ```
 
 一旦我们定义了过滤器，就可以使用 `addFilterAt()` 方法将其添加到过滤器链中 `BasicAuthenticationFilter` 类的位置（图 5.13）。
@@ -321,7 +321,7 @@ Hello!
 `BasicAuthenticationFilter`实例添加到过滤器链中。
 
 ``` java title="清单 5.8 在配置类中添加过滤器"
---8<-- "code/java_serve/authentication/spring-security/05_begins_with_filters/ssia-ch5-ex2/src/main/java/com/luguosong/ssiach5ex2/config/ProjectConfig.java"
+--8<-- "code/java_serve/authentication/spring-security/part2_configuring_authentication/05_begins_with_filters/ssia-ch5-ex2/src/main/java/com/luguosong/ssiach5ex2/config/ProjectConfig.java"
 ```
 
 要测试应用程序，我们还需要一个端点。为此，我们定义一个控制器，如清单5.4所示。你应该在`application.properties`
@@ -395,7 +395,7 @@ Spring Security 提供了一些实现了 Filter 接口的抽象类，您可以�
 [^3]:ssia-ch5-ex3:自定义过滤器继承OncePerRequestFilter，达到同一请求不被执行多次的效果
 
 ``` java title="清单 5.9 扩展 OncePerRequestFilter 类"
---8<-- "code/java_serve/authentication/spring-security/05_begins_with_filters/ssia-ch5-ex3/src/main/java/com/luguosong/ssiach5ex3/filters/AuthenticationLoggingFilter.java"
+--8<-- "code/java_serve/authentication/spring-security/part2_configuring_authentication/05_begins_with_filters/ssia-ch5-ex3/src/main/java/com/luguosong/ssiach5ex3/filters/AuthenticationLoggingFilter.java"
 ```
 
 以下是关于OncePerRequestFilter类的一些简短观察，可能对您有所帮助：

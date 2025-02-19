@@ -149,7 +149,14 @@ nav:
   - 主页: index.md
   - 基础知识:
       - basic/index.md
-      - 计算机组成原理: basic/computer_architecture_principles/index.md
+      - 计算机组成原理:
+          - basic/computer_architecture_principles/index.md
+          - 计算机系统概述: basic/computer_architecture_principles/01-overview/index.md
+          - 数据的表示和运算: basic/computer_architecture_principles/02-data-representation-and-operations/index.md
+          - 存储器: basic/computer_architecture_principles/03-memory/index.md
+          - 指令系统: basic/computer_architecture_principles/04-instruction-set/index.md
+          - 中央处理器: basic/computer_architecture_principles/05-cpu/index.md
+          - 总线和I/O系统: basic/computer_architecture_principles/06-bus-and-io-system/index.md
       - 操作系统:
           - basic/operating_system/index.md
       - 计算机网络:
@@ -189,7 +196,16 @@ nav:
           - front_end/vue/index.md
       - React:
           - front_end/react/index.md
-          - 基本语法: front_end/react/basic/index.md
+          - 基本语法:
+              - front_end/react/basic/index.md
+              - 描述UI: front_end/react/basic/describing-the-ui/index.md
+              - 添加交互: front_end/react/basic/adding-interactivity/index.md
+              - 状态管理: front_end/react/basic/managing-state/index.md
+              - 脱困机制: front_end/react/basic/escape-hatches/index.md
+          - 全局状态管理:
+              - front_end/react/global-state-management/index.md
+              - Redux: front_end/react/global-state-management/redux/index.md
+              - Mobx: front_end/react/global-state-management/mobx/index.md
           - React Router: front_end/react/react_router/index.md
           - Next.js: front_end/react/nextjs/index.md
   - Java基础:
@@ -228,19 +244,25 @@ nav:
           - java_serve/authentication/index.md
           - Spring Security实战:
               - java_serve/authentication/spring-security/index.md
-              - 1️⃣第一部分：Spring Security入门: java_serve/authentication/spring-security/part1_say_hello_to_spring_security.md
-              - 1.安全现状: java_serve/authentication/spring-security/01_security_today/index.md
-              - 2.Spring Security入门: java_serve/authentication/spring-security/02_hello/index.md
-              - 2️⃣第二部分：配置身份认证: java_serve/authentication/spring-security/part2_configuring_authentication.md
-              - 3.管理用户: java_serve/authentication/spring-security/03_managing_users/index.md
-              - 4.管理密码: java_serve/authentication/spring-security/04_managing_passwords/index.md
-              - 5.网络应用的安全性始于过滤器: java_serve/authentication/spring-security/05_begins_with_filters/index.md
-              - 6.实现身份认证: java_serve/authentication/spring-security/06_implementing_authentications/index.md
-              - 3️⃣第三部分：配置授权: java_serve/authentication/spring-security/part3_configuring_authorization.md
-              - 7.配置端点级授权：限制访问: java_serve/authentication/spring-security/07_configuring_endpoint_level_authorization_restricting_access/index.md
-              - 4️⃣第四部分：实施OAuth 2和OpenID Connect: java_serve/authentication/spring-security/part4_implementing_oAuth2_and_openid_connect.md
-              - 5️⃣第五部分：响应式: java_serve/authentication/spring-security/part5_going_reactive.md
-              - 6️⃣第六部分：测试安全配置: java_serve/authentication/spring-security/part6_testing_security_configurations.md
+              - Spring Security入门:
+                  - java_serve/authentication/spring-security/part1_say_hello_to_spring_security/index.md
+                  - 1.安全现状: java_serve/authentication/spring-security/part1_say_hello_to_spring_security/01_security_today/index.md
+                  - 2.Spring Security入门: java_serve/authentication/spring-security/part1_say_hello_to_spring_security/02_hello/index.md
+              - 配置身份认证:
+                  - java_serve/authentication/spring-security/part2_configuring_authentication/index.md
+                  - 3.管理用户: java_serve/authentication/spring-security/part2_configuring_authentication/03_managing_users/index.md
+                  - 4.管理密码: java_serve/authentication/spring-security/part2_configuring_authentication/04_managing_passwords/index.md
+                  - 5.网络应用的安全性始于过滤器: java_serve/authentication/spring-security/part2_configuring_authentication/05_begins_with_filters/index.md
+                  - 6.实现身份认证: java_serve/authentication/spring-security/part2_configuring_authentication/06_implementing_authentications/index.md
+              - 配置授权:
+                  - java_serve/authentication/spring-security/part3_configuring_authorization/index.md
+                  - 7.配置端点级授权：限制访问: java_serve/authentication/spring-security/part3_configuring_authorization/07_configuring_endpoint_level_authorization_restricting_access/index.md
+              - 实施OAuth 2和OpenID Connect:
+                  - java_serve/authentication/spring-security/part4_implementing_oAuth2_and_openid_connect/index.md
+              - 响应式:
+                  - java_serve/authentication/spring-security/part5_going_reactive/index.md
+              - 测试安全配置:
+                  - java_serve/authentication/spring-security/part6_testing_security_configurations/index.md
       - Spring Boot:
           - java_serve/springboot/index.md
           - 基础知识: java_serve/springboot/basic/index.md
@@ -277,11 +299,18 @@ nav:
           - Maven基础教程: topics/maven/base/index.md
       - Docker:
           - topics/docker/index.md
-          - 基础知识: topics/docker/basic/index.md
-          - Docker Build: topics/docker/docker-build/index.md
-          - Docker Compose: topics/docker/docker-compose/index.md
-          - IDEA中使用Docker: topics/docker/docker-idea/index.md
-          - 环境搭建: topics/docker/environmental-setup/index.md
+          - Docker Engine:
+              - topics/docker/engine/index.md
+              - 存储:
+                  - topics/docker/engine/storage/index.md
+                  - 数据卷(Volumes): topics/docker/engine/storage/volumes/index.md
+          - Docker Build: topics/docker/build/index.md
+          - Docker Compose:
+              - topics/docker/compose/index.md
+              - Compose文件参考:
+                  - topics/docker/compose/compose-file-reference/index.md
+                  - Services顶级元素: topics/docker/compose/compose-file-reference/services-top-level-elements/index.md
+                  - Volumes顶层元素: topics/docker/compose/compose-file-reference/volumes-top-level-element/index.md
       - sql:
           - topics/sql/index.md
           - 环境搭建: topics/sql/environment_building.md
@@ -318,6 +347,7 @@ nav:
       - 音标: english/phonetic_symbol/index.md
       - 新概念单词: english/new_concept_english/index.md
       - 语法: english/grammar/index.md
+      - 编程词汇: english/programming_vocabulary/index.md
   - 数学:
       - math/index.md
       - Latex公式对照表: math/latex/index.md
